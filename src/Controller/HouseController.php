@@ -16,7 +16,7 @@ class HouseController extends AbstractController
     {
         return new Response(<<<EOF
             <html>
-            <h1> HELLO</h1>
+            <h1> HELLO2</h1>
             </html>
             EOF
     );
