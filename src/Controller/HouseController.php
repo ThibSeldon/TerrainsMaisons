@@ -13,12 +13,10 @@ class HouseController extends AbstractController
      * @Route("/house", name="house")
      */
     public function index(): Response
-    {
-        return new Response(<<<EOF
-            <html>
-            <h1> Batilab</h1>
-            </html>
-            EOF
-    );
+    {       
+           return $this->render('house/index.html.twig',[
+               'controller_name' => 'House::Index'
+           ]);
+       
     }
 }
