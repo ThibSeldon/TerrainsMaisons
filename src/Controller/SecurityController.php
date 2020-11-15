@@ -6,7 +6,10 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 class SecurityController extends AbstractController
 {
@@ -38,14 +41,16 @@ class SecurityController extends AbstractController
     /**
      * @Route("/add-admin-user", name="app_add_admin_user")
      */
-    public function addAdminUSer()
+    public function addAdminUser(UserPasswordEncoderInterface $passEncoder)
     {
+        
+
         $user = new User;
         
         
         $user->setEmail("thibaud.berdin@groupeberdin.com");
         $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword('THIBazerty');
+        $user->setPassword($passEncoder->encodePassword($user, 'ThibRose@18'));
         dump($user);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
