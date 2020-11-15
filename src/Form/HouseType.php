@@ -19,8 +19,6 @@ class HouseType extends AbstractType
             ->add('roomNumber')
             ->add('bathroomNumber')
             ->add('sellingPriceDf')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('brand')
             ->add('roofing')
             ->add('length')
