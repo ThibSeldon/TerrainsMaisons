@@ -18,9 +18,9 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('house_index');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -40,21 +40,22 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/add-admin-user", name="app_add_admin_user")
+     * CREATION DE L UTILISATEUR SUPER ADMIN
      */
     public function addAdminUser(UserPasswordEncoderInterface $passEncoder)
     {
-        
+
 
         $user = new User;
-        
-        
+
+
         $user->setEmail("thibaud.berdin@groupeberdin.com");
         $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword($passEncoder->encodePassword($user, 'ThibRose@18'));    
+        $user->setPassword($passEncoder->encodePassword($user, 'ThibRose@18'));
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('house_index');        
+        return $this->redirectToRoute('house_index');
     }
 }
