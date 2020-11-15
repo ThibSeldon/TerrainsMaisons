@@ -1,20 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HouseController!{% endblock %}
+{% block title %}House index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>House index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>LivingSpace</th>
+                <th>AnnexSurface</th>
+                <th>RoomNumber</th>
+                <th>BathroomNumber</th>
+                <th>SellingPriceDf</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Brand</th>
+                <th>Roofing</th>
+                <th>Length</th>
+                <th>Width</th>
+                <th>Height</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for house in houses %}
+            <tr>
+                <td>{{ house.id }}</td>
+                <td>{{ house.name }}</td>
+                <td>{{ house.type }}</td>
+                <td>{{ house.livingSpace }}</td>
+                <td>{{ house.annexSurface }}</td>
+                <td>{{ house.roomNumber }}</td>
+                <td>{{ house.bathroomNumber }}</td>
+                <td>{{ house.sellingPriceDf }}</td>
+                <td>{{ house.createdAt ? house.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ house.updatedAt ? house.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ house.brand }}</td>
+                <td>{{ house.roofing }}</td>
+                <td>{{ house.length }}</td>
+                <td>{{ house.width }}</td>
+                <td>{{ house.height }}</td>
+                <td>
+                    <a href="{{ path('house_show', {'id': house.id}) }}">show</a>
+                    <a href="{{ path('house_edit', {'id': house.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/thib/Dev/Projets/guestbook/src/Controller/HouseController.php'|file_link(0) }}">src/Controller/HouseController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/thib/Dev/Projets/guestbook/templates/house/index.html.twig'|file_link(0) }}">templates/house/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('house_new') }}">Create new</a>
 {% endblock %}
