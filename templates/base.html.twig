@@ -13,6 +13,25 @@
 	</head>
 	<body>
 
+		<!--
+		MENU NAVIGATION HORIZONTAL
+		-->
+				<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+			<a class="navbar-brand" href="#">BATILAB</a>
+			<a class="nav-link" href={{ path('house_index') }}>Maisons</a>
+			<ul class="nav nav-tabs nav-stacked">
+				<li class="nav-item">
+					<a href="#" class="nav-link active">Active</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link">Link</a>
+				</li>
+				<li class="nav-item disabled">
+					<a href="{{ path('app_logout') }}" class="nav-link">Logout</a>
+				</li>
+			</ul>			
+
+		</nav>
 		<div class="container"> {% block body %}{% endblock %}
 
 			</div>
