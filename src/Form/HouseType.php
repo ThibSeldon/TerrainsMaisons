@@ -58,13 +58,16 @@ class HouseType extends AbstractType
                 ]
             ])
             ->add('length', NumberType::class, [
-                'label' => 'Longeur'
+                'label' => 'Longeur',
+                'required' => false
             ])
             ->add('width', NumberType::class, [
-                'label' => 'Largeur'
+                'label' => 'Largeur',
+                'required' => false
             ])
             ->add('height', NumberType::class, [
-                'label' => 'Hauteur'
+                'label' => 'Hauteur',
+                'required' => false
             ])
         ;
     }
