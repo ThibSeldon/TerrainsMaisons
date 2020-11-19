@@ -30,8 +30,9 @@ class HouseController extends AbstractController
             $dataHouseModel = $searchForm->getData()->getHouseModel();
             $dataHouseBrand = $searchForm->getData()->getHouseBrand();
             $dataRoom = $searchForm->getData()->getRoomNumber();
-            
-            $model = $houseRepository->searchByName($dataHouseModel, $dataHouseBrand, $dataRoom);
+            $priceMax = $searchForm->getData()->getTestSellingPriceAti();
+            dump($searchForm->getData());
+            $model = $houseRepository->searchByName($dataHouseModel, $dataHouseBrand, $dataRoom, $priceMax);
            
 
         }

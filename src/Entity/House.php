@@ -96,8 +96,16 @@ class House
      */
     private $houseModel;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $sellingPriceAti;
 
 
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
 
 
     public function getId(): ?int
@@ -285,24 +293,43 @@ class House
         
         return $this;
     }
+        
+    
+    public function getSellingPriceAti(): ?float
+    {
+        return $this->sellingPriceAti;
+    }
     
     /**
-     * FONCTIONS PERSONNALISSES 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
+    public function setSellingPriceAti(): self
+    {
+        $this->sellingPriceAti = $this->sellingPriceDf*1.2;
+        
+        return $this;
+    }
     
+/**
+ * FONCTION PERSONNALISEES POUR RECHERCHE
+ */
+
+    private $testSellingPriceAti;
+
+
+    public function getTestSellingPriceAti(): ?float
+    {
+        return $this->testSellingPriceAti;
+    }
+    public function setTestSellingPriceAti(?float $testSellingPriceAti): self
+    {
+        $this->testSellingPriceAti = $testSellingPriceAti;
+        
+        return $this;
+    }
     
-        public function __toString(): string
-        {
-            return $this->getName();
-        }
+
     
-    
-        /**
-         * RETOURNE PRIX DE VENTE AVEC TVA
-         */
-        public function getSellingPriceAti(): ?float
-        {
-            return $this->getSellingPriceDf()*1.20;
-        }
     
 }
