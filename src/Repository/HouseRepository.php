@@ -20,11 +20,16 @@ class HouseRepository extends ServiceEntityRepository
     }
 
 
-    public function searchByName($name)
+    public function searchByName($modelType, $brand, $bedroom)
     {
+        
         return $this->createQueryBuilder('h')
-        ->andWhere('h.type = :val')
-        ->setParameter('val', $name)
+        ->andWhere('h.houseModel = :val')
+        ->andwhere('h.houseBrand = :val2')
+        ->andWhere('h.roomNumber = :val3')
+        ->setParameter('val', $modelType)
+        ->setParameter('val2', $brand)
+        ->setParameter('val3', $bedroom)
         ->orderBy('h.name', 'ASC')
         ->getQuery()
         ->execute()

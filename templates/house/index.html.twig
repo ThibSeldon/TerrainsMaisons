@@ -4,20 +4,37 @@
 {% endblock %}
 
 {% block body %}
-	<h1>House index</h1>
+	<div class="row align-middle">
+		<div class="col-sm-4">
+			<h1>Catalogue Maisons</h1>
+		</div>
+		<div class="col-sm-8">
 
-{% if form is defined %}
 
-	{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-success btn-small">{{ button_label|default('Valider') }}</button>
-{{ form_end(form) }}
+			<a href="{{ path('house_new') }}">
+				<button type="button" class="btn btn-primary btn-sm">Ajouter un modèle</button>
+			</a>
+		</div>
+	</div>
 
-{% endif %}
-	<table class="table table-sm table-bordered table-hover">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				{% if form is defined %}
+
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<button class="btn btn-success btn-small">{{ button_label|default('Valider') }}</button>
+					{{ form_end(form) }}
+
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<table class="table table-hover table-sm table-bordered">
 		<thead>
 			<tr>
-				
+
 				<th>Modèle</th>
 				<th>Type</th>
 				<th>Surface Habitable</th>
@@ -36,8 +53,12 @@
 		<tbody>
 			{% for house in houses %}
 				<tr>
-					
-					<td> <a href="{{path('house_show', {'id': house.id}) }}"> {{ house.name }} <a/> </td>
+
+					<td>
+						<a href="{{path('house_show', {'id': house.id}) }}">
+							{{ house.name }}
+							<a/></td>
+					</td>
 					<td>{{ house.houseModel.name }}</td>
 					<td>{{ house.livingSpace }}</td>
 					<td>{{ house.annexSurface }}</td>
@@ -58,5 +79,5 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('house_new') }}">Create new</a>
+	<a href="{{ path('house_new') }}">Ajouter un modèle</a>
 {% endblock %}

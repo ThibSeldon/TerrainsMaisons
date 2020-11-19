@@ -17,30 +17,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class HouseController extends AbstractController
 {
     /**
-     * @Route("/", name="house_index", methods={"GET"})
+     * @Route("/", name="house_index", methods={"GET", "POST"})
      */
-    public function index(HouseRepository $houseRepository): Response
-    {
-        return $this->render('house/index.html.twig', [
-            'houses' => $houseRepository->findAll(),
-        ]);
-    }
-
-
-    /**
-     * @Route("/search", name="house_search")
-     */
-    public function searchHouse(Request $request, HouseRepository $houseRepository): Response
+    public function index(Request $request, HouseRepository $houseRepository): Response
     {
         $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
+        dump($searchForm);
         
         if($searchForm->isSubmitted() && $searchForm->isValid())
         {
-            $data = $searchForm->getData()->getType();
+            $dataHouseModel = $searchForm->getData()->getHouseModel();
+            $dataHouseBrand = $searchForm->getData()->getHouseBrand();
+            $dataRoom = $searchForm->getData()->getRoomNumber();
             
-            $model = $houseRepository->searchByName($data);
-            dump($model);
+            $model = $houseRepository->searchByName($dataHouseModel, $dataHouseBrand, $dataRoom);
+           
 
         }
         else {
@@ -51,8 +43,9 @@ class HouseController extends AbstractController
             'houses' => $model,
             'form' => $searchForm->createView(),
         ]);
-
     }
+
+
 
 
     /**
