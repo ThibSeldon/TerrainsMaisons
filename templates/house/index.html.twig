@@ -6,6 +6,14 @@
 {% block body %}
 	<h1>House index</h1>
 
+{% if form is defined %}
+
+	{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success btn-small">{{ button_label|default('Valider') }}</button>
+{{ form_end(form) }}
+
+{% endif %}
 	<table class="table table-sm table-bordered table-hover">
 		<thead>
 			<tr>
@@ -30,14 +38,14 @@
 				<tr>
 					
 					<td> <a href="{{path('house_show', {'id': house.id}) }}"> {{ house.name }} <a/> </td>
-					<td>{{ house.type }}</td>
+					<td>{{ house.houseModel.name }}</td>
 					<td>{{ house.livingSpace }}</td>
 					<td>{{ house.annexSurface }}</td>
 					<td>{{ house.roomNumber }}</td>
 					<td>{{ house.bathroomNumber }}</td>
 					<td>{{ house.sellingPriceAti | format_currency('EUR')  }}</td>
-					<td>{{ house.brand }}</td>
-					<td>{{ house.roofing }}</td>
+					<td>{{ house.houseBrand.name }}</td>
+					<td>{{ house.houseRoofing.name }}</td>
 					<td>{{ house.length }}</td>
 					<td>{{ house.width }}</td>
 					<td>{{ house.height }}</td>

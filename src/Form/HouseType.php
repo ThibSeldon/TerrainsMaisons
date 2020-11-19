@@ -2,12 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\Admin\House\HouseBrand;
+use App\Entity\Admin\House\HouseModel;
 use App\Entity\House;
+use App\Entity\Admin\House\HouseRoofing;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,16 +22,21 @@ class HouseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',TextType::class, [
+            ->add('name', TextType::class, [
                 'label' => 'Nom du modèle'
             ])
-            ->add('type', ChoiceType::class, [
-                'choices' => [
-                'Plain-Pied' =>'plain-pied',
-                'Etage' => 'etage',
-                'Combles Amémagées' => 'combles_amenagees',
-                ]
-                ])
+            ->add('houseBrand', EntityType::class, [
+                'class' => HouseBrand::class,
+                'choice_label' => 'name'
+            ])
+            ->add('houseModel', EntityType::class, [
+                'class' => HouseModel::class,
+                'choice_label' => 'name'
+            ])
+            ->add('houseRoofing', EntityType::class, [
+                'class' => HouseRoofing::class,
+                'choice_label' => 'name',
+            ])
             ->add('livingSpace', NumberType::class, [
                 'label' => 'Surface Habitable'
             ])
@@ -41,21 +51,6 @@ class HouseType extends AbstractType
             ])
             ->add('sellingPriceDf', MoneyType::class, [
                 'label' => 'Prix de Vente HT',
-            ])
-            ->add('brand', ChoiceType::class, [
-                'choices' => [
-                    'Maisons Berdin' => 'maisons_berdin',
-                    'Natilia' => 'natilia',
-                    'Villas Club' => 'villas_club',
-                ]
-            ])
-            ->add('roofing', ChoiceType::class, [
-                'label' => 'Toiture',
-                'choices' => [
-                    'Toiture Traditionnelle' => 'toiture_traditionnelle',
-                    'Toiture BacAcier' => 'toiture bacacier',
-                    'Toiture Terrasse' => 'toiture_terrasse',
-                ]
             ])
             ->add('length', NumberType::class, [
                 'label' => 'Longeur',

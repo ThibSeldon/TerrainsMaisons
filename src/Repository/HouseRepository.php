@@ -19,6 +19,18 @@ class HouseRepository extends ServiceEntityRepository
         parent::__construct($registry, House::class);
     }
 
+
+    public function searchByName($name)
+    {
+        return $this->createQueryBuilder('h')
+        ->andWhere('h.type = :val')
+        ->setParameter('val', $name)
+        ->orderBy('h.name', 'ASC')
+        ->getQuery()
+        ->execute()
+        ;
+    }
+
     // /**
     //  * @return House[] Returns an array of House objects
     //  */

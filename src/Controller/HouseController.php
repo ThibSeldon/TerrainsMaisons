@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\House;
 use App\Form\HouseType;
+use App\Form\House\HouseSearchType;
 use App\Repository\HouseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +25,35 @@ class HouseController extends AbstractController
             'houses' => $houseRepository->findAll(),
         ]);
     }
+
+
+    /**
+     * @Route("/search", name="house_search")
+     */
+    public function searchHouse(Request $request, HouseRepository $houseRepository): Response
+    {
+        $searchForm = $this->createForm(HouseSearchType::class);
+        $searchForm->handleRequest($request);
+        
+        if($searchForm->isSubmitted() && $searchForm->isValid())
+        {
+            $data = $searchForm->getData()->getType();
+            
+            $model = $houseRepository->searchByName($data);
+            dump($model);
+
+        }
+        else {
+        $model = $houseRepository->findAll();
+        }
+
+        return $this->render('house/index.html.twig', [
+            'houses' => $model,
+            'form' => $searchForm->createView(),
+        ]);
+
+    }
+
 
     /**
      * @Route("/new", name="house_new", methods={"GET","POST"})

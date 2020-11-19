@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Admin\House\HouseBrand;
+use App\Entity\Admin\House\HouseModel;
+use App\Entity\Admin\House\HouseRoofing;
+
 use App\Repository\HouseRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
@@ -26,11 +30,6 @@ class House
      *
      */
     private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $type;
 
     /**
      * @ORM\Column(type="float")
@@ -68,17 +67,6 @@ class House
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $brand;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $roofing;
-
-
-    /**
      * @ORM\Column(type="float", nullable=true)
      */
     private $length;
@@ -92,6 +80,23 @@ class House
      * @ORM\Column(type="float", nullable=true)
      */
     private $height;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=HouseRoofing::class)
+     */
+    private $houseRoofing;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=HouseBrand::class, inversedBy="houses")
+     */
+    private $houseBrand;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=HouseModel::class)
+     */
+    private $houseModel;
+
+
 
 
 
@@ -108,18 +113,6 @@ class House
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -220,30 +213,6 @@ class House
         return $this;
     }
 
-    public function getBrand(): ?string
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(string $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    public function getRoofing(): ?string
-    {
-        return $this->roofing;
-    }
-
-    public function setRoofing(?string $roofing): self
-    {
-        $this->roofing = $roofing;
-
-        return $this;
-    }
-
     public function getLength(): ?float
     {
         return $this->length;
@@ -280,21 +249,60 @@ class House
         return $this;
     }
 
-/**
- * FONCTIONS PERSONNALISSES 
- */
-
-
-    public function __toString(): string
+    
+    public function getHouseRoofing(): ?HouseRoofing
     {
-        return $this->getName();
+        return $this->houseRoofing;
     }
-
-
-    /**
-     * RETOURNE PRIX DE VENTE AVEC TVA
-     */
-    public function getSellingPriceAti(): ?float
+    
+    public function setHouseRoofing(?HouseRoofing $houseRoofing): self
     {
-        return $this->getSellingPriceDf()*1.20;
-    }}
+        $this->houseRoofing = $houseRoofing;
+        
+        return $this;
+    }
+    
+    public function getHouseBrand(): ?HouseBrand
+    {
+        return $this->houseBrand;
+    }
+    
+    public function setHouseBrand(?HouseBrand $houseBrand): self
+    {
+        $this->houseBrand = $houseBrand;
+        
+        return $this;
+    }
+    
+    public function getHouseModel(): ?HouseModel
+    {
+        return $this->houseModel;
+    }
+    
+    public function setHouseModel(?HouseModel $houseModel): self
+    {
+        $this->houseModel = $houseModel;
+        
+        return $this;
+    }
+    
+    /**
+     * FONCTIONS PERSONNALISSES 
+     */
+    
+    
+        public function __toString(): string
+        {
+            return $this->getName();
+        }
+    
+    
+        /**
+         * RETOURNE PRIX DE VENTE AVEC TVA
+         */
+        public function getSellingPriceAti(): ?float
+        {
+            return $this->getSellingPriceDf()*1.20;
+        }
+    
+}

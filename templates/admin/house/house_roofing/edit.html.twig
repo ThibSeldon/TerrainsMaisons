@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit HouseRoofing{% endblock %}
+
+{% block body %}
+    <h1>Edit HouseRoofing</h1>
+
+    {{ include('admin/house/house_roofing/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_house_house_roofing_index') }}">back to list</a>
+
+    {{ include('admin/house/house_roofing/_delete_form.html.twig') }}
+{% endblock %}

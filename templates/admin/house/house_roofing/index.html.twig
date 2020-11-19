@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HouseRoofing index{% endblock %}
+
+{% block body %}
+    <h1>HouseRoofing index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for house_roofing in house_roofings %}
+            <tr>
+                <td>{{ house_roofing.id }}</td>
+                <td>{{ house_roofing.name }}</td>
+                <td>
+                    <a href="{{ path('admin_house_house_roofing_show', {'id': house_roofing.id}) }}">show</a>
+                    <a href="{{ path('admin_house_house_roofing_edit', {'id': house_roofing.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_house_house_roofing_new') }}">Create new</a>
+{% endblock %}
