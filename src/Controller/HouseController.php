@@ -24,20 +24,13 @@ class HouseController extends AbstractController
         $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
        
-        
-        if($searchForm->isSubmitted() && $searchForm->isValid())
-        {
-            $dataHouseModel = $searchForm->getData()->getHouseModel();
-            $dataHouseBrand = $searchForm->getData()->getHouseBrand();
-            $dataRoom = $searchForm->getData()->getRoomNumber();
-            $priceMax = $searchForm->getData()->getTestSellingPriceAti();
-            dump($searchForm->getData());
-            $model = $houseRepository->searchByName($dataHouseModel, $dataHouseBrand, $dataRoom, $priceMax);
-           
 
-        }
-        else {
-        $model = $houseRepository->findAll();
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $dataAll = $searchForm->getData();
+            dump($dataAll);
+            $model = $houseRepository->searchByName($dataAll);
+        } else {
+            $model = $houseRepository->findAll();
         }
 
         return $this->render('house/index.html.twig', [
@@ -45,8 +38,6 @@ class HouseController extends AbstractController
             'form' => $searchForm->createView(),
         ]);
     }
-
-
 
 
     /**
@@ -107,7 +98,7 @@ class HouseController extends AbstractController
      */
     public function delete(Request $request, House $house): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$house->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $house->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($house);
             $entityManager->flush();

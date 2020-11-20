@@ -20,19 +20,53 @@ class HouseRepository extends ServiceEntityRepository
     }
 
 
-    public function searchByName($modelType, $brand, $bedroom, $priceMax)
+    public function searchByName($dataAll)
     {
-        
-        return $this->createQueryBuilder('h')
-        ->andWhere('h.houseModel = :val')
-        ->andwhere('h.houseBrand = :val2')
-        ->andWhere('h.roomNumber = :val3')
-        ->andWhere('h.sellingPriceAti <= :max')
-        ->setParameters(['val' => $modelType, 'val2' => $brand, 'val3' => $bedroom, 'max' => $priceMax])
-        ->orderBy('h.name', 'ASC')
-        ->getQuery()
-        ->execute()
-        ;
+
+
+        $name = $dataAll->getName();
+        $houseModel = $dataAll->getHouseModel();
+        $houseBrand = $dataAll->gethouseBrand();
+        $roomNumber = $dataAll->getRoomNumber();
+        $priceMax = $dataAll->getSellingPriceAti();
+        $length = $dataAll->getLength();
+        dump($roomNumber);
+        $qb = $this->createQueryBuilder('h');
+
+        if (isset($name)) {
+            return $qb->andwhere('h.name LIKE :name')
+                ->setParameter(':name', '%' . $name . '%')
+                ->orderBy('h.name', 'ASC')
+                ->getQuery()
+                ->execute();
+        }
+
+        if (isset($houseModel)) {
+            $qb->andwhere('h.houseModel = :houseModel')
+                ->setParameter(':houseModel', $houseModel);
+        }
+
+        if (isset($houseBrand)) {
+            $qb->andwhere('h.houseBrand = :houseBrand')
+                ->setParameter(':houseBrand', $houseBrand);
+        }
+        if (isset($roomNumber)) {
+                      
+            $qb->andwhere('h.roomNumber = :roomNumber')
+                ->setParameter(':roomNumber', $roomNumber);
+        }
+        if (isset($priceMax)) {
+            $qb->andwhere('h.sellingPriceAti <= :priceMax')
+                ->setParameter(':priceMax', $priceMax);
+        }
+        if (isset($length)) {
+            $qb->andwhere('h.length = :length')
+                ->setParameter(':length', $length);
+        }
+       
+        return $qb->orderBy('h.name', 'ASC')
+            ->getQuery()
+            ->execute();
     }
 
     // /**

@@ -4,22 +4,17 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row align-middle">
-		<div class="col-sm-4">
-			<h1>Catalogue Maisons</h1>
-		</div>
-		<div class="col-sm-8">
 
-
-			<a href="{{ path('house_new') }}">
-				<button type="button" class="btn btn-primary btn-sm">Ajouter un modèle</button>
-			</a>
-		</div>
-	</div>
-
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-2" style="padding-top: 10px;">
+
+
+				<a href="{{ path('house_new') }}">
+					<button type="button" class="btn btn-primary btn-sm">Ajouter un modèle</button>
+				</a>
+
+
 				{% if form is defined %}
 
 					{{ form_start(form) }}
@@ -28,56 +23,60 @@
 					{{ form_end(form) }}
 
 				{% endif %}
+
+			</div>
+
+			<div class="col-sm-10" style="padding-top:10px;">
+				<table class="table table-hover table-sm table-bordered">
+					<thead>
+						<tr>
+
+							<th>Modèle</th>
+							<th>Type</th>
+							<th>Surface Habitable</th>
+							<th>Surface Annexe</th>
+							<th>Chambres</th>
+							<th>Salle de bains</th>
+							<th>Prix de Vente TTC</th>
+							<th>Marque</th>
+							<th>Toiture</th>
+							<th>Longeur</th>
+							<th>Largeur</th>
+							<th>Hauteur</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for house in houses %}
+							<tr>
+
+								<td>
+									<a href="{{path('house_show', {'id': house.id}) }}">
+										{{ house.name }}
+										<a/></td>
+								</td>
+								<td>{{ house.houseModel.name }}</td>
+								<td>{{ house.livingSpace }}</td>
+								<td>{{ house.annexSurface }}</td>
+								<td>{{ house.roomNumber }}</td>
+								<td>{{ house.bathroomNumber }}</td>
+								<td>{{ house.sellingPriceAti | format_currency('EUR')  }}</td>
+								<td>{{ house.houseBrand.name }}</td>
+								<td>{{ house.houseRoofing.name }}</td>
+								<td>{{ house.length }}</td>
+								<td>{{ house.width }}</td>
+								<td>{{ house.height }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="16">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
-	<table class="table table-hover table-sm table-bordered">
-		<thead>
-			<tr>
-
-				<th>Modèle</th>
-				<th>Type</th>
-				<th>Surface Habitable</th>
-				<th>Surface Annexe</th>
-				<th>Chambres</th>
-				<th>Salle de bains</th>
-				<th>Prix de Vente TTC</th>
-				<th>Marque</th>
-				<th>Toiture</th>
-				<th>Longeur</th>
-				<th>Largeur</th>
-				<th>Hauteur</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			{% for house in houses %}
-				<tr>
-
-					<td>
-						<a href="{{path('house_show', {'id': house.id}) }}">
-							{{ house.name }}
-							<a/></td>
-					</td>
-					<td>{{ house.houseModel.name }}</td>
-					<td>{{ house.livingSpace }}</td>
-					<td>{{ house.annexSurface }}</td>
-					<td>{{ house.roomNumber }}</td>
-					<td>{{ house.bathroomNumber }}</td>
-					<td>{{ house.sellingPriceAti | format_currency('EUR')  }}</td>
-					<td>{{ house.houseBrand.name }}</td>
-					<td>{{ house.houseRoofing.name }}</td>
-					<td>{{ house.length }}</td>
-					<td>{{ house.width }}</td>
-					<td>{{ house.height }}</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="16">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
 
 	<a href="{{ path('house_new') }}">Ajouter un modèle</a>
 {% endblock %}
