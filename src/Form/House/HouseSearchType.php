@@ -31,9 +31,11 @@ class HouseSearchType extends AbstractType
                 'class' => HouseModel::class,
                 'choice_label' => 'name'
             ])
+            
             ->add('houseBrand', EntityType::class, [
                 'class' => HouseBrand::class,
                 'choice_label' => 'name',
+                
             ])
             ->add('roomNumber', ChoiceType::class, [
                 'choices'  => [
