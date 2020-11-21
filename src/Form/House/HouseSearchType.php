@@ -7,13 +7,14 @@ use App\Entity\Admin\House\HouseModel;
 use App\Entity\Admin\House\HouseRoofing;
 use App\Entity\House;
 use App\Entity\Admin\House\SearchHouse;
-
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,6 +23,8 @@ class HouseSearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        dump($options);
+        dump($builder);
         $builder
             ->add('name', TextType::class, [
                 'required' => false
@@ -29,14 +32,20 @@ class HouseSearchType extends AbstractType
 
             ->add('houseModel', EntityType::class, [
                 'class' => HouseModel::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'placeholder' => 'Vide',
+                'required' => false,
+                
             ])
 
             ->add('houseBrand', EntityType::class, [
                 'class' => HouseBrand::class,
                 'choice_label' => 'name',
+                'placeholder' => 'Toutes Marques',
+                'required' => false, 
                 
-            ])
+                ],               
+           )
             ->add('roomNumber', ChoiceType::class, [
                 'choices'  => [
                     'Maybe' => null,
@@ -62,6 +71,11 @@ class HouseSearchType extends AbstractType
             ->add('valid', CheckboxType::class, [
                 'label' => 'Model Validé ? ',
                 'required' => false,
+                'attr' => [
+                    'checked' => true
+                ]
+                
+                
             ])
             ;
     }
