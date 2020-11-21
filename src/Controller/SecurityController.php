@@ -49,9 +49,9 @@ class SecurityController extends AbstractController
         $user = new User;
 
 
-        $user->setEmail("thibaud.berdin@groupeberdin.com");
+        $user->setEmail("t@t.com");
         $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword($passEncoder->encodePassword($user, '123456%%AZreta289H¨*%'));
+        $user->setPassword($passEncoder->encodePassword($user, '1234'));
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
