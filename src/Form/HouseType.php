@@ -8,7 +8,7 @@ use App\Entity\House;
 use App\Entity\Admin\House\HouseRoofing;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -63,6 +63,10 @@ class HouseType extends AbstractType
             ->add('height', NumberType::class, [
                 'label' => 'Hauteur',
                 'required' => false
+            ])
+            ->add('valid', CheckboxType::class, [
+                'label' => 'Model Validé ? ',
+                'required' => false,
             ])
         ;
     }

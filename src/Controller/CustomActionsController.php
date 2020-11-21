@@ -32,8 +32,7 @@ class CustomActionsController extends AbstractController
              $house->setSellingPriceAti(($priceDf*1.20));
              $entityManager = $this->getDoctrine()->getManager();
              $entityManager->persist($house);
-             $entityManager->flush();
-             dump($house);
+             $entityManager->flush();             
          }
 
          return $this->render('admin_home/index.html.twig', [

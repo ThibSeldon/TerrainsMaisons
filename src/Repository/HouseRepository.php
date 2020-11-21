@@ -30,7 +30,8 @@ class HouseRepository extends ServiceEntityRepository
         $roomNumber = $dataAll->getRoomNumber();
         $priceMax = $dataAll->getSellingPriceAti();
         $length = $dataAll->getLength();
-        dump($roomNumber);
+        $valid = $dataAll->getValid();       
+
         $qb = $this->createQueryBuilder('h');
 
         if (isset($name)) {
@@ -62,6 +63,10 @@ class HouseRepository extends ServiceEntityRepository
         if (isset($length)) {
             $qb->andwhere('h.length = :length')
                 ->setParameter(':length', $length);
+        }
+        if(isset($valid)) {
+            $qb->andWhere('h.valid = :valid')
+                ->setParameter(':valid', $valid);
         }
        
         return $qb->orderBy('h.name', 'ASC')

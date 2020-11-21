@@ -7,9 +7,7 @@ use App\Entity\Admin\House\HouseModel;
 use App\Entity\Admin\House\HouseRoofing;
 
 use App\Repository\HouseRepository;
-use Doctrine\ORM\Mapping as ORM;
-use Exception;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 class SearchHouse
 {
@@ -52,6 +50,7 @@ class SearchHouse
 
     private $sellingPriceAti;
 
+    private $valid;
 
     public function __toString(): string
     {
@@ -271,4 +270,24 @@ class SearchHouse
 
     
     
+
+    /**
+     * Get the value of valid
+     */ 
+    public function getValid()
+    {
+        return $this->valid;
+    }
+
+    /**
+     * Set the value of valid
+     *
+     * @return  self
+     */ 
+    public function setValid($valid)
+    {
+        $this->valid = $valid;
+
+        return $this;
+    }
 }

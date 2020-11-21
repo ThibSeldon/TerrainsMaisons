@@ -317,6 +317,11 @@ class House
 
     private $testSellingPriceAti;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $valid;
+
 
     public function getTestSellingPriceAti(): ?float
     {
@@ -326,6 +331,18 @@ class House
     {
         $this->testSellingPriceAti = $testSellingPriceAti;
         
+        return $this;
+    }
+
+    public function getValid(): ?bool
+    {
+        return $this->valid;
+    }
+
+    public function setValid(bool $valid): self
+    {
+        $this->valid = $valid;
+
         return $this;
     }
     

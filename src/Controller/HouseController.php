@@ -23,11 +23,11 @@ class HouseController extends AbstractController
     {
         $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
-       
+
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $dataAll = $searchForm->getData();
-            dump($dataAll);
+
             $model = $houseRepository->searchByName($dataAll);
         } else {
             $model = $houseRepository->findAll();
