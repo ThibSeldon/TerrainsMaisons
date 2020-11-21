@@ -40,7 +40,7 @@ final class Version20201121083312 extends AbstractMigration
         $this->addSql('ALTER TABLE house ADD CONSTRAINT FK_67D5399D1AE70CB8 FOREIGN KEY (house_model_id) REFERENCES house_model (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
-    public function down(Schema $schema) : voi
+    public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
