@@ -1,75 +1,94 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}House{% endblock %}
+{% block title %}House
+{% endblock %}
 
 {% block body %}
-    <h1>House</h1>
+	<h1>House</h1>
 
-    <table class="table table-sm table-hover">
-        <tbody>
+	<div class="row">
+		<a href="{{ path('house_index') }}" class="">
+			<button type="button" class="btn btn-primary btn-sm ">
+				Retour</button>
+		</a>
 
-            <tr>
-                <th>Model</th>
-                <td>{{ house.name }}</td>
-            </tr>
-            <tr>
-                <th>Type Model</th>
-                <td>{{ house.houseModel.name }}</td>
-            </tr>
-            <tr>
-                <th>Marque</th>
-                <td>{{ house.houseBrand.name }}</td>
-            </tr>
-            <tr>
-                <th>Toiture</th>
-                <td>{{ house.houseRoofing.name }}</td>
-            </tr>
-            <tr>
-                <th>Surface Habitable</th>
-                <td>{{ house.livingSpace }}</td>
-            </tr>
-            <tr>
-                <th>Surface Annexe</th>
-                <td>{{ house.annexSurface }}</td>
-            </tr>
-            <tr>
-                <th>Chambres</th>
-                <td>{{ house.roomNumber }}</td>
-            </tr>
-            <tr>
-                <th>Salle de bains</th>
-                <td>{{ house.bathroomNumber }}</td>
-            </tr>
-            <tr>
-                <th>SellingPriceDf</th>
-                <td>{{ house.sellingPriceDf }}</td>
-            </tr>
-            <tr>
-                <th>Longeur</th>
-                <td>{{ house.length }}</td>
-            </tr>
-            <tr>
-                <th>Largeur</th>
-                <td>{{ house.width }}</td>
-            </tr>
-            <tr>
-                <th>Hauteur</th>
-                <td>{{ house.height }}</td>
-            </tr>
-            <tr>
-                <th>Création</th>
-                <td>{{ house.createdAt ? house.createdAt|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Mise à jour</th>
-                <td>{{ house.updatedAt ? house.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<a href="{{ path('house_edit', {'id': house.id}) }}" class="">
+			<button type="button" class="btn btn-info btn-sm ">Editer
+			</button>
+		</a>
+		<div class="">
+			{{ include('house/_delete_form.html.twig') }}
+		</div>
+	</div>
 
-    <a href="{{ path('house_index') }}"> back to list</a>
+	<table class="table table-sm table-hover">
+		<tbody>
 
-    <a href="{{ path('house_edit', {'id': house.id}) }}">edit</a>
+			<tr>
+				<th>Model</th>
+				<td>{{ house.name }}</td>
+			</tr>
+			<tr>
+				<th>Type Model</th>
+				<td>{{ house.houseModel.name }}</td>
+			</tr>
+			<tr>
+				<th>Marque</th>
+				<td>{{ house.houseBrand.name }}</td>
+			</tr>
+			<tr>
+				<th>Toiture</th>
+				<td>{{ house.houseRoofing.name }}</td>
+			</tr>
+			<tr>
+				<th>Surface Habitable</th>
+				<td>{{ house.livingSpace }}</td>
+			</tr>
+			<tr>
+				<th>Surface Annexe</th>
+				<td>{{ house.annexSurface }}</td>
+			</tr>
+			<tr>
+				<th>Chambres</th>
+				<td>{{ house.roomNumber }}</td>
+			</tr>
+			<tr>
+				<th>Salle de bains</th>
+				<td>{{ house.bathroomNumber }}</td>
+			</tr>
+			<tr>
+				<th>Prix de Vente HT</th>
+				<td>{{ house.sellingPriceDf }}</td>
+			</tr>
+			<tr>
+				<th>Prix de Vente TTC</th>
+				<td>{{ house.sellingPriceAti }}</td>
+			</tr>
+			<tr>
+				<th>Longeur</th>
+				<td>{{ house.length }}</td>
+			</tr>
+			<tr>
+				<th>Largeur</th>
+				<td>{{ house.width }}</td>
+			</tr>
+			<tr>
+				<th>Hauteur</th>
+				<td>{{ house.height }}</td>
+			</tr>
+			<tr>
+				<th>Création</th>
+				<td>{{ house.createdAt ? house.createdAt|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Mise à jour</th>
+				<td>{{ house.updatedAt ? house.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Model Validé </th>
+				<td>{{ house.valid }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    {{ include('house/_delete_form.html.twig') }}
 {% endblock %}

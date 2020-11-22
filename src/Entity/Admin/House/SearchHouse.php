@@ -234,40 +234,25 @@ class SearchHouse
         
         return $this;
     }
-        
-    
-    public function getSellingPriceAti(): ?float
-    {
-        return $this->sellingPriceAti;
-    }
-    
+           
 
-    public function setSellingPriceAti(): self
-    {
-        $this->sellingPriceAti = $this->sellingPriceDf*1.2;
-        
-        return $this;
-    }
-    
 /**
  * FONCTION PERSONNALISEES POUR RECHERCHE
  */
 
-    private $testSellingPriceAti;
+    private $searchSellingPriceAti;
 
 
-    public function getTestSellingPriceAti(): ?float
+    public function getSearchSellingPriceAti(): ?float
     {
-        return $this->testSellingPriceAti;
+        return $this->searchSellingPriceAti;
     }
-    public function setTestSellingPriceAti(?float $testSellingPriceAti): self
+    public function setSearchSellingPriceAti(?float $searchSellingPriceAti): self
     {
-        $this->testSellingPriceAti = $testSellingPriceAti;
+        $this->searchSellingPriceAti = $searchSellingPriceAti;
         
         return $this;
     }
-    
-
     
     
 

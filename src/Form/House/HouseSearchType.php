@@ -23,22 +23,24 @@ class HouseSearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        dump($options);
-        dump($builder);
+
         $builder
             ->add('name', TextType::class, [
+                'label' => 'Nom du modèle',
                 'required' => false
             ])
 
             ->add('houseModel', EntityType::class, [
+                'label' => 'Type de Maison',
                 'class' => HouseModel::class,
                 'choice_label' => 'name',
-                'placeholder' => 'Vide',
+                'placeholder' => 'Tous Types',
                 'required' => false,
                 
             ])
 
             ->add('houseBrand', EntityType::class, [
+                'label' => 'Marque',
                 'class' => HouseBrand::class,
                 'choice_label' => 'name',
                 'placeholder' => 'Toutes Marques',
@@ -47,8 +49,9 @@ class HouseSearchType extends AbstractType
                 ],               
            )
             ->add('roomNumber', ChoiceType::class, [
+                'label' => 'Nombre de chambres',
                 'choices'  => [
-                    'Maybe' => null,
+                    'Tous' => null,
                     '1' => 1,
                     '2' => 2,
                     '3' => 3,
@@ -56,13 +59,15 @@ class HouseSearchType extends AbstractType
                     '5' => 5,
                 ],
             ])
-            ->add('testSellingPriceAti', NumberType::class, [
+            ->add('searchSellingPriceAti', NumberType::class, [
+                'label' => 'Prix Vente Max',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Prix Max',
                 ]
             ])
             ->add('length', NumberType::class, [
+                'label' => 'Longeure Max',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Longeur Max'

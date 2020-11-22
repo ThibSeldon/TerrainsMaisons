@@ -28,7 +28,7 @@ class HouseRepository extends ServiceEntityRepository
         $houseModel = $dataAll->getHouseModel();
         $houseBrand = $dataAll->gethouseBrand();
         $roomNumber = $dataAll->getRoomNumber();
-        $priceMax = $dataAll->getSellingPriceAti();
+        $priceMax = $dataAll->getSearchSellingPriceAti();
         $length = $dataAll->getLength();
         $valid = $dataAll->getValid();       
 
@@ -37,7 +37,7 @@ class HouseRepository extends ServiceEntityRepository
         if (isset($name)) {
             return $qb->andwhere('h.name LIKE :name')
                 ->setParameter(':name', '%' . $name . '%')
-                ->orderBy('h.name', 'ASC')
+                ->orderBy('h.sellingPriceAti', 'ASC')
                 ->getQuery()
                 ->execute();
         }
@@ -69,7 +69,7 @@ class HouseRepository extends ServiceEntityRepository
                 ->setParameter(':valid', $valid);
         }
        
-        return $qb->orderBy('h.name', 'ASC')
+        return $qb->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
             ->execute();
     }

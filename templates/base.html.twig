@@ -32,16 +32,18 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Terrains</a>
       </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Admin
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="{{ path('admin_house_house_roofing_index' )}}">Toitures</a>
+          <a class="dropdown-item" href="{{ path('house_new' )}}">Ajouter Maison</a>
+          <a class="dropdown-item" href="{{ path('admin_house_house_roofing_index' )}}">Ajouter Toitures</a>
           <a class="dropdown-item" href="{{ path('app_logout')}} ">Logout</a>
         </div>
       </li>
+
     </ul>
   </div>
 </nav>
