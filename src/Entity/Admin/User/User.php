@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Admin\User;
 
-use App\Repository\UserRepository;
+use App\Repository\Admin\User\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -34,6 +35,8 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+
 
     public function getId(): ?int
     {
@@ -89,12 +92,12 @@ class User implements UserInterface
         return (string) $this->password;
     }
 
-    public function setPassword(string $password): self
-    {
+    public function setPassword(string $password): self    {
+        
         $this->password = $password;
 
         return $this;
-    }
+    } 
 
     /**
      * @see UserInterface
