@@ -304,7 +304,7 @@ class House
     
     public function getSellingPriceAti(): ?float
     {
-        return $this->sellingPriceAti;
+        return ceil($this->sellingPriceAti);
     }
 
     /**
