@@ -19,16 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="dump databaseCloud.sql">
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/User/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminHomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AdminHomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CustomActionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/CustomActionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/House.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/House.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/show.html.twig" afterDir="false" />
+    <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="navbar">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,8 +131,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controller" />
+      <recent name="$PROJECT_DIR$/src/Controller/Admin" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -148,7 +149,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
-      <workItem from="1606145829981" duration="6740000" />
+      <workItem from="1606145829981" duration="7068000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -176,7 +177,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dump databaseCloud.sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="dump databaseCloud.sql" />
+    <MESSAGE value="navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="navbar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1081" y="616" key="#Composer" timestamp="1606146828806">
