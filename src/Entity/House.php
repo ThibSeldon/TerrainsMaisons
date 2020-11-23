@@ -315,24 +315,6 @@ class House
  * FONCTION PERSONNALISEES POUR RECHERCHE
  */
 
-    private $testSellingPriceAti;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $valid;
-
-
-    public function getTestSellingPriceAti(): ?float
-    {
-        return $this->testSellingPriceAti;
-    }
-    public function setTestSellingPriceAti(?float $testSellingPriceAti): self
-    {
-        $this->testSellingPriceAti = $testSellingPriceAti;
-        
-        return $this;
-    }
 
     public function getValid(): ?bool
     {
