@@ -319,7 +319,6 @@ class House
         {
 
             $this->sellingPriceAti = $data;
-            dump(gettype($data));
             return $this;
         }
         $this->sellingPriceAti = ceil($this->sellingPriceDf*1.2);
