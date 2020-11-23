@@ -21,6 +21,8 @@ class CustomActionsController extends AbstractController
 
     /**
      * @Route("/custom/actions/housetaxes", name="custom_actions_housetaxes")
+     * @param HouseRepository $houseRepository
+     * @return Response
      */
     public function addHouseTaxes(HouseRepository $houseRepository): Response
     {

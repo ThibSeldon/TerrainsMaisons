@@ -101,6 +101,13 @@ class House
      */
     private $sellingPriceAti;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $valid;
+
+
+
 
     public function __toString(): string
     {
@@ -299,14 +306,23 @@ class House
     {
         return $this->sellingPriceAti;
     }
-    
+
     /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
+     * @param float $data
+     * @return House
      */
-    public function setSellingPriceAti(): self
+    public function setSellingPriceAti($data): self
     {
-        $this->sellingPriceAti = $this->sellingPriceDf*1.2;
+        if(isset($data))
+        {
+
+            $this->sellingPriceAti = $data;
+            dump(gettype($data));
+            return $this;
+        }
+        $this->sellingPriceAti = ceil($this->sellingPriceDf*1.2);
         
         return $this;
     }
@@ -314,7 +330,7 @@ class House
 /**
  * FONCTION PERSONNALISEES POUR RECHERCHE
  */
-
+   
 
     public function getValid(): ?bool
     {
