@@ -20,18 +20,19 @@ class CustomActionsController extends AbstractController
     }
 
     /**
-     * @Route("/custom/actions/housetaxes", name="custom_actions_housetaxes")
+     * @Route("/custom/actions/updateHouseTaxes", name="custom_actions_housetaxes")
      * @param HouseRepository $houseRepository
      * @return Response
      */
-    public function addHouseTaxes(HouseRepository $houseRepository): Response
+    public function updateHouseTaxes(HouseRepository $houseRepository): Response
     {
          $houseData = $houseRepository->findAll();
 
          foreach($houseData as $house)
          {
              $priceDf = $house->getSellingPriceDf();
-             $house->setSellingPriceAti(($priceDf*1.20));
+             $house->setUpdateSellingPriceAti(($priceDf*1.20));
+             dump($house);
              $entityManager = $this->getDoctrine()->getManager();
              $entityManager->persist($house);
              $entityManager->flush();             

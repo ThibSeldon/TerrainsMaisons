@@ -310,26 +310,13 @@ class House
     /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
-     * @param float $data
-     * @return House
      */
-    public function setSellingPriceAti($data): self
+    public function setSellingPriceAti(): self
     {
-        if(isset($data))
-        {
-
-            $this->sellingPriceAti = $data;
-            return $this;
-        }
         $this->sellingPriceAti = ceil($this->sellingPriceDf*1.2);
         
         return $this;
     }
-    
-/**
- * FONCTION PERSONNALISEES POUR RECHERCHE
- */
-   
 
     public function getValid(): ?bool
     {
@@ -342,7 +329,20 @@ class House
 
         return $this;
     }
-    
+
+
+
+    /**
+     * FONCTION PERSONNALISEE De CustomActionsController pour Updater tous les prix avec TVA
+     * @param float $data
+     * @return House
+     */
+    public function setUpdateSellingPriceAti(float $data): self
+    {
+        $this->sellingPriceAti = $data;
+        return $this;
+    }
+
 
     
     

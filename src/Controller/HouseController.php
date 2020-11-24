@@ -6,6 +6,7 @@ use App\Entity\House;
 use App\Form\HouseType;
 use App\Form\House\HouseSearchType;
 use App\Repository\HouseRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,7 @@ class HouseController extends AbstractController
 
     /**
      * @Route("/new", name="house_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -95,6 +97,7 @@ class HouseController extends AbstractController
 
     /**
      * @Route("/{id}", name="house_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, House $house): Response
     {
