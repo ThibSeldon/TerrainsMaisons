@@ -18,9 +18,10 @@ use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
+//FORMULAIRE DE RECHERCHE POUR LE CATALOGUE DE MAISONS
 class HouseSearchType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 

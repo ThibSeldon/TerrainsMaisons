@@ -3,35 +3,49 @@
 {% block title %}House index
 {% endblock %}
 
+
+
 {% block body %}
+
+	<style>
+		div.searchCol {
+			margin-top: 20px;
+		}
+		div.searchForm {
+			margin-top: 20px;
+				}
+		div.listHouse{
+			margin-top: 20px;
+		}
+	</style>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-2" style="padding-top: 10px;">
+			<div class="searchCol col-sm-2">
 
-					<div class="row ">
-					<a href="{{ path('house_index') }}">
-						<button type="button" class="btn btn-secondary btn-sm ">
+					<div class="">
+					<a href="{{ path('house_index')}}" class="myButton">
+						<button class="btn btn-secondary btn-sm btn-block ">
 							Toute les Maisons</button>
 					</a>
 					
 				</div>
-				-----------------------
-				<div class="row">
+
+				<div class="searchForm">
 
 				{% if form is defined %}
 
 					{{ form_start(form) }}
 					{{ form_widget(form) }}
 					
-					<button class="btn btn-success btn-small">{{ button_label|default('Valider') }}</button>
+					<button class="btn btn-success btn-sm btn-block">{{ button_label|default('Valider') }}</button>
 					{{ form_end(form) }}
 
 				{% endif %}
 				</div>
 			</div>
 
-			<div class="col-sm-10" style="padding-top:10px;">
+			<div class="listHouse col-sm-10">
 				<table class="table table-hover table-sm table-bordered">
 					<thead>
 						<tr>
