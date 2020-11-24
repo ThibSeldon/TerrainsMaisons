@@ -24,7 +24,7 @@ class HouseRepository extends ServiceEntityRepository
     {
 
 
-        $name = $dataAll->getName();
+
         $houseModel = $dataAll->getHouseModel();
         $houseBrand = $dataAll->gethouseBrand();
         $roomNumber = $dataAll->getRoomNumber();
@@ -34,13 +34,7 @@ class HouseRepository extends ServiceEntityRepository
 
         $qb = $this->createQueryBuilder('h');
 
-        if (isset($name)) {
-            return $qb->andwhere('h.name LIKE :name')
-                ->setParameter(':name', '%' . $name . '%')
-                ->orderBy('h.sellingPriceAti', 'ASC')
-                ->getQuery()
-                ->execute();
-        }
+
 
         if (isset($houseModel)) {
             $qb->andwhere('h.houseModel = :houseModel')

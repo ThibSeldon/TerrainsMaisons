@@ -26,10 +26,7 @@ class HouseSearchType extends AbstractType
     {
 
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'Nom du modèle',
-                'required' => false
-            ])
+
 
             ->add('houseModel', EntityType::class, [
                 'label' => 'Type de Maison',
