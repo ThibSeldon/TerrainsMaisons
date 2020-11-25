@@ -3,3 +3,6 @@ db:
     disk: 1024
     size: S
 
+files:
+    type: network-storage:1.0
+    disk: 256
