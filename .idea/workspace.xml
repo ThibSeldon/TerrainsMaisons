@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="ceil sellingPriceAti">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HouseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.symfony.cloud.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.symfony.cloud.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +157,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
-      <workItem from="1606145829981" duration="33557000" />
+      <workItem from="1606145829981" duration="34063000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -221,11 +221,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="589" y="273" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606254548786" />
-    <state x="1068" y="387" key="SettingsEditor" timestamp="1606336931719">
+    <state x="1068" y="387" key="SettingsEditor" timestamp="1606337866814">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="629" y="201" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1606252330192" />
-    <state x="1068" y="387" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606336931719" />
+    <state x="1068" y="387" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606337866814" />
     <state x="957" y="315" key="SettingsEditor/0.25.2560.1415@0.25.2560.1415" timestamp="1606162300461" />
     <state width="500" height="445" key="SwitcherDM" timestamp="1606337644386">
       <screen x="0" y="0" width="2560" height="1440" />
