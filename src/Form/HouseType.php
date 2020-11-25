@@ -74,6 +74,7 @@ class HouseType extends AbstractType
                 'label' => 'Plans PDF',
                 'mapped' => false,
                 'required' => false,
+                'attr' => ['placeholder' => 'Fichier'],
                 //'placeholder' => 'Selectionner un fichier',
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes

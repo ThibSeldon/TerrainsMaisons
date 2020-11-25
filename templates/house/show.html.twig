@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<h1>House</h1>
+	<div class="container">
+	<h1>{{ house.name }}</h1>
 
 	<div class="row">
 		<a href="{{ path('house_index') }}" class="">
@@ -26,10 +27,7 @@
 	<table class="table table-sm table-hover">
 		<tbody>
 
-			<tr>
-				<th>Model</th>
-				<td>{{ house.name }}</td>
-			</tr>
+
 			<tr>
 				<th>Type Model</th>
 				<td>{{ house.houseModel.name }}</td>
@@ -103,5 +101,5 @@
 		</tr>
 		</tbody>
 	</table>
-
+</div>
 {% endblock %}
