@@ -9,12 +9,14 @@ use App\Entity\Admin\House\HouseRoofing;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 
 class HouseType extends AbstractType
@@ -67,6 +69,24 @@ class HouseType extends AbstractType
             ->add('valid', CheckboxType::class, [
                 'label' => 'Model Validé ? ',
                 'required' => false,
+            ])
+            ->add('plan', FileType::class, [
+                'label' => 'Plans PDF',
+                'mapped' => false,
+                'required' => false,
+                //'placeholder' => 'Selectionner un fichier',
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1990k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ]
             ])
         ;
     }

@@ -106,6 +106,11 @@ class House
      */
     private $valid;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $planFilename;
+
 
 
 
@@ -340,6 +345,18 @@ class House
     public function setUpdateSellingPriceAti(float $data): self
     {
         $this->sellingPriceAti = $data;
+        return $this;
+    }
+
+    public function getPlanFilename(): ?string
+    {
+        return $this->planFilename;
+    }
+
+    public function setPlanFilename(?string $planFilename): self
+    {
+        $this->planFilename = $planFilename;
+
         return $this;
     }
 

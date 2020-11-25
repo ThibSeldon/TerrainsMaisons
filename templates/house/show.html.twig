@@ -90,6 +90,17 @@
 				<th>Model Validé </th>
 				<td>{{ house.valid }}</td>
 			</tr>
+		<tr>
+			<th>Plans</th>
+
+			<td>
+				{% if house.planFilename %}
+				<a href="{{ asset('uploads/plans/' ~ house.planFilename) }}">Voir le Plan (PDF)</a>
+				{% else %}
+				AUCUN PLAN DISPONIBLE
+				{% endif %}
+			</td>
+		</tr>
 		</tbody>
 	</table>
 
