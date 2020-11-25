@@ -20,23 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="ceil sellingPriceAti">
-      <change afterPath="$PROJECT_DIR$/src/Service/FileUploader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/HouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HouseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/House.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/House.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/HouseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/HouseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +157,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
-      <workItem from="1606145829981" duration="32855000" />
+      <workItem from="1606145829981" duration="33557000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -242,10 +227,10 @@
     <state x="629" y="201" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1606252330192" />
     <state x="1068" y="387" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606336931719" />
     <state x="957" y="315" key="SettingsEditor/0.25.2560.1415@0.25.2560.1415" timestamp="1606162300461" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1606309022008">
-      <screen x="1680" y="0" width="2560" height="1440" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1606337644386">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1606227282835" />
+    <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1606337644386" />
     <state width="500" height="445" key="SwitcherDM/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1606309022008" />
     <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606167485256">
       <screen x="0" y="0" width="2560" height="1440" />

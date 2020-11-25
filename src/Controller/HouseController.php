@@ -96,10 +96,12 @@ class HouseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $planFile = $form->get('plan')->getData();
-
-            if($planFile !== $house->getPlanFilename()){
+            $currentPlanFile = $house->getPlanFilename();
+            if($planFile !== $currentPlanFile){
                 $planFileName = $fileUploader->upload($planFile);
-                $fileUploader->delete($house->getPlanFilename());
+                if($currentPlanFile){
+                    $fileUploader->delete($house->getPlanFilename());
+                }
                 $house->setPlanFilename($planFileName);
             }
             $this->getDoctrine()->getManager()->flush();
