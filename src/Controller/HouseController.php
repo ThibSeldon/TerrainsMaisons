@@ -100,8 +100,10 @@ class HouseController extends AbstractController
             $currentPlanFile = $house->getPlanFilename();
 
 
+            $fileUploader->delete("Plan-etage-5fbed1b41ba239.19635361.pdf");
+
             if(is_null($planFile) && $currentPlanFile){
-                $fileUploader->delete($house->getPlanFilename());
+                $fileUploader->delete($currentPlanFile);
                 $house->setPlanFilename("");
             }
 
