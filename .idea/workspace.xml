@@ -23,9 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/User/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CustomActionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CustomActionsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/HouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HouseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Admin/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Admin/User/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Admin/User/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/HouseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/HouseType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/house/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/house/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/house/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/house/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +151,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -162,7 +172,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
       <workItem from="1606145829981" duration="39451000" />
-      <workItem from="1606375381933" duration="5078000" />
+      <workItem from="1606375381933" duration="13336000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -231,15 +241,19 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="440" y="201" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606160674740" />
+    <state x="868" y="459" key="IDE.errors.dialog" timestamp="1606420794214">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="868" y="459" key="IDE.errors.dialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606420794214" />
     <state x="589" y="273" key="NewPhpClassDialog" timestamp="1606254548786">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="589" y="273" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606254548786" />
-    <state x="838" y="387" key="SettingsEditor" timestamp="1606339319175">
+    <state x="561" y="291" key="SettingsEditor" timestamp="1606420776922">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="629" y="201" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1606252330192" />
-    <state x="838" y="387" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606339319175" />
+    <state x="561" y="291" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606420776922" />
     <state x="957" y="315" key="SettingsEditor/0.25.2560.1415@0.25.2560.1415" timestamp="1606162300461" />
     <state width="500" height="445" key="SwitcherDM" timestamp="1606337644386">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -258,14 +272,15 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="640" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1606158817065" />
-    <state x="563" y="324" key="refactoring.ChangeSignatureDialog" timestamp="1606159866564">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="858" y="444" key="refactoring.ChangeSignatureDialog" timestamp="1606418629667">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="563" y="324" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606159866564" />
-    <state x="770" y="348" width="1021" height="928" key="search.everywhere.popup" timestamp="1606329138772">
+    <state x="858" y="444" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606418629667" />
+    <state x="770" y="348" width="1021" height="928" key="search.everywhere.popup" timestamp="1606423755730">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="505" y="254" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1606254759758" />
-    <state x="770" y="348" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606329138772" />
+    <state x="770" y="348" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606423755730" />
   </component>
 </project>

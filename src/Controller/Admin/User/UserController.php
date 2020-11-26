@@ -37,6 +37,10 @@ class UserController extends AbstractController
        
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //Recupere les roles
+            $roles = [$form->get('addRoles')->getData()];
+
+            $user->setRoles($roles);
             //Encode le Password
             $pw = $form->getData()->getPassword();
             $user->setPassword($passEncoder->encodePassword($user, $pw));
@@ -73,6 +77,8 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $roles = [$form->get('addRoles')->getData()];
+            $user->setRoles($roles);
             //Encode le password
             $pw = $form->getData()->getPassword();
             $user->setPassword($passEncoder->encodePassword($user, $pw));            

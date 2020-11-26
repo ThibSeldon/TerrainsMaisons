@@ -1,5 +1,5 @@
-<form method="post" action="{{ path('house_delete', {'id': house.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form class="col" method="post" action="{{ path('house_delete', {'id': house.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ house.id) }}">
-    <button class="btn btn-danger btn-sm">Effacer</button>
+    <button class="btn btn-danger btn-sm btn-block">Effacer</button>
 </form>

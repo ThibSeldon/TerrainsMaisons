@@ -70,11 +70,19 @@ class HouseType extends AbstractType
                 'label' => 'Model Validé ? ',
                 'required' => false,
             ])
-            ->add('plan', FileType::class, [
+            ->add('planFilename', TextType::class, [
+                'disabled' => true,
+            ])
+            ->add('deleteFile', CheckboxType::class, [
+                'label' => 'Supprimer le Plan',
+                'required' => false,
+                'mapped' => false,
+            ])
+            ->add('uploadPlan', FileType::class, [
                 'label' => 'Plans PDF',
                 'mapped' => false,
                 'required' => false,
-                'attr' => ['placeholder' => 'Fichier'],
+
                 //'placeholder' => 'Selectionner un fichier',
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes

@@ -4,13 +4,19 @@
 
 {% block body %}
     <div class="container">
-    <h1>Edit House</h1>
+    <h1> {{ house.name }}</h1>
 
     {{ include('house/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('house_index') }}"  class="btn btn-secondary btn-sm" role="button">Retour</a>
-
+<div class="row">
+    <a href="{{ path('house_index') }}"  class="btn btn-secondary btn-block btn-sm" role="button">Retour</a>
+</div>
+<div class="row">
     {{ include('house/_delete_form.html.twig') }}
+</div>
+
+
+
 
     </div>
 {% endblock %}

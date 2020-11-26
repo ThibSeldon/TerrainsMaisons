@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\HouseRepository;
+use App\Service\FileUploader;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,20 +28,23 @@ class CustomActionsController extends AbstractController
      */
     public function updateHouseTaxes(HouseRepository $houseRepository): Response
     {
-         $houseData = $houseRepository->findAll();
+        $houseData = $houseRepository->findAll();
 
-         foreach($houseData as $house)
-         {
-             $priceDf = $house->getSellingPriceDf();
-             $house->setUpdateSellingPriceAti(($priceDf*1.20));
-             dump($house);
-             $entityManager = $this->getDoctrine()->getManager();
-             $entityManager->persist($house);
-             $entityManager->flush();             
-         }
+        foreach ($houseData as $house) {
+            $priceDf = $house->getSellingPriceDf();
+            $house->setUpdateSellingPriceAti(($priceDf * 1.20));
 
-         return $this->render('admin_home/index.html.twig', [
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($house);
+            $entityManager->flush();
+        }
+
+        return $this->render('admin_home/index.html.twig', [
             'controller_name' => 'AdminHomeController',
         ]);
     }
+
+
+
+
 }
