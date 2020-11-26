@@ -39,6 +39,7 @@ security:
         - { path: ^/add-admin-user, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/home, roles: ROLE_USER }
         - { path: ^/house, roles: ROLE_USER }
+        - { path: ^/upload, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
