@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Allotment{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Allotment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ allotment.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ allotment.name }}</td>
+            </tr>
+            <tr>
+                <th>PostalCode</th>
+                <td>{{ allotment.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ allotment.city }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ allotment.createdAt ? allotment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ allotment.updatedAt ? allotment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('land_allotment_index') }}">back to list</a>
+
+    <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}">edit</a>
+
+    {{ include('land/allotment/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

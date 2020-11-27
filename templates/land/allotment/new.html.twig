@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Allotment{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Créer un nouveau Lotissement</h1>
+
+    {{ include('land/allotment/_form.html.twig') }}
+
+    <a href="{{ path('land_allotment_index') }}">back to list</a>
+    </div>
+        {% endblock %}

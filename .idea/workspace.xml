@@ -23,19 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/User/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CustomActionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CustomActionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HouseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Admin/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Admin/User/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Admin/User/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/preload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php.ini" beforeDir="false" afterPath="$PROJECT_DIR$/php.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/HouseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/HouseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/user/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/user/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/user/user/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/user/user/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/user/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/user/user/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +149,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
@@ -155,12 +158,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Repository/Land" />
+      <recent name="$PROJECT_DIR$/src/Entity/Land" />
       <recent name="$PROJECT_DIR$/src/Controller" />
       <recent name="$PROJECT_DIR$/src/Controller/Admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -172,7 +177,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
       <workItem from="1606145829981" duration="39451000" />
-      <workItem from="1606375381933" duration="13336000" />
+      <workItem from="1606375381933" duration="26110000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -233,18 +238,20 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1081" y="616" key="#Composer/0.0.2560.1440@0.0.2560.1440" timestamp="1606146828806" />
-    <state x="228" y="367" key="#SQL_Dialects" timestamp="1606158395155">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="228" y="367" key="#SQL_Dialects/0.0.1680.1050@0.0.1680.1050" timestamp="1606158395155" />
-    <state x="440" y="201" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606160674740">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="440" y="201" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606160674740" />
-    <state x="868" y="459" key="IDE.errors.dialog" timestamp="1606420794214">
+    <state x="347" y="503" key="#SQL_Dialects" timestamp="1606490164413">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="868" y="459" key="IDE.errors.dialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606420794214" />
+    <state x="228" y="367" key="#SQL_Dialects/0.0.1680.1050@0.0.1680.1050" timestamp="1606158395155" />
+    <state x="347" y="503" key="#SQL_Dialects/0.0.2560.1440@0.0.2560.1440" timestamp="1606490164413" />
+    <state x="670" y="276" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606475015674">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="440" y="201" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606160674740" />
+    <state x="670" y="276" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606475015674" />
+    <state x="868" y="459" key="IDE.errors.dialog" timestamp="1606462637280">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="868" y="459" key="IDE.errors.dialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606462637280" />
     <state x="589" y="273" key="NewPhpClassDialog" timestamp="1606254548786">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -277,10 +284,10 @@
     </state>
     <state x="563" y="324" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606159866564" />
     <state x="858" y="444" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606418629667" />
-    <state x="770" y="348" width="1021" height="928" key="search.everywhere.popup" timestamp="1606423755730">
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606492478905">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="505" y="254" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1606254759758" />
-    <state x="770" y="348" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606423755730" />
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606492478905" />
   </component>
 </project>

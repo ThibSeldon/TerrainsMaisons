@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plot index{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+    <h1>Plot index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lot</th>
+                <th>Surface</th>
+                <th>FacadeWidth</th>
+                <th>SellingPriceAti</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plot in plots %}
+            <tr>
+                <td>{{ plot.id }}</td>
+                <td>{{ plot.lot }}</td>
+                <td>{{ plot.surface }}</td>
+                <td>{{ plot.facadeWidth }}</td>
+                <td>{{ plot.sellingPriceAti }}</td>
+                <td>{{ plot.createdAt ? plot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ plot.updatedAt ? plot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('land_plot_show', {'id': plot.id}) }}">show</a>
+                    <a href="{{ path('land_plot_edit', {'id': plot.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('land_plot_new') }}">Create new</a>
+    </div>
+{% endblock %}
