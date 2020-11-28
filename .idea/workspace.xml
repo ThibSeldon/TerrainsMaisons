@@ -23,24 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201128143349.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/Land/PlotEmbeddedType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Land/AllotmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Land/AllotmentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Land/Allotment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Land/Allotment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Land/Plot.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Land/Plot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Land/AllotmentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Land/AllotmentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Land/PlotType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Land/PlotType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/allotment/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/allotment/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/plot/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/plot/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/plot/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/plot/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +171,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
       <workItem from="1606145829981" duration="39451000" />
-      <workItem from="1606375381933" duration="44456000" />
+      <workItem from="1606375381933" duration="47582000" />
+      <workItem from="1606595214560" duration="813000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>

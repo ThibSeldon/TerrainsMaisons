@@ -1,18 +1,21 @@
 {{ form_start(form) }}
     {{ form_row(form.name) }}
-    {{ form_row(form.postalCode) }}
-    {{ form_row(form.city) }}
+{{ form_row(form.postalCode) }}
+{{ form_row(form.city) }}
 
-{% for plot in form.plots %}
-    <ul>
-        <li>{{ form_row(plot.lot) }}</li>
+
+<ul class="">
+    {% for plot in form.plots %}
+<li class="existPlot">
+    {{ form_row(plot.lot)}}
     {{ form_row(plot.surface) }}
     {{ form_row(plot.facadeWidth) }}
     {{ form_row(plot.sellingPriceAti) }}
-    </ul>
-{% endfor %}
-<ul class="plots" data-prototype="{{ form_widget(form.plots.vars.prototype)|e('html_attr') }}"></ul>
-<button type="button" class="add_item_link" data-collection-holder-class="plots">Ajouter un Lot</button>
+</li>
+    {% endfor %}
+</ul>
+    <ul class="plots" data-prototype="{{ form_widget(form.plots.vars.prototype)|e('html_attr') }}"></ul>
+    <button type="button" class="add_item_link" data-collection-holder-class="plots">Ajouter un Lot</button>
 
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
@@ -28,7 +31,13 @@
         var $plotsCollectionHolder = $('ul');
         // count the current form inputs we have (e.g. 2), use that as the new
         // index when inserting a new item (e.g. 2)
-        $plotsCollectionHolder.data('index', $plotsCollectionHolder.find('input').length);
+        $plotsCollectionHolder.data('index', $plotsCollectionHolder.find('li.existPlot').length);
+
+        let $exisitPlotsCollectionHolder = $('li.existPlot')
+        // add a delete link to all of the existing tag form li elements
+        $exisitPlotsCollectionHolder.each(function() {
+            addPlotFormDeleteLink($(this));
+        });
 
         $('body').on('click', '.add_item_link', function(e) {
             var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
