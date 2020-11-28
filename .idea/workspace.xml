@@ -23,7 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +171,7 @@
       <updated>1606145828828</updated>
       <workItem from="1606145829981" duration="39451000" />
       <workItem from="1606375381933" duration="47582000" />
-      <workItem from="1606595214560" duration="813000" />
+      <workItem from="1606595214560" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -209,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606494980447</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix collection Allotment form">
+      <created>1606596266230</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606596266230</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +241,8 @@
     <MESSAGE value="ceil sellingPriceAti" />
     <MESSAGE value="upload files fix" />
     <MESSAGE value="security path" />
-    <option name="LAST_COMMIT_MESSAGE" value="security path" />
+    <MESSAGE value="fix collection Allotment form" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix collection Allotment form" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1081" y="616" key="#Composer" timestamp="1606146828806">
@@ -271,10 +278,10 @@
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1606573580399" />
     <state width="500" height="445" key="SwitcherDM/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1606309022008" />
-    <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606494985092">
+    <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606596268883">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="880" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606494985092" />
+    <state x="880" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606596268883" />
     <state x="1152" y="582" key="cloudConfig.SelfSettingsDialog" timestamp="1606579886461">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

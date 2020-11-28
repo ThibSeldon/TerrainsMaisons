@@ -53,9 +53,7 @@
         var $collectionHolder = $('.' + $collectionHolderClass);
 
         // add a delete link to all of the existing tag form li elements
-        $collectionHolder.find('li').each(function() {
-            addPlotFormDeleteLink($(this));
-        });
+
         // Get the data-prototype explained earlier
         var prototype = $collectionHolder.data('prototype');
 
@@ -87,7 +85,7 @@
 
     }
     function addPlotFormDeleteLink($plotFormLi) {
-        var $removeFormButton = $('<button type="button">Delete this plot</button>');
+        var $removeFormButton = $('<button type="button">Supprimer le lot</button>');
         $plotFormLi.append($removeFormButton);
 
         $removeFormButton.on('click', function(e) {
