@@ -1,4 +1,93 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.postalCode) }}
+    {{ form_row(form.city) }}
+
+{% for plot in form.plots %}
+    <ul>
+        <li>{{ form_row(plot.lot) }}</li>
+    {{ form_row(plot.surface) }}
+    {{ form_row(plot.facadeWidth) }}
+    {{ form_row(plot.sellingPriceAti) }}
+    </ul>
+{% endfor %}
+<ul class="plots" data-prototype="{{ form_widget(form.plots.vars.prototype)|e('html_attr') }}"></ul>
+<button type="button" class="add_item_link" data-collection-holder-class="plots">Ajouter un Lot</button>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+
+
+<!-- Ajoute le formulaire plot au formulaire lots-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+
+    jQuery(document).ready(function() {
+        // Get the ul that holds the collection of tags
+        var $plotsCollectionHolder = $('ul');
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        $plotsCollectionHolder.data('index', $plotsCollectionHolder.find('input').length);
+
+        $('body').on('click', '.add_item_link', function(e) {
+            var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
+            // add a new tag form (see next code block)
+            addFormToCollection($collectionHolderClass);
+        })
+    });
+
+
+
+    function addFormToCollection($collectionHolderClass) {
+        // Get the ul that holds the collection of tags
+        var $collectionHolder = $('.' + $collectionHolderClass);
+
+        // add a delete link to all of the existing tag form li elements
+        $collectionHolder.find('li').each(function() {
+            addPlotFormDeleteLink($(this));
+        });
+        // Get the data-prototype explained earlier
+        var prototype = $collectionHolder.data('prototype');
+
+        // get the new index
+        var index = $collectionHolder.data('index');
+
+        var newForm = prototype;
+        // You need this only if you didn't set 'label' => false in your tags field in TaskType
+        // Replace '__name__label__' in the prototype's HTML to
+        // instead be a number based on how many items we have
+        // newForm = newForm.replace(/__name__label__/g, index);
+
+
+        // Replace '__name__' in the prototype's HTML to
+        // instead be a number based on how many items we have
+        newForm = newForm.replace(/__name__/g, index);
+
+        // increase the index with one for the next item
+        $collectionHolder.data('index', index + 1);
+
+        // Display the form in the page in an li, before the "Add a tag" link li
+        var $newFormLi = $('<li></li>').append(newForm);
+        // Add the new form at the end of the list
+        $collectionHolder.append($newFormLi)
+        addPlotFormDeleteLink($newFormLi);
+
+
+
+
+    }
+    function addPlotFormDeleteLink($plotFormLi) {
+        var $removeFormButton = $('<button type="button">Delete this plot</button>');
+        $plotFormLi.append($removeFormButton);
+
+        $removeFormButton.on('click', function(e) {
+            // remove the li for the tag form
+            $plotFormLi.remove();
+        });
+    }
+
+
+</script>
+
+

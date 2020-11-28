@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container">
-    <h1>Allotment</h1>
+    <h1>Lotissement</h1>
 
-    <table class="table">
+    <table class="table table-sm table-hover">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -32,6 +32,15 @@
                 <th>UpdatedAt</th>
                 <td>{{ allotment.updatedAt ? allotment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+
+            {% for plot in allotment.plots %}
+            <tr>
+                <th>Lots n° {{ plot.lot }}</th>
+                <td>Surface {{ plot.surface }} m2</td>
+                <td>{{ plot.sellingPriceAti }} €</td>
+                <td><a href="{{ path('land_plot_show', {'id': plot.id}) }} ">Voir le lot</a></td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 

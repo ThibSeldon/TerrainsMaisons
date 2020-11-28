@@ -46,7 +46,7 @@ class Allotment
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Plot::class, mappedBy="allotment", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Plot::class, mappedBy="allotment", orphanRemoval=true, cascade={"persist"})
      */
     private $plots;
 

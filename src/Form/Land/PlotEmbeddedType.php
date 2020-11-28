@@ -9,7 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PlotType extends AbstractType
+class PlotEmbeddedType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,11 +18,7 @@ class PlotType extends AbstractType
             ->add('surface')
             ->add('facadeWidth')
             ->add('sellingPriceAti')
-            ->add('allotment', EntityType::class, [
-                'class' => Allotment::class,
-                'choice_label' => 'name',
-                'label' => 'Lotissement'
-            ])
+
 
         ;
     }

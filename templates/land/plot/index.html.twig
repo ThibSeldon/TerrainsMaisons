@@ -16,6 +16,7 @@
                 <th>Surface</th>
                 <th>FacadeWidth</th>
                 <th>SellingPriceAti</th>
+                <th>Lotissement</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
@@ -29,6 +30,7 @@
                 <td>{{ plot.surface }}</td>
                 <td>{{ plot.facadeWidth }}</td>
                 <td>{{ plot.sellingPriceAti }}</td>
+                <td>{{ plot.allotment.name }}</td>
                 <td>{{ plot.createdAt ? plot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ plot.updatedAt ? plot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

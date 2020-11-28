@@ -19,7 +19,7 @@ class Plot
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=55)
      */
     private $lot;
 
@@ -54,17 +54,22 @@ class Plot
      */
     private $allotment;
 
+    public function __toString():string
+    {
+       return $this->getLot();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLot(): ?int
+    public function getLot(): ?string
     {
         return $this->lot;
     }
 
-    public function setLot(int $lot): self
+    public function setLot(string $lot): self
     {
         $this->lot = $lot;
 

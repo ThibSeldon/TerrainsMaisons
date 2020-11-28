@@ -23,8 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201128143349.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/Land/PlotEmbeddedType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Land/AllotmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Land/AllotmentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Land/Allotment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Land/Allotment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Land/Plot.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Land/Plot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Land/AllotmentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Land/AllotmentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Land/PlotType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Land/PlotType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/plot/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/plot/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/plot/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/plot/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +53,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -136,6 +158,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -164,7 +187,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606145828828</updated>
       <workItem from="1606145829981" duration="39451000" />
-      <workItem from="1606375381933" duration="27108000" />
+      <workItem from="1606375381933" duration="44456000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -194,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606341135179</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="security path">
+      <created>1606494980447</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606494980447</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,12 +243,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="dump databaseCloud.sql" />
     <MESSAGE value="navbar" />
     <MESSAGE value="inde house" />
     <MESSAGE value="ceil sellingPriceAti" />
     <MESSAGE value="upload files fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="upload files fix" />
+    <MESSAGE value="security path" />
+    <option name="LAST_COMMIT_MESSAGE" value="security path" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1081" y="616" key="#Composer" timestamp="1606146828806">
@@ -249,19 +281,19 @@
     <state x="629" y="201" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1606252330192" />
     <state x="561" y="291" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606420776922" />
     <state x="957" y="315" key="SettingsEditor/0.25.2560.1415@0.25.2560.1415" timestamp="1606162300461" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1606337644386">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1606573580399">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1606337644386" />
+    <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1606573580399" />
     <state width="500" height="445" key="SwitcherDM/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1606309022008" />
-    <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606341137370">
+    <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606494985092">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="880" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606341137370" />
-    <state x="1152" y="582" key="cloudConfig.SelfSettingsDialog" timestamp="1606162630218">
+    <state x="880" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606494985092" />
+    <state x="1152" y="582" key="cloudConfig.SelfSettingsDialog" timestamp="1606579886461">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="1152" y="582" key="cloudConfig.SelfSettingsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606162630218" />
+    <state x="1152" y="582" key="cloudConfig.SelfSettingsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606579886461" />
     <state x="640" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606158817065">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -271,10 +303,10 @@
     </state>
     <state x="563" y="324" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606159866564" />
     <state x="858" y="444" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606418629667" />
-    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606494666552">
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606576566654">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="505" y="254" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1606254759758" />
-    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606494666552" />
+    <state x="505" y="254" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1606504341656" />
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606576566654" />
   </component>
 </project>
