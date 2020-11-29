@@ -23,6 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
+      <change afterPath="$PROJECT_DIR$/public/js/allotmentLotForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +38,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -171,7 +179,8 @@
       <updated>1606145828828</updated>
       <workItem from="1606145829981" duration="39451000" />
       <workItem from="1606375381933" duration="47582000" />
-      <workItem from="1606595214560" duration="1216000" />
+      <workItem from="1606595214560" duration="1522000" />
+      <workItem from="1606678096418" duration="1103000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -215,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606596266230</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix collection delete button form">
+      <created>1606596733149</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606596733149</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +258,8 @@
     <MESSAGE value="upload files fix" />
     <MESSAGE value="security path" />
     <MESSAGE value="fix collection Allotment form" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix collection Allotment form" />
+    <MESSAGE value="fix collection delete button form" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix collection delete button form" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1081" y="616" key="#Composer" timestamp="1606146828806">
@@ -259,6 +276,10 @@
     </state>
     <state x="440" y="201" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606160674740" />
     <state x="670" y="276" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606475015674" />
+    <state x="1021" y="636" key="ComposerInitDialogKey" timestamp="1606678726512">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1021" y="636" key="ComposerInitDialogKey/0.0.2560.1440@0.0.2560.1440" timestamp="1606678726512" />
     <state x="868" y="459" key="IDE.errors.dialog" timestamp="1606462637280">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -278,10 +299,10 @@
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1606573580399" />
     <state width="500" height="445" key="SwitcherDM/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1606309022008" />
-    <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606596268883">
+    <state x="880" y="456" key="Vcs.Push.Dialog.v2" timestamp="1606596734725">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="880" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606596268883" />
+    <state x="880" y="456" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606596734725" />
     <state x="1152" y="582" key="cloudConfig.SelfSettingsDialog" timestamp="1606579886461">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -295,10 +316,10 @@
     </state>
     <state x="563" y="324" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606159866564" />
     <state x="858" y="444" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606418629667" />
-    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606576566654">
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606678982505">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="505" y="254" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1606504341656" />
-    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606576566654" />
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606678982505" />
   </component>
 </project>
