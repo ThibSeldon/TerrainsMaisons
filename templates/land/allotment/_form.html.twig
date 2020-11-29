@@ -14,10 +14,21 @@
 </li>
     {% endfor %}
 </ul>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="">
     <ul class="plots" data-prototype="{{ form_widget(form.plots.vars.prototype)|e('html_attr') }}"></ul>
-    <button type="button" class="add_item_link" data-collection-holder-class="plots">Ajouter un Lot</button>
+    <button type="button" class="add_item_link btn btn-secondary btn-block" data-collection-holder-class="plots">Ajouter un Lot</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+    <button class="btn btn-success btn-block ">{{ button_label|default('Save') }}</button>
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    </div>
+
+</div>
 {{ form_end(form) }}
 
 

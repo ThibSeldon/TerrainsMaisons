@@ -17,11 +17,14 @@ class AllotmentController extends AbstractController
 {
     /**
      * @Route("/", name="land_allotment_index", methods={"GET"})
+     * @param AllotmentRepository $allotmentRepository
+     * @return Response
      */
     public function index(AllotmentRepository $allotmentRepository): Response
     {
         return $this->render('land/allotment/index.html.twig', [
             'allotments' => $allotmentRepository->findAll(),
+
         ]);
     }
 
@@ -85,7 +88,7 @@ class AllotmentController extends AbstractController
      */
     public function delete(Request $request, Allotment $allotment): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$allotment->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $allotment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($allotment);
             $entityManager->flush();

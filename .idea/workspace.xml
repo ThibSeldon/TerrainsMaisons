@@ -23,13 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
-      <change afterPath="$PROJECT_DIR$/public/js/allotmentLotForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/allotmentLotForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/allotmentLotForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Land/AllotmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Land/AllotmentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Land/PlotEmbeddedType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Land/PlotEmbeddedType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/land/allotment/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
@@ -155,18 +159,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Repository/Land" />
       <recent name="$PROJECT_DIR$/src/Entity/Land" />
       <recent name="$PROJECT_DIR$/src/Controller" />
       <recent name="$PROJECT_DIR$/src/Controller/Admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -180,7 +184,7 @@
       <workItem from="1606145829981" duration="39451000" />
       <workItem from="1606375381933" duration="47582000" />
       <workItem from="1606595214560" duration="1522000" />
-      <workItem from="1606678096418" duration="1103000" />
+      <workItem from="1606678096418" duration="4901000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
@@ -262,6 +266,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="fix collection delete button form" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="626" y="420" key="#CLI_Interpreters" timestamp="1606680400035">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="626" y="420" key="#CLI_Interpreters/0.0.2560.1440@0.0.2560.1440" timestamp="1606680400035" />
     <state x="1081" y="616" key="#Composer" timestamp="1606146828806">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -288,11 +296,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="589" y="273" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606254548786" />
-    <state x="561" y="291" key="SettingsEditor" timestamp="1606420776922">
+    <state x="547" y="397" key="SettingsEditor" timestamp="1606681002669">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="629" y="201" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1606252330192" />
-    <state x="561" y="291" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606420776922" />
+    <state x="547" y="397" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1606681002669" />
     <state x="957" y="315" key="SettingsEditor/0.25.2560.1415@0.25.2560.1415" timestamp="1606162300461" />
     <state width="500" height="445" key="SwitcherDM" timestamp="1606573580399">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -311,15 +319,19 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="640" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1606158817065" />
+    <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1606680334720">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606680334720" />
     <state x="858" y="444" key="refactoring.ChangeSignatureDialog" timestamp="1606418629667">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="563" y="324" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1606159866564" />
     <state x="858" y="444" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1606418629667" />
-    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606678982505">
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup" timestamp="1606683128959">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="505" y="254" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1606504341656" />
-    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606678982505" />
+    <state x="1013" y="290" width="1021" height="928" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1606683128959" />
   </component>
 </project>

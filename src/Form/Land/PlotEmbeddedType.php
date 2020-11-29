@@ -14,10 +14,18 @@ class PlotEmbeddedType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lot')
-            ->add('surface')
-            ->add('facadeWidth')
-            ->add('sellingPriceAti')
+            ->add('lot', null, [
+                'label' => "lot",
+            ])
+            ->add('surface', null, [
+                'label' => 'surface m2',
+            ])
+            ->add('facadeWidth', null, [
+                'label' => 'Largeur Facade',
+            ])
+            ->add('sellingPriceAti', null, [
+                'label' => 'Prix de vente'
+            ])
 
 
         ;

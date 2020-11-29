@@ -13,18 +13,21 @@
                 <th>Name</th>
                 <th>PostalCode</th>
                 <th>City</th>
+                <th>Nombre de Lots</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
+
         {% for allotment in allotments %}
             <tr>
                 <td>{{ allotment.id }}</td>
                 <td>{{ allotment.name }}</td>
                 <td>{{ allotment.postalCode }}</td>
                 <td>{{ allotment.city }}</td>
+                <td>{{ allotment.plots.count }}</td>
                 <td>{{ allotment.createdAt ? allotment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ allotment.updatedAt ? allotment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
