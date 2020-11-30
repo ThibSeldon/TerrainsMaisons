@@ -4,32 +4,43 @@
 
 {% block body %}
     <div class="container">
-    <h1>Lotissement</h1>
+        <div class="row">
+        <div class="col-sm-6">
+            <h1>Lotissement</h1>
+        </div>
+        </div>
+
+        <div class="d-flex flex-row">
+            <a href="{{ path('land_allotment_index') }}" class="btn btn-outline-secondary">Retour</a>
+
+            <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}" class="btn btn-outline-warning">edit</a>
+
+
+            {{ include('land/allotment/_delete_form.html.twig') }}
+
+        </div>
 
     <table class="table table-sm table-hover">
         <tbody>
+
             <tr>
-                <th>Id</th>
-                <td>{{ allotment.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <td>{{ allotment.name }}</td>
             </tr>
             <tr>
-                <th>PostalCode</th>
+                <th>Code Postal</th>
                 <td>{{ allotment.postalCode }}</td>
             </tr>
             <tr>
-                <th>City</th>
+                <th>Ville</th>
                 <td>{{ allotment.city }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Date de Creation</th>
                 <td>{{ allotment.createdAt ? allotment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
+                <th>Mise a jour</th>
                 <td>{{ allotment.updatedAt ? allotment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
 
@@ -38,16 +49,17 @@
                 <th>Lots n° {{ plot.lot }}</th>
                 <td>Surface {{ plot.surface }} m2</td>
                 <td>{{ plot.sellingPriceAti }} €</td>
-                <td><a href="{{ path('land_plot_show', {'id': plot.id}) }} ">Voir le lot</a></td>
+                <td><a href="{{ path('land_plot_show', {'id': plot.id}) }} " class="btn btn-outline-info">Voir le lot</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+<div class="row">
 
-    <a href="{{ path('land_allotment_index') }}">back to list</a>
+</div>
 
-    <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}">edit</a>
 
-    {{ include('land/allotment/_delete_form.html.twig') }}
+
+
     </div>
 {% endblock %}

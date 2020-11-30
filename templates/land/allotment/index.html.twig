@@ -5,17 +5,21 @@
 {% block body %}
     <div class="container">
     <h1>Lotissement</h1>
-
-    <table class="table">
+<div class="row">
+    <div class="col">
+    <a href="{{ path('land_allotment_new') }}" class="btn btn-primary btn-block">Nouveau</a>
+    </div>
+</div>
+    <table class="table table-sm table-hover table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
+
                 <th>Name</th>
-                <th>PostalCode</th>
-                <th>City</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
                 <th>Nombre de Lots</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
+                <th>Date d'ajout</th>
+                <th>Date de mise a jour</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,7 +27,7 @@
 
         {% for allotment in allotments %}
             <tr>
-                <td>{{ allotment.id }}</td>
+
                 <td>{{ allotment.name }}</td>
                 <td>{{ allotment.postalCode }}</td>
                 <td>{{ allotment.city }}</td>
@@ -31,8 +35,8 @@
                 <td>{{ allotment.createdAt ? allotment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ allotment.updatedAt ? allotment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('land_allotment_show', {'id': allotment.id}) }}">show</a>
-                    <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}">edit</a>
+                    <a href="{{ path('land_allotment_show', {'id': allotment.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}" class="btn btn-warning">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -43,6 +47,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('land_allotment_new') }}">Create new</a>
+
     </div>
 {% endblock %}

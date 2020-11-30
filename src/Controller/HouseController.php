@@ -54,7 +54,7 @@ class HouseController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $planFile = $form->get('plan')->getData();
+            $planFile = $form->get('uploadPlan')->getData();
             if($planFile){
                 $planFileName = $fileUploader->upload($planFile);
                 $house->setPlanFilename($planFileName);

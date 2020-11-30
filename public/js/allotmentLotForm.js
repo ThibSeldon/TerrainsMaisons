@@ -58,7 +58,7 @@
 
 }
     function addPlotFormDeleteLink($plotFormLi) {
-    var $removeFormButton = $('<button type="button" class="btn btn-secondary">Supprimer le lot</button>');
+    var $removeFormButton = $('<button type="button" class="btn btn-outline-danger">Supprimer le lot</button>');
     $plotFormLi.append($removeFormButton);
 
     $removeFormButton.on('click', function(e) {

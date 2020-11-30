@@ -7,21 +7,14 @@
 	<div class="container">
 	<h1>{{ house.name }}</h1>
 
-	<div class="row">
-		<a href="{{ path('house_index') }}" class="">
-			<button type="button" class="btn btn-primary btn-sm ">
-				Retour</button>
-		</a>
+	<div class="d-flex flex-row">
+		<a href="{{ path('house_index') }}" class="btn btn-outline-info">Retour</a>
 
-		<a href="{{ path('house_edit', {'id': house.id}) }}" class="">
-			<button type="button" class="btn btn-info btn-sm ">Editer
-			</button>
-		</a>
-		{% if is_granted('ROLE_ADMIN')%}
-		<div class="">
-			{{ include('house/_delete_form.html.twig') }}
-		</div>
-		{% endif %}
+		<a href="{{ path('house_edit', {'id': house.id}) }}" class="btn btn-outline-warning">Editer</a>
+
+		{{ include('house/_delete_form.html.twig') }}
+
+
 	</div>
 
 	<table class="table table-sm table-hover">

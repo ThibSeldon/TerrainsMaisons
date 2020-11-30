@@ -19,7 +19,7 @@ class Plot
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=55)
+     * @ORM\Column(type="string", length=255)
      */
     private $lot;
 

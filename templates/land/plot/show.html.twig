@@ -5,13 +5,18 @@
 {% block body %}
     <div class="container">
     <h1>Plot</h1>
+        <div class="d-flex flex-row mb-1">
 
-    <table class="table">
+            <a href="{{ path('land_plot_index') }}" class="btn btn-outline-info">Retour</a>
+
+            <a href="{{ path('land_plot_edit', {'id': plot.id}) }}" class="btn btn-outline-warning">edit</a>
+
+            {{ include('land/plot/_delete_form.html.twig') }}
+
+        </div>
+
+    <table class="table table-hover table-bordered table-sm">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ plot.id }}</td>
-            </tr>
             <tr>
                 <th>Lot</th>
                 <td>{{ plot.lot }}</td>
@@ -21,28 +26,23 @@
                 <td>{{ plot.surface }}</td>
             </tr>
             <tr>
-                <th>FacadeWidth</th>
+                <th>Largeur Facade</th>
                 <td>{{ plot.facadeWidth }}</td>
             </tr>
             <tr>
-                <th>SellingPriceAti</th>
+                <th>Prix de vente</th>
                 <td>{{ plot.sellingPriceAti }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Date de creation</th>
                 <td>{{ plot.createdAt ? plot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
+                <th>Mise a jour</th>
                 <td>{{ plot.updatedAt ? plot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('land_plot_index') }}">back to list</a>
-
-    <a href="{{ path('land_plot_edit', {'id': plot.id}) }}">edit</a>
-
-    {{ include('land/plot/_delete_form.html.twig') }}
     </div>
 {% endblock %}
