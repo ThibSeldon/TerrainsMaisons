@@ -81,6 +81,17 @@
 				<th>Model Validé </th>
 				<td>{{ house.valid }}</td>
 			</tr>
+			<tr>
+				<th>Images</th>
+				<td class="col-auto">
+					{% if house.pictures %}
+					{% for picture in house.pictures %}
+
+					<img src="{{ asset('uploads/pictures/'~picture.name) }}" alt="" width="450">
+					{% endfor %}
+					{% endif %}
+				</td>
+			</tr>
 		<tr>
 			<th>Plans</th>
 

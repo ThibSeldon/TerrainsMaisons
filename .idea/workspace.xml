@@ -23,45 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce892ced-81c1-4f1b-a3fa-7270f3db7574" name="Default Changelist" comment="upload files fix">
-      <change afterPath="$PROJECT_DIR$/.php-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201201202621.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201202124021.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201202153707.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/pictures.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Contact/ContactController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Contact/Contact.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Contact/Society.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Upload/Picture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/Contact/ContactType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/Contact/ContactRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/Contact/SocietyRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/Upload/PictureRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bati_lab_v2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HouseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HouseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/House.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/House.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Land/Allotment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Land/Allotment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/HouseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/HouseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Land/AllotmentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Land/AllotmentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/house/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/house/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/land/allotment/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/house/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/house/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +178,7 @@
       <workItem from="1606145829981" duration="39451000" />
       <workItem from="1606375381933" duration="47582000" />
       <workItem from="1606595214560" duration="1522000" />
-      <workItem from="1606678096418" duration="32526000" />
+      <workItem from="1606678096418" duration="34088000" />
     </task>
     <task id="LOCAL-00001" summary="dump databaseCloud.sql">
       <created>1606158848241</created>
