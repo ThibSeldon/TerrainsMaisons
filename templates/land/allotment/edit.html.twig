@@ -8,10 +8,14 @@
 
     <h1>Editer Lotissement</h1>
 
-    {{ include('land/allotment/_form.html.twig', {'button_label': 'Update'}) }}
-<button class="btn-light">
-    <a href="{{ path('land_allotment_index') }}">Retour</a>
-</button>
-    {{ include('land/allotment/_delete_form.html.twig') }}
+        <div class="d-flex flex-row">
+
+            <a href="{{ path('land_allotment_index') }}" class="btn btn-outline-secondary">Retour</a>
+            {{ include('land/allotment/_delete_form.html.twig') }}
+
+        </div>
+            {{ include('land/allotment/_form.html.twig', {'button_label': 'Update'}) }}
+
+
     </div>
         {% endblock %}

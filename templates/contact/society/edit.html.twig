@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Society{% endblock %}
+
+{% block body %}
+    <h1>Edit Society</h1>
+
+    {{ include('contact/society/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('contact_society_index') }}">back to list</a>
+
+    {{ include('contact/society/_delete_form.html.twig') }}
+{% endblock %}

@@ -5,8 +5,11 @@ namespace App\Entity;
 use App\Entity\Admin\House\HouseBrand;
 use App\Entity\Admin\House\HouseModel;
 use App\Entity\Admin\House\HouseRoofing;
+use App\Entity\Upload\Picture;
 
 use App\Repository\HouseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -110,6 +113,16 @@ class House
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $planFilename;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Picture::class, inversedBy="houses", cascade={"persist"})
+     */
+    private $pictures;
+
+    public function __construct()
+    {
+        $this->pictures = new ArrayCollection();
+    }
 
 
 
@@ -356,6 +369,30 @@ class House
     public function setPlanFilename(?string $planFilename): self
     {
         $this->planFilename = $planFilename;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        $this->pictures->removeElement($picture);
 
         return $this;
     }

@@ -4,6 +4,9 @@ namespace App\Form\Land;
 
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
+use App\Entity\Contact;
+use App\Form\ContactType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,6 +27,10 @@ class AllotmentType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
             ])
+            ->add('contacts')
+
+
+
 
         ;
     }

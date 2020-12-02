@@ -3,6 +3,11 @@
 {% block title %}Edit House{% endblock %}
 
 {% block body %}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/pictures.js') }}"></script>
+    {% endblock %}
+
     <div class="container">
     <h1> {{ house.name }}</h1>
 

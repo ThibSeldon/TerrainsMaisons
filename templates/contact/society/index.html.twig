@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Society index{% endblock %}
+
+{% block body %}
+    <h1>Society index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>PhoneNumber</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for society in societies %}
+            <tr>
+                <td>{{ society.id }}</td>
+                <td>{{ society.name }}</td>
+                <td>{{ society.email }}</td>
+                <td>{{ society.phoneNumber }}</td>
+                <td>
+                    <a href="{{ path('contact_society_show', {'id': society.id}) }}">show</a>
+                    <a href="{{ path('contact_society_edit', {'id': society.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contact_society_new') }}">Create new</a>
+{% endblock %}

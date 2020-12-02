@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\House;
+use App\Entity\Upload\Picture;
 use App\Form\HouseType;
 use App\Form\House\HouseSearchType;
 use App\Repository\HouseRepository;
 use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -54,6 +56,20 @@ class HouseController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Gestion Pictures
+            $picturesFile = $form->get('pictures')->getData();
+            foreach ($picturesFile as $picture) {
+                $fileName = uniqid('', true).'.'.$picture->guessExtension();
+                $picture->move(
+                    $this->getParameter('pictures_directory'), $fileName
+                );
+                $pict = new Picture();
+                $pict->setName($fileName);
+                $house->addPicture($pict);
+            }
+
+            //Gestion Plans
             $planFile = $form->get('uploadPlan')->getData();
             if($planFile){
                 $planFileName = $fileUploader->upload($planFile);
@@ -70,6 +86,33 @@ class HouseController extends AbstractController
             'house' => $house,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/delete/picture/{id}", name="house_delete_picture", methods={"DELETE"})
+     *
+     */
+    public function deletePicture(Picture $picture, Request $request){
+        $data = json_decode($request->getContent(), true);
+
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$picture->getId(), $data['_token'])){
+            // On récupère le nom de l'image
+            $nom = $picture->getName();
+            // On supprime le fichier
+            unlink($this->getParameter('pictures_directory').'/'.$nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($picture);
+            $em->flush();
+
+
+            // On répond en json
+            return $this->json(['success' => 1], 200);
+        }
+
+        return $this->json(['error' => 'Token Invalide'], 400);
     }
 
     /**
@@ -95,6 +138,20 @@ class HouseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Gestion Pictures
+            $picturesFile = $form->get('pictures')->getData();
+            foreach ($picturesFile as $picture) {
+                $fileName = uniqid('', true).'.'.$picture->guessExtension();
+                $picture->move(
+                    $this->getParameter('pictures_directory'), $fileName
+                );
+                $pict = new Picture();
+                $pict->setName($fileName);
+                $house->addPicture($pict);
+            }
+
+
 
             //Recupere les liens des fichiers
             $planFile = $form->get('uploadPlan')->getData();
@@ -127,6 +184,8 @@ class HouseController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
 
     /**
      * @Route("/{id}", name="house_delete", methods={"DELETE"})

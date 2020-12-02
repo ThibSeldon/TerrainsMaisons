@@ -97,6 +97,12 @@ class HouseType extends AbstractType
                     ])
                 ]
             ])
+            ->add('pictures', FileType::class, [
+                'label' => false,
+                'multiple' => true,
+                'mapped' => false,
+                'required' => false,
+            ])
         ;
     }
 

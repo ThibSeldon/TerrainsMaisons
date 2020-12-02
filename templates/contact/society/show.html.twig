@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Society{% endblock %}
+
+{% block body %}
+    <h1>Society</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ society.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ society.name }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ society.email }}</td>
+            </tr>
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ society.phoneNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contact_society_index') }}">back to list</a>
+
+    <a href="{{ path('contact_society_edit', {'id': society.id}) }}">edit</a>
+
+    {{ include('contact/society/_delete_form.html.twig') }}
+{% endblock %}

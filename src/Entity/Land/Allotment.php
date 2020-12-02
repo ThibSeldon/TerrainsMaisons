@@ -2,6 +2,7 @@
 
 namespace App\Entity\Land;
 
+use App\Entity\Contact\Contact;
 use App\Repository\Land\AllotmentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -18,41 +19,52 @@ class Allotment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $postalCode;
+    private ?int $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $city;
+    private ?string $city;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private ?\DateTimeInterface $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updatedAt;
+    private ?\DateTimeInterface $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Plot::class, mappedBy="allotment", orphanRemoval=true, cascade={"persist"})
      */
     private $plots;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="allotments")
+     */
+    private $contacts;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+    return $this->getName();
     }
 
     public function getId(): ?int
@@ -154,6 +166,30 @@ class Allotment
                 $plot->setAllotment(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contact[]
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        $this->contacts->removeElement($contact);
 
         return $this;
     }
