@@ -33,8 +33,8 @@
                 <td>{{ contact.updtatedAt ? contact.updtatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ contact.note }}</td>
                 <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+                    <a href="{{ path('contact_show', {'id': contact.id}) }}" class ="btn btn-outline-info">show</a>
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-outline-warning">edit</a>
                 </td>
             </tr>
         {% else %}
