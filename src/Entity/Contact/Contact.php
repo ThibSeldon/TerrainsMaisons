@@ -71,9 +71,9 @@ class Contact
     {
         $this->allotments = new ArrayCollection();
     }
-    public function __toString()
+    public function __toString():string
     {
-        return $this->getFirstName() . $this->getLastName() . $this->getSociety();
+        return $this->getFirstName() . ' ' . $this->getLastName() . ' - ' . $this->getSociety();
     }
 
     public function getId(): ?int

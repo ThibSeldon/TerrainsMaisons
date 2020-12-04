@@ -9,6 +9,7 @@ use App\Form\ContactType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,6 +21,11 @@ class AllotmentType extends AbstractType
             ->add('name')
             ->add('postalCode')
             ->add('city')
+            ->add('propertyLimit', NumberType::class, [
+                'label' => 'Limite de propriété en m',
+                'help' => 'laisser 0 si double limite possible',
+                'required' => false,
+            ])
             ->add('plots', CollectionType::class, [
                 'entry_type' => PlotEmbeddedType::class,
                 'entry_options' => ['label' => false],

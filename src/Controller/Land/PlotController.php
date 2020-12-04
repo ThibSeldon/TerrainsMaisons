@@ -4,6 +4,7 @@ namespace App\Controller\Land;
 
 use App\Entity\Land\Plot;
 use App\Form\Land\PlotType;
+use App\Repository\HouseRepository;
 use App\Repository\Land\PlotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,11 +51,23 @@ class PlotController extends AbstractController
 
     /**
      * @Route("/{id}", name="land_plot_show", methods={"GET"})
+     * @param Plot $plot
+     * @param HouseRepository $houseRepository
+     * @return Response
      */
-    public function show(Plot $plot): Response
+    public function show(Plot $plot, HouseRepository $houseRepository): Response
     {
+        $plotWidth = $plot->getFacadeWidth();
+
+        $propertyLimit = $plot->getAllotment()->getPropertyLimit();
+        $plotWidth -= $propertyLimit;
+
+
+
+        $houses = $houseRepository->findByLength($plotWidth);
         return $this->render('land/plot/show.html.twig', [
             'plot' => $plot,
+            'houses' => $houses,
         ]);
     }
 

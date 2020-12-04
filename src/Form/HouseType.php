@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Admin\House\HouseBrand;
 use App\Entity\Admin\House\HouseModel;
+use App\Entity\Admin\House\HouseStyle;
 use App\Entity\House;
 use App\Entity\Admin\House\HouseRoofing;
 use Doctrine\ORM\Mapping\Entity;
@@ -34,6 +35,10 @@ class HouseType extends AbstractType
             ->add('houseModel', EntityType::class, [
                 'class' => HouseModel::class,
                 'choice_label' => 'name'
+            ])
+            ->add('houseStyle', EntityType::class, [
+                'class' => HouseStyle::class,
+                'choice_label' => 'name',
             ])
             ->add('houseRoofing', EntityType::class, [
                 'class' => HouseRoofing::class,

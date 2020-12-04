@@ -48,7 +48,7 @@
             <tr>
                 <th>Lots n° {{ plot.lot }}</th>
                 <td>Surface {{ plot.surface }} m2</td>
-                <td>{{ plot.sellingPriceAti }} €</td>
+                <td>{{ plot.sellingPriceAti | format_currency('EUR') }} €</td>
                 <td><a href="{{ path('land_plot_show', {'id': plot.id}) }} " class="btn btn-outline-info">Voir le lot</a></td>
             </tr>
             {% endfor %}

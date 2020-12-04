@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Admin\House\HouseBrand;
 use App\Entity\Admin\House\HouseModel;
 use App\Entity\Admin\House\HouseRoofing;
+use App\Entity\Admin\House\HouseStyle;
 use App\Entity\Upload\Picture;
 
 use App\Repository\HouseRepository;
@@ -118,6 +119,11 @@ class House
      * @ORM\ManyToMany(targetEntity=Picture::class, inversedBy="houses", cascade={"persist"})
      */
     private $pictures;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=HouseStyle::class, inversedBy="houses")
+     */
+    private $houseStyle;
 
     public function __construct()
     {
@@ -393,6 +399,18 @@ class House
     public function removePicture(Picture $picture): self
     {
         $this->pictures->removeElement($picture);
+
+        return $this;
+    }
+
+    public function getHouseStyle(): ?HouseStyle
+    {
+        return $this->houseStyle;
+    }
+
+    public function setHouseStyle(?HouseStyle $houseStyle): self
+    {
+        $this->houseStyle = $houseStyle;
 
         return $this;
     }

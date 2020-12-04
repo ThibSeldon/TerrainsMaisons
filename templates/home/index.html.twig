@@ -12,7 +12,21 @@
     <h1>Hello {{ controller_name }}! ✅</h1>
     <h2> ACCUEIL BATI | LAB </h2>
 
+    {% for house in houses %}
+        <ul>
+            <li>
+    {{ house.name }}
+                <ul>
+                    <li>
 
+    {{ house.houseBrand.name }}
+                    </li>
+                </ul>
+
+            </li>
+
+        </ul>
+{% endfor %}
 
 </div>
 {% endblock %}

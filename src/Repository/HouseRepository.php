@@ -68,6 +68,27 @@ class HouseRepository extends ServiceEntityRepository
             ->execute();
     }
 
+
+    public function loadHouseBerdin()
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.houseBrand = :val')
+            ->setParameter('val', '1')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByLength(float $length=0)
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.length <= :val')
+            ->setParameter('val', $length)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return House[] Returns an array of House objects
     //  */

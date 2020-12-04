@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <th>Prix de vente</th>
-                <td>{{ plot.sellingPriceAti }}</td>
+                <td>{{ plot.sellingPriceAti | format_currency('EUR') }}</td>
             </tr>
             <tr>
                 <th>Date de creation</th>
@@ -41,6 +41,26 @@
                 <th>Mise a jour</th>
                 <td>{{ plot.updatedAt ? plot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+        {% for house in houses %}
+            <tr>
+                <th>
+                    Prix Avec Terrain
+                </th>
+                <td>
+                    {{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}
+                </td>
+            </tr>
+        <tr>
+            <th>
+                Maison Compatible:  {{ house.name }}
+            </th>
+            <td>
+                <a href="{{ path('house_show', { 'id': house.id }) }}" class="btn btn-outline-secondary"> {{ house.name }}</a>
+
+
+            </td>
+        </tr>
+        {% endfor %}
         </tbody>
     </table>
 

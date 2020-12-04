@@ -51,11 +51,11 @@
 			</tr>
 			<tr>
 				<th>Prix de Vente HT</th>
-				<td>{{ house.sellingPriceDf }}</td>
+				<td>{{ house.sellingPriceDf | format_currency('EUR') }}</td>
 			</tr>
 			<tr>
 				<th>Prix de Vente TTC</th>
-				<td>{{ house.sellingPriceAti }}</td>
+				<td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
 			</tr>
 			<tr>
 				<th>Longeur</th>

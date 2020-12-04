@@ -56,6 +56,11 @@ class Allotment
      */
     private $contacts;
 
+    /**
+     * @ORM\Column(type="float", nullable=false)
+     */
+    private $propertyLimit;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
@@ -190,6 +195,21 @@ class Allotment
     public function removeContact(Contact $contact): self
     {
         $this->contacts->removeElement($contact);
+
+        return $this;
+    }
+
+    public function getPropertyLimit(): ?float
+    {
+       if(!$this->propertyLimit) {
+           return $this->propertyLimit = 0;
+       }
+       return $this->propertyLimit;
+    }
+
+    public function setPropertyLimit(?float $propertyLimit): self
+    {
+        $this->propertyLimit = $propertyLimit;
 
         return $this;
     }
