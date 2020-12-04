@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container">
-    <h1>Plot</h1>
+        <h1>Plot</h1>
         <div class="d-flex flex-row mb-1">
 
             <a href="{{ path('land_plot_index') }}" class="btn btn-outline-info">Retour</a>
@@ -15,8 +15,8 @@
 
         </div>
 
-    <table class="table table-hover table-bordered table-sm">
-        <tbody>
+        <table class="table table-hover  table-sm">
+            <tbody>
             <tr>
                 <th>Lot</th>
                 <td>{{ plot.lot }}</td>
@@ -41,28 +41,59 @@
                 <th>Mise a jour</th>
                 <td>{{ plot.updatedAt ? plot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
-        {% for house in houses %}
+            </tbody>
+
+        </table>
+
+        <div class="d-flex flex-column">
+            <h3>Liste des Maisons Compatbiles (Beta à vérifier)</h3>
+        </div>
+
+        <hr/>
+
+        <table class="table table-hover table-sm">
+
+
+            <thead>
             <tr>
-                <th>
-                    Prix Avec Terrain
-                </th>
-                <td>
-                    {{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}
-                </td>
+                <th>Modèle</th>
+                <th>Surface Habitable</th>
+                <th>Prix maison</th>
+                <th>Prix avec terrain</th>
+                <th>Voir la Maison</th>
             </tr>
-        <tr>
-            <th>
-                Maison Compatible:  {{ house.name }}
-            </th>
-            <td>
-                <a href="{{ path('house_show', { 'id': house.id }) }}" class="btn btn-outline-secondary"> {{ house.name }}</a>
+            </thead>
+            <tbody>
+            {% for house in houses %}
+                <tr>
+                    <td>{{ house.name }}</td>
+                    <td>{{ house.livingSpace }} m2</td>
+                    <td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
+                    <td>
+                        {{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}
+                    </td>
+                    <td>
+                        <a href="{{ path('house_show', { 'id': house.id }) }}"
+                           class="btn btn-primary"> {{ house.name }}</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
 
 
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        </table>
 
     </div>
+
+
+
+    <style>
+        hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 0;
+            border-top: 10px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
 {% endblock %}
