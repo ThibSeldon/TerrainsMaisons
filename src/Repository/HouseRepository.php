@@ -84,6 +84,7 @@ class HouseRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('h')
             ->andWhere('h.length <= :val')
             ->setParameter('val', $length)
+            ->orderBy('h.sellingPriceAti', 'ASX')
             ->getQuery()
             ->getResult()
             ;
@@ -94,6 +95,7 @@ class HouseRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('h')
             ->andWhere('h.length = :val')
             ->setParameter('val', $length)
+            ->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
             ->getResult()
             ;
