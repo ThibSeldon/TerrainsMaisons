@@ -76,7 +76,7 @@
                     </td>
                     <td>
                         <a href="{{ path('house_show', { 'id': house.id }) }}"
-                           class="btn btn-primary"> {{ house.name }}</a>
+                           class="btn btn-light"> {{ house.name }}</a>
                     </td>
 
                 </tr>
@@ -93,7 +93,7 @@
                 <td>{{ houseDL.sellingPriceAti | format_currency('EUR') }}</td>
                 <td>{{ (houseDL.sellingPriceATI + plot.sellingPriceAti) | format_currency('EUR') }}</td>
                 <td>
-                    <a href="{{ path('house_show', {'id': houseDL.id }) }}" class="btn btn-primary"></a>
+                    <a href="{{ path('house_show', {'id': houseDL.id }) }}" class="btn btn-light">{{ houseDL.name }}</a>
                 </td>
             </tr>
             {% endfor %}
