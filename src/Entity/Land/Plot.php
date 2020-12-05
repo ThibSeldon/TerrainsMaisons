@@ -92,6 +92,10 @@ class Plot
 
     public function getFacadeWidth(): ?float
     {
+        if(!$this->facadeWidth)
+        {
+            return $this->facadeWidth = 0;
+        }
         return $this->facadeWidth;
     }
 

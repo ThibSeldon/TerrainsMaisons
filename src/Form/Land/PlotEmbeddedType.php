@@ -22,6 +22,7 @@ class PlotEmbeddedType extends AbstractType
             ])
             ->add('facadeWidth', null, [
                 'label' => 'Largeur Facade',
+                'required' => true,
             ])
             ->add('sellingPriceAti', null, [
                 'label' => 'Prix de vente'
