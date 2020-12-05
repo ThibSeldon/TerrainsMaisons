@@ -67,17 +67,17 @@
             <tbody>
             {% for house in houses %}
                 <tr>
-                    <td>{{ house.name }}</td>
+                    <td>
+                        <a href="{{ path('house_show', { 'id': house.id }) }}"
+                           class="btn btn-light"> {{ house.name }}</a>
+                    </td>
                     <td>{{ house.livingSpace }} m2</td>
                     <td>{{ house.length }}</td>
                     <td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
                     <td>
                         {{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}
                     </td>
-                    <td>
-                        <a href="{{ path('house_show', { 'id': house.id }) }}"
-                           class="btn btn-light"> {{ house.name }}</a>
-                    </td>
+
 
                 </tr>
             {% endfor %}
@@ -87,14 +87,14 @@
             </tr>
             {% for houseDL in housesDoubleLimit %}
             <tr>
-                <td>{{ houseDL.name }}</td>
+                <td>
+                    <a href="{{ path('house_show', {'id': houseDL.id }) }}" class="btn btn-light">{{ houseDL.name }}</a>
+                </td>
                 <td>{{ houseDL.livingSpace }} m2</td>
                 <td>{{ houseDL.length }}</td>
                 <td>{{ houseDL.sellingPriceAti | format_currency('EUR') }}</td>
                 <td>{{ (houseDL.sellingPriceATI + plot.sellingPriceAti) | format_currency('EUR') }}</td>
-                <td>
-                    <a href="{{ path('house_show', {'id': houseDL.id }) }}" class="btn btn-light">{{ houseDL.name }}</a>
-                </td>
+
             </tr>
             {% endfor %}
             </tbody>
