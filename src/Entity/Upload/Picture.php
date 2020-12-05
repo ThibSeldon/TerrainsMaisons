@@ -26,14 +26,11 @@ class Picture
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=House::class, mappedBy="pictures")
+     * @ORM\ManyToOne(targetEntity=House::class, inversedBy="pictures")
      */
-    private $houses;
+    private $house;
 
-    public function __construct()
-    {
-        $this->houses = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -53,29 +50,22 @@ class Picture
     }
 
     /**
-     * @return Collection|House[]
+     * @return mixed
      */
-    public function getHouses(): Collection
+    public function getHouse()
     {
-        return $this->houses;
+        return $this->house;
     }
 
-    public function addHouse(House $house): self
+    /**
+     * @param mixed $house
+     */
+    public function setHouse($house): void
     {
-        if (!$this->houses->contains($house)) {
-            $this->houses[] = $house;
-            $house->addPicture($this);
-        }
-
-        return $this;
+        $this->house = $house;
     }
 
-    public function removeHouse(House $house): self
-    {
-        if ($this->houses->removeElement($house)) {
-            $house->removePicture($this);
-        }
 
-        return $this;
-    }
+
+
 }

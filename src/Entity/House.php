@@ -116,7 +116,7 @@ class House
     private $planFilename;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Picture::class, inversedBy="houses", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="house", orphanRemoval=true,  cascade={"persist"})
      */
     private $pictures;
 
@@ -391,6 +391,7 @@ class House
     {
         if (!$this->pictures->contains($picture)) {
             $this->pictures[] = $picture;
+            $picture->setHouse($this);
         }
 
         return $this;
@@ -398,7 +399,11 @@ class House
 
     public function removePicture(Picture $picture): self
     {
-        $this->pictures->removeElement($picture);
+        if($this->pictures->removeElement($picture)) {
+            if($picture->getHouse() === $this) {
+                $picture->setHouse(null);
+            }
+        }
 
         return $this;
     }

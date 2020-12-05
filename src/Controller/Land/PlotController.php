@@ -60,14 +60,17 @@ class PlotController extends AbstractController
         $plotWidth = $plot->getFacadeWidth();
 
         $propertyLimit = $plot->getAllotment()->getPropertyLimit();
-        $plotWidth -= $propertyLimit;
+        $plotWidthLimit = $plotWidth - $propertyLimit;
+        $housesDoubleLimit= [];
+        if($plot->getAllotment()->getDoubleLimit() === true){
+            $housesDoubleLimit = $houseRepository->findExactLength($plotWidth);
+        }
 
-
-
-        $houses = $houseRepository->findByLength($plotWidth);
+        $houses = $houseRepository->findByLength($plotWidthLimit);
         return $this->render('land/plot/show.html.twig', [
             'plot' => $plot,
             'houses' => $houses,
+            'housesDoubleLimit' => $housesDoubleLimit
         ]);
     }
 

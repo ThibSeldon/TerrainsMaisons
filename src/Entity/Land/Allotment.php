@@ -57,9 +57,14 @@ class Allotment
     private $contacts;
 
     /**
-     * @ORM\Column(type="float", nullable=false)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $propertyLimit;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $doubleLimit;
 
     public function __construct()
     {
@@ -210,6 +215,18 @@ class Allotment
     public function setPropertyLimit(?float $propertyLimit): self
     {
         $this->propertyLimit = $propertyLimit;
+
+        return $this;
+    }
+
+    public function getDoubleLimit(): ?bool
+    {
+        return $this->doubleLimit;
+    }
+
+    public function setDoubleLimit(bool $doubleLimit): self
+    {
+        $this->doubleLimit = $doubleLimit;
 
         return $this;
     }

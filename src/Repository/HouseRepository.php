@@ -89,6 +89,16 @@ class HouseRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findExactLength(float $length=0)
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.length = :val')
+            ->setParameter('val', $length)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return House[] Returns an array of House objects
     //  */

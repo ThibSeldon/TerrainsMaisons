@@ -16,6 +16,9 @@
         </svg>
     </a>
 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse col-sm" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
@@ -57,6 +60,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ path('house_new' )}}">Ajouter Maison</a>
                     <a class="dropdown-item" href="{{ path('admin_house_house_roofing_index' )}}">Toitures</a>
+                    <a class="dropdown-item" href="{{ path('upload_picture_index' )}}">Images</a>
                     <a href="{{ path('admin_user_user_index') }}" class="dropdown-item">Utilisateurs</a>
 
                 </div>

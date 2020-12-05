@@ -26,6 +26,7 @@ class AllotmentType extends AbstractType
                 'help' => 'laisser 0 si double limite possible',
                 'required' => false,
             ])
+            ->add('doubleLimit')
             ->add('plots', CollectionType::class, [
                 'entry_type' => PlotEmbeddedType::class,
                 'entry_options' => ['label' => false],

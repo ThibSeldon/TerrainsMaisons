@@ -199,6 +199,11 @@ class HouseController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $house->getId(), $request->request->get('_token'))) {
             $file = $house->getPlanFilename();
+            $filePictures = $house->getPictures();
+
+            foreach ($filePictures as $filePicture) {
+                unlink($this->getParameter('pictures_directory').'/'.$filePicture->getName());
+            }
 
             if($file)
             {
