@@ -54,6 +54,11 @@ class Plot
      */
     private $allotment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=State::class)
+     */
+    private $state;
+
 
 
     public function __toString():string
@@ -158,6 +163,18 @@ class Plot
     public function setAllotment(?Allotment $allotment): self
     {
         $this->allotment = $allotment;
+
+        return $this;
+    }
+
+    public function getState(): ?State
+    {
+        return $this->state;
+    }
+
+    public function setState(?State $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }

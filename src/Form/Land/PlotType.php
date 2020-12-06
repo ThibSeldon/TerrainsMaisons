@@ -4,6 +4,7 @@ namespace App\Form\Land;
 
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
+use App\Entity\Land\State;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +19,11 @@ class PlotType extends AbstractType
             ->add('surface')
             ->add('facadeWidth')
             ->add('sellingPriceAti')
+            ->add('state', EntityType::class, [
+                'class' => State::class,
+                'choice_label' => 'name',
+
+            ])
             ->add('allotment', EntityType::class, [
                 'class' => Allotment::class,
                 'choice_label' => 'name',
