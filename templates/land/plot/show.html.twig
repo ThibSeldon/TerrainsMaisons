@@ -22,11 +22,11 @@
                 <td>{{ plot.lot }}</td>
             </tr>
             <tr>
-                <th>Surface</th>
+                <th>Surface (m2)</th>
                 <td>{{ plot.surface }}</td>
             </tr>
             <tr>
-                <th>Largeur Facade</th>
+                <th>Largeur Facade (ml)</th>
                 <td>{{ plot.facadeWidth }}</td>
             </tr>
             <tr>
@@ -57,8 +57,8 @@
             <thead>
             <tr>
                 <th>Modèle</th>
-                <th>Surface Habitable</th>
-                <th>Facade Maison</th>
+                <th>Surface Habitable (m2)</th>
+                <th>Facade Maison (ml)</th>
                 <th>Prix maison</th>
                 <th>Prix avec terrain</th>
 
@@ -71,7 +71,7 @@
                         <a href="{{ path('house_show', { 'id': house.id }) }}"
                            class="btn btn-light"> {{ house.name }}</a>
                     </td>
-                    <td>{{ house.livingSpace }} m2</td>
+                    <td>{{ house.livingSpace }}</td>
                     <td>{{ house.length }}</td>
                     <td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
                     <td>
@@ -90,7 +90,7 @@
                 <td>
                     <a href="{{ path('house_show', {'id': houseDL.id }) }}" class="btn btn-light">{{ houseDL.name }}</a>
                 </td>
-                <td>{{ houseDL.livingSpace }} m2</td>
+                <td>{{ houseDL.livingSpace }}</td>
                 <td>{{ houseDL.length }}</td>
                 <td>{{ houseDL.sellingPriceAti | format_currency('EUR') }}</td>
                 <td>{{ (houseDL.sellingPriceATI + plot.sellingPriceAti) | format_currency('EUR') }}</td>

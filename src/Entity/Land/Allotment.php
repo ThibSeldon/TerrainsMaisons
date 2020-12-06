@@ -204,7 +204,7 @@ class Allotment
         return $this;
     }
 
-    public function getPropertyLimit(): ?float
+    public function getPropertyLimit(): float
     {
        if(!$this->propertyLimit) {
            return $this->propertyLimit = 0;

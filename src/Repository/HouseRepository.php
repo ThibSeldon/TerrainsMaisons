@@ -83,6 +83,7 @@ class HouseRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.length <= :val')
+            ->andWhere('h.valid = true')
             ->setParameter('val', $length)
             ->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
@@ -91,6 +92,17 @@ class HouseRepository extends ServiceEntityRepository
     }
 
     public function findExactLength(float $length=0)
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.length = :val')
+            ->setParameter('val', $length)
+            ->orderBy('h.sellingPriceAti', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findHousesPlotCompatible(float $length=0)
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.length = :val')

@@ -17,7 +17,6 @@ class HomeController extends AbstractController
         $houses = $houseRepository->loadHouseBerdin();
 
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'houses' => $houses,
         ]);
     }
