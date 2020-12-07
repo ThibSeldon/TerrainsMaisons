@@ -8,11 +8,25 @@
 <div class="container">
     <h1>ACCUEIL BATI LAB | MAISONS BERDIN </h1>
 
-
+<div class="card-deck">
     {% for house in houses %}
 
+
         <div class="d-inline-flex card" style="width: 18rem;">
-            <img class="card-img-top" src="{{ asset('images/house-icone.png ')}}" alt="Maisons Berdin" width="100">
+        {% if  house.pictures is empty %}
+            <img class="card-img-top" src="
+            {{ asset('images/house-icone.png')}}"
+                 alt="Maisons Berdin" width="100">
+            {% else %}
+                <img class="card-img-top" src="
+            {{ asset('uploads/pictures/'~house.pictures[0].name)}}"
+                     alt="Maisons Berdin" width="100">
+
+{% endif %}
+
+
+
+
             <div class="card-body">
                 <h5 class="card-title">{{ house.name }}</h5>
 
@@ -27,6 +41,7 @@
         </div>
 
 {% endfor %}
+</div>
 
 </div>
 {% endblock %}

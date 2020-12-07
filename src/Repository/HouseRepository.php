@@ -55,7 +55,7 @@ class HouseRepository extends ServiceEntityRepository
                 ->setParameter(':priceMax', $priceMax);
         }
         if (isset($length)) {
-            $qb->andwhere('h.length = :length')
+            $qb->andwhere('h.length <= :length')
                 ->setParameter(':length', $length);
         }
         if(isset($valid)) {

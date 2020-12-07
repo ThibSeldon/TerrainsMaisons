@@ -60,7 +60,7 @@ class HouseType extends AbstractType
                 'label' => 'Prix de Vente HT',
             ])
             ->add('length', NumberType::class, [
-                'label' => 'Longeur',
+                'label' => 'Longueur',
                 'required' => false
             ])
             ->add('width', NumberType::class, [

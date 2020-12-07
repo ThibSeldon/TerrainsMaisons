@@ -65,10 +65,10 @@ class HouseSearchType extends AbstractType
                 ]
             ])
             ->add('length', NumberType::class, [
-                'label' => 'Longeure Max',
+                'label' => 'Longueur Max',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Longeur Max'
+                    'placeholder' => 'Longueur Max'
                 ]
             ])
             ->add('valid', CheckboxType::class, [
