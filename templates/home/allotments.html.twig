@@ -1,0 +1,56 @@
+{% extends 'base_all.html.twig' %}
+
+{% block title %}
+Liste des Terrains pour le lottissement
+{% endblock %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="display-4">{{allotment.name}}</h1>
+        <p class="lead">Description du lotissement</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
+
+
+    <h4>Liste des terrains disponibles </h4>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">N° Lot</th>
+        <th scope="col">Surface (m2)</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Maisons Compatibles</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for plot in allotment.plots %}
+    <tr>
+      <th scope="row">{{ plot.lot }}</th>
+        <td>{{ plot.surface }}</td>
+        <td>{{ plot.sellingPriceAti | format_currency('EUR')}}</td>
+        <td>
+            {% if plot.state %}
+            {{ plot.state.name }}
+            {% endif %}
+            -----
+        </td>
+        <td><a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-info">Voir les Maisons</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+{% endblock %}
+
+
+

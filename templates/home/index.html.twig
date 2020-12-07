@@ -1,47 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_all.html.twig' %}
 
-{% block title %}Hello!{% endblock %}
+{% block title %}Terrains Maisons!{% endblock %}
 
 {% block body %}
 
 
-<div class="container">
-    <h1>ACCUEIL BATI LAB | MAISONS BERDIN </h1>
 
-<div class="card-deck">
-    {% for house in houses %}
-
-
-        <div class="d-inline-flex card" style="width: 18rem;">
-        {% if  house.pictures is empty %}
-            <img class="card-img-top" src="
-            {{ asset('images/house-icone.png')}}"
-                 alt="Maisons Berdin" width="100">
-            {% else %}
-                <img class="card-img-top" src="
-            {{ asset('uploads/pictures/'~house.pictures[0].name)}}"
-                     alt="Maisons Berdin" width="100">
-
-{% endif %}
+    <h1>TERRAINS MAISONS . COM</h1>
 
 
 
 
+<h4>Les Lotissements </h4>
+    <div class="card-deck">
+        {% for allotment in allotments %}
+        <div class="card">
+            <img class="card-img-top" src="{{ asset('images/Land_illustration.jpg') }}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">{{ house.name }}</h5>
-
-                    <ul class="card-text">
-                    <li>Surface habtibale : {{ house.livingSpace }}</li>
-                    <li> Chambres : {{ house.roomNumber }}</li>
-                    <li> Prix TTC : {{ house.sellingPriceAti }}</li>
-                </ul>
-
-                <a href="{{ path('house_show', {'id': house.id}) }}" class="btn btn-outline-primary">Voir le Modèle</a>
+                <h5 class="card-title">{{ allotment.name }} - {{ allotment.city }}</h5>
+                <p class="card-text"></p>
+                <p class="card-text"><small class="text-muted">Mise à jour {{ allotment.updatedAt | format_datetime() }}</small></p>
+                <a href="{{ path('all_allotment_show', {'id': allotment.id})  }}" class="btn btn-outline-info">Voir</a>
             </div>
         </div>
+        {% endfor %}
 
-{% endfor %}
+    </div>
+
+
+
+
 </div>
 
-</div>
+
 {% endblock %}
