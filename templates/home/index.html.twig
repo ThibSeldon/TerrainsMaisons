@@ -15,7 +15,7 @@
     <div class="card-deck">
         {% for allotment in allotments %}
         <div class="card">
-            <img class="card-img-top" src="{{ asset('images/Land_illustration.jpg') }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('images/land-illustration.jpg') }}" alt="Land Image">
             <div class="card-body">
                 <h5 class="card-title">{{ allotment.name }} - {{ allotment.city }}</h5>
                 <p class="card-text"></p>
@@ -30,7 +30,11 @@
 
 
 
-</div>
+    <style>
+        .card-deck{
+            column-count: 3;
+        }
+    </style>
 
 
 {% endblock %}
