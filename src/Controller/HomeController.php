@@ -25,11 +25,11 @@ class HomeController extends AbstractController
      */
     public function index(HouseRepository $houseRepository, AllotmentRepository $allotmentRepository): Response
     {
-        $houses = $houseRepository->loadHouseBerdin();
+
         $allotments = $allotmentRepository->findAll();
 
         return $this->render('home/index.html.twig', [
-            'houses' => $houses,
+
             'allotments' => $allotments,
         ]);
     }
