@@ -36,6 +36,8 @@ Liste des Maisons pour le Terrain
         {% endfor %}
         </tbody>
     </table>
+
+
     <span class="border-1">
 <h2>CONTACTEZ NOUS</h2>
     <!-- FORMULAIRE DE CONTACT HUBSPOT -->
@@ -51,42 +53,7 @@ Liste des Maisons pour le Terrain
     </script>
 </span>
 
-    <div class="card-deck">
-        {% for house in houses %}
 
-
-            <div class="d-inline-flex card" style="width: 18rem;">
-                {% if  house.pictures is empty %}
-                    <img class="card-img-top" src="
-            {{ asset('images/house-icone.png')}}"
-                         alt="Maisons Berdin" width="100">
-                {% else %}
-                    <img class="card-img-top" src="
-            {{ asset('uploads/pictures/'~house.pictures[0].name)}}"
-                         alt="Maisons Berdin" width="100">
-
-                {% endif %}
-
-
-
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ house.name }}</h5>
-
-                    <ul class="card-text">
-                        <li>Surface habtibale : {{ house.livingSpace }}</li>
-                        <li> Chambres : {{ house.roomNumber }}</li>
-                        <li> Prix TTC : {{ house.sellingPriceAti }}</li>
-                    </ul>
-
-                    <a href="{{ path('house_show', {'id': house.id}) }}" class="btn btn-outline-primary">Voir le Modèle</a>
-                </div>
-            </div>
-
-        {% endfor %}
-
-
-    </div>
 {% endblock %}
 
 

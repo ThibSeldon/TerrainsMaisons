@@ -6,29 +6,38 @@
 
 
 
-    <h1>TERRAINS MAISONS . COM</h1>
+    <div class="jumbotron">
+        <h1 class="display-4">TERRAINS MAISONS . COM</h1>
+        <p class="lead">Un seul endroit pour votre terrain et votre maison</p>
+        <hr class="my-4">
+        <p>Retrouvez toutes les informations sur les terrains et les maisons</p>
 
-
-
-
-<h4>Les Lotissements </h4>
-
-    <div class="card-deck">
-        {% for allotment in allotments %}
-            <div class="col-4">
-        <div class="card">
-            <img class="card-img-top" src="{{ asset('images/land-illustration.jpg') }}" alt="Land Image">
-            <div class="card-body">
-                <h5 class="card-title">{{ allotment.name }} - {{ allotment.city }}</h5>
-                <p class="card-text"></p>
-                <p class="card-text"><small class="text-muted">Mise à jour {{ allotment.updatedAt | format_datetime() }}</small></p>
-                <a href="{{ path('all_allotment_show', {'id': allotment.id})  }}" class="btn btn-outline-info">Voir</a>
-            </div>
-        </div>
-            </div>
-        {% endfor %}
-
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
+        </p>
     </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nom du programme</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Code Postal</th>
+            <th scope="col">Nombre de Terrains</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for allotment in allotments %}
+            <tr>
+                <th scope="row"><a href="{{ path('all_allotment_show', {'id': allotment.id}) }}">{{ allotment.name }}</a></th>
+                <td>{{ allotment.city }}</td>
+                <td>{{ allotment.postalCode }}</td>
+                <td> <span class="badge badge-success">{{ allotment.plots | length }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 
 
 
