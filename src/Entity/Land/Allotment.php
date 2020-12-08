@@ -230,4 +230,18 @@ class Allotment
 
         return $this;
     }
-}
+
+    public function getMinPriceAtiPlot()
+    {
+        $priceMin = [];
+        $plots = $this->getPlots();
+        foreach ($plots as $plot ){
+            $price = $plot->getSellingPriceAti();
+            $priceMin = [$price];
+        }
+        if($priceMin){
+        return min($priceMin) . " €";
+        }
+        return "____";
+    }
+    }

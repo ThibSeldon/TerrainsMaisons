@@ -27,7 +27,9 @@ class PlotType extends AbstractType
             ->add('allotment', EntityType::class, [
                 'class' => Allotment::class,
                 'choice_label' => 'name',
-                'label' => 'Lotissement'
+                'label' => 'Lotissement',
+                'placeholder' => 'Selectionner',
+                'required' => true,
             ])
 
         ;

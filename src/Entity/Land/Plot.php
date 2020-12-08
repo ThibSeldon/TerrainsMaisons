@@ -57,7 +57,7 @@ class Plot
     /**
      * @ORM\ManyToOne(targetEntity=State::class)
      */
-    private $state;
+    private ?State $state;
 
 
 

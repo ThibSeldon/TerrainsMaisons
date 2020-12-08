@@ -3,8 +3,7 @@
 {% block title %}Terrains Maisons!{% endblock %}
 
 {% block body %}
-
-
+    <script src="{{ asset('js/filterTable01.js') }}"></script>
 
     <div class="jumbotron">
         <h1 class="display-4">TERRAINS MAISONS . COM</h1>
@@ -16,14 +15,24 @@
             <a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
         </p>
     </div>
+<form>
+    <div class="form-row">
+        <div class="col-md-6">
 
-    <table class="table">
+            <label for="iIdP">Ma Recherche</label>
+            <input type="text" class="form-control" placeholder="Recherche une ville ... " id="iIdP" onkeyup="searchTable('iIdP', 'allotments-list')">
+        </div>
+    </div>
+</form>
+    <table class="table" id="allotments-list">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nom du programme</th>
             <th scope="col">Ville</th>
             <th scope="col">Code Postal</th>
             <th scope="col">Nombre de Terrains</th>
+            <th>A partir de </th>
+
         </tr>
         </thead>
         <tbody>
@@ -32,7 +41,11 @@
                 <th scope="row"><a href="{{ path('all_allotment_show', {'id': allotment.id}) }}">{{ allotment.name }}</a></th>
                 <td>{{ allotment.city }}</td>
                 <td>{{ allotment.postalCode }}</td>
-                <td> <span class="badge badge-success">{{ allotment.plots | length }}</span></td>
+                <td> <span class="badge badge-success">{{ allotment.plots| length }}</span></td>
+
+                <td> {{ allotment.getMinPriceAtiPlot }}</td>
+
+
             </tr>
             {% endfor %}
         </tbody>
@@ -41,12 +54,12 @@
 
 
 
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 
-    <style>
-        .card-deck{
-            column-count: 3;
-        }
-    </style>
 
 
 {% endblock %}

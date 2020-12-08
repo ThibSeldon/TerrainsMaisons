@@ -31,6 +31,8 @@ class PlotEmbeddedType extends AbstractType
             ->add('state', EntityType::class, [
                 'class' => State::class,
                 'choice_label' => 'name',
+                'placeholder' => 'Selectionner',
+                'required' => true,
 
             ])
 
