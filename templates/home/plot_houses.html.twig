@@ -18,20 +18,28 @@ Liste des Maisons pour le Terrain
     <table class="table">
         <thead class="thead-dark">
         <tr>
+            <th scope="col">Visuel</th>
             <th scope="col">Modèle</th>
             <th scope="col">Surface Habitable</th>
             <th scope="col">Nombre de Chambre</th>
             <th scope="col">Prix avec le terrain</th>
+            <th></th>
 
         </tr>
         </thead>
         <tbody>
         {% for house in houses %}
         <tr>
-            <th scope="row">{{ house.name }}</th>
+            <td>
+                {% if house.pictures[0] is defined %}
+                    <img src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}" class="w-25 " alt="...">
+                {% endif %}
+            </td>
+            <td>{{ house.name }}</td>
             <td>{{ house.livingSpace }}</td>
             <td>{{ house.roomNumber }}</td>
             <td>{{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}</td>
+            <td><a href="{{ path('all_house_show', {'id': house.id}) }}" class="btn btn-outline-info">Voir la Maison</a></td>
         </tr>
         {% endfor %}
         </tbody>

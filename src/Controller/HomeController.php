@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\House;
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Repository\HouseRepository;
@@ -35,7 +36,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("home/allotment/plot/{id}", name="all_plot_show")
+     * @Route("/allotment/plot/{id}", name="all_plot_show")
      * @param Plot $plot
      * @param HouseRepository $houseRepository
      * @return Response
@@ -51,7 +52,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route ("/home/{id}", name="all_allotment_show")
+     * @Route ("/allotment/{id}", name="all_allotment_show")
      * @param Allotment $allotment
      * @return Response
      */
@@ -59,6 +60,18 @@ class HomeController extends AbstractController
     {
         return $this->render('home/allotments.html.twig', [
             'allotment' => $allotment,
+        ]);
+    }
+
+    /**
+     * @Route ("/house/{id}", name="all_house_show")
+     * @param House $house
+     * @return Response
+     */
+    public function house(House $house): Response
+    {
+        return $this->render('home/house.html.twig', [
+            'house' => $house,
         ]);
     }
 }
