@@ -384,6 +384,7 @@ class House
      */
     public function getPictures(): Collection
     {
+
         return $this->pictures;
     }
 

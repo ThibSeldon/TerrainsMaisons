@@ -35,6 +35,8 @@ Liste des Maisons pour le Terrain
 
                 {% if house.pictures[0] is defined %}
                     <img src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}" width="300" class="" alt="">
+                    {% else %}
+                        <img src="{{ asset('images/house_base.jpeg') }}" width="300" class="" alt="">
                 {% endif %}
 
             </td>
