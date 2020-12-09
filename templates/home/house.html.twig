@@ -5,15 +5,15 @@ Modèle {{ house.name }}
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row border border-dark">
         <div class="col-sm-12 d-flex flex-column justify-content-center align-items-center">
             <h2>{{ house.name }} - {{ house.roomNumber }} Chambres</h2>
             <h3>A Partir de {{ house.sellingPriceAti | format_currency('EUR') }}</h3>
         </div>
     </div>
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-8 border border-dark  d-flex flex-column justify-content-center align-content-center">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         {% if house.pictures[0] is defined %}
@@ -24,7 +24,7 @@ Modèle {{ house.name }}
         {% endfor %}
         {% else %}
         <div class="carousel-item active">
-        
+
             <img class="d-block w-100" src="{{ asset('images/house_base.jpeg') }}" alt="First slide">
         </div>
         {% endif %}
@@ -39,7 +39,7 @@ Modèle {{ house.name }}
     </a>
 </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 border border-dark">
         <h5>CONTACTEZ NOUS</h5>
         <!-- FORMULAIRE DE CONTACT HUBSPOT -->
         <!--[if lte IE 8]>
@@ -55,21 +55,21 @@ Modèle {{ house.name }}
     </div>
 
 </div>
-<div class="row">
-    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center">
+<div class="row border border-dark">
+    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center border">
         <svg width="10em" height="10em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
             <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
         </svg>
      {{ house.livingSpace }} m2
     </div>
-    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center">
+    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center border">
         <svg width="10em" height="10em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
         </svg>
         {{ house.houseBrand.name }}
     </div>
-    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center">
+    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center border ">
         <svg width="10em" height="10em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
         </svg>

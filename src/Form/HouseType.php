@@ -107,8 +107,8 @@ class HouseType extends AbstractType
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false,
-            ])
-        ;
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
