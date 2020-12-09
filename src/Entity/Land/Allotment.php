@@ -237,7 +237,7 @@ class Allotment
         $plots = $this->getPlots();
         foreach ($plots as $plot ){
             $price = $plot->getSellingPriceAti();
-            $priceMin = [$price];
+            $priceMin[] = $price;
         }
         if($priceMin){
         return min($priceMin) . " €";
