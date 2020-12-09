@@ -43,7 +43,10 @@ class HomeController extends AbstractController
      */
     public function lot(Plot $plot, HouseRepository $houseRepository): Response
     {
-        $houses = $houseRepository->findHousesPlotCompatible($plot->getFacadeWidth());
+        $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
+        $limit = $plot->getAllotment()->getPropertyLimit();
+        $plotFW = $plot->getFacadeWidth();
+        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW);
 
         return $this->render('home/plot_houses.html.twig', [
             'houses' => $houses,

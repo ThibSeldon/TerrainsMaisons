@@ -102,11 +102,18 @@ class HouseRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findHousesPlotCompatible(float $length=0)
+    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit=0, float $length=20 )
     {
+        $lengthHouse = $length - $limit;
+        $lengthHouseDL = 0;
+        if($doubleLimit) {
+            $lengthHouseDL = $length;
+        }
         return $this->createQueryBuilder('h')
             ->andWhere('h.length <= :val')
-            ->setParameter('val', $length)
+            ->orWhere('h.length = :val2')
+            ->setParameter('val', $lengthHouse)
+            ->setParameter('val2', $lengthHouseDL)
             ->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
             ->getResult()
