@@ -18,11 +18,11 @@ Liste des Maisons pour le Terrain
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Visuel</th>
-            <th scope="col">Modèle</th>
-            <th scope="col">Surface Habitable</th>
-            <th scope="col">Nombre de Chambre</th>
-            <th scope="col">Prix avec le terrain</th>
+            <th scope="col" class="">Visuel</th>
+            <th scope="col" class="" >Modèle</th>
+            <th scope="col" class="">Surface Habitable</th>
+            <th scope="col" class="">Nombre de Chambre</th>
+            <th scope="col" class="">Prix avec le terrain</th>
             <th></th>
 
         </tr>
@@ -31,9 +31,12 @@ Liste des Maisons pour le Terrain
         {% for house in houses %}
         <tr>
             <td>
+
+
                 {% if house.pictures[0] is defined %}
-                    <img src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}" class="w-25 " alt="...">
+                    <img src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}" width="300" class="" alt="">
                 {% endif %}
+
             </td>
             <td>{{ house.name }}</td>
             <td>{{ house.livingSpace }}</td>
@@ -61,6 +64,16 @@ Liste des Maisons pour le Terrain
     </script>
 </span>
 
+
+    <style>
+        .table td, .table th {
+            vertical-align: middle;
+        }
+        .table td {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
 
 {% endblock %}
 
