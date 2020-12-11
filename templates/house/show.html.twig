@@ -82,6 +82,17 @@
 				<td>{{ house.valid }}</td>
 			</tr>
 			<tr>
+				<th>Plans</th>
+
+				<td>
+					{% if house.planFilename %}
+						<a href="{{ asset('uploads/plans/' ~ house.planFilename) }}">Plans PDF</a>
+					{% else %}
+						AUCUN PLAN DISPONIBLE
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
 				<th>Images</th>
 				<td class="col-auto">
 					{% if house.pictures %}
@@ -92,17 +103,7 @@
 					{% endif %}
 				</td>
 			</tr>
-		<tr>
-			<th>Plans</th>
 
-			<td>
-				{% if house.planFilename %}
-				<a href="{{ asset('uploads/plans/' ~ house.planFilename) }}">Plans PDF</a>
-				{% else %}
-				AUCUN PLAN DISPONIBLE
-				{% endif %}
-			</td>
-		</tr>
 		</tbody>
 	</table>
 </div>

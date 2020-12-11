@@ -2,6 +2,7 @@
 
 namespace App\Entity\Land;
 
+use App\Entity\Admin\House\HouseRoofing;
 use App\Entity\Contact\Contact;
 use App\Repository\Land\AllotmentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -66,10 +67,16 @@ class Allotment
      */
     private $doubleLimit;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=HouseRoofing::class)
+     */
+    private $houseRoofings;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
         $this->contacts = new ArrayCollection();
+        $this->houseRoofings = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -204,6 +211,9 @@ class Allotment
         return $this;
     }
 
+    /**
+     * @return float
+     */
     public function getPropertyLimit(): float
     {
        if(!$this->propertyLimit) {
@@ -243,5 +253,29 @@ class Allotment
         return min($priceMin) . " €";
         }
         return "____";
+    }
+
+    /**
+     * @return Collection|HouseRoofing[]
+     */
+    public function getHouseRoofings(): Collection
+    {
+        return $this->houseRoofings;
+    }
+
+    public function addHouseRoofing(HouseRoofing $houseRoofing): self
+    {
+        if (!$this->houseRoofings->contains($houseRoofing)) {
+            $this->houseRoofings[] = $houseRoofing;
+        }
+
+        return $this;
+    }
+
+    public function removeHouseRoofing(HouseRoofing $houseRoofing): self
+    {
+        $this->houseRoofings->removeElement($houseRoofing);
+
+        return $this;
     }
     }

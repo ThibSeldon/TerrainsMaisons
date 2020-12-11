@@ -20,7 +20,7 @@ class UserType extends AbstractType
             ->add('lastName')
             ->add('email')
             ->add('password', PasswordType::class, [
-                
+
             ])
             ->add('addRoles', ChoiceType::class, [
                 'label' => 'Roles',

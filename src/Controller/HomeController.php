@@ -46,7 +46,18 @@ class HomeController extends AbstractController
         $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
         $limit = $plot->getAllotment()->getPropertyLimit();
         $plotFW = $plot->getFacadeWidth();
-        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW);
+
+        $allotmentRoofings = $plot->getAllotment()->getHouseRoofings();
+        $roofings = [];
+        foreach ($allotmentRoofings as $arg){
+            $roofings[] = $arg;
+        }
+        foreach ($roofings as $arg){
+            dump($arg->getId());
+        }
+        dump($allotmentRoofings);
+        dump($roofings);
+        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);
 
         return $this->render('home/plot_houses.html.twig', [
             'houses' => $houses,

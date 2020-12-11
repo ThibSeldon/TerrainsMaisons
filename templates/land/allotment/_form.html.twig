@@ -4,7 +4,8 @@
 {{ form_row(form.city) }}
 {{ form_row(form.propertyLimit) }}
 {{ form_row(form.doubleLimit) }}
-{{ form_row(form.contacts, {'attr': {'class': 'js-allotment-contacts'}}) }}
+{{ form_row(form.houseRoofings, {'attr': {'class': 'select2-multiple'}}) }}
+{{ form_row(form.contacts, {'attr': {'class': 'select2-multiple'}}) }}
 
 
 <ul class="">
@@ -36,7 +37,7 @@
 <!-- Ajout Select 2 pour les Lotissements-->
 <script>
 $(document).ready(function() {
-$('.js-allotment-contacts').select2();
+$('.select2-multiple').select2();
 });
 </script>
 

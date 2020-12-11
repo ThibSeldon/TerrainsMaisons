@@ -102,23 +102,37 @@ class HouseRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit=0, float $length=20 )
+    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit=0, float $length=0, array $roofings)
     {
         $lengthHouse = $length - $limit;
         $lengthHouseDL = 0;
         if($doubleLimit) {
             $lengthHouseDL = $length;
         }
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.length <= :val')
+
+        $qb = $this->createQueryBuilder('h');
+
+            $qb->andWhere('h.length <= :val')
             ->orWhere('h.length = :val2')
+            ->andWhere('h.valid = true')
+            ->andWhere('h.houseRoofing = 1') //hack pour selectionner les autres toitures (solution a trouver)
             ->setParameter('val', $lengthHouse)
             ->setParameter('val2', $lengthHouseDL)
-            ->orderBy('h.sellingPriceAti', 'ASC')
-            ->getQuery()
-            ->getResult()
             ;
+
+
+            foreach ($roofings as $roofing){
+                $qb->orWhere('h.houseRoofing = :roofing'.$roofing->getId())
+                    ->setParameter('roofing'.$roofing->getId(), $roofing->getId());
+            }
+
+           return $qb
+                ->orderBy('h.sellingPriceAti', 'ASC')
+                ->getQuery()
+                ->execute()
+                ;
     }
+
 
     // /**
     //  * @return House[] Returns an array of House objects

@@ -3,7 +3,7 @@
 {% block title %}Allotment{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
             <h1>Lotissement</h1>
@@ -35,6 +35,34 @@
                 <th>Ville</th>
                 <td>{{ allotment.city }}</td>
             </tr>
+            <tr>
+                <th>Limite de propriété (m)</th>
+                <td>{{ allotment.propertyLimit }}</td>
+            </tr>
+
+            <tr>
+                <th>Doublie Limite autorisée ?</th>
+                <td>{{ allotment.doubleLimit }}</td>
+            </tr>
+
+            <tr>
+                <th>Type de Toiture</th>
+                <td>
+                    {% for roofing in allotment.houseRoofings %}
+                        <li> {{ roofing.name }}</li>
+                    {% endfor %}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Contacts</th>
+                <td>
+                    {% for contact in allotment.contacts %}
+                        <li> {{ contact }}</li>
+                    {% endfor %}
+                </td>
+            </tr>
+
             <tr>
                 <th>Date de Creation</th>
                 <td>{{ allotment.createdAt ? allotment.createdAt|date('Y-m-d H:i:s') : '' }}</td>

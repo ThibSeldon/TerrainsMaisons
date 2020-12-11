@@ -16,3 +16,6 @@ framework:
     #fragments: true
     php_errors:
         log: true
+    #New in version 5.2:The legacy_error_messages option was introduced in Symfony 5.2
+    form:
+        legacy_error_messages: false

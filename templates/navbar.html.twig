@@ -1,9 +1,6 @@
 
 
 
-<!--
-						MENU NAVIGATION HORIZONTAL
-						-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 
     <a class="navbar-brand" href="{{ path('home') }}"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-diamond" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +18,8 @@
     </button>
 
     <div class="collapse navbar-collapse col-sm" id="responsive">
-        <ul class="navbar-nav mr-auto ">
+
+        <ul class="navbar-nav mr-auto d-flex w-100">
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
             </li>
@@ -71,7 +69,7 @@
 
         {% if app.user %}
 
-                <li class="nav-item dropdown align-content-end justify-content-end">
+                <li class="nav-item dropdown d-flex align-content-end justify-content-end w-100">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ app.user.firstName }} - {{ app.user.email }}
                     </a>
@@ -81,6 +79,7 @@
                     </div>
                 </li>
         {% endif %}
+
         </ul>
 
     </div>

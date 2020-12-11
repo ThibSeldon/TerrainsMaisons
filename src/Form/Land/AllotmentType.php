@@ -27,6 +27,9 @@ class AllotmentType extends AbstractType
                 'required' => false,
             ])
             ->add('doubleLimit')
+            ->add('houseRoofings', null, [
+                'label' => 'Type de toiture'
+            ])
             ->add('plots', CollectionType::class, [
                 'entry_type' => PlotEmbeddedType::class,
                 'entry_options' => ['label' => false],
@@ -35,9 +38,6 @@ class AllotmentType extends AbstractType
                 'by_reference' => false,
             ])
             ->add('contacts')
-
-
-
 
         ;
     }
