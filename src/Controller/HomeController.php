@@ -52,11 +52,8 @@ class HomeController extends AbstractController
         foreach ($allotmentRoofings as $arg){
             $roofings[] = $arg;
         }
-        foreach ($roofings as $arg){
-            dump($arg->getId());
-        }
-        dump($allotmentRoofings);
-        dump($roofings);
+
+
         $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);
 
         return $this->render('home/plot_houses.html.twig', [
