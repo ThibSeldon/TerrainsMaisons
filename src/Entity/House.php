@@ -131,8 +131,6 @@ class House
     }
 
 
-
-
     public function __toString(): string
     {
         return $this->getName();
@@ -355,18 +353,6 @@ class House
     }
 
 
-
-    /**
-     * FONCTION PERSONNALISEE De CustomActionsController pour Updater tous les prix avec TVA
-     * @param float $data
-     * @return House
-     */
-    public function setUpdateSellingPriceAti(float $data): self
-    {
-        $this->sellingPriceAti = $data;
-        return $this;
-    }
-
     public function getPlanFilename(): ?string
     {
         return $this->planFilename;
@@ -421,6 +407,21 @@ class House
         return $this;
     }
 
+    /**
+     * FONCTION PERSONNALISEE De CustomActionsController pour Updater tous les prix avec TVA
+     * @param float $data
+     * @return House
+     */
+    public function setUpdateSellingPriceAti(float $data): self
+    {
+        $this->sellingPriceAti = $data;
+        return $this;
+    }
+
+    public function weightedArea()
+    {
+        return $this->sellingPriceAti / ($this->livingSpace + ($this->annexSurface/2));
+    }
 
     
     

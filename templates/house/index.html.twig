@@ -56,16 +56,17 @@
 							<th>Modèle</th>
 							<th>Type</th>
 							<th>Style</th>
+							<th>Marque</th>
 							<th>Surface Habitable</th>
 							<th>Surface Annexe</th>
 							<th>Chambres</th>
-							<th>Salle de bains</th>
+
 							<th>Prix de Vente TTC</th>
-							<th>Marque</th>
+							<th>Prix Pondéré (m2)</th>
 							<th>Toiture</th>
 							<th>Longeur</th>
-							<th>Largeur</th>
-							<th>Hauteur</th>
+
+
 
 						</tr>
 					</thead>
@@ -81,16 +82,16 @@
 
 								<td>{{ house.houseModel.name }}</td>
 								<td>{{ house.houseStyle }}</td>
+								<td>{{ house.houseBrand.name }}</td>
 								<td>{{ house.livingSpace }}</td>
 								<td>{{ house.annexSurface }}</td>
 								<td>{{ house.roomNumber }}</td>
-								<td>{{ house.bathroomNumber }}</td>
+
 								<td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
-								<td>{{ house.houseBrand.name }}</td>
+								<td>{{ house.weightedArea | format_currency('EUR')  }}</td>
 								<td>{{ house.houseRoofing.name }}</td>
 								<td>{{ house.length }}</td>
-								<td>{{ house.width }}</td>
-								<td>{{ house.height }}</td>
+
 							</tr>
 						{% else %}
 							<tr>
