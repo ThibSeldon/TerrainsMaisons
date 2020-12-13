@@ -72,6 +72,16 @@ class Allotment
      */
     private $houseRoofings;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $localUrbanPlanFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $regulationFile;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
@@ -275,6 +285,30 @@ class Allotment
     public function removeHouseRoofing(HouseRoofing $houseRoofing): self
     {
         $this->houseRoofings->removeElement($houseRoofing);
+
+        return $this;
+    }
+
+    public function getLocalUrbanPlanFile(): ?string
+    {
+        return $this->localUrbanPlanFile;
+    }
+
+    public function setLocalUrbanPlanFile(?string $localUrbanPlanFile): self
+    {
+        $this->localUrbanPlanFile = $localUrbanPlanFile;
+
+        return $this;
+    }
+
+    public function getRegulationFile(): ?string
+    {
+        return $this->regulationFile;
+    }
+
+    public function setRegulationFile(?string $regulationFile): self
+    {
+        $this->regulationFile = $regulationFile;
 
         return $this;
     }

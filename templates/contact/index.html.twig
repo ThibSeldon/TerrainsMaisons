@@ -14,8 +14,7 @@
                 <th>LastName</th>
                 <th>Email</th>
                 <th>PhoneNumber</th>
-                <th>CreatedAt</th>
-                <th>UpdtatedAt</th>
+
                 <th>Note</th>
                 <th>actions</th>
             </tr>
@@ -29,8 +28,7 @@
                 <td>{{ contact.lastName }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phoneNumber }}</td>
-                <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ contact.updtatedAt ? contact.updtatedAt|date('Y-m-d H:i:s') : '' }}</td>
+
                 <td>{{ contact.note }}</td>
                 <td>
                     <a href="{{ path('contact_show', {'id': contact.id}) }}" class ="btn btn-outline-info">show</a>

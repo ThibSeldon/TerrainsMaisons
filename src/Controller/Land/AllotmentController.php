@@ -5,6 +5,7 @@ namespace App\Controller\Land;
 use App\Entity\Land\Allotment;
 use App\Form\Land\AllotmentType;
 use App\Repository\Land\AllotmentRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,14 +32,27 @@ class AllotmentController extends AbstractController
     /**
      * @Route("/new", name="land_allotment_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, FileUploader $fileUploader): Response
     {
         $allotment = new Allotment();
         $form = $this->createForm(AllotmentType::class, $allotment);
         $form->handleRequest($request);
 
+        //Recupere les fichiers du formulaire
+        $localPlanFile = $form->get('localUrbanPlanFile')->getData();
+        $regulationFile = $form->get('regulationFile')->getData();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            //gestion des fichiers upload
+            if($localPlanFile){
+                $allotment->setLocalUrbanPlanFile( $fileUploader->upload($localPlanFile));
+            }
+            if($regulationFile){
+                $allotment->setRegulationFile($fileUploader->upload($regulationFile));
+            }
+
             $entityManager->persist($allotment);
             $entityManager->flush();
 
@@ -64,7 +78,7 @@ class AllotmentController extends AbstractController
     /**
      * @Route("/{id}/edit", name="land_allotment_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Allotment $allotment): Response
+    public function edit(Request $request, Allotment $allotment, FileUploader $fileUploader): Response
     {
 
 
@@ -72,6 +86,22 @@ class AllotmentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Recupere les fichiers du formulaire
+            $localPlanFile = $form->get('localUrbanPlanFile')->getData();
+            $regulationFile = $form->get('regulationFile')->getData();
+
+            //Traitement des fichiers
+            if($localPlanFile){
+                $fileUploader->delete($allotment->getLocalUrbanPlanFile());
+                $allotment->setLocalUrbanPlanFile($fileUploader->upload($localPlanFile));
+            }
+           if($regulationFile){
+               $fileUploader->delete($allotment->getRegulationFile());
+               $allotment->setRegulationFile( $fileUploader->upload($regulationFile));
+           }
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('land_allotment_index');
@@ -86,10 +116,13 @@ class AllotmentController extends AbstractController
     /**
      * @Route("/{id}", name="land_allotment_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Allotment $allotment): Response
+    public function delete(Request $request, Allotment $allotment, FileUploader $fileUploader): Response
     {
         if ($this->isCsrfTokenValid('delete' . $allotment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            $fileUploader->delete($allotment->getLocalUrbanPlanFile());
+            $fileUploader->delete($allotment->getRegulationFile());
+
             $entityManager->remove($allotment);
             $entityManager->flush();
         }

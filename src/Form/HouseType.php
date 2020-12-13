@@ -18,6 +18,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 
 class HouseType extends AbstractType
@@ -109,7 +110,8 @@ class HouseType extends AbstractType
                 'required' => false,
 
 
-            ]);
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

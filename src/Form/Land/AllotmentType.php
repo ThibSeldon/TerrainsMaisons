@@ -5,13 +5,15 @@ namespace App\Form\Land;
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Entity\Contact;
-use App\Form\ContactType;
+use App\Form\Contact\ContactType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class AllotmentType extends AbstractType
 {
@@ -38,6 +40,37 @@ class AllotmentType extends AbstractType
                 'by_reference' => false,
             ])
             ->add('contacts')
+
+            ->add('localUrbanPlanFile', FileType::class,[
+                'label' => 'Plan Local d\'Urbanisme',
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5000k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ]
+            ])
+            ->add('regulationFile', FileType::class,[
+                'label' => 'Reglement de lotissement',
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5000k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ]
+            ])
 
         ;
     }

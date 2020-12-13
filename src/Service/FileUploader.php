@@ -39,9 +39,10 @@ class FileUploader
 
     public function delete(string $filename = null):void
     {
-        $fullFileName = $this->getTargetDirectory().'/'.$filename;
-        $this->getFilesystem()->remove($fullFileName);
-
+        if($filename) {
+            $fullFileName = $this->getTargetDirectory() . '/' . $filename;
+            $this->getFilesystem()->remove($fullFileName);
+        }
 
     }
 

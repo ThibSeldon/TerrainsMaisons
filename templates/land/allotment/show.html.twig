@@ -55,6 +55,30 @@
             </tr>
 
             <tr>
+                <th>Plans Local d'Urbanisme</th>
+
+                <td>
+                    {% if allotment.localUrbanPlanFile %}
+                        <a href="{{ asset('uploads/plans/' ~ allotment.localUrbanPlanFile) }}">Plans Local d'Urbansime (PDF)</a>
+                    {% else %}
+                        AUCUN PLAN LOCAL DE DISPONIBLE
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Reglement de Lotissement</th>
+
+                <td>
+                    {% if allotment.regulationFile %}
+                        <a href="{{ asset('uploads/plans/' ~ allotment.regulationFile) }}">Reglement de lotissement (PDF)</a>
+                    {% else %}
+                        AUCUN REGLEMENT DE DISPONIBLE
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
                 <th>Contacts</th>
                 <td>
                     {% for contact in allotment.contacts %}
