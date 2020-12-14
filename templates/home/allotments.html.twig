@@ -31,7 +31,7 @@ Liste des Terrains pour le lottissement
     </thead>
     <tbody>
     {% for plot in allotment.plots %}
-        {% if plot.state.name == 'Disponible' or plot.state.name == 'Réservé' %}
+        {% if plot.state.name == 'Libre' or plot.state.name == 'Réservé' %}
     <tr>
       <th scope="row">{{ plot.lot }}</th>
         <td>{{ plot.surface }}</td>
