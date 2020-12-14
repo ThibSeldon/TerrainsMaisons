@@ -57,20 +57,24 @@ class PlotController extends AbstractController
      */
     public function show(Plot $plot, HouseRepository $houseRepository): Response
     {
-        $plotWidth = $plot->getFacadeWidth();
+        $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
+        $limit = $plot->getAllotment()->getPropertyLimit();
+        $plotFW = $plot->getFacadeWidth();
 
-        $propertyLimit = $plot->getAllotment()->getPropertyLimit();
-        $plotWidthLimit = $plotWidth - $propertyLimit;
-        $housesDoubleLimit= [];
-        if($plot->getAllotment()->getDoubleLimit() === true){
-            $housesDoubleLimit = $houseRepository->findExactLength($plotWidth);
+        $allotmentRoofings = $plot->getAllotment()->getHouseRoofings();
+        $roofings = [];
+        foreach ($allotmentRoofings as $arg){
+            $roofings[] = $arg;
         }
 
-        $houses = $houseRepository->findByLength($plotWidthLimit);
+
+        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);
+
+
         return $this->render('land/plot/show.html.twig', [
             'plot' => $plot,
             'houses' => $houses,
-            'housesDoubleLimit' => $housesDoubleLimit
+
         ]);
     }
 

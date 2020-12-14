@@ -82,21 +82,7 @@
                 </tr>
             {% endfor %}
             
-            <tr>
-                <th>MAISONS EN DOUBLES LIMITES</th>
-            </tr>
-            {% for houseDL in housesDoubleLimit %}
-            <tr>
-                <td>
-                    <a href="{{ path('house_show', {'id': houseDL.id }) }}" class="btn btn-light">{{ houseDL.name }}</a>
-                </td>
-                <td>{{ houseDL.livingSpace }}</td>
-                <td>{{ houseDL.length }}</td>
-                <td>{{ houseDL.sellingPriceAti | format_currency('EUR') }}</td>
-                <td>{{ (houseDL.sellingPriceATI + plot.sellingPriceAti) | format_currency('EUR') }}</td>
 
-            </tr>
-            {% endfor %}
             </tbody>
 
 
