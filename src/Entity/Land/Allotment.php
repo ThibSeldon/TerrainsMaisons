@@ -251,19 +251,6 @@ class Allotment
         return $this;
     }
 
-    public function getMinPriceAtiPlot()
-    {
-        $priceMin = [];
-        $plots = $this->getPlots();
-        foreach ($plots as $plot ){
-            $price = $plot->getSellingPriceAti();
-            $priceMin[] = $price;
-        }
-        if($priceMin){
-        return min($priceMin) . " €";
-        }
-        return "____";
-    }
 
     /**
      * @return Collection|HouseRoofing[]
@@ -312,4 +299,23 @@ class Allotment
 
         return $this;
     }
+
+    // Fonctions Personnalisees
+
+    public function getMinPriceAtiPlot():string
+    {
+        $priceMin = [];
+        $plots = $this->getPlots();
+        foreach ($plots as $plot ){
+            $price = $plot->getSellingPriceAti();
+            $priceMin[] = $price;
+        }
+        if($priceMin){
+           $rMin = min($priceMin);
+           return number_format($rMin,0,'.', ' ') . ' €' ;
+        }
+        return "____";
+    }
+
+
     }

@@ -53,6 +53,22 @@ class AllotmentController extends AbstractController
                 $allotment->setRegulationFile($fileUploader->upload($regulationFile));
             }
 
+            //Recupere les plans de vente du Formulaire embarque Plot
+            foreach ($form->get('plots') as $a)
+            {
+                //dump($a->get('salesPlan')->getData());
+                $salesPlanFile = $a->get('salesPlan')->getData();
+                //dump($a->getData());
+                $plot = $a->getData();
+                if($salesPlanFile){
+                    //$fileUploader->upload($salesPlanFile);
+                    $plot->setSalesPlan($fileUploader->upload($salesPlanFile));
+
+                }
+            }
+
+
+
             $entityManager->persist($allotment);
             $entityManager->flush();
 
@@ -91,6 +107,23 @@ class AllotmentController extends AbstractController
             $localPlanFile = $form->get('localUrbanPlanFile')->getData();
             $regulationFile = $form->get('regulationFile')->getData();
 
+            //Recupere les plans de vente du Formulaire embarque Plot
+            foreach ($form->get('plots') as $a)
+            {
+                //dump($a->get('salesPlan')->getData());
+                $salesPlanFile = $a->get('salesPlan')->getData();
+                //dump($a->getData());
+                $plot = $a->getData();
+                if($salesPlanFile){
+                    //$fileUploader->upload($salesPlanFile);
+                    $plot->setSalesPlan($fileUploader->upload($salesPlanFile));
+
+                }
+            }
+
+
+
+
             //Traitement des fichiers
             if($localPlanFile){
                 $fileUploader->delete($allotment->getLocalUrbanPlanFile());
@@ -122,6 +155,10 @@ class AllotmentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $fileUploader->delete($allotment->getLocalUrbanPlanFile());
             $fileUploader->delete($allotment->getRegulationFile());
+
+            foreach ($allotment->getPlots() as $plot){
+                $fileUploader->delete($plot->getSalesPlan());
+            }
 
             $entityManager->remove($allotment);
             $entityManager->flush();

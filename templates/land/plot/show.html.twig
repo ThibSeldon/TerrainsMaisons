@@ -34,6 +34,10 @@
                 <td>{{ plot.sellingPriceAti | format_currency('EUR') }}</td>
             </tr>
             <tr>
+                <th>Plan de vente</th>
+                <td><a href="{{ asset('uploads/plans/'~plot.salesPlan) }}">Plan de vente</a></td>
+            </tr>
+            <tr>
                 <th>Date de creation</th>
                 <td>{{ plot.createdAt ? plot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>

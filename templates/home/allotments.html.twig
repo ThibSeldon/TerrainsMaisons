@@ -31,6 +31,7 @@ Liste des Terrains pour le lottissement
     </thead>
     <tbody>
     {% for plot in allotment.plots %}
+        {% if plot.state.name == 'Disponible' or plot.state.name == 'Réservé' %}
     <tr>
       <th scope="row">{{ plot.lot }}</th>
         <td>{{ plot.surface }}</td>
@@ -42,8 +43,9 @@ Liste des Terrains pour le lottissement
 
         </td>
 
-        <td><a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-info">Voir les Maisons</a></td>
+        <td><a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-info">Voir les Maisons Compatibles</a></td>
     </tr>
+        {% endif %}
     {% endfor %}
     </tbody>
 </table>

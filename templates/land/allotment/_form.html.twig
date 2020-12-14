@@ -5,8 +5,8 @@
 {{ form_row(form.propertyLimit) }}
 {{ form_row(form.doubleLimit) }}
 {{ form_row(form.houseRoofings, {'attr': {'class': 'select2-multiple'}}) }}
-{{ form_row(form.localUrbanPlanFile, {'attr': {'placeholder': 'Uploder Plan Local D urbanisme'}}) }}
-{{ form_row(form.regulationFile, {'attr': {'placeholder': 'Uploder le reglement d urbanisme'}}) }}
+{{ form_row(form.localUrbanPlanFile, {'attr': {'placeholder': 'Uploder plan local d\'urbanisme'}}) }}
+{{ form_row(form.regulationFile, {'attr': {'placeholder': 'Uploder le reglement d\'urbanisme'}}) }}
 {{ form_row(form.contacts, {'attr': {'class': 'select2-multiple'}}) }}
 
 
@@ -17,7 +17,8 @@
     {{ form_row(plot.surface) }}
     {{ form_row(plot.facadeWidth) }}
     {{ form_row(plot.sellingPriceAti) }}
-    {{ form_row(plot.state) }}
+    {{ form_row(plot.state)}}
+    {{ form_row(plot.salesPlan,{'attr': {'placeholder': 'Uploder plan de vente'}}) }}
 </li>
     {% endfor %}
 </ul>
@@ -41,6 +42,15 @@
 $(document).ready(function() {
 $('.select2-multiple').select2();
 });
+</script>
+
+<script>
+    $('.custom-file-input').on('change', function(event) {
+        let inputFile = event.currentTarget;
+        $(inputFile).parent()
+            .find('.custom-file-label')
+            .html(inputFile.files[0].name);
+    });
 </script>
 
 <script src="{{ asset('js/allotmentLotForm.js') }}"></script>

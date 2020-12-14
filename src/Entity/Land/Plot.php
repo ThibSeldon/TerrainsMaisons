@@ -59,6 +59,11 @@ class Plot
      */
     private ?State $state;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $salesPlan;
+
 
 
     public function __toString():string
@@ -175,6 +180,18 @@ class Plot
     public function setState(?State $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getSalesPlan(): ?string
+    {
+        return $this->salesPlan;
+    }
+
+    public function setSalesPlan(?string $salesPlan): self
+    {
+        $this->salesPlan = $salesPlan;
 
         return $this;
     }

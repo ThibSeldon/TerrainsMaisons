@@ -3,6 +3,8 @@
 {{ form_row(form.surface) }}
 {{ form_row(form.facadeWidth) }}
 {{ form_row(form.sellingPriceAti) }}
+{{ form_row(form.state) }}
+{{ form_row(form.salesPlan, {'attr': {'placeholder': 'Uploder le plan de vente'}}) }}
 {{ form_row(form.allotment) }}
     <button class="btn btn-success">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

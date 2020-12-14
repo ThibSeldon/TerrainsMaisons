@@ -69,6 +69,7 @@ class HomeController extends AbstractController
      */
     public function allotment(Allotment $allotment): Response
     {
+
         return $this->render('home/allotments.html.twig', [
             'allotment' => $allotment,
         ]);
