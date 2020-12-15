@@ -14,12 +14,14 @@ class FileUploader
     private $targetDirectory;
     private $slugger;
     private $filesystem;
+    private $picturesDirectory;
 
-    public function __construct($targetDirectory, SluggerInterface $slugger, Filesystem $filesystem)
+    public function __construct($targetDirectory, $picturesDirectory, SluggerInterface $slugger, Filesystem $filesystem)
     {
         $this->targetDirectory = $targetDirectory;
         $this->slugger = $slugger;
         $this->filesystem = $filesystem;
+        $this->picturesDirectory = $picturesDirectory;
     }
 
     public function upload(UploadedFile $file): string
@@ -46,12 +48,42 @@ class FileUploader
 
     }
 
+    public function uploadPicture(UploadedFile $file): string
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $this->slugger->slug($originalFilename);
+        $fileName = $safeFilename.'-'.uniqid('', true).'.'.$file->guessExtension();
+
+        try {
+            $file->move($this->getPictureDirectory(), $fileName);
+        } catch (FileException $e) {
+            // ... handle exception if something happens during file upload
+        }
+
+        return $fileName;
+    }
+
+    public function deletePicture(string $filename = null):void
+    {
+        if($filename) {
+            $fullFileName = $this->getPictureDirectory() . '/' . $filename;
+            $this->getFilesystem()->remove($fullFileName);
+        }
+
+    }
+
     public function getTargetDirectory()
     {
         return $this->targetDirectory;
+    }
+    public function getPictureDirectory()
+    {
+        return $this->picturesDirectory;
     }
     public function getFilesystem()
     {
         return $this->filesystem;
     }
+
+
 }

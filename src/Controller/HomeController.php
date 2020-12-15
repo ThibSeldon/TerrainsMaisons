@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     public function index(AllotmentRepository $allotmentRepository): Response
     {
 
-        $allotments = $allotmentRepository->findBy(['isValid' => true], ['name' => 'ASC']);
+        $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
 
         return $this->render('home/index.html.twig', [
 

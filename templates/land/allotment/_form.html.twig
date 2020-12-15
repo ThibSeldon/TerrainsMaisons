@@ -1,4 +1,12 @@
+
+
 {{ form_start(form) }}
+
+<div class="d-flex d-row">
+
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+
+</div>
 {{ form_row(form.isValid) }}
 {{ form_row(form.name) }}
 {{ form_row(form.postalCode) }}
@@ -26,7 +34,7 @@
 </li>
     {% endfor %}
 </ul>
-<div class="d-flex flex-column ">
+<div class="d-flex flex-column">
 
         <div class="">
     <ul class="plots" data-prototype="{{ form_widget(form.plots.vars.prototype)|e('html_attr') }}"></ul>

@@ -34,3 +34,4 @@ services:
     App\Service\FileUploader:
         arguments:
             $targetDirectory: '%plans_directory%'
+            $picturesDirectory: '%pictures_directory%'

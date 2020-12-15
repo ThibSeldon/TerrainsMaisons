@@ -60,12 +60,9 @@ class HouseController extends AbstractController
             //Gestion Pictures
             $picturesFile = $form->get('pictures')->getData();
             foreach ($picturesFile as $picture) {
-                $fileName = uniqid('', true).'.'.$picture->guessExtension();
-                $picture->move(
-                    $this->getParameter('pictures_directory'), $fileName
-                );
+
                 $pict = new Picture();
-                $pict->setName($fileName);
+                $pict->setName($fileUploader->uploadPicture($picture));
                 $house->addPicture($pict);
             }
 
@@ -92,15 +89,15 @@ class HouseController extends AbstractController
      * @Route("/delete/picture/{id}", name="house_delete_picture", methods={"DELETE"})
      *
      */
-    public function deletePicture(Picture $picture, Request $request){
+    public function deletePicture(Picture $picture, Request $request, FileUploader $fileUploader){
         $data = json_decode($request->getContent(), true);
 
         // On vérifie si le token est valide
         if($this->isCsrfTokenValid('delete'.$picture->getId(), $data['_token'])){
-            // On récupère le nom de l'image
-            $nom = $picture->getName();
+            // On récupère le chemin de l'image
+            $picturePath = $picture->getName();
             // On supprime le fichier
-            unlink($this->getParameter('pictures_directory').'/'.$nom);
+            $fileUploader->deletePicture($picturePath);
 
             // On supprime l'entrée de la base
             $em = $this->getDoctrine()->getManager();
@@ -142,12 +139,9 @@ class HouseController extends AbstractController
             //Gestion Pictures
             $picturesFile = $form->get('pictures')->getData();
             foreach ($picturesFile as $picture) {
-                $fileName = uniqid('', true).'.'.$picture->guessExtension();
-                $picture->move(
-                    $this->getParameter('pictures_directory'), $fileName
-                );
+
                 $pict = new Picture();
-                $pict->setName($fileName);
+                $pict->setName($fileUploader->uploadPicture($picture));
                 $house->addPicture($pict);
             }
 
