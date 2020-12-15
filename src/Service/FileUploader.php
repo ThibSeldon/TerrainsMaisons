@@ -50,6 +50,7 @@ class FileUploader
 
     public function uploadPicture(UploadedFile $file): string
     {
+
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
         $fileName = $safeFilename.'-'.uniqid('', true).'.'.$file->guessExtension();
@@ -61,6 +62,7 @@ class FileUploader
         }
 
         return $fileName;
+
     }
 
     public function deletePicture(string $filename = null):void

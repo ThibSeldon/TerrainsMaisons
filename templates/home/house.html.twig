@@ -10,10 +10,11 @@ Modèle {{ house.name }}
         <div class="col-sm-12 d-flex flex-column justify-content-center align-items-center ">
             <h2>{{ house.name }} - {{ house.roomNumber }} Chambres</h2>
             <h3>A Partir de {{ house.sellingPriceAti | format_currency('EUR') }}</h3>
+
         </div>
     </div>
 <div class="row">
-    <div class="col-sm-8 d-flex flex-column justify-content-center align-content-center">
+    <div class=" col-12 col-xl-8 d-flex flex-column justify-content-center align-content-center">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         {% if house.pictures[0] is defined %}
@@ -40,7 +41,7 @@ Modèle {{ house.name }}
 </div>
     </div>
 
-    <div class="col-sm-4">
+    <div class=" col-12 col-xl-4">
         <h2>Caractéristiques de la maison</h2>
         <table class="table table-striped">
             <tbody>
@@ -78,7 +79,9 @@ Modèle {{ house.name }}
             </tr>
             <tr>
                 <th>Construteur</th>
-                <td>{{ house.houseBrand }}</td>
+                <td><a href="{{ house.houseBrand.url }}" target="_blank">
+                        <img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="Logo {{ house.houseBrand.name }}" width="250">
+                    </a></td>
             </tr>
 
             </tbody>
@@ -89,10 +92,10 @@ Modèle {{ house.name }}
     </div>
 
 </div>
-    <div class="container mt-4 bg-light">
-        <div class="row d-flex flex-row align-items-center"></div>
+    <div class="row d-flex flex-column bg-light m-lg-5 align-items-center">
 
-        <h5>En Savoir Plus</h5>
+          <h2 class="pt-5 pb-1">En Savoir Plus</h2>
+        <div class="col-12 col-lg-6">
         <!-- FORMULAIRE DE CONTACT HUBSPOT -->
         <!--[if lte IE 8]>
         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
@@ -104,6 +107,7 @@ Modèle {{ house.name }}
                 formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
             });
         </script>
+        </div>
+    </div>
 
-</div>
 {% endblock %}

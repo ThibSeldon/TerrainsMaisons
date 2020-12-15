@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HouseBrand index{% endblock %}
+
+{% block body %}
+    <h1>HouseBrand index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Logo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for house_brand in house_brands %}
+            <tr>
+                <td>{{ house_brand.id }}</td>
+                <td>{{ house_brand.name }}</td>
+                <td><a href="{{ house_brand.url }}" target="_blank">{{ house_brand.url }}</a></td>
+                <td><img src="{{ asset('uploads/pictures/'~house_brand.logo) }}" alt="" width="250"></td>
+                <td>
+                    <a href="{{ path('admin_house_house_brand_show', {'id': house_brand.id}) }}">show</a>
+                    <a href="{{ path('admin_house_house_brand_edit', {'id': house_brand.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_house_house_brand_new') }}">Create new</a>
+{% endblock %}

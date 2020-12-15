@@ -5,8 +5,8 @@
 {% block body %}
     <script src="{{ asset('js/filterTable01.js') }}"></script>
 
-    <div class="row d-flex align-items-center">
-<div class="col-8">
+    <div class="row d-flex align-items-center justify-content-center">
+<div class="col-12 col-lg-8 order-1 order-lg-0">
     <div class="jumbotron ">
         <h1 class="display-4">TERRAINS MAISONS . COM</h1>
         <p class="lead">Un seul endroit pour trouver votre terrain et votre maison neuve !</p>
@@ -14,30 +14,30 @@
         <p>Retrouvez toutes les informations sur les terrains et les maisons</p>
 
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
+            <a class="btn btn-primary btn-lg" href="#form-search" role="button">Rechercher un Lotissement</a>
         </p>
     </div>
 </div>
-    <div class="col-4">
+    <div class="col-12 col-lg-4 d-flex justify-content-center order-0 order-lg-1">
         <img src="{{ asset('images/logo_terrains_maisons.png') }}" alt="">
     </div>
 
 </div>
     
-    <div class="row">
-    <div class="col-sm-4"></div>
-<div class="col-sm-4">
-<form>
-    <div class="form-group">
+    <div class="row d-flex justify-content-center">
 
+<div class="col-6">
+<form>
+    <div class="form-group" id="form-search">
 
             <label for="iIdP">Ma Recherche par Ville</label>
             <input type="text" class="form-control" placeholder="Recherche une ville ... " id="iIdP" onkeyup="searchTable('iIdP', 'allotments-list')">
 
     </div>
 </form>
+
     </div>
-        <div class="col-sm-4"></div>
+
     </div>
     <table class="table col-sm-12" id="allotments-list">
         <thead class="thead-dark">

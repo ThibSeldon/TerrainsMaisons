@@ -1,77 +1,85 @@
 {% extends 'base_all.html.twig' %}
 
 {% block title %}
-Liste des Maisons pour le Terrain
+    Liste des Maisons pour le Terrain
 {% endblock %}
 
 {% block body %}
 
     <div class="jumbotron">
-        <h1 class="display-4">Lot n°: {{ plot.lot }} - Surface : {{ plot.surface}} Prix : {{plot.sellingPriceAti | format_currency('EUR')}}</h1>
+        <h1 class="display-4">Lot n°: {{ plot.lot }} - Surface : {{ plot.surface }} Prix
+            : {{ plot.sellingPriceAti | format_currency('EUR') }}</h1>
         <h2>{{ plot.allotment.name }}</h2>
-        <p class="lead">Description du Terrain</p>
+        <p class="lead">Découvrez les Maisons Neuves pour de Programme</p>
         <hr class="my-4">
-        <p>Vous trouverez ici toutes les maisons compatibles. Sous réserves de validation par nos partenaires foncier. </p>
-        <p>Outil et Algorithmes en BETA merci de nous sginaler les incohérence</p>
+        <p>Vous trouverez ici toutes les maisons compatibles. Sous réserves de validation par nos partenaires
+            foncier. </p>
+        <p>Outil et Algorithmes en BETA merci de nous signaler les incohérences</p>
 
     </div>
 
-    <table class="table col-sm-12">
+    <table class="table col-12">
         <thead class="thead-dark">
         <tr>
             <th scope="col" class="">Visuel</th>
-            <th scope="col" class="" >Modèle</th>
+            <th scope="col" class="">Modèle</th>
             <th scope="col" class="">Surface Habitable</th>
             <th scope="col" class="">Nombre de Chambre</th>
-            <th scope="col" class="">Prix avec le terrain</th>
-            <th></th>
+            <th scope="col" class="">Prix avec terrain</th>
+            <th>Constructeur</th>
+            <th>En Savoir Plus</th>
 
         </tr>
         </thead>
         <tbody>
         {% for house in houses %}
-        <tr>
-            <td>
+            <tr>
+                <td>
 
 
-                {% if house.pictures[0] is defined %}
-                    <img src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}" width="300" class="" alt="">
+                    {% if house.pictures[0] is defined %}
+                        <img src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}" width="200" alt="">
                     {% else %}
-                        <img src="{{ asset('images/house_base.jpeg') }}" width="300" class="" alt="">
-                {% endif %}
+                        <img src="{{ asset('images/house_base.jpeg') }}" width="300" alt="{{ house.name }}">
+                    {% endif %}
 
-            </td>
-            <td>{{ house.name }}</td>
-            <td>{{ house.livingSpace }}</td>
-            <td>{{ house.roomNumber }}</td>
-            <td>{{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}</td>
-            <td><a href="{{ path('all_house_show', {'id': house.id}) }}" class="btn btn-outline-info">Voir la Maison</a></td>
-        </tr>
+                </td>
+                <td>{{ house.name }}</td>
+                <td>{{ house.livingSpace }} m2</td>
+                <td>{{ house.roomNumber }} </td>
+                <td>{{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}</td>
+                <td><img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="" width="250"></td>
+                <td><a href="{{ path('all_house_show', {'id': house.id}) }}" class="btn btn-outline-info">Voir la
+                        Maison</a></td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
 
 
-    <span class="border-1">
-<h2>CONTACTEZ NOUS</h2>
-    <!-- FORMULAIRE DE CONTACT HUBSPOT -->
-    <!--[if lte IE 8]>
-    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-    <![endif]-->
-    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-    <script>
-        hbspt.forms.create({
-            portalId: "5313721",
-            formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
-        });
-    </script>
-</span>
+    <div class="row d-flex flex-column justify-content-center align-items-center bg-light m-5">
+        <h2 class="pt-5">En savoir plus</h2>
 
+        <div class="col-12 col-lg-6 ">
+            <!-- FORMULAIRE DE CONTACT HUBSPOT -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "5313721",
+                    formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
+                });
+            </script>
+        </div>
+    </div>
 
     <style>
         .table td, .table th {
             vertical-align: middle;
         }
+
         .table td {
             padding: 5px;
             margin: 5px;
