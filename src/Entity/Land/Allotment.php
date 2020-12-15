@@ -82,6 +82,11 @@ class Allotment
      */
     private $regulationFile;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isValid;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
@@ -315,6 +320,18 @@ class Allotment
            return number_format($rMin,0,'.', ' ') . ' €' ;
         }
         return "____";
+    }
+
+    public function getIsValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(bool $isValid): self
+    {
+        $this->isValid = $isValid;
+
+        return $this;
     }
 
 

@@ -32,6 +32,9 @@ class AllotmentType extends AbstractType
             ->add('houseRoofings', null, [
                 'label' => 'Type de toiture'
             ])
+            ->add('isValid', null,[
+                'label' => 'Programme Valide ?'
+            ])
             ->add('plots', CollectionType::class, [
                 'entry_type' => PlotEmbeddedType::class,
                 'entry_options' => ['label' => false],

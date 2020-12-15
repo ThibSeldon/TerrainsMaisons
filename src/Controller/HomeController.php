@@ -20,14 +20,13 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
-     * @param HouseRepository $houseRepository
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    public function index(HouseRepository $houseRepository, AllotmentRepository $allotmentRepository): Response
+    public function index(AllotmentRepository $allotmentRepository): Response
     {
 
-        $allotments = $allotmentRepository->findAll();
+        $allotments = $allotmentRepository->findBy(['isValid' => true], ['name' => 'ASC']);
 
         return $this->render('home/index.html.twig', [
 
