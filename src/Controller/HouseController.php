@@ -196,7 +196,7 @@ class HouseController extends AbstractController
             $filePictures = $house->getPictures();
 
             foreach ($filePictures as $filePicture) {
-                unlink($this->getParameter('pictures_directory').'/'.$filePicture->getName());
+                $fileUploader->deletePicture($filePicture->getName());
             }
 
             if($file)
