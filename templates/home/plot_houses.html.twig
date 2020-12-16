@@ -24,8 +24,8 @@
 
 
                     {% if house.pictures[0] is defined %}
-                        <img class="card-img-top" src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}"
-                             alt="{{ house.name }}">
+                        <a href="{{ path('all_house_show', {'id': house.id}) }}"> <img class="card-img-top" src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}"
+                             alt="{{ house.name }}"></a>
                     {% else %}
                         <img class="card-img-top" src="{{ asset('images/house_base.jpeg') }}" alt="{{ house.name }}">
                     {% endif %}
