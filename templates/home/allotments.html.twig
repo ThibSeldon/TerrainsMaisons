@@ -35,7 +35,7 @@ Liste des Terrains pour le lottissement
     <tr>
       <th scope="row">{{ plot.lot }}</th>
         <td>{{ plot.surface }}</td>
-        <td>{{ plot.sellingPriceAti | format_currency('EUR')}}</td>
+        <td>{{ plot.sellingPriceAti | number_format(0, '', ' ')}} €</td>
         <td>
             {% if plot.state %}
             {{ plot.state.name }}
