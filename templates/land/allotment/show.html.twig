@@ -55,6 +55,18 @@
             </tr>
 
             <tr>
+                <th>Plans du Programme</th>
+
+                <td>
+                    {% if allotment.allotmentPlanFile %}
+                        <a href="{{ asset('uploads/pictures/' ~ allotment.allotmentPlanFile) }}">Plans du Lotissement</a>
+                    {% else %}
+                        AUCUN PLAN DE DISPONIBLE
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
                 <th>Plans Local d'Urbanisme</th>
 
                 <td>

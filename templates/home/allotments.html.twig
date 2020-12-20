@@ -16,7 +16,13 @@ Liste des Terrains pour le lottissement
             <a class="btn btn-primary btn-lg" href="#thead" role="button">En savoir plus</a>
         </p>
     </div>
-
+    {% if allotment.allotmentPlanFile %}
+    <div class="row">
+        <div class="col">
+            <img src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}" class="img-fluid" alt="{{ allotment.name }}">
+        </div>
+    </div>
+    {% endif %}
 
     <h4>Liste des terrains disponibles </h4>
 <table class="table">

@@ -41,6 +41,7 @@ class AllotmentController extends AbstractController
         //Recupere les fichiers du formulaire
         $localPlanFile = $form->get('localUrbanPlanFile')->getData();
         $regulationFile = $form->get('regulationFile')->getData();
+        $allotmentPlanFile = $form->get('allotmentPlanFile')->getData();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -52,6 +53,10 @@ class AllotmentController extends AbstractController
             if($regulationFile){
                 $allotment->setRegulationFile($fileUploader->upload($regulationFile));
             }
+            if($allotmentPlanFile){
+                $allotment->setAllotmentPlanFile($fileUploader->uploadPicture($allotmentPlanFile));
+            }
+
 
             //Recupere les plans de vente du Formulaire embarque Plot
             foreach ($form->get('plots') as $a)
@@ -106,6 +111,7 @@ class AllotmentController extends AbstractController
             //Recupere les fichiers du formulaire
             $localPlanFile = $form->get('localUrbanPlanFile')->getData();
             $regulationFile = $form->get('regulationFile')->getData();
+            $allotmentPlanFile = $form['allotmentPlanFile']->getData();
 
             //Recupere les plans de vente du Formulaire embarque Plot
             foreach ($form->get('plots') as $a)
@@ -133,7 +139,10 @@ class AllotmentController extends AbstractController
                $fileUploader->delete($allotment->getRegulationFile());
                $allotment->setRegulationFile( $fileUploader->upload($regulationFile));
            }
-
+           if($allotmentPlanFile){
+               $fileUploader->deletePicture($allotment->getAllotmentPlanFile());
+               $allotment->setAllotmentPlanFile($fileUploader->uploadPicture($allotmentPlanFile));
+           }
 
             $this->getDoctrine()->getManager()->flush();
 
@@ -155,6 +164,7 @@ class AllotmentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $fileUploader->delete($allotment->getLocalUrbanPlanFile());
             $fileUploader->delete($allotment->getRegulationFile());
+            $fileUploader->deletePicture(($allotment->getAllotmentPlanFile()));
 
             foreach ($allotment->getPlots() as $plot){
                 $fileUploader->delete($plot->getSalesPlan());

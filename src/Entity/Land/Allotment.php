@@ -87,6 +87,11 @@ class Allotment
      */
     private $isValid;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $allotmentPlanFile;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
@@ -330,6 +335,18 @@ class Allotment
     public function setIsValid(bool $isValid): self
     {
         $this->isValid = $isValid;
+
+        return $this;
+    }
+
+    public function getAllotmentPlanFile(): ?string
+    {
+        return $this->allotmentPlanFile;
+    }
+
+    public function setAllotmentPlanFile(?string $allotmentPlanFile): self
+    {
+        $this->allotmentPlanFile = $allotmentPlanFile;
 
         return $this;
     }

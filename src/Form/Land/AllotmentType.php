@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 class AllotmentType extends AbstractType
 {
@@ -73,6 +74,23 @@ class AllotmentType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid PDF document',
                     ])
                 ]
+            ])
+
+            ->add('allotmentPlanFile', FileType::class, [
+                'label' => 'Plan du Lotissement',
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new Image([
+                        'maxSize' => '5000k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' =>'Please upload a valid Picture'
+                    ])
+                ]
+
             ])
 
         ;
