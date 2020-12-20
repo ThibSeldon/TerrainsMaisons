@@ -47,7 +47,7 @@
                             </li>
                             <li>
                                 Prix du projet
-                                : {{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}
+                                : {{ (house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ')  }} €
                             </li>
 
                         </ul>

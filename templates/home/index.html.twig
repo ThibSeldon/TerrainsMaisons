@@ -45,7 +45,6 @@
         <tr>
             <th scope="col">Programme</th>
             <th scope="col">Ville</th>
-            <th scope="col">Code Postal</th>
             <th scope="col">Terrains</th>
             <th scope="col">à partir de</th>
 
@@ -55,8 +54,8 @@
             {% for allotment in allotments %}
             <tr>
                 <th scope="row"><a href="{{ path('all_allotment_show', {'id': allotment.id}) }}">{{ allotment.name }}</a></th>
-                <td>{{ allotment.city }}</td>
-                <td>{{ allotment.postalCode }}</td>
+                <td>{{ allotment.city }} - {{ allotment.postalCode }}</td>
+
                 <td> <span class="badge badge-success">{{ allotment.plots| length }}</span></td>
 
                 <td> {{ allotment.getMinPriceAtiPlot }}</td>

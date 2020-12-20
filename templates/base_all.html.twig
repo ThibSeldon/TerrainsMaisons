@@ -25,7 +25,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{{ path('home') }}">Programmes <span class="sr-only">(current)</span></a>
+            {% if app.user %}
             <a class="nav-item nav-link" href="{{ path('house_index') }}">Admin</a>
+            {% endif %}
 
         </div>
     </div>
