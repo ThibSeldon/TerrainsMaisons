@@ -20,7 +20,7 @@
     </div>
     <div class="row">
         {% for house in houses %}
-            <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4">
+            <div class="d-flex align-items-stretch col-12 col-lg-6 col-xl-4">
                 <div class="card">
 
 
@@ -28,7 +28,9 @@
                         <a href="{{ path('all_house_show', {'id': house.id}) }}"> <img class="card-img-top" src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}"
                              alt="{{ house.name }}"></a>
                     {% else %}
+                    <a href="{{ path('all_house_show', {'id': house.id}) }}">
                         <img class="card-img-top" src="{{ asset('images/house_base.jpeg') }}" alt="{{ house.name }}">
+                    </a>
                     {% endif %}
 
                     <div class="card-body">
