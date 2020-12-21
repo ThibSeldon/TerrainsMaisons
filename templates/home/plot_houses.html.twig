@@ -15,7 +15,7 @@
         <hr class="my-4">
         <p>Vous trouverez ici toutes les maisons compatibles. Sous réserves de validation par nos partenaires
             foncier. </p>
-        <p>Outil et Algorithmes en BETA merci de nous signaler les incohérences</p>
+        <p>Outils et Algorithmes en BETA merci de nous signaler les incohérences</p>
 
     </div>
     <div class="row">
@@ -25,42 +25,50 @@
 
 
                     {% if house.pictures[0] is defined %}
-                        <a href="{{ path('all_house_show', {'id': house.id}) }}"> <img class="card-img-top" src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}"
-                             alt="{{ house.name }}"></a>
+                        <a href="{{ path('all_house_show', {'id': house.id}) }}"> <img class="card-img-top"
+                                                                                       src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}"
+                                                                                       alt="{{ house.name }}"></a>
                     {% else %}
-                    <a href="{{ path('all_house_show', {'id': house.id}) }}">
-                        <img class="card-img-top" src="{{ asset('images/house_base.jpeg') }}" alt="{{ house.name }}">
-                    </a>
+                        <a href="{{ path('all_house_show', {'id': house.id}) }}">
+                            <img class="card-img-top" src="{{ asset('images/house_base.jpeg') }}"
+                                 alt="{{ house.name }}">
+                        </a>
                     {% endif %}
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ house.name }}</h5>
-                        <ul class="card-text">
-                            <li>
+                        <h3 class="card-title">Prix du projet
+                            : {{ (house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ') }} € </h3>
+                        <h5 class="card-subtitle text-muted">{{ house.name }}</h5>
+
+
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">
                                 Surface Habitable : {{ house.livingSpace }} m2
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 {{ house.roomNumber }} Chambres
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 {{ house.houseModel }}
                             </li>
-                            <li>
+                            <li class="list-group-item">
                                 {{ house.houseRoofing }}
                             </li>
-                            <li>
-                                Prix du projet
-                                : {{ (house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ')  }} €
+                            <li class="list-group-item ">
+                                <img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="" width="250"
+                                     class="img-fluid">
                             </li>
-
+                            <li class="list-group-item">
+                                <a href="{{ path('all_house_show', {'id': house.id}) }}"
+                                   class="btn btn-secondary btn-block">Voir la
+                                    Maison</a>
+                            </li>
                         </ul>
-                        <p class="card-text d-flex justify-content-center">
-                            <img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="" width="150">
-                        </p>
+
 
                     </div>
-                    <a href="{{ path('all_house_show', {'id': house.id}) }}" class="btn btn-secondary">Voir la
-                        Maison</a>
+
                 </div>
             </div>
         {% endfor %}
