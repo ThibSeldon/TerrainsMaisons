@@ -100,7 +100,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Code Postal :{{ allotment.postalCode }} </li>
                 <li class="list-group-item"><span class="badge badge-success">{{ allotment.plots| length }}</span> Terrains Libres</li>
-                <li class="list-group-item">à Parti de {{ allotment.getMinPriceAtiPlot }}</li>
+                <li class="list-group-item">à Partir de {{ allotment.getMinPriceAtiPlot }}</li>
             </ul>
             <div class="card-body">
                 <a href="{{ path('all_allotment_show', {'id': allotment.id}) }}" class="btn btn-outline-primary">Voir Les Terrains</a>
