@@ -7,6 +7,7 @@ use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
+use App\Repository\Land\PlotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -66,11 +67,12 @@ class HomeController extends AbstractController
      * @param Allotment $allotment
      * @return Response
      */
-    public function allotment(Allotment $allotment): Response
+    public function allotment(Allotment $allotment, PlotRepository $plotRepository): Response
     {
-
+        $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
         return $this->render('home/allotments.html.twig', [
             'allotment' => $allotment,
+            'plots' => $plots,
         ]);
     }
 

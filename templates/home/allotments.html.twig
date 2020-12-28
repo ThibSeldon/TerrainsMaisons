@@ -1,7 +1,7 @@
 {% extends 'base_all.html.twig' %}
 
 {% block title %}
-Liste des Terrains pour le lottissement
+Liste des Terrains pour le lotissement
 {% endblock %}
 
 {% block body %}
@@ -55,6 +55,33 @@ Liste des Terrains pour le lottissement
     {% endfor %}
     </tbody>
 </table>
+
+
+ <div class="row">
+
+        {% for plot in plots %}
+            {% if plot.state.name == 'Libre' or plot.state.name == 'Réservé' %}
+            <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
+                <div class="card w-100" id="allotmentCardList">
+                    <div class="card-header"> Lot n° {{ plot.lot }}</div>
+                    <div class="card-body">
+
+                        <h5 class="card-title">Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ')}} €</h5>
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Surface: {{ plot.surface }} m2 </li>
+                        <li class="list-group-item"> Etat: {{ plot.state.name }} </li>
+
+                    </ul>
+                    <div class="card-body">
+                        <a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-primary">Maisons Compatibles</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 
 
 

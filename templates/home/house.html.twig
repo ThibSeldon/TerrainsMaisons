@@ -92,22 +92,24 @@ Modèle {{ house.name }}
     </div>
 
 </div>
-    <div class="row bg-light">
-        <div class="col-12 col-xl-8 d-flex flex-column justify-content-center align-items-center">
-          <h2 class="pt-5 pb-1">En Savoir Plus</h2>
 
-        <!-- FORMULAIRE DE CONTACT HUBSPOT -->
-        <!--[if lte IE 8]>
-        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-        <![endif]-->
-        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-        <script>
-            hbspt.forms.create({
-                portalId: "5313721",
-                formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
-            });
-        </script>
-      </div>
+    <div class="row d-flex flex-column justify-content-center align-items-center bg-light m-5">
+        <h2 class="pt-5 col-12 col-lg-6">En savoir plus</h2>
+
+        <div class="col-12 col-lg-6 ">
+            <!-- FORMULAIRE DE CONTACT HUBSPOT -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "5313721",
+                    formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
+                });
+            </script>
+        </div>
     </div>
+
 
 {% endblock %}
