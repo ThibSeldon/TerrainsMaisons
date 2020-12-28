@@ -7,10 +7,10 @@
 {% block body %}
 
     <div class="jumbotron">
-        <h1 class="display-4">{{ plot.allotment.name }} Lot n°: {{ plot.lot }}  </h1>
-
-        <h2>Prix: {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h2>
-        <h2>Surface : {{ plot.surface }} m2 </h2>
+        <h1 class="">{{ plot.allotment.name }}</h1>
+        <h2>Lot n°: {{ plot.lot }} </h2>
+        <h3>Prix: {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
+        <h3>Surface : {{ plot.surface }} m2 </h3>
         <p class="lead">Découvrez les Maisons Neuves pour de Programme</p>
         <hr class="my-4">
         <p>Vous trouverez ici toutes les maisons compatibles. Sous réserves de validation par nos partenaires

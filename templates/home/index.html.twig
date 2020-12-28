@@ -7,8 +7,9 @@
 
     <div class="row d-flex align-items-center justify-content-center">
 <div class="col-12 col-lg-8 order-1 order-lg-0">
-    <div class="jumbotron ">
-        <h1 class="display-4">TERRAINS MAISONS . COM</h1>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="">TERRAINS MAISONS . COM</h1>
         <p class="lead">Un seul endroit pour trouver votre terrain et votre maison neuve !</p>
         <hr class="my-4">
         <p>Retrouvez toutes les informations sur les terrains et les maisons</p>
@@ -16,6 +17,7 @@
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="#form-search" role="button">Rechercher un Lotissement</a>
         </p>
+        </div>
     </div>
 </div>
     <div class="col-12 col-lg-4 d-flex justify-content-center order-0 order-lg-1">
@@ -24,9 +26,9 @@
 
 </div>
     
-    <div class="row d-flex justify-content-center">
+    {#<div class="row d-flex justify-content-center">
 
-<div class="col-6">
+<div class="col-12 col-lg-6">
 <form>
     <div class="form-group" id="form-search">
 
@@ -39,8 +41,24 @@
     </div>
 
     </div>
-    <div class="table-responsive">
-    <table class="table" id="allotments-list">
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-12 col-lg-6">
+            <form>
+                <div class="form-group" id="form-search">
+
+                    <label for="inputCard">Ma Recherche par Ville</label>
+                    <input type="text" class="form-control" placeholder="Recherche une ville ... " id="inputCard" onkeyup="searchTable('inputCard', 'allotmentsCardList')">
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+<div class="col-12 ">
+    <table class="table table-responsive-xl" id="allotments-list">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Programme</th>
@@ -65,9 +83,32 @@
             {% endfor %}
         </tbody>
     </table>
-    </div>
+</div>#}
+
+<div class="row">
 
 
+    {% for allotment in allotments %}
+<div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
+        <div class="card w-100" id="allotmentCardList">
+            <div class="card-header"> {{ allotment.name }}</div>
+            <div class="card-body">
+
+                <h5 class="card-title">{{ allotment.city }}</h5>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Code Postal :{{ allotment.postalCode }} </li>
+                <li class="list-group-item"><span class="badge badge-success">{{ allotment.plots| length }}</span> Terrains Libres</li>
+                <li class="list-group-item">à Parti de {{ allotment.getMinPriceAtiPlot }}</li>
+            </ul>
+            <div class="card-body">
+                <a href="{{ path('all_allotment_show', {'id': allotment.id}) }}" class="btn btn-outline-primary">Voir Les Terrains</a>
+            </div>
+        </div>
+</div>
+    {% endfor %}
+</div>
 
     <script>
         $(document).ready(function() {

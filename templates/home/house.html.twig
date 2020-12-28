@@ -7,20 +7,20 @@ Modèle {{ house.name }}
 {% block body %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 d-flex flex-column justify-content-center align-items-center ">
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h2>{{ house.name }} - {{ house.roomNumber }} Chambres</h2>
             <h3>A Partir de {{ house.sellingPriceAti | format_currency('EUR') }}</h3>
 
         </div>
     </div>
-<div class="row">
-    <div class=" col-12 col-xl-8 d-flex flex-column justify-content-center align-content-center">
+<div class="row justify-content-center">
+    <div class=" col-12 col-xl-8 d-flex justify-content-center align-content-center">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
+    <div class="carousel-inner" >
         {% if house.pictures[0] is defined %}
         {% for picture in house.pictures %}
-        <div class="carousel-item {% if loop.first %} active {% endif %} %}">
-            <img class="d-block w-100" src="{{ asset('uploads/pictures/'~picture.name) }}" alt="First slide">
+        <div class="carousel-item {% if loop.first %} active {% endif %} %}" >
+            <img class="d-block img-fluid " src="{{ asset('uploads/pictures/'~picture.name) }}" alt="First slide">
         </div>
         {% endfor %}
         {% else %}
@@ -41,9 +41,9 @@ Modèle {{ house.name }}
 </div>
     </div>
 
-    <div class=" col-12 col-xl-4">
+    <div class=" col-12 col-xl-8 ">
         <h2>Caractéristiques de la maison</h2>
-        <table class="table table-striped">
+        <table class="table table-striped p-0">
             <tbody>
             <tr>
                 <th>Surface Habitable</th>
@@ -92,10 +92,10 @@ Modèle {{ house.name }}
     </div>
 
 </div>
-    <div class="row d-flex flex-column bg-light m-lg-5 align-items-center">
-
+    <div class="row bg-light">
+        <div class="col-12 col-xl-8 d-flex flex-column justify-content-center align-items-center">
           <h2 class="pt-5 pb-1">En Savoir Plus</h2>
-        <div class="col-12 col-lg-6">
+
         <!-- FORMULAIRE DE CONTACT HUBSPOT -->
         <!--[if lte IE 8]>
         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
@@ -107,7 +107,7 @@ Modèle {{ house.name }}
                 formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
             });
         </script>
-        </div>
+      </div>
     </div>
 
 {% endblock %}

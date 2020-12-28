@@ -7,7 +7,7 @@ Liste des Terrains pour le lottissement
 {% block body %}
 
     <div class="jumbotron">
-        <h1 class="display-4">{{allotment.name}}</h1>
+        <h1 class="">{{allotment.name}}</h1>
         <p class="lead">Pour votre futur Maison: Découvrez le programme</p>
         <hr class="my-4">
         <p>Retrouvez toutes les informations sur le lotissement et parcourez les terrains disponibles.</p>
@@ -32,7 +32,7 @@ Liste des Terrains pour le lottissement
         <th scope="col">Surface (m2)</th>
         <th scope="col">Prix du terrain</th>
         <th scope="col">Etat</th>
-        <th scope="col">Maisons Compatibles</th>
+        <th class="" scope="col">Maisons Compatibles</th>
     </tr>
     </thead>
     <tbody>
@@ -49,7 +49,7 @@ Liste des Terrains pour le lottissement
 
         </td>
 
-        <td><a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-info">Voir les Maisons Compatibles</a></td>
+        <td><a href="{{ path('all_plot_show', {'id': plot.id}) }}" >Voir les Maisons Compatibles</a></td>
     </tr>
         {% endif %}
     {% endfor %}

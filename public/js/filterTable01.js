@@ -22,3 +22,15 @@ function searchTable(iIdP, tIdP) {
         }
     }
 }
+
+function searchCard(inputCard, allotmentCardList) {
+    let input, filter, card, div;
+    input = document.getElementById(inputCard);
+    filter = input.value.toUpperCase();
+    card = document.getElementById(allotmentCardList);
+    div = card.getElementsByTagName("div");
+
+    for(let i=0; i< div.length; i++) {
+
+    }
+}
