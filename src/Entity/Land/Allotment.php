@@ -31,7 +31,7 @@ class Allotment
     /**
      * @ORM\Column(type="string")
      */
-    private ?int $postalCode;
+    private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -122,12 +122,12 @@ class Allotment
         return $this;
     }
 
-    public function getPostalCode(): ?int
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    public function setPostalCode(int $postalCode): self
+    public function setPostalCode(string $postalCode): self
     {
         $this->postalCode = $postalCode;
 
