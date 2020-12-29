@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @ORM\GeneratedValue(strategy="SEQUENCE")
+ * @ORM\SequenceGenerator(sequenceName="id", initialValue=100)
  */
 class User implements UserInterface
 {
