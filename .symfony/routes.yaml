@@ -1,5 +1,8 @@
 "https://{all}/": { type: upstream, upstream: "app:http" }
 "http://{all}/": { type: redirect, to: "https://{all}/" }
+"https://{default}/": { type: upstream, upstream: "app:http" }
+"http://{default}/": { type: redirect, to: "https://{default}/" }
+
 "https://www.{default}/":
   type: upstream
   upstream: "app:http"
