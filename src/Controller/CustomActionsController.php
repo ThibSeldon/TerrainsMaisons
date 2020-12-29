@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CustomActionsController extends AbstractController
 {
     /**
-     * @Route("/custom/actions", name="custom_actions")
+     * @Route("/cc/custom/actions", name="custom_actions")
      */
     public function index(): Response
     {

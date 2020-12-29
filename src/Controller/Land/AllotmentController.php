@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/land/allotment")
+ * @Route("/cc/land/allotment")
  */
 class AllotmentController extends AbstractController
 {

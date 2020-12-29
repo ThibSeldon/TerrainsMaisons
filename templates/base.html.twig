@@ -17,9 +17,11 @@
 	</head>
 	<body>
 
+{% if app.user == true %}
 <div class="container-fluid m-0 p-0">
 	{% include('navbar.html.twig') %}
 </div>
+{% endif %}
 
 		<div class="container-fluid"> {% block body %}{% endblock %}
 

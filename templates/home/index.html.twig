@@ -15,7 +15,7 @@
         <p>Retrouvez toutes les informations sur les terrains et les maisons</p>
 
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#form-search" role="button">Rechercher un Lotissement</a>
+            <a class="btn btn-primary btn-lg" href="#allotment-list" role="button">Rechercher un Lotissement</a>
         </p>
         </div>
     </div>
@@ -89,7 +89,7 @@
 
 
     {% for allotment in allotments %}
-<div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
+<div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1" id="allotment-list">
         <div class="card w-100" id="allotmentCardList">
             <div class="card-header"> {{ allotment.name }}</div>
             <div class="card-body">
@@ -99,7 +99,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Code Postal :{{ allotment.postalCode }} </li>
-                <li class="list-group-item"><span class="badge badge-success">{{ allotment.plots| length }}</span> Terrains Libres</li>
+                <li class="list-group-item"><span class="badge badge-success">{{ allotment.plots| length }}</span> Terrains</li>
                 <li class="list-group-item">à Partir de {{ allotment.getMinPriceAtiPlot }}</li>
             </ul>
             <div class="card-body">

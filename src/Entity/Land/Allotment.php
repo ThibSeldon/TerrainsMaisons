@@ -29,7 +29,7 @@ class Allotment
     private ?string $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private ?int $postalCode;
 

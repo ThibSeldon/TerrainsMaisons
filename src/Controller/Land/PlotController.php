@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/land/plot")
+ * @Route("/cc/land/plot")
  */
 class PlotController extends AbstractController
 {
