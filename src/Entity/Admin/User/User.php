@@ -15,7 +15,8 @@ class User implements UserInterface
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="id", initialValue=10)
      * @ORM\Column(type="integer")
      */
     private $id;
