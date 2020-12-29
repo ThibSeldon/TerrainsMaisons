@@ -14,7 +14,8 @@ class Society
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="id", initialValue=1000)
      * @ORM\Column(type="integer")
      */
     private $id;
