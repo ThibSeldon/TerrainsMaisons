@@ -52,3 +52,14 @@ hooks:
 
         (>&2 symfony-deploy)
 
+timezone: Europe/Paris
+
+#crons:
+    #snapshot:
+        # everyday at 5AM
+        #spec: 0 5 * * *
+        #cmd: |
+            # only snapshot the master environment, aka production
+            #if [ "$SYMFONY_BRANCH" = master ]; then
+                croncape symfony env:snapshot:create --no-wait
+            #fi
