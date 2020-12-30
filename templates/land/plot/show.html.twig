@@ -35,7 +35,11 @@
             </tr>
             <tr>
                 <th>Plan de vente</th>
+                {% if plot.salesPlan == true %}
                 <td><a href="{{ asset('uploads/plans/'~plot.salesPlan) }}">Plan de vente</a></td>
+                {% else %}
+                <td>Plan de vente non disponible</td>
+                {% endif %}
             </tr>
             <tr>
                 <th>Date de creation</th>

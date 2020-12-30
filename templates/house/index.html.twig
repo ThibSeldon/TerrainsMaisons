@@ -21,7 +21,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="searchCol col-sm-2">
+			<div class="searchCol col-12 col-xl-2">
 
 					<div class="">
 					<a href="{{ path('house_index')}}" class="myButton">
@@ -48,7 +48,8 @@
 				</div>
 			</div>
 
-			<div class="listHouse col-sm-10">
+			<div class="listHouse col-12 col-xl-10">
+				<div class="table-responsive">
 				<table id="houseTable" class="table table-hover table-sm table-bordered">
 					<thead>
 						<tr>
@@ -108,6 +109,7 @@
 						{% endfor %}
 					</tbody>
 				</table>
+				</div>
 			</div>
 		</div>
 	</div>

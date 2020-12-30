@@ -36,8 +36,8 @@
                     {% endif %}
 
                     <div class="card-body">
-                        <h3 class="card-title">Prix du projet
-                            : {{ (house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ') }} € </h3>
+                        <h4 class="card-title">Prix du projet
+                            : {{ (house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ') }} € </h4>
                         <h5 class="card-subtitle text-muted">{{ house.name }}</h5>
 
 
@@ -47,13 +47,17 @@
                                 Surface Habitable : {{ house.livingSpace }} m2
                             </li>
                             <li class="list-group-item">
+                                Surface Annexe : {{ house.annexSurface }} m2
+                            </li>
+                            <li class="list-group-item">
                                 {{ house.roomNumber }} Chambres
                             </li>
                             <li class="list-group-item">
                                 {{ house.houseModel }}
                             </li>
+
                             <li class="list-group-item">
-                                {{ house.houseRoofing }}
+                               Maison Seule : {{ house.sellingPriceAti }}
                             </li>
                             <li class="list-group-item ">
                                 <img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="" width="250"

@@ -1,31 +1,34 @@
 {% extends 'base_all.html.twig' %}
 
 {% block title %}
-Liste des Terrains pour le lotissement
+    Liste des Terrains pour le lotissement
 {% endblock %}
 
 {% block body %}
 
     <div class="jumbotron">
-        <h1 class="">{{allotment.name}}</h1>
+        <h1 class="">{{ allotment.name }}</h1>
         <p class="lead">Pour votre futur Maison: Découvrez le programme</p>
         <hr class="my-4">
         <p>Retrouvez toutes les informations sur le lotissement et parcourez les terrains disponibles.</p>
-        <p>Lorsque vous choisissez un terrain, cliquez dessus pour découvrir les Maisons compatibles et réalisez votre projet.</p>
-        <p class="lead">
+        <p>Lorsque vous choisissez un terrain, cliquez dessus pour découvrir les Maisons compatibles et réalisez votre
+            projet.</p>
+{#        <p class="lead">
             <a class="btn btn-primary btn-lg" href="#thead" role="button">En savoir plus</a>
-        </p>
+        </p>#}
     </div>
     {% if allotment.allotmentPlanFile %}
-    <div class="row">
-        <div class="col">
-            <img src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}" class="img-fluid" alt="{{ allotment.name }}">
+        <div class="row">
+            <div class="col">
+                <img src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}" class="img-fluid"
+                     alt="{{ allotment.name }}">
+            </div>
         </div>
-    </div>
     {% endif %}
-
+<div class="row justify-content-center">
     <h4>Liste des terrains disponibles </h4>
-{#<table class="table">
+</div>
+    {# <table class="table">
     <thead id="thead" class="thead-dark">
     <tr>
         <th scope="col">N° Lot</th>
@@ -54,31 +57,37 @@ Liste des Terrains pour le lotissement
         {% endif %}
     {% endfor %}
     </tbody>
-</table>#}
+</table> #}
 
 
- <div class="row">
+    <div class="row">
 
         {% for plot in plots %}
             {% if plot.state.name == 'Libre' or plot.state.name == 'Réservé' %}
-            <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
-                <div class="card w-100" id="allotmentCardList">
-                    <div class="card-header"> Lot n° {{ plot.lot }}</div>
-                    <div class="card-body">
+                <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
+                    <div class="card w-100" id="allotmentCardList">
+                        <div class="card-header"> Lot n° {{ plot.lot }}</div>
+                        <div class="card-body">
 
-                        <h5 class="card-title">Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ')}} €</h5>
+                            <h5 class="card-title">Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ') }}
+                                €</h5>
 
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Surface: {{ plot.surface }} m2 </li>
-                        <li class="list-group-item"> Etat: {{ plot.state.name }} </li>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Surface: {{ plot.surface }} m2</li>
+                            {% if plot.state.name == 'Libre' %}
+                                <li class="list-group-item"><span class="badge badge-pill badge-success">{{ plot.state.name }}</span>  </li>
+                            {% else %}
+                                <li class="list-group-item"><span class="badge badge-pill badge-warning">{{ plot.state.name }}</span>  </li>
+                            {% endif %}
 
-                    </ul>
-                    <div class="card-body">
-                        <a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-primary">Maisons Compatibles</a>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-outline-primary">Maisons
+                                Compatibles</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
         {% endfor %}
     </div>
