@@ -60,5 +60,5 @@ crons:
         cmd: |
             # only run for the master branch, aka production
             if [ "$SYMFONY_BRANCH" = "master" ]; then
-                croncape symfony ... --no-wait
+                croncape symfony:env:snapshot:create  --no-wait
             fi
