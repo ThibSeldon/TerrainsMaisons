@@ -20,7 +20,7 @@ Modèle de Maison {{ house.name }}
         {% if house.pictures[0] is defined %}
         {% for picture in house.pictures %}
         <div class="carousel-item {% if loop.first %} active {% endif %} %}" >
-            <img class="d-block img-fluid " src="{{ asset('uploads/pictures/'~picture.name) }}" alt="First slide">
+            <img class="d-block img-fluid " src="{{ asset('uploads/pictures/'~picture.name) | imagine_filter('big')}}" alt="First slide">
         </div>
         {% endfor %}
         {% else %}

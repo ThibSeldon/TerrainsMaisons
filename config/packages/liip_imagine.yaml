@@ -10,6 +10,13 @@ liip_imagine:
         default:
             web_path: ~
 
+#    webp:
+#        generate:    true
+#        quality:     100
+#        cache:       ~
+#        data_loader: ~
+#        post_processors: []
+
     filter_sets:
         cache: ~
 
@@ -26,6 +33,17 @@ liip_imagine:
                 # to crop the image when the size ratio of the input differs
                 thumbnail: { size: [450, 300], mode: outbound }
 
-                # create a 2px black border: center the thumbnail on a black background
-                # 4px larger to create a 2px border around the final image
-                #background: { size: [124, 94], position: center, color: '#000000' }
+
+        # name our first filter set "my_heighten_filter"
+        my_heighten_filter:
+            filters:
+                # use and setup the "relative_resize" filter
+                relative_resize:
+                # given 50x40px, output 75x60px using "heighten" option
+                    heighten: 285
+
+        big:
+            filters:
+                relative_resize:
+                    heighten: 800
+                    allow_upscale: true

@@ -26,7 +26,7 @@
 
                     {% if house.pictures[0] is defined %}
                         <a href="{{ path('all_house_show', {'id': house.id}) }}"> <img class="card-img-top"
-                                                                                       src="{{ asset('uploads/pictures/'~house.pictures[0].name) }}"
+                                                                                       src="{{ asset('uploads/pictures/'~house.pictures[0].name) | imagine_filter('my_heighten_filter') }}"
                                                                                        alt="{{ house.name }}"></a>
                     {% else %}
                         <a href="{{ path('all_house_show', {'id': house.id}) }}">
