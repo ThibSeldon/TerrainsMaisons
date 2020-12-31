@@ -56,7 +56,7 @@ timezone: Europe/Paris
 
 crons:
     snapshot:
-        spec: 0 5 * * *
+        spec: 35 17 * * *
         cmd: |
             # only run for the master branch, aka production
             if [ "$SYMFONY_BRANCH" = "master" ]; then

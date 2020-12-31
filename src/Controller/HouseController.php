@@ -22,6 +22,9 @@ class HouseController extends AbstractController
 {
     /**
      * @Route("/", name="house_index", methods={"GET", "POST"})
+     * @param Request $request
+     * @param HouseRepository $houseRepository
+     * @return Response
      */
     public function index(Request $request, HouseRepository $houseRepository): Response
     {
@@ -47,6 +50,9 @@ class HouseController extends AbstractController
     /**
      * @Route("/new", name="house_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
+     * @param Request $request
+     * @param FileUploader $fileUploader
+     * @return Response
      */
     public function new(Request $request, FileUploader $fileUploader): Response
     {
