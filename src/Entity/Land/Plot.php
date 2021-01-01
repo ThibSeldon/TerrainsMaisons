@@ -14,7 +14,7 @@ class Plot
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="id", initialValue=1000)
+     * @ORM\SequenceGenerator(sequenceName="plot_id", initialValue=1000)
      * @ORM\Column(type="integer")
      */
     private $id;

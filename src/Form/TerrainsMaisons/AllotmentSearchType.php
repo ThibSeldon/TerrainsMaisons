@@ -4,6 +4,7 @@ namespace App\Form\TerrainsMaisons;
 
 use App\Entity\Land\Allotment;
 use App\Entity\Land\SearchAllotment;
+use App\Repository\Land\AllotmentRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +17,10 @@ class AllotmentSearchType extends AbstractType
         $builder
             ->add('city', EntityType::class, [
                 'label' => 'Chosir une ville',
+                'query_builder' => function (AllotmentRepository $ar) {
+                    return $ar->createQueryBuilder('a')
+                        ->orderBy('a.city', 'ASC');
+                },
                 'class' => Allotment::class,
                 'choice_label' => 'city',
                 'required' => false,

@@ -18,10 +18,10 @@ class Allotment
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="id", initialValue=1000)
+     * @ORM\SequenceGenerator(sequenceName="allotment_id", initialValue=1000)
      * @ORM\Column(type="integer")
      */
-    private ?int $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)

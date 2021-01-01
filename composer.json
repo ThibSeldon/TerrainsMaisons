@@ -10,7 +10,7 @@
         "doctrine/annotations": "^1.11",
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "doctrine/orm": "^2.7",
+        "doctrine/orm": "^2.8",
         "liip/imagine-bundle": "^2.4",
         "sensio/framework-extra-bundle": "^5.6",
         "symfony/asset": "5.2.*",
@@ -28,14 +28,14 @@
         "symfony/twig-bundle": "^5.2",
         "symfony/validator": "5.2.*",
         "symfony/yaml": "5.2.*",
-        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/extra-bundle": "^2.12|^3.1",
         "twig/intl-extra": "^3.1",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.1"
     },
     "require-dev": {
 
         "symfony/debug-bundle": "^5.2",
-        "symfony/maker-bundle": "^1.23",
+        "symfony/maker-bundle": "^1.26",
         "symfony/stopwatch": "^5.2",
         "symfony/var-dumper": "^5.2",
         "symfony/web-profiler-bundle": "^5.2"
