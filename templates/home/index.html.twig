@@ -25,65 +25,18 @@
     </div>
 
 </div>
-    
-    {#<div class="row d-flex justify-content-center">
 
-<div class="col-12 col-lg-6">
-<form>
-    <div class="form-group" id="form-search">
-
-            <label for="iIdP">Ma Recherche par Ville</label>
-            <input type="text" class="form-control" placeholder="Recherche une ville ... " id="iIdP" onkeyup="searchTable('iIdP', 'allotments-list')">
-
-    </div>
-</form>
-
-    </div>
-
-    </div>
-
-    <div class="row d-flex justify-content-center">
-
+    <div class="row justify-content-center mb-3">
         <div class="col-12 col-lg-6">
-            <form>
-                <div class="form-group" id="form-search">
+            {% if form is defined %}
+            {{ form_start(form) }}
 
-                    <label for="inputCard">Ma Recherche par Ville</label>
-                    <input type="text" class="form-control" placeholder="Recherche une ville ... " id="inputCard" onkeyup="searchTable('inputCard', 'allotmentsCardList')">
-
-                </div>
-            </form>
-
+            {{ form_widget(form) }}
+            <button class="btn btn-outline-success">{{ button_label|default('Valider') }}</button>
+            {{ form_end(form) }}
+            {% endif %}
         </div>
-
     </div>
-<div class="col-12 ">
-    <table class="table table-responsive-xl" id="allotments-list">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Programme</th>
-            <th scope="col">Ville</th>
-            <th scope="col">Terrains</th>
-            <th scope="col">à partir de</th>
-
-        </tr>
-        </thead>
-        <tbody>
-            {% for allotment in allotments %}
-            <tr>
-                <th scope="row"><a href="{{ path('all_allotment_show', {'id': allotment.id}) }}">{{ allotment.name }}</a></th>
-                <td>{{ allotment.city }} - {{ allotment.postalCode }}</td>
-
-                <td> <span class="badge badge-success">{{ allotment.plots| length }}</span></td>
-
-                <td> {{ allotment.getMinPriceAtiPlot }}</td>
-
-
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>#}
 
 <div class="row">
 
@@ -112,7 +65,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.js-example-basic-multiple').select2();
+            $('.select-city').select2();
         });
     </script>
 

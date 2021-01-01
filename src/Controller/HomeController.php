@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\House;
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
+use App\Form\TerrainsMaisons\AllotmentSearchType;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
 use App\Repository\Land\PlotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,17 +23,29 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @param Request $request
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    public function index(AllotmentRepository $allotmentRepository): Response
+    public function index(Request $request, AllotmentRepository $allotmentRepository): Response
     {
+        $searchForm = $this->createForm(AllotmentSearchType::class);
+        $searchForm->handleRequest($request);
+        if($searchForm->isSubmitted() && $searchForm->isValid()){
+            dump($searchForm);
+            $data = $searchForm->get('city')->getData();
 
-        $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
+            dump($data);
+            $allotments = $allotmentRepository->findBySearchForm($data);
 
+    }
+        else {
+            $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
+        }
         return $this->render('home/index.html.twig', [
 
             'allotments' => $allotments,
+            'form' => $searchForm->createView(),
         ]);
     }
 

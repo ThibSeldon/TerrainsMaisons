@@ -19,6 +19,29 @@ class AllotmentRepository extends ServiceEntityRepository
         parent::__construct($registry, Allotment::class);
     }
 
+
+    public function findBySearchForm($values)
+    {
+        $cities = [];
+        foreach($values as $val)
+        {
+            $cities[] = $val->getCity();
+        }
+
+
+
+        $qb = $this->createQueryBuilder('a');
+        $qb->andWhere('a.isValid = true')
+
+
+           ->andWhere('a.city IN (:cities)' )
+            ->setParameter(':cities', $cities);
+
+        return $qb->orderBy('a.city', 'ASC')
+            ->getQuery()
+            ->execute();
+    }
+
     // /**
     //  * @return Allotment[] Returns an array of Allotment objects
     //  */
