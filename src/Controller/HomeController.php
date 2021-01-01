@@ -31,22 +31,25 @@ class HomeController extends AbstractController
     {
         $searchForm = $this->createForm(AllotmentSearchType::class);
         $searchForm->handleRequest($request);
+
         if($searchForm->isSubmitted() && $searchForm->isValid()){
-
             $data = $searchForm->get('city')->getData();
-
-
             $allotments = $allotmentRepository->findBySearchForm($data);
-
+            return $this->render('home/index.html.twig', [
+                '_fragment' => 'allotment-list',
+                'allotments' => $allotments,
+                'form' => $searchForm->createView(),
+            ]);
     }
-        else {
-            $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
-        }
+
+        $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
         return $this->render('home/index.html.twig', [
 
             'allotments' => $allotments,
             'form' => $searchForm->createView(),
         ]);
+
+
     }
 
     /**

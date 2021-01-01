@@ -19,6 +19,7 @@ class AllotmentSearchType extends AbstractType
                 'label' => 'Chosir une ville',
                 'query_builder' => function (AllotmentRepository $ar) {
                     return $ar->createQueryBuilder('a')
+                        ->andWhere('a.isValid = true')
                         ->orderBy('a.city', 'ASC');
                 },
                 'class' => Allotment::class,
