@@ -32,10 +32,10 @@ class HomeController extends AbstractController
         $searchForm = $this->createForm(AllotmentSearchType::class);
         $searchForm->handleRequest($request);
         if($searchForm->isSubmitted() && $searchForm->isValid()){
-            dump($searchForm);
+
             $data = $searchForm->get('city')->getData();
 
-            dump($data);
+
             $allotments = $allotmentRepository->findBySearchForm($data);
 
     }
