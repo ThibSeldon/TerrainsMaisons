@@ -17,6 +17,7 @@ class AllotmentSearchType extends AbstractType
         $builder
             ->add('city', EntityType::class, [
                 'label' => 'Chosir une ville',
+                'mapped' => false,
                 'query_builder' => function (AllotmentRepository $ar) {
                     return $ar->createQueryBuilder('a')
                         ->andWhere('a.isValid = true')

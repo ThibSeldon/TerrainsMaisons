@@ -29,10 +29,12 @@ class HomeController extends AbstractController
      */
     public function index(Request $request, AllotmentRepository $allotmentRepository): Response
     {
+
         $searchForm = $this->createForm(AllotmentSearchType::class);
         $searchForm->handleRequest($request);
 
         if($searchForm->isSubmitted() && $searchForm->isValid()){
+            //Pourquoi je recupere l objet allotment et non le champ city ? (ca fonctionne commme ca)
             $data = $searchForm->get('city')->getData();
             $allotments = $allotmentRepository->findBySearchForm($data);
             return $this->render('home/index.html.twig', [

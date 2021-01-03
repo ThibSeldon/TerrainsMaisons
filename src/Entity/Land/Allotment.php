@@ -5,6 +5,8 @@ namespace App\Entity\Land;
 use App\Entity\Admin\House\HouseRoofing;
 use App\Entity\Contact\Contact;
 use App\Repository\Land\AllotmentRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,12 +43,12 @@ class Allotment
     /**
      * @ORM\Column(type="datetime")
      */
-    private ?\DateTimeInterface $createdAt;
+    private ?DateTimeInterface $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private ?\DateTimeInterface $updatedAt;
+    private ?DateTimeInterface $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Plot::class, mappedBy="allotment", orphanRemoval=true, cascade={"persist"})
@@ -61,7 +63,7 @@ class Allotment
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $propertyLimit;
+    private float $propertyLimit;
 
     /**
      * @ORM\Column(type="boolean")
@@ -146,7 +148,7 @@ class Allotment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -157,12 +159,12 @@ class Allotment
      */
     public function setCreatedAt(): self
     {
-        $this->createdAt = new \DateTime('now');
+        $this->createdAt = new DateTime('now');
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -173,7 +175,7 @@ class Allotment
      */
     public function setUpdatedAt(): self
     {
-        $this->updatedAt = new \DateTime('now');
+        $this->updatedAt = new DateTime('now');
 
         return $this;
     }
@@ -243,7 +245,7 @@ class Allotment
        return $this->propertyLimit;
     }
 
-    public function setPropertyLimit(?float $propertyLimit): self
+    public function setPropertyLimit(float $propertyLimit): self
     {
         $this->propertyLimit = $propertyLimit;
 
