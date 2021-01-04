@@ -15,6 +15,7 @@ class HouseSearchType extends AbstractType
         $builder
             ->add('roomNumber', ChoiceType::class, [
                 'label' => 'Rechercher par chambres',
+                'placeholder' => 'Combien de chambre ?',
                 'choices' => [
                     '1' => 1,
                     '2' => 2,

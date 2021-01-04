@@ -65,7 +65,10 @@
 
     <script>
         $(document).ready(function() {
-            $('.select-city').select2();
+            $('.select-city').select2({
+                placeholder: "Quelle Ville ?",
+                allowClear: true
+            });
         });
     </script>
 
