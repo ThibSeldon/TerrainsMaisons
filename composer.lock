@@ -1752,12 +1752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "906b712ef70b818c7055b51982b9c3bb9279c643"
+                "reference": "2c16d316cd25eea714c677df0b830ac55ddf94e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/906b712ef70b818c7055b51982b9c3bb9279c643",
-                "reference": "906b712ef70b818c7055b51982b9c3bb9279c643",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/2c16d316cd25eea714c677df0b830ac55ddf94e3",
+                "reference": "2c16d316cd25eea714c677df0b830ac55ddf94e3",
                 "shasum": ""
             },
             "require": {
@@ -1848,7 +1848,7 @@
                 "issues": "https://github.com/liip/LiipImagineBundle/issues",
                 "source": "https://github.com/liip/LiipImagineBundle/tree/master"
             },
-            "time": "2020-12-31T15:30:27+00:00"
+            "time": "2021-01-04T18:52:58+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -56,12 +56,12 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/allotment/plot/{id}", name="all_plot_show")
      * @param Request $request
      * @param Plot $plot
      * @param HouseRepository $houseRepository
      * @return Response
      */
+    #[Route('/allotment/plot/{id}', name:'all_plot_show')]
     public function lot(Request $request,Plot $plot, HouseRepository $houseRepository): Response
     {
         $searchForm = $this->createForm(HouseSearchType::class);
@@ -115,10 +115,10 @@ class HomeController extends AbstractController
 
 
     /**
-     * @Route ("/allotment/{id}", name="all_allotment_show")
      * @param Allotment $allotment
      * @return Response
      */
+    #[Route('/allotment/{id}', name: 'all_allotment_show')]
     public function allotment(Allotment $allotment, PlotRepository $plotRepository): Response
     {
         $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
@@ -129,10 +129,10 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route ("/house/{id}", name="all_house_show")
      * @param House $house
      * @return Response
      */
+    #[Route('/house/{id}', name: 'all_house_show')]
     public function house(House $house): Response
     {
         return $this->render('home/house.html.twig', [
