@@ -7,7 +7,7 @@ variables:
     php-ext:
         #apcu: version
         ctype: version
-        iconv: version
+        #iconv: version
         mbstring: version
         pdo_pgsql: version
         sodium: version
