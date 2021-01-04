@@ -18,16 +18,16 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomeController
  * @package App\Controller
- * @Route("/")
  */
+#[Route('/')]
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
      * @param Request $request
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
+    #[Route('/', name: 'home')]
     public function index(Request $request, AllotmentRepository $allotmentRepository): Response
     {
 
