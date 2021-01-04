@@ -70,7 +70,6 @@ class HomeController extends AbstractController
         //Formulaire de recherche soumis
         if($searchForm->isSubmitted() && $searchForm->isValid()) {
             $numberRoomData = $searchForm->get('roomNumber')->getData();
-            dump($numberRoomData);
 
             $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
             $limit = $plot->getAllotment()->getPropertyLimit();
