@@ -10,8 +10,8 @@ runtime:
         - pdo_pgsql
         - sodium
 variables:
-    #php-ext:
-        #apcu: version
+    php-ext:
+        apcu: 5.1.19
 
 
     php:
