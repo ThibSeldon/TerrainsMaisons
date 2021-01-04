@@ -1,21 +1,25 @@
 name: app
 
-type: php:8.0
+type: php:8.0.0
 
 runtime:
-    extensions:
-        - pdo_pgsql
-        - apcu
-        - mbstring
-        - sodium
-        - iconv
-        - ctype
-        
+
+
 
 variables:
     php:
         # uncomment on PHP 7.4+
         opcache.preload: /app/config/preload.php
+        opcache.jit_buffer_size: 100M
+
+    php-ext:
+        apcu: version
+        ctype: version
+        iconv: version
+        mbstring: version
+        pdo_pgsql: version
+        sodium: version
+
 
 build:
     flavor: none
