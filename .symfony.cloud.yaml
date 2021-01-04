@@ -4,18 +4,19 @@ type: php:8.0
 
 
 variables:
-    php:
-        # uncomment on PHP 7.4+
-        opcache.preload: /app/config/preload.php
-        opcache.jit_buffer_size: 100M
-
     php-ext:
-        apcu: version
+        #apcu: version
         ctype: version
         iconv: version
         mbstring: version
         pdo_pgsql: version
         sodium: version
+
+    php:
+        # uncomment on PHP 7.4+
+        opcache.preload: /app/config/preload.php
+        opcache.jit_buffer_size: 100M
+
 
 
 build:
