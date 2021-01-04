@@ -102,6 +102,8 @@ class HouseRepository extends ServiceEntityRepository
             ;
     }
 
+    //Matching Terrains-Maisons
+
     /**
      * @param bool $doubleLimit
      * @param float|int $limit
@@ -109,7 +111,8 @@ class HouseRepository extends ServiceEntityRepository
      * @param array $roofings
      * @return int|mixed|string
      */
-    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit=0, float $length=0, array $roofings=[])
+    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit=0, float $length=0,
+                                             array $roofings=[])
     {
         $lengthHouse = $length - $limit;
         $lengthHouseDL = 0;
@@ -135,6 +138,40 @@ class HouseRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->execute()
                 ;
+    }
+
+
+    //Ajoute de la seleciton du nombre de chambre en complément du Matching Terrains-Maisons
+
+    public function searchHouseRoom(bool $doubleLimit = false, float $limit=0, float $length=0,
+                                             array $roofings=[], int $roomNumber=0 )
+    {
+        $lengthHouse = $length - $limit;
+        $lengthHouseDL = 0;
+        if($doubleLimit) {
+            $lengthHouseDL = $length;
+        }
+
+        $qb = $this->createQueryBuilder('h');
+
+        $qb->andWhere('h.length <= :val')
+            ->orWhere('h.length = :val2')
+            ->andWhere('h.valid = true')
+            ->andWhere('h.houseRoofing IN (:val3)')
+            ->andWhere('h.roomNumber = :room')
+            ->setParameter('val', $lengthHouse)
+            ->setParameter('val2', $lengthHouseDL)
+            ->setParameter('val3', $roofings)
+            ->setParameter('room', $roomNumber)
+        ;
+
+
+
+        return $qb
+            ->orderBy('h.sellingPriceAti', 'ASC')
+            ->getQuery()
+            ->execute()
+            ;
     }
 
 

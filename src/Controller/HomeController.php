@@ -6,6 +6,7 @@ use App\Entity\House;
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
+use App\Form\TerrainsMaisons\HouseSearchType;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
 use App\Repository\Land\PlotRepository;
@@ -56,12 +57,42 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/allotment/plot/{id}", name="all_plot_show")
+     * @param Request $request
      * @param Plot $plot
      * @param HouseRepository $houseRepository
      * @return Response
      */
-    public function lot(Plot $plot, HouseRepository $houseRepository): Response
+    public function lot(Request $request,Plot $plot, HouseRepository $houseRepository): Response
     {
+        $searchForm = $this->createForm(HouseSearchType::class);
+        $searchForm->handleRequest($request);
+
+        //Formulaire de recherche soumis
+        if($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $numberRoomData = $searchForm->get('roomNumber')->getData();
+            dump($numberRoomData);
+
+            $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
+            $limit = $plot->getAllotment()->getPropertyLimit();
+            $plotFW = $plot->getFacadeWidth();
+
+            $allotmentRoofings = $plot->getAllotment()->getHouseRoofings();
+            $roofings = [];
+            foreach ($allotmentRoofings as $arg){
+                $roofings[] = $arg;
+            }
+
+
+            $houses = $houseRepository->searchHouseRoom($aDoubleLimit, $limit, $plotFW, $roofings, $numberRoomData );
+            return $this->render('home/plot_houses.html.twig', [
+                'houses' => $houses,
+                'plot' => $plot,
+                'form' => $searchForm->createView(),
+
+            ]);
+
+        }
+
         $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
         $limit = $plot->getAllotment()->getPropertyLimit();
         $plotFW = $plot->getFacadeWidth();
@@ -77,9 +108,12 @@ class HomeController extends AbstractController
 
         return $this->render('home/plot_houses.html.twig', [
             'houses' => $houses,
-            'plot' => $plot
+            'plot' => $plot,
+            'form' => $searchForm->createView(),
+
         ]);
     }
+
 
     /**
      * @Route ("/allotment/{id}", name="all_allotment_show")
