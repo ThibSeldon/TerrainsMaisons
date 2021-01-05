@@ -47,7 +47,6 @@ class HomeController extends AbstractController
 
         $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
         return $this->render('home/index.html.twig', [
-
             'allotments' => $allotments,
             'form' => $searchForm->createView(),
         ]);
@@ -84,12 +83,12 @@ class HomeController extends AbstractController
 
             $houses = $houseRepository->searchHouseRoom($aDoubleLimit, $limit, $plotFW, $roofings, $numberRoomData );
             return $this->render('home/plot_houses.html.twig', [
+                '_fragment' => 'house-list',
                 'houses' => $houses,
                 'plot' => $plot,
                 'form' => $searchForm->createView(),
 
             ]);
-
         }
 
         $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
