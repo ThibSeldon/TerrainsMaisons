@@ -31,6 +31,10 @@
         </div>
     </div>
 
+    <div class="row justify-content-center">
+    <h2>Maisons Neuves Compatibles</h2>
+</div>
+
     <div class="row justify-content-center" id="house-list">
         {% for house in houses %}
             <div class="d-flex align-items-stretch col-12 col-lg-6 col-xl-4 mt-1">
@@ -83,8 +87,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <a href="{{ path('all_house_show', {'id': house.id}) }}"
-                           class="btn btn-secondary btn-block ">Voir la
-                            Maison</a>
+                           class="btn btn-secondary btn-block ">Voir la Maison</a>
                     </div>
 
                 </div>
