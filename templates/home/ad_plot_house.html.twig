@@ -8,8 +8,8 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
-            <h1>{{ ad.house.name }} - {{ ad.house.roomNumber }} Chambres</h1>
-            <h3>A Partir de {{ ad.house.sellingPriceAti | format_currency('EUR') }}</h3>
+            <h1>{{ ad.name }} - {{ ad.plot.allotment.name }}</h1>
+            <h3>A Partir de {{ ad.sellingPriceAti | format_currency('EUR') }}</h3>
 
         </div>
     </div>
@@ -47,6 +47,18 @@
                 <table class="table table-striped p-0 m-0">
                     <tbody>
                     <tr>
+                        <th>Lot</th>
+                        <td>{{ ad.plot.lot }} m2</td>
+                    </tr>
+                    <tr>
+                        <th>Surface Terrain</th>
+                        <td>{{ ad.plot.surface }} m2</td>
+                    </tr>
+                    <tr>
+                        <th>Largeur Facade</th>
+                        <td>{{ ad.plot.facadeWidth }}</td>
+                    </tr>
+                    <tr>
                         <th>Surface Habitable</th>
                         <td>{{ ad.house.livingSpace }} m2</td>
                     </tr>
@@ -76,7 +88,7 @@
                     </tr>
                     <tr>
                         <th>Prix TTC*</th>
-                        <td>{{ ad.house.sellingPriceAti | format_currency('EUR') }}</td>
+                        <td>{{ ad.sellingPriceAti | format_currency('EUR') }}</td>
                     </tr>
                     <tr>
                         <th>Construteur</th>
