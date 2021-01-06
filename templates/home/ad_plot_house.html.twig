@@ -1,0 +1,116 @@
+{% extends 'base_all.html.twig' %}
+
+{% block title %}
+    Modèle de Maison {{ ad.house.name }}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+            <h1>{{ ad.house.name }} - {{ ad.house.roomNumber }} Chambres</h1>
+            <h3>A Partir de {{ ad.house.sellingPriceAti | format_currency('EUR') }}</h3>
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class=" col-12 col-xl-8 d-flex justify-content-center align-content-center">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" >
+                    {% if ad.house.pictures[0] is defined %}
+                        {% for picture in ad.house.pictures %}
+                            <div class="carousel-item {% if loop.first %} active {% endif %} %}" >
+                                <img class="d-block img-fluid " src="{{ asset('uploads/pictures/'~picture.name) | imagine_filter('big')}}" alt={{ ad.house.name }}>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="carousel-item active">
+
+                            <img class="d-block w-100" src="{{ asset('images/house_base.jpeg') }}" alt="Projet MaisonsTerrains.com">
+                        </div>
+                    {% endif %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class=" col-12 col-xl-8 ">
+            <h2>Caractéristiques de la maison</h2>
+            <div class="table-responsive">
+                <table class="table table-striped p-0 m-0">
+                    <tbody>
+                    <tr>
+                        <th>Surface Habitable</th>
+                        <td>{{ ad.house.livingSpace }} m2</td>
+                    </tr>
+                    <tr>
+                        <th>Surface Annexe</th>
+                        <td>{{ ad.house.annexSurface }} m2</td>
+                    </tr>
+                    <tr>
+                        <th>Chambres</th>
+                        <td>{{ ad.house.roomNumber }}</td>
+                    </tr>
+                    <tr>
+                        <th>Salle de Bains</th>
+                        <td>{{ ad.house.bathroomNumber }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type de Maison</th>
+                        <td>{{ ad.house.houseModel }}</td>
+                    </tr>
+                    <tr>
+                        <th>Style</th>
+                        <td>{{ ad.house.houseStyle }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type de Toiture</th>
+                        <td>{{ ad.house.houseRoofing }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix TTC*</th>
+                        <td>{{ ad.house.sellingPriceAti | format_currency('EUR') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Construteur</th>
+                        <td><a href="{{ ad.house.houseBrand.url }}" target="_blank">
+                                <img src="{{ asset('uploads/pictures/'~ ad.house.houseBrand.logo) }}" alt="Logo {{ ad.house.houseBrand.name }}" width="170">
+                            </a></td>
+                    </tr>
+
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row flex-column justify-content-center align-items-center bg-light m-1">
+        <h2 class="d-flex pt-5 col-12 col-lg-6 justify-content-center">En savoir plus</h2>
+
+        <div class="col-12 col-lg-6">
+            <!-- FORMULAIRE DE CONTACT HUBSPOT -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "5313721",
+                    formId: "78d6aeb1-7a7a-47d2-8040-e05e29a68498"
+                });
+            </script>
+        </div>
+    </div>
+
+
+{% endblock %}

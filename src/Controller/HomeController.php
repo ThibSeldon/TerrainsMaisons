@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\House;
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
+use App\Entity\Matching\PlotHouseMatching;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
 use App\Form\TerrainsMaisons\HouseSearchType;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
 use App\Repository\Land\PlotRepository;
+use App\Repository\Matching\PlotHouseMatchingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,10 +60,11 @@ class HomeController extends AbstractController
      * @param Request $request
      * @param Plot $plot
      * @param HouseRepository $houseRepository
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @return Response
      */
     #[Route('/allotment/plot/{id}', name:'all_plot_show')]
-    public function lot(Request $request,Plot $plot, HouseRepository $houseRepository): Response
+    public function lot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
         $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
@@ -70,7 +73,7 @@ class HomeController extends AbstractController
         if($searchForm->isSubmitted() && $searchForm->isValid()) {
             $numberRoomData = $searchForm->get('roomNumber')->getData();
 
-            $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
+/*            $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
             $limit = $plot->getAllotment()->getPropertyLimit();
             $plotFW = $plot->getFacadeWidth();
 
@@ -79,9 +82,10 @@ class HomeController extends AbstractController
             foreach ($allotmentRoofings as $arg){
                 $roofings[] = $arg;
             }
+            $houses = $houseRepository->searchHouseRoom($aDoubleLimit, $limit, $plotFW, $roofings, $numberRoomData );*/
 
-
-            $houses = $houseRepository->searchHouseRoom($aDoubleLimit, $limit, $plotFW, $roofings, $numberRoomData );
+            //$houses = $plotHouseMatchingRepository->findBy(['plot'=>$request->get('id')]);
+            $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData);
             return $this->render('home/plot_houses.html.twig', [
                 '_fragment' => 'house-list',
                 'houses' => $houses,
@@ -91,7 +95,7 @@ class HomeController extends AbstractController
             ]);
         }
 
-        $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
+/*        $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
         $limit = $plot->getAllotment()->getPropertyLimit();
         $plotFW = $plot->getFacadeWidth();
 
@@ -102,8 +106,8 @@ class HomeController extends AbstractController
         }
 
 
-        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);
-
+        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);*/
+        $houses = $plotHouseMatchingRepository->findBy(['plot'=>$request->get('id')]);
         return $this->render('home/plot_houses.html.twig', [
             'houses' => $houses,
             'plot' => $plot,
@@ -136,6 +140,14 @@ class HomeController extends AbstractController
     {
         return $this->render('home/house.html.twig', [
             'house' => $house,
+        ]);
+    }
+
+    #[Route('/projet/{id}', name:'all_ad_show')]
+    public function adPlotHouse(PlotHouseMatching $houseMatching): Response
+    {
+        return $this->render('home/ad_plot_house.html.twig', [
+            'ad' => $houseMatching
         ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
+use App\Repository\Matching\PlotHouseMatchingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,8 @@ class SitemapController extends AbstractController
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    public function index(Request $request, AllotmentRepository $allotmentRepository, HouseRepository $houseRepository): Response
+    public function index(Request $request, AllotmentRepository $allotmentRepository, HouseRepository $houseRepository,
+                    PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
         $hostname = $request->getSchemeAndHttpHost();
 
@@ -60,7 +62,12 @@ class SitemapController extends AbstractController
                 'title' => 'Terrains Maisons Construction Marne'
             ];
             }
-
+            if(!$images){
+                $images[] = [
+                    'loc' => '/images/house_base.jpeg/',
+                    'title' => 'Terrains Maisons Construction'
+                ];
+            }
             $urls[] = ['loc'=> $this->generateUrl('all_house_show',[
             'id'=> $house->getId()
             ]),
@@ -68,6 +75,33 @@ class SitemapController extends AbstractController
                 'image' => $images[0],
             ];
         }
+
+        foreach ($plotHouseMatchingRepository->findAll() as $ad) {
+            $images = [];
+
+
+                $updatedAt = $ad->getUpdatedAt()->format('Y-m-d');
+
+            foreach($ad->getHouse()->getPictures() as $picture){
+                $images[] = [
+                    'loc' => '/uploads/pictures/'.$picture->getName(),
+                    'title' => 'Terrains Maisons Construction '.$ad->getName()
+                ];
+            }
+            if(!$images){
+                $images[] = [
+                    'loc' => '/images/house_base.jpeg/',
+                    'title' => 'Terrains Maisons Construction'
+                ];
+            }
+            $urls[] = ['loc'=> $this->generateUrl('all_ad_show',[
+                'id'=> $ad->getId()
+            ]),
+                'lastmod' => $updatedAt,
+                'image' => $images[0],
+            ];
+        }
+
 
         $response = new Response(
             $this->renderView('sitemap/index.html.twig', [

@@ -19,6 +19,21 @@ class PlotHouseMatchingRepository extends ServiceEntityRepository
         parent::__construct($registry, PlotHouseMatching::class);
     }
 
+    public function findByHouseBedroom($plot, $bedRoom)
+    {
+        return $this->createQueryBuilder('m')
+            ->join('m.house', 'h')
+            ->andWhere('h.roomNumber = :bedroom')
+            ->andWhere('m.plot = :plot')
+            ->setParameters([
+                'plot' => $plot,
+                'bedroom' => $bedRoom,
+            ])
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return PlotHouseMatching[] Returns an array of PlotHouseMatching objects
     //  */

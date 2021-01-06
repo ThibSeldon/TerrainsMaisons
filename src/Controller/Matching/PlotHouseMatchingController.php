@@ -74,7 +74,7 @@ class PlotHouseMatchingController extends AbstractController
     #[Route('/{id}', name: 'matching_plot_house_matching_delete', methods: ['DELETE'])]
     public function delete(Request $request, PlotHouseMatching $plotHouseMatching): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$plotHouseMatching->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $plotHouseMatching->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($plotHouseMatching);
             $entityManager->flush();
@@ -84,8 +84,9 @@ class PlotHouseMatchingController extends AbstractController
     }
 
     #[Route('/makematch', name: 'matching_plot_house_makematch', priority: 1)]
-    public function makematch(PlotHouseMatchingRepository $plotHouseMatchingRepository,AllotmentRepository $allotmentRepository,PlotRepository $plotRepository, HouseRepository $houseRepository) {
-        $houses = $houseRepository->findBy(['valid'=> true]);
+    public function makematch(PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository, PlotRepository $plotRepository, HouseRepository $houseRepository)
+    {
+        $houses = $houseRepository->findBy(['valid' => true]);
         $em = $this->getDoctrine()->getManager();
         foreach ($houses as $house) {
             $allotments = $allotmentRepository->findAllotmentByRoofing($house->getHouseRoofing()->getName());
@@ -95,9 +96,9 @@ class PlotHouseMatchingController extends AbstractController
 
 
                 $plots = $plotRepository->getPlotsForHouse($house, $allotment);
-                foreach($plots as $plot) {
+                foreach ($plots as $plot) {
                     $findMatch = $plotHouseMatchingRepository->findOneBy(['plot' => $plot, 'house' => $house]);
-                    if($findMatch) {
+                    if ($findMatch) {
                         $findMatch->setHouse($house);
                         $findMatch->setPlot($plot);
                         $findMatch->setName(
@@ -115,8 +116,7 @@ class PlotHouseMatchingController extends AbstractController
                             $house->getSellingPriceAti() + $plot->getSellingPriceAti()
                         );
                         $em->persist($findMatch);
-                    }
-                    else {
+                    } else {
                         $plotHouseMatching = new PlotHouseMatching();
                         $plotHouseMatching->setHouse($house);
                         $plotHouseMatching->setPlot($plot);
@@ -146,9 +146,9 @@ class PlotHouseMatchingController extends AbstractController
         }
         $em->flush();
 
-       return $this->render('matching/plot_house_matching/index.html.twig', [
-           'plot_house_matchings' => $plotHouseMatchingRepository->findBy([], ['house' => 'ASC'])
-       ]);
+        return $this->render('matching/plot_house_matching/index.html.twig', [
+            'plot_house_matchings' => $plotHouseMatchingRepository->findBy([], ['house' => 'ASC'])
+        ]);
 
 
     }
