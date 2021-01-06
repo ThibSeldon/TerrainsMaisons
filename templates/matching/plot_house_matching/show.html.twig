@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PlotHouseMatching{% endblock %}
+
+{% block body %}
+    <h1>PlotHouseMatching</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ plot_house_matching.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ plot_house_matching.name }}</td>
+            </tr>
+            <tr>
+                <th>SellingPriceAti</th>
+                <td>{{ plot_house_matching.sellingPriceAti }}</td>
+            </tr>
+            <tr>
+                <th>Valid</th>
+                <td>{{ plot_house_matching.valid ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('matching_plot_house_matching_index') }}">back to list</a>
+
+    <a href="{{ path('matching_plot_house_matching_edit', {'id': plot_house_matching.id}) }}">edit</a>
+
+    {{ include('matching/plot_house_matching/_delete_form.html.twig') }}
+{% endblock %}

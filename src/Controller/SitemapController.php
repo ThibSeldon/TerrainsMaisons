@@ -25,7 +25,7 @@ class SitemapController extends AbstractController
         //On initialise un tableau pour lister les URLs
         $urls = [];
 
-        $urls[] = ['loc' => $this->generateUrl('home')];
+        $urls[] = ['loc' => $this->generateUrl('index')];
         $urls[] = ['loc' => $this->generateUrl('app_login')];
 
 

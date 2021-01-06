@@ -2,7 +2,10 @@
 
 namespace App\Entity\Land;
 
+use App\Entity\Matching\PlotHouseMatching;
 use App\Repository\Land\PlotRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -64,6 +67,17 @@ class Plot
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $salesPlan;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PlotHouseMatching::class, mappedBy="plot", orphanRemoval=true)
+     */
+    private $plotHouseMatchings;
+
+    public function __construct()
+    {
+        $this->plotHouseMatchings = new ArrayCollection();
+    }
+
 
 
 
@@ -196,4 +210,36 @@ class Plot
 
         return $this;
     }
+
+    /**
+     * @return Collection|PlotHouseMatching[]
+     */
+    public function getPlotHouseMatchings(): Collection
+    {
+        return $this->plotHouseMatchings;
+    }
+
+    public function addPlotHouseMatching(PlotHouseMatching $plotHouseMatching): self
+    {
+        if (!$this->plotHouseMatchings->contains($plotHouseMatching)) {
+            $this->plotHouseMatchings[] = $plotHouseMatching;
+            $plotHouseMatching->setPlot($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlotHouseMatching(PlotHouseMatching $plotHouseMatching): self
+    {
+        if ($this->plotHouseMatchings->removeElement($plotHouseMatching)) {
+            // set the owning side to null (unless already changed)
+            if ($plotHouseMatching->getPlot() === $this) {
+                $plotHouseMatching->setPlot(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PlotHouseMatching{% endblock %}
+
+{% block body %}
+    <h1>Create new PlotHouseMatching</h1>
+
+    {{ include('matching/plot_house_matching/_form.html.twig') }}
+
+    <a href="{{ path('matching_plot_house_matching_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PlotHouseMatching{% endblock %}
+
+{% block body %}
+    <h1>Edit PlotHouseMatching</h1>
+
+    {{ include('matching/plot_house_matching/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('matching_plot_house_matching_index') }}">back to list</a>
+
+    {{ include('matching/plot_house_matching/_delete_form.html.twig') }}
+{% endblock %}

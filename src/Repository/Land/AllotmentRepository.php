@@ -37,6 +37,20 @@ class AllotmentRepository extends ServiceEntityRepository
             ->execute();
     }
 
+    public function findAllotmentByRoofing($roofing)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        return $qb
+            ->join('a.houseRoofings', 'r')
+            ->andWhere('r.name = :roofing')
+            ->andWhere('a.isValid = true')
+            ->setParameter('roofing', $roofing)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Allotment[] Returns an array of Allotment objects
     //  */

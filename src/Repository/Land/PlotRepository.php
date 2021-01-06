@@ -2,6 +2,8 @@
 
 namespace App\Repository\Land;
 
+use App\Entity\House;
+use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,6 +19,35 @@ class PlotRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Plot::class);
+    }
+
+
+    public function getPlotsForHouse(House $house, Allotment $allotment)
+    {
+        $houseLength = $house->getLength();
+        //$houseRoofing = $house->getHouseRoofing()->getName();
+        //$allotmentId = $allotment->getId();
+        $matchFacadePlot = $allotment->getPropertyLimit();
+
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->join('p.allotment', 'a')
+            ->andWhere('p.allotment = :allotment')
+            ->andWhere('p.facadeWidth - :matchFacadePlot >= :houseLength')
+            ->orWhere('a.doubleLimit = true AND p.facadeWidth = :houseLength')
+            ->setParameters([
+                'houseLength' => $houseLength,
+                'allotment' => $allotment,
+                'matchFacadePlot' => $matchFacadePlot,
+            ])
+
+        ;
+
+        return $qb
+            ->getQuery()
+            ->execute()
+            ;
+
     }
 
     // /**

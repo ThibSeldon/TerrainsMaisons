@@ -1,26 +1,29 @@
 <?php
 
-namespace App\Form\Admin\House;
+namespace App\Form\Matching;
 
-use App\Entity\Admin\House\HouseRoofing;
+use App\Entity\Matching\PlotHouseMatching;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class HouseRoofingType extends AbstractType
+class PlotHouseMatchingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
+            ->add('name')
+            ->add('sellingPriceAti')
+            ->add('valid')
+            ->add('house')
+            ->add('plot')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => HouseRoofing::class,
+            'data_class' => PlotHouseMatching::class,
         ]);
     }
 }

@@ -21,9 +21,8 @@ class HouseRoofing
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Unique()
      */
-    private $name;
+    private string $name;
 
     public function __toString():string
     {

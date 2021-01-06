@@ -6,6 +6,7 @@ use App\Entity\Admin\House\HouseBrand;
 use App\Entity\Admin\House\HouseModel;
 use App\Entity\Admin\House\HouseRoofing;
 use App\Entity\Admin\House\HouseStyle;
+use App\Entity\Matching\PlotHouseMatching;
 use App\Entity\Upload\Picture;
 
 use App\Repository\HouseRepository;
@@ -126,9 +127,15 @@ class House
      */
     private $houseStyle;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PlotHouseMatching::class, mappedBy="house", orphanRemoval=true)
+     */
+    private $plotHouseMatchings;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->plotHouseMatchings = new ArrayCollection();
     }
 
 
@@ -422,6 +429,36 @@ class House
     public function weightedArea()
     {
         return $this->sellingPriceAti / ($this->livingSpace + ($this->annexSurface/2));
+    }
+
+    /**
+     * @return Collection|PlotHouseMatching[]
+     */
+    public function getPlotHouseMatchings(): Collection
+    {
+        return $this->plotHouseMatchings;
+    }
+
+    public function addPlotHouseMatching(PlotHouseMatching $plotHouseMatching): self
+    {
+        if (!$this->plotHouseMatchings->contains($plotHouseMatching)) {
+            $this->plotHouseMatchings[] = $plotHouseMatching;
+            $plotHouseMatching->setHouse($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlotHouseMatching(PlotHouseMatching $plotHouseMatching): self
+    {
+        if ($this->plotHouseMatchings->removeElement($plotHouseMatching)) {
+            // set the owning side to null (unless already changed)
+            if ($plotHouseMatching->getHouse() === $this) {
+                $plotHouseMatching->setHouse(null);
+            }
+        }
+
+        return $this;
     }
 
     
