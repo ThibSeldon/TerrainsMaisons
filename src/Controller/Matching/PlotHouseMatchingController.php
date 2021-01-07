@@ -88,6 +88,7 @@ class PlotHouseMatchingController extends AbstractController
     {
         $houses = $houseRepository->findBy(['valid' => true]);
         $em = $this->getDoctrine()->getManager();
+        $tempData = [];
         foreach ($houses as $house) {
             $allotments = $allotmentRepository->findAllotmentByRoofing($house->getHouseRoofing()->getName());
             //dump($allotments);
@@ -110,12 +111,15 @@ class PlotHouseMatchingController extends AbstractController
                             . $house->getLivingSpace()
                             . ' m2 à '
                             . $allotment->getCity()
+                            . ' Lot '
+                            . $plot->getLot()
                         );
                         $findMatch->setValid(true);
                         $findMatch->setSellingPriceAti(
                             $house->getSellingPriceAti() + $plot->getSellingPriceAti()
                         );
                         $em->persist($findMatch);
+                      $tempData[] = $findMatch;
                     } else {
                         $plotHouseMatching = new PlotHouseMatching();
                         $plotHouseMatching->setHouse($house);
@@ -129,6 +133,8 @@ class PlotHouseMatchingController extends AbstractController
                             . $house->getLivingSpace()
                             . ' m2 à '
                             . $allotment->getCity()
+                            . ' Lot '
+                            . $plot->getLot()
                         );
                         $plotHouseMatching->setValid(true);
                         $plotHouseMatching->setSellingPriceAti(
@@ -136,15 +142,35 @@ class PlotHouseMatchingController extends AbstractController
                         );
 
                         $em->persist($plotHouseMatching);
+                        $tempData[] = $plotHouseMatching;
                     }
-
-
                 }
-
             }
-
         }
+
+        //Recupere les enregistrements qui ne matchent plus et les suppriment
+
+        $houseMatchingData = $plotHouseMatchingRepository->findAll();
+
+        $tData = [];
+        $hData = [];
+        foreach ($tempData as $t) {
+            $tData[] = $t->getId();
+        }
+        foreach ($houseMatchingData as $h) {
+            $hData[] = $h->getId();
+        }
+        $diffs = array_diff($hData, $tData);
+
+        foreach($diffs as $diff){
+            $houseMatchingDiff = $plotHouseMatchingRepository->findOneBy(['id' => $diff]);
+
+            $em->remove($houseMatchingDiff);
+        }
+
         $em->flush();
+
+
 
         return $this->render('matching/plot_house_matching/index.html.twig', [
             'plot_house_matchings' => $plotHouseMatchingRepository->findBy([], ['house' => 'ASC'])
