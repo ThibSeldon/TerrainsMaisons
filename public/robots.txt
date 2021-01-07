@@ -1,0 +1,5 @@
+# Group 1
+User-agent: *
+Disallow: /cc/
+
+Sitemap: https://terrainsmaisons.com/sitemap.xml
