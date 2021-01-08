@@ -27,7 +27,11 @@ class PlotRepository extends ServiceEntityRepository
         $houseLength = $house->getLength();
         //$houseRoofing = $house->getHouseRoofing()->getName();
         //$allotmentId = $allotment->getId();
+
         $matchFacadePlot = $allotment->getPropertyLimit();
+        if(isset($matchFacadePlot)){
+            $matchFacadePlot = 0;
+        }
 
         $qb = $this->createQueryBuilder('p');
         $qb

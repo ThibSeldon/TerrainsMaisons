@@ -27,7 +27,7 @@ class AllotmentType extends AbstractType
             ->add('propertyLimit', NumberType::class, [
                 'label' => 'Limite de propriété en m',
                 'help' => 'laisser 0 si double limite possible',
-                'required' => false,
+                'required' => true,
             ])
             ->add('doubleLimit')
             ->add('houseRoofings', null, [
