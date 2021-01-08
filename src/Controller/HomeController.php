@@ -114,11 +114,11 @@ class HomeController extends AbstractController
     #[Route('/houses/{id}', name: 'all_house_show')]
     public function house(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
-        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house], ['sellingPriceAti'=>'ASC']);
+        $allotments = $allotmentRepository->findByHouse($house);
         //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
         return $this->render('home/house.html.twig', [
             'house' => $house,
-            'matchs' => $matchs,
+            'allotments' => $allotments,
         ]);
     }
 

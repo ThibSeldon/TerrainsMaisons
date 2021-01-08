@@ -77,7 +77,7 @@ Modèle de Maison {{ house.name }}
             </tr>
             <tr>
                 <th>Prix TTC*</th>
-                <td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
+                <td>{{ house.sellingPriceAti | number_format(0,'',' ') }}</td>
             </tr>
             <tr>
                 <th>Construteur</th>
@@ -95,39 +95,41 @@ Modèle de Maison {{ house.name }}
 
 </div>
     <div class="row m-5 justify-content-center">
-        <h2>Sur quelle Terrains construire cette Maison ? </h2>
+        <h2>Sur quel Terrain construire cette Maison ? </h2>
     </div>
 
- {#   <div class="row justify-content-center mt-4">
+  <div class="row justify-content-center mt-4">
         <div class="col-12 col-xl-8">
 
-            <div class="accordion" id="#accordionMatchs">
-                {% for match in matchs %}
+            <div class="accordion" id="#accordionAllotments">
+                {% for allotment in allotments %}
                 <div class="card">
-                    <div class="card-header" id="heading{{ match.id }}">
+                    <div class="card-header" id="heading{{ allotment.id }}">
                         <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ match.id }}" aria-expanded="true" aria-controls="collapse{{ match.id }}">
-                                {{ match.plot.allotment.name }} - {{ match.plot.allotment.city }} - {{ match.plot.allotment.postalCode }}
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-{{ allotment.id }}" aria-expanded="true" aria-controls="collapse-{{ allotment.id }}">
+                                {{ allotment.name }} - {{ allotment.city }} - {{ allotment.postalCode }}
                             </button>
                         </h2>
                     </div>
 
-                    <div id="collapse{{ match.id }}" class="collapse{% if loop.first %}show {% endif %}" aria-labelledby="heading{{ match.id }}" data-parent="#accordionMatchs">
+                    <div id="collapse-{{ allotment.id }}" class="collapseshow" aria-labelledby="heading-{{ allotment.id }}" data-parent="#accordionAllotments">
                         <div class="card-body">
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th>Lot</th>
                                     <th>Surface</th>
-                                    <th>Prix Projet</th>
+                                    <th>Prix du Terrain</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for plot in allotment.plots %}
                                 <tr>
-                                <th> {{ match.plot.lot }}</th>
-                                <td>{{ match.plot.surface }} m2</td>
-                                <td>{{ match.sellingPriceAti|number_format(0,'',' ') }} €</td>
+                                <th> {{ plot.lot }}</th>
+                                <td>{{ plot.surface }} m2</td>
+                                <td>{{ plot.sellingPriceAti | number_format(0,'',' ') }} €</td>
                                 </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -136,7 +138,7 @@ Modèle de Maison {{ house.name }}
                 </div>
 
         </div>
-    </div>#}
+    </div>
 
     <div class="row flex-column justify-content-center align-items-center bg-light m-1">
         <h2 class="d-flex pt-5 col-12 col-lg-6 justify-content-center">En savoir plus</h2>
