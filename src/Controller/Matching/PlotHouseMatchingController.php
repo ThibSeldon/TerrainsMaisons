@@ -83,6 +83,7 @@ class PlotHouseMatchingController extends AbstractController
         return $this->redirectToRoute('matching_plot_house_matching_index');
     }
 
+    //ALGO DE MATCHS POUR TOUTE LES COMBINAISONS DU SITE TERRAINS MAISONS . COM
     #[Route('/makematch', name: 'matching_plot_house_makematch', priority: 1)]
     public function makematch(PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository, PlotRepository $plotRepository, HouseRepository $houseRepository)
     {
@@ -91,7 +92,6 @@ class PlotHouseMatchingController extends AbstractController
         $tempData = [];
         foreach ($houses as $house) {
             $allotments = $allotmentRepository->findAllotmentByRoofing($house->getHouseRoofing()->getName());
-            //dump($allotments);
 
             foreach ($allotments as $allotment) {
 

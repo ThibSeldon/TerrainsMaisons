@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1>PlotHouseMatching index :  {{ plot_house_matchings | length }} enregistrements</h1>
+    <a class="btn btn-primary btn-lg" href="{{ path('matching_plot_house_makematch') }}"> MAKEMATCH </a>
 
     <table class="table">
         <thead>

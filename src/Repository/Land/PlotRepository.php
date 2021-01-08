@@ -21,7 +21,7 @@ class PlotRepository extends ServiceEntityRepository
         parent::__construct($registry, Plot::class);
     }
 
-
+//ALGO DE MATCHS UTILISE POUR TOUTES LES COMBINAISONS
     public function getPlotsForHouse(House $house, Allotment $allotment)
     {
         $houseLength = $house->getLength();
@@ -37,13 +37,14 @@ class PlotRepository extends ServiceEntityRepository
         $qb
             ->join('p.allotment', 'a')
             ->andWhere('p.allotment = :allotment')
-            ->andWhere('p.facadeWidth - :matchFacadePlot >= :houseLength')
+            ->andWhere('(p.facadeWidth - :matchFacadePlot) >= :houseLength')
             ->orWhere('a.doubleLimit = true AND p.facadeWidth = :houseLength')
             ->setParameters([
                 'houseLength' => $houseLength,
                 'allotment' => $allotment,
                 'matchFacadePlot' => $matchFacadePlot,
             ])
+
 
         ;
 
