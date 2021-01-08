@@ -5,11 +5,12 @@ Modèle de Maison {{ house.name }}
 {% endblock %}
 
 {% block body %}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1>{{ house.name }} - {{ house.roomNumber }} Chambres</h1>
-            <h3>A Partir de {{ house.sellingPriceAti | format_currency('EUR') }}</h3>
+            <h3>A Partir de {{ house.sellingPriceAti | number_format(0,'',' ') }} €</h3>
 
         </div>
     </div>
@@ -93,6 +94,49 @@ Modèle de Maison {{ house.name }}
     </div>
 
 </div>
+    <div class="row m-5 justify-content-center">
+        <h2>Sur quelle Terrains construire cette Maison ? </h2>
+    </div>
+
+ {#   <div class="row justify-content-center mt-4">
+        <div class="col-12 col-xl-8">
+
+            <div class="accordion" id="#accordionMatchs">
+                {% for match in matchs %}
+                <div class="card">
+                    <div class="card-header" id="heading{{ match.id }}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ match.id }}" aria-expanded="true" aria-controls="collapse{{ match.id }}">
+                                {{ match.plot.allotment.name }} - {{ match.plot.allotment.city }} - {{ match.plot.allotment.postalCode }}
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapse{{ match.id }}" class="collapse{% if loop.first %}show {% endif %}" aria-labelledby="heading{{ match.id }}" data-parent="#accordionMatchs">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Lot</th>
+                                    <th>Surface</th>
+                                    <th>Prix Projet</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                <th> {{ match.plot.lot }}</th>
+                                <td>{{ match.plot.surface }} m2</td>
+                                <td>{{ match.sellingPriceAti|number_format(0,'',' ') }} €</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+        </div>
+    </div>#}
 
     <div class="row flex-column justify-content-center align-items-center bg-light m-1">
         <h2 class="d-flex pt-5 col-12 col-lg-6 justify-content-center">En savoir plus</h2>

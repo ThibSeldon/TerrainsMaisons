@@ -73,17 +73,17 @@
             </tr>
             </thead>
             <tbody>
-            {% for house in houses %}
+            {% for match in matchs %}
                 <tr>
                     <td>
-                        <a href="{{ path('house_show', { 'id': house.id }) }}"
-                           class="btn btn-light"> {{ house.name }}</a>
+                        <a href="{{ path('house_show', { 'id': match.house.id }) }}"
+                           class="btn btn-light"> {{ match.house.name }}</a>
                     </td>
-                    <td>{{ house.livingSpace }}</td>
-                    <td>{{ house.length }}</td>
-                    <td>{{ house.sellingPriceAti | format_currency('EUR') }}</td>
+                    <td>{{ match.house.livingSpace }}</td>
+                    <td>{{ match.house.length }}</td>
+                    <td>{{ match.house.sellingPriceAti | format_currency('EUR') }}</td>
                     <td>
-                        {{ (house.sellingPriceAti + plot.sellingPriceAti) | format_currency('EUR') }}
+                        {{ (match.sellingPriceAti) | format_currency('EUR') }}
                     </td>
 
 

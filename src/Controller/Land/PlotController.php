@@ -6,6 +6,7 @@ use App\Entity\Land\Plot;
 use App\Form\Land\PlotType;
 use App\Repository\HouseRepository;
 use App\Repository\Land\PlotRepository;
+use App\Repository\Matching\PlotHouseMatchingRepository;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,27 +61,16 @@ class PlotController extends AbstractController
      * @Route("/{id}", name="land_plot_show", methods={"GET"})
      * @param Plot $plot
      * @param HouseRepository $houseRepository
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @return Response
      */
-    public function show(Plot $plot, HouseRepository $houseRepository): Response
+    public function show(Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
-        $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
-        $limit = $plot->getAllotment()->getPropertyLimit();
-        $plotFW = $plot->getFacadeWidth();
-
-        $allotmentRoofings = $plot->getAllotment()->getHouseRoofings();
-        $roofings = [];
-        foreach ($allotmentRoofings as $arg){
-            $roofings[] = $arg;
-        }
-
-
-        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);
-
+        $matchs = $plotHouseMatchingRepository->findBy(['plot'=>$plot], ['sellingPriceAti'=>'ASC']);
 
         return $this->render('land/plot/show.html.twig', [
             'plot' => $plot,
-            'houses' => $houses,
+            'matchs' => $matchs,
 
         ]);
     }

@@ -1,7 +1,7 @@
 {% extends 'base_all.html.twig' %}
 
 {% block title %}
-   Terrain {{ plot.allotment.name }} - {{ plot.allotment.city }} - Lot n° {{ plot.lot }}
+    Terrain {{ plot.allotment.name }} - {{ plot.allotment.city }} - Lot n° {{ plot.lot }}
 {% endblock %}
 
 {% block body %}
@@ -9,7 +9,7 @@
     <div class="jumbotron">
         <h1 class="">{{ plot.allotment.name }}</h1>
         <h2>Lot n°: {{ plot.lot }} </h2>
-        <h3>Prix: {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
+        <h3>Prix : {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
         <h3>Surface : {{ plot.surface }} m2 </h3>
         <p class="lead">Découvrez les Maisons Neuves pour ce terrain</p>
         <hr class="my-4">
@@ -32,8 +32,8 @@
     </div>
 
     <div class="row justify-content-center">
-    <h2>Maisons Neuves Compatibles</h2>
-</div>
+        <h2>Maisons Neuves Compatibles</h2>
+    </div>
 
     <div class="row justify-content-center" id="house-list">
         {% for house in houses %}
@@ -43,18 +43,20 @@
 
                     {% if house.house.pictures[0] is defined %}
                         <a href="{{ path('all_ad_show', {'id': house.id}) }}"> <img class="card-img-top"
-                                                                                       src="{{ asset('uploads/pictures/'~house.house.pictures[0].name) | imagine_filter('heighten_filter') }}"
-                                                                                       alt="{{ house.house.name }}"></a>
+                                                                                    src="{{ asset('uploads/pictures/'~house.house.pictures[0].name) | imagine_filter('heighten_filter') }}"
+                                                                                    alt="{{ house.house.name }}"></a>
                     {% else %}
                         <a href="{{ path('all_ad_show', {'id': house.id}) }}">
-                            <img class="card-img-top" src="{{ asset('images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
+                            <img class="card-img-top"
+                                 src="{{ asset('images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
                                  alt="{{ house.house.name }}">
                         </a>
                     {% endif %}
 
                     <div class="card-body">
                         <h4 class="card-title">Prix du projet
-                            : {{ (house.house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ') }} € </h4>
+                            : {{ (house.house.sellingPriceAti + plot.sellingPriceAti) | number_format(0, '', ' ') }}
+                            € </h4>
                         <h5 class="card-subtitle text-muted">{{ house.house.name }}</h5>
 
 
@@ -74,10 +76,11 @@
                             </li>
 
                             <li class="list-group-item">
-                               Maison Seule : {{ house.house.sellingPriceAti }} €
+                                Maison Seule : {{ house.house.sellingPriceAti | number_format(0,'',' ' )}} €
                             </li>
                             <li class="list-group-item ">
-                                <img src="{{ asset('uploads/pictures/'~ house.house.houseBrand.logo) }}" alt="" width="250"
+                                <img src="{{ asset('uploads/pictures/'~ house.house.houseBrand.logo) }}" alt=""
+                                     width="250"
                                      class="img-fluid">
                             </li>
 

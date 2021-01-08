@@ -8,9 +8,9 @@
 
     <div class="jumbotron">
         <h1 class="">{{ allotment.name }}</h1>
-        <p class="lead">Pour votre futur Maison: Découvrez le programme</p>
+        <p class="lead">Pour votre future Maison : Découvrez le programme</p>
         <hr class="my-4">
-        <p>Retrouvez toutes les informations sur le lotissement et parcourez les terrains disponibles.</p>
+        <p>Retrouvez toutes les informations sur le lotissement et parcourrez les terrains disponibles.</p>
         <p>Lorsque vous choisissez un terrain, cliquez dessus pour découvrir les Maisons compatibles et réalisez votre
             projet.</p>
 {#        <p class="lead">
@@ -28,39 +28,8 @@
 <div class="row justify-content-center">
     <h2>Terrains disponibles </h2>
 </div>
-    {# <table class="table">
-    <thead id="thead" class="thead-dark">
-    <tr>
-        <th scope="col">N° Lot</th>
-        <th scope="col">Surface (m2)</th>
-        <th scope="col">Prix du terrain</th>
-        <th scope="col">Etat</th>
-        <th class="" scope="col">Maisons Compatibles</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for plot in allotment.plots %}
-        {% if plot.state.name == 'Libre' or plot.state.name == 'Réservé' %}
-    <tr>
-      <th scope="row">{{ plot.lot }}</th>
-        <td>{{ plot.surface }}</td>
-        <td>{{ plot.sellingPriceAti | number_format(0, '', ' ')}} €</td>
-        <td>
-            {% if plot.state %}
-            {{ plot.state.name }}
-            {% endif %}
 
-        </td>
-
-        <td><a href="{{ path('all_plot_show', {'id': plot.id}) }}" >Voir les Maisons Compatibles</a></td>
-    </tr>
-        {% endif %}
-    {% endfor %}
-    </tbody>
-</table> #}
-
-
-    <div class="row">
+    <div class="row justify-content-center">
 
         {% for plot in plots %}
             {% if plot.state.name == 'Libre' or plot.state.name == 'Réservé' %}
@@ -69,12 +38,12 @@
                         <div class="card-header"> Lot n° {{ plot.lot }}</div>
                         <div class="card-body">
 
-                            <h5 class="card-title">Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ') }}
+                            <h5 class="card-title">Prix Terrain : {{ plot.sellingPriceAti | number_format(0, '', ' ') }}
                                 €</h5>
 
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Surface: {{ plot.surface }} m2</li>
+                            <li class="list-group-item">Surface : {{ plot.surface }} m2</li>
                             {% if plot.state.name == 'Libre' %}
                                 <li class="list-group-item"><span class="badge badge-pill badge-success">{{ plot.state.name }}</span>  </li>
                             {% else %}

@@ -13,7 +13,7 @@
         <p class="lead">Un seul endroit pour trouver votre terrain et votre maison neuve !</p>
         <hr class="my-4">
         <p>Retrouvez toutes les informations sur les terrains et les maisons</p>
-            <p>Outil acctuellement en BETA en Champagne-Ardenne</p>
+            <p>Outil actuellement en BETA en Champagne-Ardenne</p>
 
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="#search-form" role="button">Rechercher un Lotissement</a>
@@ -43,7 +43,7 @@
     </div>
 
 
-<div class="row" id="allotment-list">
+<div class="row justify-content-center " id="allotment-list">
     {% for allotment in allotments %}
 <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
         <div class="card w-100" id="allotmentCardList">
@@ -54,11 +54,11 @@
             </div>
             <div class="card-body">
 
-                <h5 class="card-title">Ville: {{ allotment.city }}</h5>
+                <h5 class="card-title">Ville : {{ allotment.city }}</h5>
 
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Code Postal :{{ allotment.postalCode }} </li>
+                <li class="list-group-item">Code Postal : {{ allotment.postalCode }} </li>
                 <li class="list-group-item"><span class="badge badge-success">{{ allotment.plots| length }}</span> Terrains</li>
                 <li class="list-group-item">à Partir de {{ allotment.getMinPriceAtiPlot }}</li>
             </ul>

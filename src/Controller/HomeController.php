@@ -73,18 +73,6 @@ class HomeController extends AbstractController
         if($searchForm->isSubmitted() && $searchForm->isValid()) {
             $numberRoomData = $searchForm->get('roomNumber')->getData();
 
-/*            $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
-            $limit = $plot->getAllotment()->getPropertyLimit();
-            $plotFW = $plot->getFacadeWidth();
-
-            $allotmentRoofings = $plot->getAllotment()->getHouseRoofings();
-            $roofings = [];
-            foreach ($allotmentRoofings as $arg){
-                $roofings[] = $arg;
-            }
-            $houses = $houseRepository->searchHouseRoom($aDoubleLimit, $limit, $plotFW, $roofings, $numberRoomData );*/
-
-            //$houses = $plotHouseMatchingRepository->findBy(['plot'=>$request->get('id')]);
             $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData);
             return $this->render('home/plot_houses.html.twig', [
                 '_fragment' => 'house-list',
@@ -95,19 +83,7 @@ class HomeController extends AbstractController
             ]);
         }
 
-/*        $aDoubleLimit = $plot->getAllotment()->getDoubleLimit();
-        $limit = $plot->getAllotment()->getPropertyLimit();
-        $plotFW = $plot->getFacadeWidth();
-
-        $allotmentRoofings = $plot->getAllotment()->getHouseRoofings();
-        $roofings = [];
-        foreach ($allotmentRoofings as $arg){
-            $roofings[] = $arg;
-        }
-
-
-        $houses = $houseRepository->findHousesPlotCompatible($aDoubleLimit, $limit, $plotFW, $roofings);*/
-        $houses = $plotHouseMatchingRepository->findBy(['plot'=>$request->get('id')]);
+        $houses = $plotHouseMatchingRepository->findBy(['plot'=>$request->get('id')], ['sellingPriceAti'=>'ASC']);
         return $this->render('home/plot_houses.html.twig', [
             'houses' => $houses,
             'plot' => $plot,
@@ -135,11 +111,29 @@ class HomeController extends AbstractController
      * @param House $house
      * @return Response
      */
-    #[Route('/house/{id}', name: 'all_house_show')]
-    public function house(House $house): Response
+    #[Route('/houses/{id}', name: 'all_house_show')]
+    public function house(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
+        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house], ['sellingPriceAti'=>'ASC']);
+        //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
         return $this->render('home/house.html.twig', [
             'house' => $house,
+            'matchs' => $matchs,
+        ]);
+    }
+
+    /**
+     * @param HouseRepository $houseRepository
+     * @return Response
+     */
+    #[Route('/houses', name: 'all_houses_list')]
+    public function houses(HouseRepository $houseRepository): Response
+    {
+
+        $houses = $houseRepository->findAll();
+
+        return $this->render('home/houses.html.twig', [
+            'houses' => $houses,
         ]);
     }
 

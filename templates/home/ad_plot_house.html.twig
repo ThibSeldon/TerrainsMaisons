@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1>{{ ad.name }} - {{ ad.plot.allotment.name }}</h1>
-            <h3>A Partir de {{ ad.sellingPriceAti | format_currency('EUR') }}</h3>
+            <h3>A Partir de {{ ad.sellingPriceAti |number_format(0, '', ' ')  }} €</h3>
 
         </div>
     </div>
@@ -90,7 +90,7 @@
                     </tr>
                     <tr>
                         <th>Prix TTC*</th>
-                        <td>{{ ad.sellingPriceAti | format_currency('EUR') }}</td>
+                        <td>{{ ad.sellingPriceAti | number_format(0,'',' ') }} €</td>
                     </tr>
                     <tr>
                         <th>Construteur</th>

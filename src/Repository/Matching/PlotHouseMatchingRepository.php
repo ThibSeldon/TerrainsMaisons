@@ -29,6 +29,7 @@ class PlotHouseMatchingRepository extends ServiceEntityRepository
                 'plot' => $plot,
                 'bedroom' => $bedRoom,
             ])
+            ->orderBy('m.sellingPriceAti', 'ASC')
             ->getQuery()
             ->getResult()
             ;
