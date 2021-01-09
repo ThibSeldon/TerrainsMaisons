@@ -115,9 +115,10 @@ class HomeController extends AbstractController
     public function house(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
         $allotments = $allotmentRepository->findByHouse($house);
-
+        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house]);
         //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
         return $this->render('home/house.html.twig', [
+            'matchs' => $matchs,
             'house' => $house,
             'allotments' => $allotments,
         ]);

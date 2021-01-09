@@ -12,7 +12,7 @@ Modèle de Maison {{ house.name }}
 
 {% block body %}
 
-<div class="container-fluid">
+
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1>{{ house.name }} - {{ house.roomNumber }} Chambres</h1>
@@ -20,6 +20,7 @@ Modèle de Maison {{ house.name }}
 
         </div>
     </div>
+
 <div class="row justify-content-center">
     <div class=" col-12 col-xl-8 d-flex justify-content-center align-content-center">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -131,11 +132,16 @@ Modèle de Maison {{ house.name }}
                                 </thead>
                                 <tbody>
                                 {% for plot in allotment.plots %}
+                                    <!-- Trick pour trier les plots qui correspondent au match (sinon on recupere tous les plots si 1 allotment match avec une house -->
+                                    {% for match in matchs %}
+                                {% if plot == match.plot %}
                                 <tr>
                                 <th> {{ plot.lot }}</th>
                                 <td>{{ plot.surface }} m2</td>
                                 <td>{{ plot.sellingPriceAti | number_format(0,'',' ') }} €</td>
                                 </tr>
+                                {% endif %}
+                                        {% endfor %}
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -167,6 +173,6 @@ Modèle de Maison {{ house.name }}
         </div>
     </div>
 
-</div>
+
 
 {% endblock %}
