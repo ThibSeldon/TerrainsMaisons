@@ -1,5 +1,10 @@
 {% extends 'base_all.html.twig' %}
 
+{% block description %}
+    <!-- Meta Description -->
+    <meta name="description" content="Terrains dipsonibles pour le lotissement {{ allotment.name }} situé à {{ allotment.city }} - Parcourez la liste des Maisons disponibles pour ce programme">
+{% endblock %}
+
 {% block title %}
   Terrain {{ allotment.name}}  - {{ allotment.city }}
 {% endblock %}

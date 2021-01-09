@@ -1,5 +1,10 @@
 {% extends 'base_all.html.twig' %}
 
+{% block description %}
+    <!-- Meta Description -->
+    <meta name="description" content="Toutes les Maisons Compatibles pour le Lotissement {{ plot.allotment.name }} situé à {{ plot.allotment.city }} sur le terrain {{ plot.lot }}">
+{% endblock %}
+
 {% block title %}
     Terrain {{ plot.allotment.name }} - {{ plot.allotment.city }} - Lot n° {{ plot.lot }}
 {% endblock %}

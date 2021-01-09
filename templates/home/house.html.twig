@@ -1,5 +1,11 @@
 {% extends 'base_all.html.twig' %}
 
+{% block description %}
+    <!-- Meta Description -->
+    <meta name="description" content="Tous les terrains compatbiles pour le modèle de maison
+        {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
+{% endblock %}
+
 {% block title %}
 Modèle de Maison {{ house.name }}
 {% endblock %}
@@ -94,6 +100,7 @@ Modèle de Maison {{ house.name }}
     </div>
 
 </div>
+
     <div class="row m-5 justify-content-center">
         <h2>Sur quel Terrain construire cette Maison ? </h2>
     </div>
@@ -139,11 +146,13 @@ Modèle de Maison {{ house.name }}
 
         </div>
     </div>
+  </div>
 
-    <div class="row flex-column justify-content-center align-items-center bg-light m-1">
+
+    <div class="row d-flex flex-column justify-content-center align-items-center bg-light m-1">
         <h2 class="d-flex pt-5 col-12 col-lg-6 justify-content-center">En savoir plus</h2>
 
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 ">
             <!-- FORMULAIRE DE CONTACT HUBSPOT -->
             <!--[if lte IE 8]>
             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
@@ -158,5 +167,6 @@ Modèle de Maison {{ house.name }}
         </div>
     </div>
 
+</div>
 
 {% endblock %}

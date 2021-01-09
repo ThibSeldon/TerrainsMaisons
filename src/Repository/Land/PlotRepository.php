@@ -29,9 +29,7 @@ class PlotRepository extends ServiceEntityRepository
         //$allotmentId = $allotment->getId();
 
         $matchFacadePlot = $allotment->getPropertyLimit();
-        if(isset($matchFacadePlot)){
-            $matchFacadePlot = 0;
-        }
+
 
         $qb = $this->createQueryBuilder('p');
         $qb
