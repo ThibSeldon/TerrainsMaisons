@@ -7,7 +7,7 @@ use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Entity\Matching\PlotHouseMatching;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
-use App\Form\TerrainsMaisons\HouseSearchType;
+use App\Form\House\HouseSearchType;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
 use App\Repository\Land\PlotRepository;
@@ -66,7 +66,7 @@ class HomeController extends AbstractController
     #[Route('/allotment/plot/{id}', name:'all_plot_show')]
     public function lot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
-        $searchForm = $this->createForm(HouseSearchType::class);
+        $searchForm = $this->createForm(\App\Form\TerrainsMaisons\HouseSearchType::class);
         $searchForm->handleRequest($request);
 
         //Formulaire de recherche soumis
@@ -126,16 +126,31 @@ class HomeController extends AbstractController
 
     /**
      * @param HouseRepository $houseRepository
+     * @param Request $request
      * @return Response
      */
     #[Route('/houses', name: 'all_houses_list')]
-    public function houses(HouseRepository $houseRepository): Response
+    public function houses(HouseRepository $houseRepository, Request $request): Response
     {
+        $searchForm = $this->createForm(HouseSearchType::class);
+        $searchForm->handleRequest($request);
 
-        $houses = $houseRepository->findAll();
+        if($searchForm->isSubmitted() && $searchForm->isValid()){
+            $houseBedroom = $searchForm->get('roomNumber')->getData();
+
+
+            $houses = $houseRepository->findBy([
+                'roomNumber' => $houseBedroom,
+
+            ]);
+        }
+        else{
+            $houses = $houseRepository->findBy([], ['sellingPriceAti'=>'ASC']);
+        }
 
         return $this->render('home/houses.html.twig', [
             'houses' => $houses,
+            'form' => $searchForm->createView(),
         ]);
     }
 

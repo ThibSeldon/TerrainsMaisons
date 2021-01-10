@@ -1,0 +1,31 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base_all.html.twig' %}
+
+{% block body %}
+    <div class="row justify-content-center bg404">
+        <div class="col-12 d-flex justify-content-center align-items-center flex-column">
+    <h1>Page inexistante </h1>
+
+    <p>
+        Désolé, Cette page n'existe pas !
+    </p>
+        <a class="btn btn-outline-secondary" href="{{ path('home') }}">RETOUR SUR TERRAINS MAISONS . COM</a>.
+
+        </div>
+    </div>
+
+<script>
+    console.log('SELDON 404');
+</script>
+
+    <style>
+        .bg404 {
+            height: 100vh;
+            background-image: url("/images/404Maouse.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+    </style>
+
+{% endblock %}
