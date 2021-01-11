@@ -66,6 +66,7 @@ class HomeController extends AbstractController
     #[Route('/allotment/plot/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
     public function plot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
+
         $searchForm = $this->createForm(\App\Form\TerrainsMaisons\HouseSearchType::class);
         $searchForm->handleRequest($request);
 
@@ -95,9 +96,10 @@ class HomeController extends AbstractController
 
     /**
      * @param Allotment $allotment
+     * @param PlotRepository $plotRepository
      * @return Response
      */
-    #[Route('/allotment/{id}', name: 'all_allotment_show')]
+    #[Route('/allotment/{id}', name: 'all_allotment_show', requirements: ['id'=>'\d+'])]
     public function allotment(Allotment $allotment, PlotRepository $plotRepository): Response
     {
         $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
@@ -109,9 +111,11 @@ class HomeController extends AbstractController
 
     /**
      * @param House $house
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
+     * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    #[Route('/houses/{id}', name: 'all_house_show')]
+    #[Route('/houses/{id}', name: 'all_house_show', requirements: ['id'=>'\d+'])]
     public function house(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
         $allotments = $allotmentRepository->findByHouse($house);
@@ -154,7 +158,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/projet/{id}', name:'all_ad_show')]
+    #[Route('/projet/{id}', name:'all_ad_show', requirements: ['id'=>'\d+'])]
     public function adPlotHouse(PlotHouseMatching $houseMatching): Response
     {
         return $this->render('home/ad_plot_house.html.twig', [

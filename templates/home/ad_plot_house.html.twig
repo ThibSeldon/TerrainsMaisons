@@ -1,5 +1,10 @@
 {% extends 'base_all.html.twig' %}
 
+{% block description %}
+    <!-- Meta Description -->
+    <meta name="description" content="Projet construction {{ ad.name }} - {{ ad.plot.allotment.name }} ">
+{% endblock %}
+
 {% block title %}
 {{ ad.name }} - {{ ad.plot.allotment.name }}
 {% endblock %}
