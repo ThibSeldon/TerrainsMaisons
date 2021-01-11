@@ -63,8 +63,8 @@ class HomeController extends AbstractController
      * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @return Response
      */
-    #[Route('/allotment/plot/{id}', name:'all_plot_show')]
-    public function lot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
+    #[Route('/allotment/plot/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
+    public function plot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
         $searchForm = $this->createForm(\App\Form\TerrainsMaisons\HouseSearchType::class);
         $searchForm->handleRequest($request);
