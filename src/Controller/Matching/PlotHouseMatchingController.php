@@ -105,7 +105,7 @@ class PlotHouseMatchingController extends AbstractController
                         $findMatch->setName(
                             'Maison '
                             . $house->getName()
-                            . ' '
+                            . ' de '
                             . $house->getLivingSpace()
                             . ' m2 '
                             . $house->getRoomNumber()
@@ -127,7 +127,7 @@ class PlotHouseMatchingController extends AbstractController
                         $plotHouseMatching->setName(
                             'Maison '
                             . $house->getName()
-                            . ' '
+                            . ' de '
                             . $house->getLivingSpace()
                             . ' m2 '
                             . $house->getRoomNumber()
