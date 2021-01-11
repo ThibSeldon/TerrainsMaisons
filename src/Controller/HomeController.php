@@ -7,7 +7,7 @@ use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Entity\Matching\PlotHouseMatching;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
-use App\Form\House\HouseSearchType;
+use App\Form\TerrainsMaisons\HouseSearchType;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
 use App\Repository\Land\PlotRepository;
@@ -67,7 +67,7 @@ class HomeController extends AbstractController
     public function plot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
 
-        $searchForm = $this->createForm(\App\Form\TerrainsMaisons\HouseSearchType::class);
+        $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
 
         //Formulaire de recherche soumis
@@ -141,12 +141,12 @@ class HomeController extends AbstractController
 
         if($searchForm->isSubmitted() && $searchForm->isValid()){
             $houseBedroom = $searchForm->get('roomNumber')->getData();
-
+            $houseModel = $searchForm->get('houseModel')->getData();
 
             $houses = $houseRepository->findBy([
                 'roomNumber' => $houseBedroom,
-
-            ]);
+                'houseModel' => $houseModel,
+            ], ['sellingPriceAti' => 'ASC']);
         }
         else{
             $houses = $houseRepository->findBy([], ['sellingPriceAti'=>'ASC']);

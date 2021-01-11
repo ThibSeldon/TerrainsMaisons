@@ -2,7 +2,9 @@
 
 namespace App\Form\TerrainsMaisons;
 
+use App\Entity\Admin\House\HouseModel;
 use App\Entity\House;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,7 +16,7 @@ class HouseSearchType extends AbstractType
     {
         $builder
             ->add('roomNumber', ChoiceType::class, [
-                'label' => 'Nombre de chambres',
+                'label' => 'Chambres',
                 'placeholder' => 'Combien de chambre ?',
                 'choices' => [
                     '1' => 1,
@@ -23,6 +25,12 @@ class HouseSearchType extends AbstractType
                     '4' => 4,
                     '5' => 5,
                 ]
+            ])
+
+            ->add('houseModel', EntityType::class, [
+                'placeholder' => 'Type de Maison',
+                'label' => 'Type',
+                'class' => HouseModel::class,
             ])
         ;
     }

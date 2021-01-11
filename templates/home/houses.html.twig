@@ -11,8 +11,10 @@ Catalogue de Maisons des Constructeurs pour Terrains Maisons . com
 
 {% block body %}
 
+<div class="row">
 
-    <div class="jumbotron">
+</div>
+    <div class="jumbotron mt-4">
         <h1 class="">Catalogue de Maisons Neuves</h1>
         <h2>Modèles de maisons disponibles sur Terrains Maisons . com</h2>
 
@@ -25,13 +27,14 @@ Catalogue de Maisons des Constructeurs pour Terrains Maisons . com
     </div>
 
 <div class="row justify-content-center mb-4">
-    <div class="col-12 col-lg-4">
+
+    <div class="col-12 col-lg-4 p-2" style="border: solid lightslategrey;">
         <div class="my-custom-class-for-errors">
             {{ form_errors(form) }}
         </div>
         {{ form_start(form) }}
         {{ form_row(form.roomNumber) }}
-
+        {{ form_row(form.houseModel) }}
         {{ form_row(form._token) }}
 
 
