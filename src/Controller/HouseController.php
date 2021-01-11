@@ -36,7 +36,7 @@ class HouseController extends AbstractController
 
             $model = $houseRepository->searchByName($dataAll);
         } else {
-            $model = $houseRepository->findAll();
+            $model = $houseRepository->findBy([], ['name'=>'ASC']);
         }
 
         return $this->render('house/index.html.twig', [
