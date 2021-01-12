@@ -1,5 +1,30 @@
 {% extends 'base_all.html.twig' %}
 
+{% block schema %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Accomodation",
+            "name": "{{ ad.house.name }}",
+            "description": "{{ ad.house.name }}",
+            "numberOfRooms": "{{ ad.house.roomNumber + 2 }}",
+            "floorSize": {
+                "@type": "QuantitativeValue",
+                "value": "{{ ad.house.livingSpace }}",
+                "unitCode": "MTK"
+            },
+            "numberOfBedrooms": "{{ ad.house.roomNumber }}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "FR",
+                "addressLocality": "{{ ad.plot.allotment.city }}",
+
+                "postalCode": "{{ ad.plot.allotment.postalCode }}"
+            },
+            "telephone": "+33326080404"
+        }
+    </script>
+{% endblock %}
 {% block description %}
     <!-- Meta Description -->
     <meta name="description" content="Projet construction {{ ad.name }} - {{ ad.plot.allotment.name }} ">
@@ -132,35 +157,6 @@
     </div>
 
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Accomodation",
-            "name": "{{ ad.house.name }}",
-            "description": "{{ ad.house.name }}",
-            "numberOfRooms": "{{ ad.house.roomNumber + 2 }}",
 
-            "floorSize": {
-                "@type": "QuantitativeValue",
-                "value": "{{ ad.house.livingSpace }}",
-                "unitCode": "MTK"
-            },
-
-
-            "numberOfBedrooms": "{{ ad.house.roomNumber }}",
-
-
-
-            "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "FR",
-                "addressLocality": "{{ ad.plot.allotment.city }}",
-
-                "postalCode": "{{ ad.plot.allotment.postalCode }}"
-
-            },
-            "telephone": "+33326080404"
-        }
-    </script>
 
 {% endblock %}
