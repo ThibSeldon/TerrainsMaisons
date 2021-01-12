@@ -11,7 +11,7 @@
 
 {% block body %}
 
-    <div class="jumbotron">
+    <div class="bg-light p-5">
         <h1 class="">{{ plot.allotment.name }}</h1>
         <h2>Lot n°: {{ plot.lot }} </h2>
         <h3>Prix : {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
@@ -24,25 +24,29 @@
 
     </div>
 
-    <div class="row justify-content-center mb-3" id="search-form">
-        <div class="col-12 col-lg-6 p-2">
+    <div class="row p-3 justify-content-center align-items-center" id="search-form">
 
-            {% if form is defined %}
-                <div class="my-custom-class-for-errors">
+
+
+
+                <div class="col-12 col-lg-4">
                     {{ form_errors(form) }}
+                    {{ form_start(form) }}
+                {{ form_widget(form.roomNumber, {'attr': {'class': 'form-select'}}) }}
                 </div>
-                {{ form_start(form) }}
 
-                {{ form_row(form.roomNumber) }}
                  {{ form_row(form._token) }}
-               <button class="btn btn-block btn-outline-success">{{ button_label|default('Valider') }}</button>
+        <div class="col-12 col-lg-4 d-grid">
+               <button class="btn  btn-success">{{ button_label|default('Valider') }}</button>
                 {{ form_end(form, {'render_rest': false}) }}
-            {% endif %}
         </div>
+
     </div>
 
-    <div class="row justify-content-center">
+    <div class="d-flex flex-row justify-content-center align-items-center p-2">
+
         <h2>Maisons Neuves Compatibles</h2>
+
     </div>
 
     <div class="row justify-content-center" id="house-list">
@@ -98,7 +102,7 @@
 
 
                     </div>
-                    <div class="card-body">
+                    <div class="card-body d-flex align-items-end">
                         <a href="{{ path('all_ad_show', {'id': house.id}) }}"
                            class="btn btn-secondary  ">Voir le Projet de Construction</a>
                     </div>

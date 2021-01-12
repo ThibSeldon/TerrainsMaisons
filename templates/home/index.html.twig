@@ -13,7 +13,7 @@
 
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-12 col-lg-8 order-1 order-lg-0">
-            <div class="jumbotron jumbotron-fluid">
+            <div class="bg-light p-5">
                 <div class="container">
                     <h1 class="">TERRAINS MAISONS . COM</h1>
                     <p class="lead">Un seul endroit pour trouver votre terrain et votre maison neuve !</p>
@@ -22,11 +22,11 @@
                     <p>Outil actuellement en BETA en Champagne-Ardenne</p>
 
                     <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="#search-form" role="button">Rechercher par
+                        <a class="btn btn-secondary " href="#search-form" role="button">Rechercher par
                             Lotissement</a>
                     </p>
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="{{ path('all_houses_list') }}" role="button">Rechercher
+                    <p class="lead ">
+                        <a class="btn btn-secondary " href="{{ path('all_houses_list') }}" role="button">Rechercher
                             par Maison</a>
                     </p>
                 </div>
@@ -38,19 +38,21 @@
 
     </div>
 
-    <div class="searchForm row justify-content-center align-items-center justify-content-center mb-3" id="search-form">
+    <div class="row p-3 justify-content-center align-items-center" id="search-form">
 
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             {% if form is defined %}
                 {{ form_start(form) }}
-
-                {{ form_widget(form) }}
-                <button class="btn btn-block btn-outline-success">{{ button_label|default('Valider') }}</button>
+                {{ form_widget(form.city) }}
+        </div>
+                <div class="col-12 col-lg-4 d-grid">
+                <button class="btn btn-success">{{ button_label|default('Valider') }}</button>
                 {{ form_end(form) }}
             {% endif %}
-        </div>
-
+                </div>
     </div>
+
+
 
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8 mt-3 d-flex justify-content-center">
@@ -58,7 +60,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center " id="allotment-list">
+    <div class="row justify-content-center pt-2 pb-2 " id="allotment-list">
         {% for allotment in allotments %}
             <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
                 <div class="card w-100" id="allotmentCardList">
