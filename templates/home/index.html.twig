@@ -13,7 +13,7 @@
 
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-12 col-lg-8 order-1 order-lg-0">
-            <div class="bg-light p-5">
+            <div class="bg-light p-xl-5">
                 <div class="container">
                     <h1 class="">TERRAINS MAISONS . COM</h1>
                     <p class="lead">Un seul endroit pour trouver votre terrain et votre maison neuve !</p>
@@ -63,7 +63,7 @@
     <div class="row justify-content-center pt-2 pb-2 " id="allotment-list">
         {% for allotment in allotments %}
             <div class="d-flex align-items-stretch col-12 col-md-6 col-lg-4 mt-1">
-                <div class="card w-100" id="allotmentCardList">
+                <div class="card w-100 p-1" id="allotmentCardList">
                     <div class="card-header">
                         <div class="d-flex justify-content-center">
                             <h4> {{ allotment.name }}</h4>
@@ -76,8 +76,8 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Code Postal : {{ allotment.postalCode }} </li>
-                        <li class="list-group-item"><span
-                                    class="badge badge-success">{{ allotment.plots| length }}</span> Terrains
+                        <li class="list-group-item align-items-center"><span
+                                    class="badge bg-success">{{ allotment.plots| length }}</span> Terrains
                         </li>
                         <li class="list-group-item">à Partir de {{ allotment.getMinPriceAtiPlot }}</li>
                     </ul>

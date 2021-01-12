@@ -2,60 +2,67 @@
 
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Terrains dipsonibles pour le lotissement {{ allotment.name }} situé à {{ allotment.city }} - Parcourez la liste des Maisons disponibles pour ce programme">
+    <meta name="description"
+          content="Terrains dipsonibles pour le lotissement {{ allotment.name }} situé à {{ allotment.city }} - Parcourez la liste des Maisons disponibles pour ce programme">
 {% endblock %}
 
 {% block title %}
-  Terrain {{ allotment.name}}  - {{ allotment.city }}
+    Terrain {{ allotment.name }}  - {{ allotment.city }}
 {% endblock %}
 
 {% block body %}
 
     <link rel="stylesheet" href="css/tab.css">
-    <link rel="stylesheet" href="css/imageModal.css">
 
-<div class="row justify-content-center mt-4">
-    <div class="col-12 col-xl-6 d-flex align-items-stretch">
-      <div class="bg-light p-5">
-          <div class="container">
-            <h1 class="">{{ allotment.name }}</h1>
-            <p class="lead">Pour votre future Maison : Découvrez le programme</p>
-            <hr class="my-4">
-            <p>Retrouvez toutes les informations sur le lotissement et parcourrez les terrains disponibles.</p>
-            <p>Lorsque vous choisissez un terrain, cliquez dessus pour découvrir les Maisons compatibles et réalisez votre
-                projet.</p>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-xl-6 d-flex align-items-stretch">
+            <div class="bg-light p-xl-5">
+                <div class="container">
+                    <h1 class="">{{ allotment.name }}</h1>
+                    <p class="lead">Pour votre future Maison : Découvrez le programme</p>
+                    <hr class="my-4">
+                    <p>Retrouvez toutes les informations sur le lotissement et parcourrez les terrains disponibles.</p>
+                    <p>Lorsque vous choisissez un terrain, cliquez dessus pour découvrir les Maisons compatibles et
+                        réalisez votre
+                        projet.</p>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
 
-    <!--   Tab Menu -->
-    <div class="col-12 col-xl-6">
-        <nav>
-            <div class="nav nav-tabs">
+        <!--   Tab Menu -->
+        <div class="col-12 col-xl-6">
+            <nav>
+                <div class="nav nav-tabs">
 
-                    <a href="#plan" class="nav-link active text-uppercase font-weight-bold" id="plan-tab" data-bs-toggle="tab" role="tab">Plans</a>
+                    <a href="#plan" class="nav-link active text-uppercase font-weight-bold" id="plan-tab"
+                       data-bs-toggle="tab" role="tab">Plans</a>
 
 
-                    <a href="#doc" class="nav-link text-uppercase font-weight-bold" id="doc-tab" data-bs-toggle="tab" role="tab">Documents</a>
-
-        </nav>
+                    <a href="#doc" class="nav-link text-uppercase font-weight-bold" id="doc-tab" data-bs-toggle="tab"
+                       role="tab">Documents</a>
+                </div>
+            </nav>
 
             <div class="tab-content" id="nav-tabContent">
 
                 <div class="tab-pane fade px-4 py-5 show active" id="plan" role="tabpanel" aria-labelledby="plan-tab">
 
+                    {% if allotment.allotmentPlanFile %}
+                        <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
+                                data-bs-target="#imgModal">
+                            <img id="myImg"
+                                 src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}"
+                                 class="img-fluid"
+                                 alt="{{ allotment.name }}">
+                        </button>
+                    {% else %}
 
+                        <img id="myImg" src="/images/LandCouvWeb.jpg" class="img-fluid"
+                             alt="Projet Terrains Maisons . com ">
 
-                                {% if allotment.allotmentPlanFile %}<img id="myImg" src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}" class="img-fluid"
-                                     alt="{{ allotment.name }}">
-                                {% else %}
-                                <img id="myImg" src="/images/LandCouvWeb.jpg" class="img-fluid"
-                                     alt="Projet Terrains Maisons . com ">
-                                {% endif %}
-
-
+                    {% endif %}
                 </div>
-
 
 
                 <div class="tab-pane fade px-4 py-5" id="doc" role="tabpanel" aria-labelledby="doc-tab">
@@ -64,11 +71,15 @@
                         <tbody>
                         <tr>
                             <th> PLU</th>
-                            <td>{% if allotment.localUrbanPlanFile %} <a href="{{ asset('uploads/plans/'~allotment.localUrbanPlanFile) }}" target="_blank" >Télécharger</a>{% endif %}</td>
+                            <td>{% if allotment.localUrbanPlanFile %} <a
+                                        href="{{ asset('uploads/plans/'~allotment.localUrbanPlanFile) }}"
+                                        target="_blank">Télécharger</a>{% endif %}</td>
                         </tr>
                         <tr>
                             <th> Réglement du Lotissement</th>
-                            <td>{% if allotment.regulationFile %}<a href="{{ asset('uploads/plans/'~allotment.regulationFile) }}"  target="_blank"> Télécharger</a>{% endif %}</td>
+                            <td>{% if allotment.regulationFile %}<a
+                                    href="{{ asset('uploads/plans/'~allotment.regulationFile) }}"  target="_blank">
+                                        Télécharger</a>{% endif %}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -78,28 +89,35 @@
             </div>
         </div>
 
-
-
     </div>
 
+    <!-- Modal Image -->
+    {% if allotment.allotmentPlanFile %}
+    <div class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog min-vw-100">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Plan Lotissement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="myImg"
+                         src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}"
+                         class="img-fluid"
+                         alt="{{ allotment.name }}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- The Close Button -->
-        <span class="close">&times;</span>
-
-        <!-- Modal Content (The Image) -->
-        <img class="modal-content" id="img01">
-
-        <!-- Modal Caption (Image Text) -->
-        <div id="caption"></div>
+                </div>
+            </div>
+        </div>
     </div>
+{% endif %}
 
-
-<div class="row d-flex  mx-auto mt-2">
-    <h2 class="text-center">Terrains disponibles </h2>
-</div>
+    <div class="row d-flex  mx-auto mt-2">
+        <h2 class="text-center">Terrains disponibles </h2>
+    </div>
 
     <div class="row justify-content-center p-2">
 
@@ -117,9 +135,11 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Surface : {{ plot.surface }} m2</li>
                             {% if plot.state.name == 'Libre' %}
-                                <li class="list-group-item"><span class="badge badge-pill badge-success">{{ plot.state.name }}</span>  </li>
+                                <li class="list-group-item"><span
+                                            class="badge badge-pill bg-success">{{ plot.state.name }}</span></li>
                             {% else %}
-                                <li class="list-group-item"><span class="badge badge-pill badge-warning">{{ plot.state.name }}</span>  </li>
+                                <li class="list-group-item"><span
+                                            class="badge badge-pill bg-warning">{{ plot.state.name }}</span></li>
                             {% endif %}
 
                         </ul>
@@ -133,28 +153,6 @@
         {% endfor %}
     </div>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the image and insert it inside the modal - use its "alt" text as a caption
-        var img = document.getElementById("myImg");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        img.onclick = function(){
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
-        }
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-    </script>
 
 {% endblock %}
 
