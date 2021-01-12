@@ -67,7 +67,7 @@
                     </tr>
                     <tr>
                         <th>Surface Habitable</th>
-                        <td>{{ ad.house.livingSpace }} m2</td>
+                        <td>>{{ ad.house.livingSpace }} m2</span></td>
                     </tr>
                     <tr>
                         <th>Surface Annexe</th>
@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <th>Chambres</th>
-                        <td>{{ ad.house.roomNumber }}</td>
+                        <td>>{{ ad.house.roomNumber }}</span></td>
                     </tr>
                     <tr>
                         <th>Salle de Bains</th>
@@ -131,5 +131,36 @@
         </div>
     </div>
 
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Accomodation",
+            "name": "{{ ad.house.name }}",
+            "description": "{{ ad.house.name }}",
+            "numberOfRooms": "{{ ad.house.roomNumber + 2 }}",
+
+            "floorSize": {
+                "@type": "QuantitativeValue",
+                "value": "{{ ad.house.livingSpace }}",
+                "unitCode": "MTK"
+            },
+
+
+            "numberOfBedrooms": "{{ ad.house.roomNumber }}",
+
+
+
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "FR",
+                "addressLocality": "{{ ad.plot.allotment.city }}",
+
+                "postalCode": "{{ ad.plot.allotment.postalCode }}"
+
+            },
+            "telephone": "+33326080404"
+        }
+    </script>
 
 {% endblock %}
