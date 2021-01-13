@@ -13,11 +13,18 @@ Modèle de Maison {{ house.name }}
 {% block body %}
 
 
+
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1>{{ house.name }} - {{ house.roomNumber }} Chambres</h1>
             <h3>A Partir de {{ house.sellingPriceAti | number_format(0,'',' ') }} €</h3>
+            {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
 
+            {{ breadcrumbs.render([
+                {'url': url('home'), 'text': 'TerrainsMaisons.com'},
+                {'url': url('all_houses_list'), 'text': 'Maisons'},
+                {'text': house.name},
+            ]) }}
         </div>
     </div>
 
@@ -49,8 +56,10 @@ Modèle de Maison {{ house.name }}
 </div>
     </div>
 
-    <div class=" col-12 col-xl-8 ">
+    <div class=" col-12 col-xl-8 p-2 d-flex justify-content-center">
         <h2>Caractéristiques de la maison</h2>
+    </div>
+    <div class="col-12 col-xl-8">
         <div class="table-responsive">
         <table class="table table-striped p-0 m-0">
             <tbody>
