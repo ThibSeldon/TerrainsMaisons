@@ -27,19 +27,24 @@ Catalogue de Maisons des Constructeurs pour Terrains Maisons . com
 
     </div>
 
-<div class="row justify-content-center mb-4">
+<div class="row flex-column align-items-center justify-content-center mb-4">
+    <div class="col-12 col-lg-6 p-2 d-flex justify-content-center">
+        <h4>Rechercher</h4>
 
+    </div>
     <div class=" col-12 col-lg-6 p-2">
         <div class="my-custom-class-for-errors">
             {{ form_errors(form) }}
         </div>
         {{ form_start(form) }}
-        {{ form_row(form.roomNumber) }}
-        {{ form_row(form.houseModel) }}
+        {{ form_widget(form.roomNumber) }}
+    </div>
+    <div class="col-12 col-lg-6 p-2">
+        {{ form_widget(form.houseModel) }}
         {{ form_row(form._token) }}
-
-
-            <button class="btn btn-block btn-outline-success">{{ button_label|default('Valider') }}</button>
+    </div>
+    <div class="col-12 col-lg-6 p-2 d-grid ">
+            <button class="btn btn-block btn-success">{{ button_label|default('Valider') }}</button>
 
 
         {{ form_end(form, {'render_rest': false}) }}

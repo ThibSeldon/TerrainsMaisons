@@ -165,4 +165,11 @@ class HomeController extends AbstractController
             'ad' => $houseMatching
         ]);
     }
+
+
+    #[Route('/mentions-legales', name:'legal_notice')]
+    public function legaleNotice()
+    {
+        return $this->render('home/legale_notice.html.twig');
+    }
 }
