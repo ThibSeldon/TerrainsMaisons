@@ -20,11 +20,14 @@ Modèle de Maison {{ house.name }}
             <h3>A Partir de {{ house.sellingPriceAti | number_format(0,'',' ') }} €</h3>
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
 
+            <!-- BREADCRUMPS  START-->
             {{ breadcrumbs.render([
                 {'url': url('home'), 'text': 'TerrainsMaisons.com'},
                 {'url': url('all_houses_list'), 'text': 'Maisons'},
                 {'text': house.name},
             ]) }}
+            <!-- BREADCRUMPS  END-->
+
         </div>
     </div>
 

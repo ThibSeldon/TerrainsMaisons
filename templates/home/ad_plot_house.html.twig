@@ -18,17 +18,21 @@
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1>{{ ad.name }} - {{ ad.plot.allotment.name }}</h1>
             <h3>A Partir de {{ ad.sellingPriceAti |number_format(0, '', ' ')  }} €</h3>
+
+            <!-- BREADCRUMPS  START-->
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
 
             {{ breadcrumbs.render([
                 {'url': url('home'), 'text': 'TerrainsMaisons.com'},
                 {'text': ad.name},
             ]) }}
+            <!-- BREADCRUMPS  END -->
+
         </div>
     </div>
     <div class="row justify-content-center">
         <div class=" col-12 col-xl-8 d-flex justify-content-center align-content-center">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" >
                     {% if ad.house.pictures[0] is defined %}
                         {% for picture in ad.house.pictures %}
@@ -43,13 +47,13 @@
                         </div>
                     {% endif %}
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="visually-hidden">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="visually-hidden">Next</span>
                 </a>
             </div>
         </div>
