@@ -30,11 +30,12 @@ class HomeController extends AbstractController
      * @return Response
      */
     #[Route('/', name: 'home')]
-    public function index(Request $request, AllotmentRepository $allotmentRepository): Response
+    public function index(Request $request, AllotmentRepository $allotmentRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
 
         $searchForm = $this->createForm(AllotmentSearchType::class);
         $searchForm->handleRequest($request);
+        $countMatchs = $plotHouseMatchingRepository->count([]);
 
         if($searchForm->isSubmitted() && $searchForm->isValid()){
             //Pourquoi je recupere l objet allotment et non le champ city ? (ca fonctionne commme ca)
@@ -44,6 +45,7 @@ class HomeController extends AbstractController
                 '_fragment' => 'allotment-list',
                 'allotments' => $allotments,
                 'form' => $searchForm->createView(),
+                'countMatchs' => $countMatchs,
             ]);
     }
 
@@ -51,6 +53,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'allotments' => $allotments,
             'form' => $searchForm->createView(),
+            'countMatchs' => $countMatchs,
         ]);
 
 
