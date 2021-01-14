@@ -69,7 +69,7 @@ class PlotHouseMatching
 
 public function __toString(): string
 {
-    return $this->getName();
+    return $this->getName() . ' ' .$this->getId();
 }
 
     public function getId(): ?int
