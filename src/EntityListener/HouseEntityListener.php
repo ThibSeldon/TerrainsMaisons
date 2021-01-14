@@ -24,4 +24,5 @@ class HouseEntityListener
     {
         $house->computeSlug($this->slugger);
     }
+
 }

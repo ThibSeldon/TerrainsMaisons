@@ -473,18 +473,18 @@ class House
         return $this->slug;
     }
 
-/*    public function setSlug(string $slug): self
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
-    }*/
+    }
 
     //Mise a jour du slug
     public function computeSlug(SluggerInterface $slugger): void
     {
-        if (!$this->slug || '-' === $this->slug ){
-            $this->slug = (string) $slugger->slug((string) $this->getName())->lower();
+        if ($this->slug || '-' === $this->slug ){
+            $this->slug = (string) $slugger->slug((string) $this->getName().'-'.$this->getHouseBrand())->lower();
         }
     }
     

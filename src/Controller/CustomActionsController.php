@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CustomActionsController extends AbstractController
 {
     /**
-     * @Route("/cc/custom/actions", name="custom_actions")
+     * @Route("/cc/ca/", name="custom_actions")
      */
     public function index(): Response
     {
@@ -39,6 +39,22 @@ class CustomActionsController extends AbstractController
             $entityManager->flush();
         }
 
+        return $this->render('admin_home/index.html.twig', [
+            'controller_name' => 'AdminHomeController',
+        ]);
+    }
+
+    #[Route('/cc/ca/u-housename', name: 'ca_update_housename')]
+    public function updateHouseName(HouseRepository $houseRepository): Response
+    {
+        $houses = $houseRepository->findAll();
+        $em = $this->getDoctrine()->getManager();
+        foreach ($houses as $h){
+            $h->setSlug($h->getName().'-'.$h->getHouseBrand());
+            $em->persist($h);
+
+        }
+        $em->flush();
         return $this->render('admin_home/index.html.twig', [
             'controller_name' => 'AdminHomeController',
         ]);
