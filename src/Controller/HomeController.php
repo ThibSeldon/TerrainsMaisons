@@ -175,4 +175,12 @@ class HomeController extends AbstractController
     {
         return $this->render('home/legale_notice.html.twig');
     }
+
+    #[Route('/projet/{slug}', name:'all_ad_show_by_slug')]
+    public function viewAdPlotHouse(PlotHouseMatching $houseMatching): Response
+    {
+        return $this->render('home/ad_plot_house.html.twig', [
+            'ad' => $houseMatching
+        ]);
+    }
 }

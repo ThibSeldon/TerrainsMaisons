@@ -52,11 +52,11 @@
 
 
                     {% if house.house.pictures[0] is defined %}
-                        <a href="{{ path('all_ad_show', {'id': house.id}) }}"> <img class="card-img-top"
+                        <a href="{{ path('all_ad_show_by_slug', {'slug': house.slug}) }}"> <img class="card-img-top"
                                                                                     src="{{ asset('uploads/pictures/'~house.house.pictures[0].name) | imagine_filter('heighten_filter') }}"
                                                                                     alt="{{ house.house.name }}"></a>
                     {% else %}
-                        <a href="{{ path('all_ad_show', {'id': house.id}) }}">
+                        <a href="{{ path('all_ad_show_by_slug', {'slug': house.slug}) }}">
                             <img class="card-img-top"
                                  src="{{ asset('images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
                                  alt="{{ house.house.name }}">
@@ -99,7 +99,7 @@
 
                     </div>
                     <div class="card-body d-flex align-items-end">
-                        <a href="{{ path('all_ad_show', {'id': house.id}) }}"
+                        <a href="{{ path('all_ad_show_by_slug', {'slug': house.slug}) }}"
                            class="btn btn-secondary  ">Voir le Projet de Construction</a>
                     </div>
 
