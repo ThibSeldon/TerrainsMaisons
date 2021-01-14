@@ -114,7 +114,7 @@ class PlotHouseMatchingController extends AbstractController
                             . $allotment->getCity()
                             . ' '
                             . $allotment->getName()
-                            . ' Lot   '
+                            . ' Lot '
                             . $plot->getLot()
                         );
                         $findMatch->setValid(true);
