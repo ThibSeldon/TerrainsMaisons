@@ -13,7 +13,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @ORM\Entity(repositoryClass=PlotHouseMatchingRepository::class)
- * @UniqueEntity("slug")
  * @ORM\HasLifecycleCallbacks
  */
 class PlotHouseMatching
