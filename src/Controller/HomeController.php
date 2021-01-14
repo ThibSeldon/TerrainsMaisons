@@ -66,7 +66,7 @@ class HomeController extends AbstractController
      * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @return Response
      */
-    #[Route('/allotment/plot/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
+    #[Route('/lotissement/terrain/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
     public function plot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
 
@@ -102,7 +102,7 @@ class HomeController extends AbstractController
      * @param PlotRepository $plotRepository
      * @return Response
      */
-    #[Route('/allotment/{id}', name: 'all_allotment_show', requirements: ['id'=>'\d+'])]
+    #[Route('/lotissement/{id}', name: 'all_allotment_show', requirements: ['id'=>'\d+'])]
     public function allotment(Allotment $allotment, PlotRepository $plotRepository): Response
     {
         $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
@@ -118,8 +118,20 @@ class HomeController extends AbstractController
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    #[Route('/houses/{id}', name: 'all_house_show', requirements: ['id'=>'\d+'])]
+    #[Route('/maisons/{id}', name: 'all_house_show', requirements: ['id'=>'\d+'])]
     public function house(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
+    {
+        $allotments = $allotmentRepository->findByHouse($house);
+        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house]);
+        //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
+        return $this->render('home/house.html.twig', [
+            'matchs' => $matchs,
+            'house' => $house,
+            'allotments' => $allotments,
+        ]);
+    }
+    #[Route('/maisons/{slug}', name: 'all_house_show_by_slug', priority: 2)]
+    public function houseBySlug(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
         $allotments = $allotmentRepository->findByHouse($house);
         $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house]);
@@ -136,7 +148,7 @@ class HomeController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    #[Route('/houses', name: 'all_houses_list')]
+    #[Route('/maisons', name: 'all_houses_list')]
     public function houses(HouseRepository $houseRepository, Request $request): Response
     {
         $searchForm = $this->createForm(HouseSearchType::class);
@@ -169,6 +181,19 @@ class HomeController extends AbstractController
         ]);
     }
 
+    //Je n utilise pas le @PARAMCONVETER pour rediriger les 404 sur la home si l annonce n existe plus
+    #[Route('/projet/{slug}', name:'all_ad_show_by_slug')]
+    public function viewAdPlotHouse(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
+    {
+        $slug = $request->get('slug');
+        $match = $plotHouseMatchingRepository->findOneBy(['slug'=>$slug]);
+        if(!$match) {
+        return $this->redirectToRoute('home');
+        }
+        return $this->render('home/ad_plot_house.html.twig', [
+            'ad' => $match
+        ]);
+    }
 
     #[Route('/mentions-legales', name:'legal_notice')]
     public function legaleNotice()
@@ -176,11 +201,4 @@ class HomeController extends AbstractController
         return $this->render('home/legale_notice.html.twig');
     }
 
-    #[Route('/projet/{slug}', name:'all_ad_show_by_slug')]
-    public function viewAdPlotHouse(PlotHouseMatching $houseMatching): Response
-    {
-        return $this->render('home/ad_plot_house.html.twig', [
-            'ad' => $houseMatching
-        ]);
-    }
 }

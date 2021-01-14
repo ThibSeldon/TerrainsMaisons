@@ -15,11 +15,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @ORM\Entity(repositoryClass=HouseRepository::class)
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("name")
+ * @UniqueEntity("slug")
  */
 class House
 {
@@ -131,6 +133,11 @@ class House
      * @ORM\OneToMany(targetEntity=PlotHouseMatching::class, mappedBy="house", orphanRemoval=true)
      */
     private $plotHouseMatchings;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -461,6 +468,24 @@ class House
         return $this;
     }
 
-    
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+/*    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }*/
+
+    //Mise a jour du slug
+    public function computeSlug(SluggerInterface $slugger): void
+    {
+        if (!$this->slug || '-' === $this->slug ){
+            $this->slug = (string) $slugger->slug((string) $this->getName())->lower();
+        }
+    }
     
 }

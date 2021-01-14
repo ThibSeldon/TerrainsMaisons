@@ -40,3 +40,8 @@ services:
         tags:
             - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\Matching\PlotHouseMatching'}
             - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\Matching\PlotHouseMatching'}
+
+    App\EntityListener\HouseEntityListener:
+        tags:
+            - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\House' }
+            - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\House' }

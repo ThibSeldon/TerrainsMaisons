@@ -68,8 +68,8 @@ class SitemapController extends AbstractController
                     'title' => 'Terrains Maisons Construction'
                 ];
             }
-            $urls[] = ['loc'=> $this->generateUrl('all_house_show',[
-            'id'=> $house->getId()
+            $urls[] = ['loc'=> $this->generateUrl('all_house_show_by_slug',[
+            'slug'=> $house->getSlug()
             ]),
                 'lastmod' => $updatedAt,
                 'image' => $images[0],

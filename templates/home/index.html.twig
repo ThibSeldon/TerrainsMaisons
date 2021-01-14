@@ -17,10 +17,10 @@
                 <div class="container">
                     <h1 class="">TERRAINS MAISONS . COM</h1>
                     <p class="lead">Un seul endroit pour trouver votre terrain et votre maison neuve !</p>
-                    <p class="lead">Grace à notre Algorithme, aujourd'hui <span class="badge bg-success">{{ countMatchs }} </span> combinaisons de projets de construction.</p>
+                    <p class="lead">Grace à notre Algorithme, aujourd'hui, nous proposons <span class="badge bg-success">{{ countMatchs }} </span> combinaisons de projets de construction.</p>
                     <hr class="my-4">
-                    <p>Retrouvez toutes les informations sur les terrains et les maisons</p>
-                    <p>Outil actuellement en BETA en Champagne-Ardenne</p>
+                    <p>Retrouvez toutes les informations sur les terrains et les maisons en Champagne-Ardenne</p>
+                    <p>Outil actuellement en BETA</p>
 
                     <p class="lead">
                         <a class="btn btn-secondary " href="#search-form" role="button">Rechercher par
@@ -80,7 +80,7 @@
                         <li class="list-group-item align-items-center"><span
                                     class="badge bg-success">{{ allotment.plots| length }}</span> Terrains
                         </li>
-                        <li class="list-group-item">à Partir de {{ allotment.getMinPriceAtiPlot }}</li>
+                        <li class="list-group-item">À partir de {{ allotment.getMinPriceAtiPlot }}</li>
                     </ul>
                     <div class="card-body">
                         <a href="{{ path('all_allotment_show', {'id': allotment.id}) }}" class="btn btn-secondary">Voir
