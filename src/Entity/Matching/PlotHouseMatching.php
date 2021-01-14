@@ -13,6 +13,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @ORM\Entity(repositoryClass=PlotHouseMatchingRepository::class)
+ * @UniqueEntity("slug")
  * @ORM\HasLifecycleCallbacks
  */
 class PlotHouseMatching
@@ -184,7 +185,7 @@ public function __toString(): string
     //Mise a jour du slug
     public function computeSlug(SluggerInterface $slugger): void
     {
-        if ($this->slug || '-' === $this->slug ){
+        if (!$this->slug || '-' === $this->slug ){
             $this->slug = (string) $slugger->slug((string) $this)->lower();
         }
     }
