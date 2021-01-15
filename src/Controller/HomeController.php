@@ -67,33 +67,39 @@ class HomeController extends AbstractController
      * @return Response
      */
     #[Route('/lotissement/terrain/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
-    public function plot(Request $request,Plot $plot, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
+    public function plot(Request $request, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository, PlotRepository $plotRepository): Response
     {
+        $plotId = $request->get('id');
+        $plot = $plotRepository->findOneBy(['id'=>$plotId]);
 
-        $searchForm = $this->createForm(HouseSearchType::class);
-        $searchForm->handleRequest($request);
+        if($plot)
+            {
+                $searchForm = $this->createForm(HouseSearchType::class);
+                $searchForm->handleRequest($request);
 
-        //Formulaire de recherche soumis
-        if($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $numberRoomData = $searchForm->get('roomNumber')->getData();
+                //Formulaire de recherche soumis
+                if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+                    $numberRoomData = $searchForm->get('roomNumber')->getData();
 
-            $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData);
-            return $this->render('home/plot_houses.html.twig', [
-                '_fragment' => 'house-list',
-                'houses' => $houses,
-                'plot' => $plot,
-                'form' => $searchForm->createView(),
+                    $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData);
+                    return $this->render('home/plot_houses.html.twig', [
+                        '_fragment' => 'house-list',
+                        'houses' => $houses,
+                        'plot' => $plot,
+                        'form' => $searchForm->createView(),
 
-            ]);
-        }
+                    ]);
+                }
 
-        $houses = $plotHouseMatchingRepository->findBy(['plot'=>$request->get('id')], ['sellingPriceAti'=>'ASC']);
-        return $this->render('home/plot_houses.html.twig', [
-            'houses' => $houses,
-            'plot' => $plot,
-            'form' => $searchForm->createView(),
+                $houses = $plotHouseMatchingRepository->findBy(['plot' => $request->get('id')], ['sellingPriceAti' => 'ASC']);
+                return $this->render('home/plot_houses.html.twig', [
+                    'houses' => $houses,
+                    'plot' => $plot,
+                    'form' => $searchForm->createView(),
 
-        ]);
+                ]);
+            }
+        return $this->redirectToRoute('home');
     }
 
 

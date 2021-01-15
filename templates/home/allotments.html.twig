@@ -54,7 +54,10 @@
                             <img id="myImg"
                                  src="{{ asset('uploads/pictures/'~ allotment.allotmentPlanFile ) }}"
                                  class="img-fluid"
-                                 alt="{{ allotment.name }}">
+                                 alt="{{ allotment.name }}"
+                                 style="max-height: 50vh"
+                            >
+
                         </button>
                     {% else %}
 
@@ -115,8 +118,19 @@
     </div>
 {% endif %}
 
-    <div class="row d-flex  mx-auto mt-2">
+    <div class="d-flex flex-column  mt-2 justify-content-center align-items-center">
+        <div class="col">
         <h2 class="text-center">Terrains disponibles </h2>
+        </div>
+        <div class="col">
+            <!-- BREADCRUMPS  START-->
+            {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
+        {{ breadcrumbs.render([
+            {'url': url('home'), 'text': 'TerrainsMaisons.com'},
+            {'text': allotment.name },
+        ]) }}
+            <!-- BREADCRUMPS  START-->
+        </div>
     </div>
 
     <div class="row justify-content-center p-2">

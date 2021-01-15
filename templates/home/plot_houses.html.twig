@@ -39,9 +39,20 @@
 
     </div>
 
-    <div class="d-flex flex-row justify-content-center align-items-center p-2">
-
+    <div class="d-flex flex-column justify-content-center align-items-center p-2">
+        <div class="col">
         <h2>Maisons Neuves Compatibles</h2>
+        </div>
+        <div class="col">
+            <!-- BREADCRUMPS  START-->
+            {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
+            {{ breadcrumbs.render([
+                {'url': url('home'), 'text': 'TerrainsMaisons.com'},
+                {'url': path('all_allotment_show', {'id': plot.allotment.id}), 'text': plot.allotment.name},
+                {'text': plot.lot },
+            ]) }}
+            <!-- BREADCRUMPS  START-->
+        </div>
 
     </div>
 
