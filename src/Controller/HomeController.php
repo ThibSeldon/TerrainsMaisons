@@ -109,13 +109,19 @@ class HomeController extends AbstractController
      * @return Response
      */
     #[Route('/lotissement/{id}', name: 'all_allotment_show', requirements: ['id'=>'\d+'])]
-    public function allotment(Allotment $allotment, PlotRepository $plotRepository): Response
+    public function allotment(Request $request, PlotRepository $plotRepository, AllotmentRepository $allotmentRepository): Response
     {
+        $id = $request->get('id');
+        $allotment = $allotmentRepository->findOneBy(['id'=>$id]);
+     if($allotment){
         $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
         return $this->render('home/allotments.html.twig', [
             'allotment' => $allotment,
             'plots' => $plots,
         ]);
+
+     }
+     return $this->redirectToRoute('home');
     }
 
     /**
