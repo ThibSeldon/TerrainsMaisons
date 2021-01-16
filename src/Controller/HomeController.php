@@ -218,4 +218,10 @@ class HomeController extends AbstractController
         return $this->render('home/legale_notice.html.twig');
     }
 
+    #[Route('/guide-utilisateur', name:'home_user_manual')]
+    public function userManual()
+    {
+        return $this->render('home/user_manual.html.twig');
+    }
+
 }

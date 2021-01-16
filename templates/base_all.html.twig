@@ -80,6 +80,10 @@
                     <a {% if route_name == "all_houses_list" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
                             href="{{ path('all_houses_list') }}">Maisons</a>
                 </li>
+                <li class="nav-item">
+                    <a {% if route_name == "home_user_manual" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
+                            href="{{ path('home_user_manual') }}">Guide Utilisateur</a>
+                </li>
                 {% if app.user %}
                     <li class="nav-item">
                     <a class="nav-link" href="{{ path('house_index') }}">Admin</a>
@@ -96,7 +100,7 @@
     <footer class="text-muted pt-4 pb-4  " style="background-color: #E9ECEF">
         <div class="container d-flex flex-column align-items-center justify-content-center">
             <p>
-                <a href="{{ path('home') }}">Site Terrains Maisons . com</a>  | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="{{ path('legal_notice') }}">Mentions Légales</a>
+                <a href="{{ path('home') }}">Site Terrains Maisons . com</a>  | <a href="{{ path('home_user_manual') }}">Guide Utilisateur</a> | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="{{ path('legal_notice') }}">Mentions Légales</a>
             </p>
 
             <p class="conditions">
@@ -135,6 +139,7 @@
     .navbar {
         height: 70px;
     }
+
 
     .conditions {
         font-size: x-small;
