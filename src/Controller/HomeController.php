@@ -186,11 +186,16 @@ class HomeController extends AbstractController
     }
 
     #[Route('/projet/{id}', name:'all_ad_show', requirements: ['id'=>'\d+'])]
-    public function adPlotHouse(PlotHouseMatching $houseMatching): Response
+    public function adPlotHouse(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
+        $id = $request->get('id');
+        $match = $plotHouseMatchingRepository->findOneBy(['id'=>$id]);
+        if($match){
         return $this->render('home/ad_plot_house.html.twig', [
-            'ad' => $houseMatching
+            'ad' => $match
         ]);
+        }
+       return  $this->redirectToRoute('home');
     }
 
     //Je n utilise pas le @PARAMCONVETER pour rediriger les 404 sur la home si l annonce n existe plus
