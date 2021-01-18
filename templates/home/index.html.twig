@@ -10,6 +10,9 @@
 
 {% block body %}
 
+    <link rel="stylesheet" href="css/home-index.css">
+
+
 
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-12 col-lg-8 order-1 order-lg-0">
@@ -17,19 +20,21 @@
                 <div class="container">
                     <h1 class="">TERRAINS MAISONS . COM</h1>
                     <p class="lead">TROUVEZ VOTRE PROJET DE CONSTRUCTION EN CHAMPAGNE-ARDENNE</p>
-                    <p class="lead">Grace à notre Algorithme, aujourd'hui, nous proposons <span class="badge bg-success">{{ countMatchs }} </span> combinaisons de projets de construction.</p>
+                    <p class="lead" style="font-weight: bold">Grace à notre Algorithme, aujourd'hui, nous proposons <span class="badge bg-success">{{ countMatchs }} </span> combinaisons de projets de construction.</p>
                     <hr class="my-4">
                     <p>Retrouvez toutes les informations sur les terrains et les maisons en Champagne-Ardenne</p>
                     <p>Outil actuellement en BETA</p>
 
-                    <p class="lead">
-                        <a class="btn btn-secondary " href="#search-form" role="button">Rechercher par
+                    <div class="row flex-column">
+                    <p class="lead d-inline">
+                        <a class="btn btn-success " href="#search-form" role="button">Rechercher par
                             Lotissement</a>
                     </p>
-                    <p class="lead ">
-                        <a class="btn btn-secondary " href="{{ path('all_houses_list') }}" role="button">Rechercher
+                    <p class="lead d-inline">
+                        <a class="btn btn-success " href="{{ path('all_houses_list') }}" role="button">Rechercher
                             par Maison</a>
                     </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +43,8 @@
         </div>
 
     </div>
+
+
 
     <div class=" pb-3 pt-3 row justify-content-center align-items-center" id="search-form">
 
@@ -99,6 +106,7 @@
             });
         });
     </script>
+
 
 
 

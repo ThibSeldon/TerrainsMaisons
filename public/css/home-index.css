@@ -1,0 +1,12 @@
+.s-bg-cover {
+    background-image: url("../images/cover_home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /*opacity: 0.5;*/
+}
+
+.s-img-cover {
+    width: auto;
+
+}
