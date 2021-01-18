@@ -10,25 +10,18 @@
 {% block body %}
 
 
-<div class="row pt-4">
-
-</div>
-
-    <div class="bg-light pt-2 pb-2 p-xl-5">
-        <h1 class="">Catalogue de Maisons Neuves</h1>
-        <h2>Modèles de maisons disponibles sur Terrains Maisons . com</h2>
 
 
-        <p class="lead">Vous retrouverez l'ensemble des Maisons</p>
-        <hr class="my-4">
-        <p></p>
-        <p>Outils et Algorithmes en BETA merci de nous signaler les incohérences</p>
-
+    <div class="row" style="margin-top: 35px; margin-bottom: 35px">
+        <div class="col-12 d-flex justify-content-center my-5-top" >
+            <h1 class="display-5 text-center">VOTRE MAISON ET CONSTRUCTEUR EN CHAMPAGNE-ARDENNE</h1>
+        </div>
     </div>
+
 
 <div class="row flex-column align-items-center justify-content-center mb-4">
     <div class="col-12 col-lg-6 p-2 d-flex justify-content-center">
-        <h4>Rechercher</h4>
+        <h4>Recherche par Maison</h4>
 
     </div>
     <div class=" col-12 col-lg-6 p-2">
@@ -54,7 +47,7 @@
     <div class="row justify-content-center pb-2" id="house-list">
         {% for house in houses %}
             <div class="d-flex align-items-stretch col-12 col-lg-6 col-xl-4">
-                <div class="card m-3">
+                <div class="card m-lg-3">
 
 
                     {% if house.pictures[0] is defined %}

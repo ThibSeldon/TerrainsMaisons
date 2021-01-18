@@ -68,6 +68,10 @@
                 <table class="table table-striped p-0 m-0">
                     <tbody>
                     <tr>
+                        <th>Maison</th>
+                        <td><a href="{{ path('all_house_show_by_slug', {'slug': ad.house.slug}) }}">{{ ad.house.name }}</a></td>
+                    </tr>
+                    <tr>
                         <th>Lot</th>
                         <td>{{ ad.plot.lot }}</td>
                     </tr>

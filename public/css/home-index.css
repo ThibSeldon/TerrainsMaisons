@@ -1,7 +1,10 @@
 .s-bg-cover {
-    background-image: url("../images/cover_home.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url("../images/cover_home.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    height: 454px;
+
 
     /*opacity: 0.5;*/
 }
