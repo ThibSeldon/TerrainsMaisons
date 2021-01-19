@@ -10,8 +10,10 @@
 {% endblock %}
 
 {% block body %}
+<div class="row ">
+    <div class="col-lg-6 col-12">
 
-    <div class="bg-light p-5">
+    <div class="p-5">
         <h1 class="">{{ plot.allotment.name }}</h1>
         <h2>Lot n°: {{ plot.lot }} </h2>
         <h3>Prix : {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
@@ -21,7 +23,19 @@
         <p>Vous trouverez ici toutes les maisons compatibles. Sous réserves de validation par nos partenaires
             fonciers. </p>
         <p>Outils et Algorithmes en BETA, merci de nous signaler toutes incohérences</p>
+    </div>
+    </div>
+        <div class="col-lg-6 col-12 d-flex align-items-start justify-content-center">
+            <img class="img-fluid" src="/images/house_cloud.jpg" alt="Terrains Maisons .com" style="max-height: 33vh">
+        </div>
 
+</div>
+
+
+    <div class="flex-row justify-content-center align-items-center" style="margin-top: 25px">
+        <div class="col d-flex justify-content-center" id="search-allotment">
+            <h4> Rechercher une Maison</h4>
+        </div>
     </div>
 
     <div class="row pt-3 pb-3 justify-content-center align-items-center" id="search-form">

@@ -2,7 +2,8 @@
 
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Catalogue de Maisons Individuelles par les constructeurs de Maisons dans la Marne et les Ardennes">
+    <meta name="description"
+          content="Catalogue de Maisons Individuelles par les constructeurs de Maisons dans la Marne et les Ardennes">
 {% endblock %}
 
 {% block title %}Catalogue de Maisons des Constructeurs pour Terrains Maisons . com{% endblock %}
@@ -13,36 +14,36 @@
 
 
     <div class="row" style="margin-top: 35px; margin-bottom: 35px">
-        <div class="col-12 d-flex justify-content-center my-5-top" >
+        <div class="col-12 d-flex justify-content-center my-5-top">
             <h1 class="display-5 text-center">VOTRE MAISON ET CONSTRUCTEUR EN CHAMPAGNE-ARDENNE</h1>
         </div>
     </div>
 
 
-<div class="row flex-column align-items-center justify-content-center mb-4">
-    <div class="col-12 col-lg-6 p-2 d-flex justify-content-center">
-        <h4>Recherche par Maison</h4>
+    <div class="row flex-column align-items-center justify-content-center mb-4">
+        <div class="col-12 col-lg-6 p-2 d-flex justify-content-center">
+            <h4>Recherche par Maison</h4>
 
-    </div>
-    <div class=" col-12 col-lg-6 p-2">
-        <div class="my-custom-class-for-errors">
-            {{ form_errors(form) }}
         </div>
-        {{ form_start(form) }}
-        {{ form_widget(form.roomNumber) }}
-    </div>
-    <div class="col-12 col-lg-6 p-2">
-        {{ form_widget(form.houseModel) }}
-        {{ form_row(form._token) }}
-    </div>
-    <div class="col-12 col-lg-6 p-2 d-grid ">
+        <div class=" col-12 col-lg-6 p-2">
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+            {{ form_start(form) }}
+            {{ form_widget(form.roomNumber) }}
+        </div>
+        <div class="col-12 col-lg-6 p-2">
+            {{ form_widget(form.houseModel) }}
+            {{ form_row(form._token) }}
+        </div>
+        <div class="col-12 col-lg-6 p-2 d-grid ">
             <button class="btn btn-block btn-success">{{ button_label|default('Valider') }}</button>
 
 
-        {{ form_end(form, {'render_rest': false}) }}
-    </div>
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
 
-</div>
+    </div>
 
     <div class="row justify-content-center pb-2" id="house-list">
         {% for house in houses %}
@@ -52,18 +53,21 @@
 
                     {% if house.pictures[0] is defined %}
                         <a href="{{ path('all_house_show_by_slug', {'slug': house.slug}) }}"> <img class="card-img-top"
-                                                                                    src="{{ asset('uploads/pictures/'~house.pictures[0].name) | imagine_filter('heighten_filter') }}"
-                                                                                    alt="{{ house.name }}"></a>
+                                                                                                   src="{{ asset('uploads/pictures/'~house.pictures[0].name) | imagine_filter('heighten_filter') }}"
+                                                                                                   alt="{{ house.name }}"></a>
                     {% else %}
                         <a href="{{ path('all_house_show_by_slug', {'slug': house.slug}) }}">
-                            <img class="card-img-top" src="{{ asset('images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
+                            <img class="card-img-top"
+                                 src="{{ asset('images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
                                  alt="{{ house.name }}">
                         </a>
                     {% endif %}
 
                     <div class="card-body">
-
-                        <h4 class="card-title">{{ house.name }}</h4>
+                        <h4 class="card-title">À Partir de :
+                            {{ house.sellingPriceAti | number_format(0, '', ' ') }}
+                            € </h4>
+                        <h5 class="card-subtitle text-muted">Maison {{ house.name }}</h5>
 
 
                         <ul class="list-group list-group-flush">
@@ -80,10 +84,16 @@
                             <li class="list-group-item">
                                 {{ house.houseModel }}
                             </li>
+                            {% if house.annexSurface > 0 %}
+                                <li class="list-group-item">
+                                    Garage : Oui
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    Garage : Non
+                                </li>
+                            {% endif %}
 
-                            <li class="list-group-item">
-                                Maison Seule : {{ house.sellingPriceAti|number_format(0,'',' ') }} €
-                            </li>
                             <li class="list-group-item ">
                                 <img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="" width="250"
                                      class="img-fluid">

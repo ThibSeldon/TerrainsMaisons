@@ -42,10 +42,10 @@ class HomeController extends AbstractController
             $data = $searchForm->get('city')->getData();
             $allotments = $allotmentRepository->findBySearchForm($data);
             return $this->render('home/index.html.twig', [
-                '_fragment' => 'allotment-list',
                 'allotments' => $allotments,
                 'form' => $searchForm->createView(),
                 'countMatchs' => $countMatchs,
+                '_fragment' => '#allotment-list',
             ]);
     }
 
@@ -83,10 +83,10 @@ class HomeController extends AbstractController
 
                     $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData);
                     return $this->render('home/plot_houses.html.twig', [
-                        '_fragment' => 'house-list',
                         'houses' => $houses,
                         'plot' => $plot,
                         'form' => $searchForm->createView(),
+                        '_fragment' => '#house-list',
 
                     ]);
                 }
@@ -182,6 +182,7 @@ class HomeController extends AbstractController
         return $this->render('home/houses.html.twig', [
             'houses' => $houses,
             'form' => $searchForm->createView(),
+            '_fragment' => '#house-list,'
         ]);
     }
 
