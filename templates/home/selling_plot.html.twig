@@ -1,0 +1,70 @@
+{% extends 'base_all.html.twig' %}
+{% block title %}
+    Vendre Mon Terrain ? - TerrainsMaisons.com
+{% endblock %}
+
+{% block description %}
+    <!-- Meta Description -->
+    <meta name="description" content="Vendre mon Terrain sur TerainsMaisons.com">
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="col-12 d-flex flex-column">
+            <img src="images/selling_land_couv.jpg" alt="Vendre mon Terrain sur Terrains Maisons . com" class="img-fluid">
+            <h1 class="display-5">Vendre mon terrain </h1>
+        </div>
+        <div class="row">
+
+
+            <div class="col-12 mb-5">
+
+
+                <p>
+                    TerrainsMaisons.com est <strong>La plateforme à utiliser si vous êtes lotisseurs !</strong>
+                </p>
+                <p>
+                    Afin de vous proposer une <strong>sélection de projets de construction </strong>, réalisables,
+                    en Champagne-Ardenne, nous disposons d’un algorithme qui vous permet de chiffrer
+                    de potentiels <strong>projets de maisons individuelles</strong>, avec des constructeurs de Reims.
+                </p>
+                <p>
+                    Notre site a pour objectif premier, de mettre en avant <strong>tous les lotissements dans la Marne,
+                        Les Ardennes et L’Aisne, </strong> et participe à la <strong>promotion</strong> de ces derniers.
+                </p>
+
+
+                <p>
+                    Vitrine pour des constructeurs, exposition pour de futurs clients, grâce à TerrainsMaisons.com <strong>accélérez la vente de vos parcelles !</strong>
+                </p>
+
+                <p>
+                    Pour tous ceux qui se demandent, <strong>comment ça marche ?</strong> Nous vous conseillons d’aller sur notre
+                    <a href="{{ path('home_user_manual') }}">Guide Utilisateur</a>
+                </p>
+                <p>
+                    Vous êtes intéressé pour mettre en avant votre lotissement ou votre terrain constructible ? N’hésitez pas à <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> .
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        h1, h2, h3, h4 {
+            padding: 1.5rem;
+            text-align: justify;
+        }
+        p{
+            padding: 0.2rem;
+            text-align: justify;
+        }
+    </style>
+
+{% endblock %}
+
+

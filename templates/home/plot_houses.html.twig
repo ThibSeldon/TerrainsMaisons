@@ -2,7 +2,7 @@
 
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Toutes les Maisons Compatibles pour le Lotissement {{ plot.allotment.name }} situé à {{ plot.allotment.city }} sur le terrain {{ plot.lot }}">
+    <meta name="description" content="Maisons Compatibles pour le Lotissement {{ plot.allotment.name }} situé à {{ plot.allotment.city }} sur le terrain {{ plot.lot }}">
 {% endblock %}
 
 {% block title %}
@@ -10,13 +10,13 @@
 {% endblock %}
 
 {% block body %}
-<div class="row ">
+<div class="row justify-content-center">
     <div class="col-lg-6 col-12">
 
-    <div class="p-5">
-        <h1 class="">{{ plot.allotment.name }}</h1>
-        <h2>Lot n°: {{ plot.lot }} </h2>
-        <h3>Prix : {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
+    <div class="p-xl-5">
+        <h1 class="display-6">{{ plot.allotment.name }}</h1>
+        <h2>Terrain: Lot n° {{ plot.lot }} </h2>
+        <h3>Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
         <h3>Surface : {{ plot.surface }} m2 </h3>
         <p class="lead">Découvrez les Maisons Neuves pour ce terrain</p>
         <hr class="my-4">
@@ -111,7 +111,11 @@
                             </li>
 
                             <li class="list-group-item">
-                                Maison Seule : {{ house.house.sellingPriceAti | number_format(0,'',' ' )}} €
+                                {% if house.house.annexSurface > 0 %}
+                                Garage : Oui
+                                {% else %}
+                                Garage : Non
+                                {% endif %}
                             </li>
                             <li class="list-group-item ">
                                 <img src="{{ asset('uploads/pictures/'~ house.house.houseBrand.logo) }}" alt=""

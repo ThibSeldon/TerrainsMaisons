@@ -17,7 +17,7 @@ Modèle de Maison {{ house.name }}
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1>{{ house.name }} - {{ house.roomNumber }} Chambres - {{ house.houseBrand }}</h1>
-            <h3>A Partir de {{ house.sellingPriceAti | number_format(0,'',' ') }} €</h3>
+            <h3>À Partir de {{ house.sellingPriceAti | number_format(0,'',' ') }} €</h3>
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
 
             <!-- BREADCRUMPS  START-->
@@ -73,6 +73,15 @@ Modèle de Maison {{ house.name }}
             <tr>
                 <th>Surface Annexe</th>
                 <td>{{ house.annexSurface }} m2</td>
+            </tr>
+            <tr>
+                <th>Garage</th>
+                <td>{% if house.annexSurface > 0 %}
+                    Oui
+                    {% else %}
+                    Non
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Chambres</th>

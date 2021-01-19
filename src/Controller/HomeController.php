@@ -125,6 +125,7 @@ class HomeController extends AbstractController
     }
 
     /**
+     * OLD-----------------
      * @param House $house
      * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @param AllotmentRepository $allotmentRepository
@@ -142,11 +143,19 @@ class HomeController extends AbstractController
             'allotments' => $allotments,
         ]);
     }
+
+
+    /**
+     * @param House $house
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
+     * @param AllotmentRepository $allotmentRepository
+     * @return Response
+     */
     #[Route('/maisons/{slug}', name: 'all_house_show_by_slug', priority: 2)]
     public function houseBySlug(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
         $allotments = $allotmentRepository->findByHouse($house);
-        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house]);
+        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house], ['name'=>'ASC']);
         //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
         return $this->render('home/house.html.twig', [
             'matchs' => $matchs,
@@ -171,12 +180,13 @@ class HomeController extends AbstractController
             $houseModel = $searchForm->get('houseModel')->getData();
 
             $houses = $houseRepository->findBy([
+                'valid' => true,
                 'roomNumber' => $houseBedroom,
                 'houseModel' => $houseModel,
             ], ['sellingPriceAti' => 'ASC']);
         }
         else{
-            $houses = $houseRepository->findBy([], ['sellingPriceAti'=>'ASC']);
+            $houses = $houseRepository->findBy(['valid'=>true], ['sellingPriceAti'=>'ASC']);
         }
 
         return $this->render('home/houses.html.twig', [
@@ -223,6 +233,12 @@ class HomeController extends AbstractController
     public function userManual()
     {
         return $this->render('home/user_manual.html.twig');
+    }
+
+    #[Route('/terrain-vendre', name:'home_selling_plot')]
+    public function homeSellingPlot()
+    {
+        return $this->render('home/selling_plot.html.twig');
     }
 
 }

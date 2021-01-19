@@ -60,15 +60,17 @@
 {% set route_name = app.request.attributes.get('_route') %}
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-xl-top seldon-nav-main">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('home') }}">Terrains Maisons . com | Beta </a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white seldon-nav-main  p-1">
+    <div class="container-fluid border-bottom  ">
+
+        <a class="navbar-brand" href="{{ path('home') }}" style="margin-right: 30px; font-weight: bolder ">Terrains Maisons.com </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse bg-white navbar-collapse" id="navbarNav">
+        <div class="collapse bg-white navbar-collapse align-items-center" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
                     <a {% if route_name == "home" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
@@ -82,6 +84,10 @@
                     <a {% if route_name == "home_user_manual" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
                             href="{{ path('home_user_manual') }}">Guide Utilisateur</a>
                 </li>
+                <li class="nav-item">
+                    <a {% if route_name == "home_selling_plot" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
+                            href="{{ path('home_selling_plot') }}">Terrain à vendre ?</a>
+                </li>
                 {% if app.user %}
                     <li class="nav-item">
                     <a class="nav-link" href="{{ path('house_index') }}">Admin</a>
@@ -91,6 +97,7 @@
         </div>
     </div>
 </nav>
+
 <!-- END NAVBAR -->
 
 <div class="container-fluid"> {% block body %}{% endblock %}
@@ -98,7 +105,7 @@
     <footer class="text-muted pt-4 pb-4  " style="background-color: #E9ECEF">
         <div class="container d-flex flex-column align-items-center justify-content-center">
             <p>
-                <a href="{{ path('home') }}">Site Terrains Maisons . com</a>  | <a href="{{ path('home_user_manual') }}">Guide Utilisateur</a> | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="{{ path('legal_notice') }}">Mentions Légales</a>
+                <a href="{{ path('home') }}">Site Terrains Maisons . com</a>  | <a href="{{ path('home_user_manual') }}">Guide Utilisateur</a> | <a href="{{ path('home_selling_plot') }}">Vendre mon Terrain</a> | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="mailto:contact@terrainsmaisons.com">Nous Contacter</a> | <a href="{{ path('legal_notice') }}">Mentions Légales</a>
             </p>
 
             <p class="conditions">
@@ -108,6 +115,12 @@
                 Nous ne sommes pas mandatés pour la vente du terrain seul.
                 Les illustrations sont non contractuelles. Voir les conditions avec l'agence du constructeur ou du
                 lotisseur.
+            </p>
+            <p class="conditions">
+                Pour voir le détail des maisons proposées , consulter l'agence ou le site internet du Constructeur
+            </p>
+            <p>
+                © 2020 TerrainsMaisons.com
             </p>
         </div>
     </footer>
@@ -122,6 +135,12 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
+
+<!-- Start cookieyes banner -->
+{% if app.environment != 'dev' %}
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/897ca9823a3e35de5c2fc77a.js"></script>
+{% endif %}
+<!-- End cookieyes banner -->
 
 </body>
 
@@ -145,6 +164,6 @@
 
     .seldon-nav-main a {
         font-family: Helvetica, serif;
-        font-size: large;
+        font-size: larger;
     }
 </style>
