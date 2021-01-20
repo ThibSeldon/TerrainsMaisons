@@ -3,15 +3,29 @@
 {% block title %}Programmes{% endblock %}
 
 {% block body %}
+
+    <script src="/js/filterTable01.js" type="text/javascript"></script>
+
+
     <div class="container-fluid">
     <h1>Lotissement</h1>
+        <div class="row">
+            <div class="col">
+                <form action="">
+                    <label> Recherche par ville
+                        <input id="iIdP"  type="text" onkeyup="searchTable('iIdP', 'tIdP', 2)">
+                    </label>
+                </form>
+            </div>
+        </div>
+
 <div class="row">
     <div class="col">
     <a href="{{ path('land_allotment_new') }}" class="btn btn-primary btn-block">Nouveau</a>
     </div>
 </div>
         <div class="table-responsive">
-    <table class="table table-sm table-hover table-bordered">
+    <table id="tIdP" class="table table-sm table-hover table-bordered">
         <thead>
             <tr>
 
@@ -33,11 +47,11 @@
                 <td>{{ allotment.postalCode }}</td>
                 <td>{{ allotment.city }}</td>
                 <td>{{ allotment.plots.count }}</td>
-                <td>{{ allotment.createdAt ? allotment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ allotment.updatedAt ? allotment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ allotment.createdAt ? allotment.createdAt|date('d-m-Y') : '' }}</td>
+                <td>{{ allotment.updatedAt ? allotment.updatedAt|date('d-m-Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('land_allotment_show', {'id': allotment.id}) }}" class="btn btn-info">show</a>
-                    <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}" class="btn btn-warning">edit</a>
+                    <a href="{{ path('land_allotment_show', {'id': allotment.id}) }}" class="btn btn-info">Voir</a>
+                    <a href="{{ path('land_allotment_edit', {'id': allotment.id}) }}" class="btn btn-warning">Editer</a>
                 </td>
             </tr>
         {% else %}

@@ -31,6 +31,7 @@ class SitemapController extends AbstractController
         $urls[] = ['loc' => $this->generateUrl('legal_notice')];
         $urls[] = ['loc' => $this->generateUrl('all_houses_list')];
         $urls[] = ['loc' => $this->generateUrl('home_user_manual')];
+        $urls[] = ['loc' => $this->generateUrl('home_selling_plot')];
 
         //URLs des pages dynamiques
         foreach ($allotmentRepository->findBy(['isValid' => 'true']) as $allotment) {

@@ -78,12 +78,12 @@
 
                     {% if house.house.pictures[0] is defined %}
                         <a href="{{ path('all_ad_show_by_slug', {'slug': house.slug}) }}"> <img class="card-img-top"
-                                                                                    src="{{ asset('uploads/pictures/'~house.house.pictures[0].name) | imagine_filter('heighten_filter') }}"
+                                                                                    src="{{ asset('/uploads/pictures/'~house.house.pictures[0].name) | imagine_filter('heighten_filter') }}"
                                                                                     alt="{{ house.house.name }}"></a>
                     {% else %}
                         <a href="{{ path('all_ad_show_by_slug', {'slug': house.slug}) }}">
                             <img class="card-img-top"
-                                 src="{{ asset('images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
+                                 src="{{ asset('/images/house_base.jpeg' | imagine_filter('heighten_filter')) }}"
                                  alt="{{ house.house.name }}">
                         </a>
                     {% endif %}
@@ -118,7 +118,7 @@
                                 {% endif %}
                             </li>
                             <li class="list-group-item ">
-                                <img src="{{ asset('uploads/pictures/'~ house.house.houseBrand.logo) }}" alt=""
+                                <img src="{{ ('/uploads/pictures/'~ house.house.houseBrand.logo) }}" alt="Logo Constructeur {{ house.house.houseBrand.name }}"
                                      width="250"
                                      class="img-fluid">
                             </li>
