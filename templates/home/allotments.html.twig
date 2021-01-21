@@ -73,17 +73,21 @@
                     <table class="table">
                         <tbody>
                         <tr>
+                            {% if allotment.localUrbanPlanFile %}
                             <th> PLU</th>
-                            <td>{% if allotment.localUrbanPlanFile %} <a
+                            <td> <a
                                         href="{{ asset('uploads/plans/'~allotment.localUrbanPlanFile) }}"
-                                        target="_blank">Télécharger</a>{% endif %}</td>
+                                        target="_blank">Télécharger</a></td>
                         </tr>
+                        {% endif %}
+                        {% if allotment.regulationFile %}
                         <tr>
                             <th> Réglement du Lotissement</th>
-                            <td>{% if allotment.regulationFile %}<a
+                            <td><a
                                     href="{{ asset('uploads/plans/'~allotment.regulationFile) }}"  target="_blank">
-                                        Télécharger</a>{% endif %}</td>
+                                        Télécharger</a></td>
                         </tr>
+                        {% endif %}
                         </tbody>
                     </table>
 
