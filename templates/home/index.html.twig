@@ -47,11 +47,11 @@
         </div>
     </div>
 
-
-        <div class="col-12">
+<div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
             <img class="img-fluid" src="{{ asset('images/cover_home.jpg' | imagine_filter('big')) }}" alt="Recherche Terrains Maisons . com">
         </div>
-
+</div>
 
     <hr class="my-4">
 
@@ -63,7 +63,7 @@
 
     <div class=" pb-3 pt-3 row justify-content-center align-items-center" id="search-form">
 
-        <div class="col-12 col-lg-4 d-grid">
+        <div class="col-12 col-lg-4 d-grid m-1">
 
             {% if form is defined %}
             {{ form_start(form) }}
