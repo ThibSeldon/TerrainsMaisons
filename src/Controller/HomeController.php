@@ -186,7 +186,7 @@ class HomeController extends AbstractController
             ], ['sellingPriceAti' => 'ASC']);
         }
         else{
-            $houses = $houseRepository->findBy(['valid'=>true], ['sellingPriceAti'=>'ASC']);
+            $houses = $houseRepository->findBy(['valid'=>true, 'roomNumber' => 4], ['sellingPriceAti'=>'ASC']);
         }
 
         return $this->render('home/houses.html.twig', [
