@@ -36,13 +36,14 @@ liip_imagine:
 
         # name our first filter set "my_heighten_filter"
         heighten_filter:
+            quality: 80
             filters:
                 # use and setup the "relative_resize" filter
                 relative_resize:
                 # given 50x40px, output 75x60px using "heighten" option
                     heighten: 400
                     allow_upscale: true
-                    quality: 80
+
 
         big:
             filters:
