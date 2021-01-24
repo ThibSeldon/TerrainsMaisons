@@ -2,6 +2,7 @@
 
 namespace App\Form\TerrainsMaisons;
 
+use App\Entity\Admin\House\HouseBrand;
 use App\Entity\Admin\House\HouseModel;
 use App\Entity\House;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -31,6 +32,14 @@ class HouseSearchType extends AbstractType
                 'placeholder' => 'Type de Maison',
                 'label' => 'Type',
                 'class' => HouseModel::class,
+                'required' => false,
+            ])
+
+            -> add('houseBrand', EntityType::class, [
+                'placeholder' => 'Constructeur',
+                'label' => 'Constructeur',
+                'class' => HouseBrand::class,
+                'required' => false,
             ])
         ;
     }

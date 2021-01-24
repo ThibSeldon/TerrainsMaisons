@@ -8,6 +8,8 @@ use App\Entity\Land\Plot;
 use App\Entity\Matching\PlotHouseMatching;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
 use App\Form\TerrainsMaisons\HouseSearchType;
+use App\Repository\Admin\House\HouseBrandRepository;
+use App\Repository\Admin\House\HouseModelRepository;
 use App\Repository\HouseRepository;
 use App\Repository\Land\AllotmentRepository;
 use App\Repository\Land\PlotRepository;
@@ -42,10 +44,11 @@ class HomeController extends AbstractController
             $data = $searchForm->get('city')->getData();
             $allotments = $allotmentRepository->findBySearchForm($data);
             return $this->render('home/index.html.twig', [
+                '_fragment' => 'allotment-list',
                 'allotments' => $allotments,
                 'form' => $searchForm->createView(),
                 'countMatchs' => $countMatchs,
-                '_fragment' => '#allotment-list',
+
             ]);
     }
 
@@ -167,22 +170,27 @@ class HomeController extends AbstractController
     /**
      * @param HouseRepository $houseRepository
      * @param Request $request
+     * @param HouseBrandRepository $brandRepository
+     * @param HouseModelRepository $modelRepository
      * @return Response
      */
     #[Route('/maisons', name: 'all_houses_list')]
-    public function houses(HouseRepository $houseRepository, Request $request): Response
+    public function houses(HouseRepository $houseRepository, Request $request,
+                           HouseBrandRepository $brandRepository, HouseModelRepository $modelRepository): Response
     {
         $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
 
         if($searchForm->isSubmitted() && $searchForm->isValid()){
             $houseBedroom = $searchForm->get('roomNumber')->getData();
-            $houseModel = $searchForm->get('houseModel')->getData();
+            $houseModel = $searchForm->get('houseModel')->getData() ?: $modelRepository->findAll();
+            $houseBrand = $searchForm->get('houseBrand')->getData() ?: $brandRepository->findAll();
 
             $houses = $houseRepository->findBy([
                 'valid' => true,
                 'roomNumber' => $houseBedroom,
                 'houseModel' => $houseModel,
+                'houseBrand' => $houseBrand,
             ], ['sellingPriceAti' => 'ASC']);
         }
         else{
