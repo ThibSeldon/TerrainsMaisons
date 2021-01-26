@@ -21,7 +21,7 @@ class PlotHouseMatchingController extends AbstractController
     public function index(PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
         return $this->render('matching/plot_house_matching/index.html.twig', [
-            'plot_house_matchings' => $plotHouseMatchingRepository->findAll(),
+            'plot_house_matchings' => $plotHouseMatchingRepository->findBy([], ['updatedAt'=>'ASC'], 50),
         ]);
     }
 
