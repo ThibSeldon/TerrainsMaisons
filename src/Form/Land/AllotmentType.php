@@ -96,7 +96,7 @@ class AllotmentType extends AbstractType
 
             ->add('notaryFees')
             ->add('description', TextareaType::class, [
-                'attr' => ['class' => 'tinymce'],
+
             ])
             ->add('state')
             ->add('tags')
