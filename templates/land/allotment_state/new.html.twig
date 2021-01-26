@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AllotmentState{% endblock %}
+
+{% block body %}
+    <h1>Create new AllotmentState</h1>
+
+    {{ include('land_allotment_state/_form.html.twig') }}
+
+    <a href="{{ path('land_allotment_state_index') }}">back to list</a>
+{% endblock %}

@@ -11,6 +11,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -92,6 +93,15 @@ class AllotmentType extends AbstractType
                 ]
 
             ])
+
+            ->add('notaryFees')
+            ->add('description', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],
+            ])
+            ->add('state')
+            ->add('tags')
+
+
 
         ;
     }

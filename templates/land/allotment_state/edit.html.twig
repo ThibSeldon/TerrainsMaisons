@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AllotmentState{% endblock %}
+
+{% block body %}
+    <h1>Edit AllotmentState</h1>
+
+    {{ include('land_allotment_state/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('land_allotment_state_index') }}">back to list</a>
+
+    {{ include('land_allotment_state/_delete_form.html.twig') }}
+{% endblock %}

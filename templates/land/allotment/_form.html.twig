@@ -11,6 +11,9 @@
 {{ form_row(form.name) }}
 {{ form_row(form.postalCode) }}
 {{ form_row(form.city) }}
+{{ form_row(form.state) }}
+{{ form_row(form.description) }}
+{{ form_row(form.notaryFees) }}
 {{ form_row(form.propertyLimit) }}
 {{ form_row(form.doubleLimit) }}
 {{ form_row(form.houseRoofings, {'attr': {'class': 'select2-multiple'}}) }}
@@ -18,7 +21,7 @@
 {{ form_row(form.localUrbanPlanFile, {'attr': {'placeholder': 'Uploder plan local d\'urbanisme'}}) }}
 {{ form_row(form.regulationFile, {'attr': {'placeholder': 'Uploder le reglement d\'urbanisme'}}) }}
 {{ form_row(form.contacts, {'attr': {'class': 'select2-multiple'}}) }}
-
+{{ form_row(form.tags, {'attr': {'class': 'select2-multipke'}}) }}
 
 
 

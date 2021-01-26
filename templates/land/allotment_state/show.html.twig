@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AllotmentState{% endblock %}
+
+{% block body %}
+    <h1>AllotmentState</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ allotment_state.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ allotment_state.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('land_allotment_state_index') }}">back to list</a>
+
+    <a href="{{ path('land_allotment_state_edit', {'id': allotment_state.id}) }}">edit</a>
+
+    {{ include('land_allotment_state/_delete_form.html.twig') }}
+{% endblock %}

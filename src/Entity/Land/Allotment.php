@@ -3,6 +3,7 @@
 namespace App\Entity\Land;
 
 use App\Entity\Admin\House\HouseRoofing;
+use App\Entity\Admin\Tag;
 use App\Entity\Contact\Contact;
 use App\Repository\Land\AllotmentRepository;
 use DateTime;
@@ -95,11 +96,32 @@ class Allotment
      */
     private $allotmentPlanFile;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $notaryFees;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=AllotmentState::class, inversedBy="allotments")
+     */
+    private $state;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class)
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->houseRoofings = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -350,6 +372,66 @@ class Allotment
     public function setAllotmentPlanFile(?string $allotmentPlanFile): self
     {
         $this->allotmentPlanFile = $allotmentPlanFile;
+
+        return $this;
+    }
+
+    public function getNotaryFees(): ?float
+    {
+        return $this->notaryFees;
+    }
+
+    public function setNotaryFees(?float $notaryFees): self
+    {
+        $this->notaryFees = $notaryFees;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getState(): ?AllotmentState
+    {
+        return $this->state;
+    }
+
+    public function setState(?AllotmentState $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        $this->tags->removeElement($tag);
 
         return $this;
     }
