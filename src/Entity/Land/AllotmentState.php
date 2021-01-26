@@ -6,6 +6,7 @@ use App\Repository\Land\AllotmentStateRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * @ORM\Entity(repositoryClass=AllotmentStateRepository::class)
@@ -32,6 +33,11 @@ class AllotmentState
     public function __construct()
     {
         $this->allotments = new ArrayCollection();
+    }
+
+    #[Pure] public function __toString(): string
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int
