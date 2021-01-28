@@ -8,6 +8,7 @@ use App\Entity\House;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,6 +20,7 @@ class HouseSearchType extends AbstractType
             ->add('roomNumber', ChoiceType::class, [
                 'label' => 'Chambres',
                 'placeholder' => 'Combien de chambres ?',
+                'required' => true,
                 'choices' => [
                     '1' => 1,
                     '2' => 2,
@@ -39,7 +41,16 @@ class HouseSearchType extends AbstractType
                 'placeholder' => 'Constructeur',
                 'label' => 'Constructeur',
                 'class' => HouseBrand::class,
-                'required' => false,
+                'required' => true,
+            ])
+
+            ->add('matchSellingPriceAti', NumberType::class, [
+                'mapped'=> false,
+                'scale'=> 0,
+                'label' => 'Budget Maximum',
+                'required' => false
+
+
             ])
         ;
     }

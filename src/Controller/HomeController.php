@@ -30,6 +30,7 @@ class HomeController extends AbstractController
     /**
      * @param Request $request
      * @param AllotmentRepository $allotmentRepository
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @return Response
      */
     #[Route('/', name: 'home')]
@@ -65,9 +66,9 @@ class HomeController extends AbstractController
 
     /**
      * @param Request $request
-     * @param Plot $plot
      * @param HouseRepository $houseRepository
      * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
+     * @param PlotRepository $plotRepository
      * @return Response
      */
     #[Route('/lotissement/terrain/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
@@ -85,8 +86,12 @@ class HomeController extends AbstractController
                 if ($searchForm->isSubmitted() && $searchForm->isValid()) {
                     $numberRoomData = $searchForm->get('roomNumber')->getData();
                     $houseBrand = $searchForm->get('houseBrand')->getData();
+                    $budgetMax = $searchForm->get('matchSellingPriceAti')->getData();
+                    if(!$budgetMax){
+                        $budgetMax = 100000000;
+                    }
 
-                    $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData, $houseBrand);
+                    $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData, $houseBrand, $budgetMax);
                     return $this->render('home/plot_houses.html.twig', [
                         'houses' => $houses,
                         'plot' => $plot,
@@ -109,8 +114,9 @@ class HomeController extends AbstractController
 
 
     /**
-     * @param Allotment $allotment
+     * @param Request $request
      * @param PlotRepository $plotRepository
+     * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
     #[Route('/lotissement/{id}', name: 'all_allotment_show', requirements: ['id'=>'\d+'])]
@@ -218,7 +224,7 @@ class HomeController extends AbstractController
         }
        return  $this->redirectToRoute('home');
     }
-
+/*
     #[Route('/projets', name:'home_ads')]
     public function findAllAds(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository,
                                AllotmentRepository $allotmentRepository): Response
@@ -230,7 +236,7 @@ class HomeController extends AbstractController
             $budget = $searchForm->get('sellingPriceAti')->getData();
             $matchs = $plotHouseMatchingRepository->findByBudget($budget);
             $allotments = $allotmentRepository->findByMatch($matchs);
-            dump($allotments);
+
         }
         else{
         $matchs = $plotHouseMatchingRepository->findBy([], ['updatedAt'=>'ASC'], 30);
@@ -242,7 +248,7 @@ class HomeController extends AbstractController
             'allotments' => $allotments,
             'form' => $searchForm->createView(),
         ]);
-    }
+    }*/
 
     //Je n utilise pas le @PARAMCONVETER pour rediriger les 404 sur la home si l annonce n existe plus
     #[Route('/projet/{slug}', name:'all_ad_show_by_slug')]
