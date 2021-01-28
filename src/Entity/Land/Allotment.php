@@ -116,6 +116,11 @@ class Allotment
      */
     private $tags;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Sanitation::class, inversedBy="allotments")
+     */
+    private $sanitation;
+
     public function __construct()
     {
         $this->plots = new ArrayCollection();
@@ -432,6 +437,18 @@ class Allotment
     public function removeTag(Tag $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getSanitation(): ?Sanitation
+    {
+        return $this->sanitation;
+    }
+
+    public function setSanitation(?Sanitation $sanitation): self
+    {
+        $this->sanitation = $sanitation;
 
         return $this;
     }

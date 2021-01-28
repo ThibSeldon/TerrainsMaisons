@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sanitation index{% endblock %}
+
+{% block body %}
+    <h1>Sanitation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sanitation in sanitations %}
+            <tr>
+                <td>{{ sanitation.id }}</td>
+                <td>{{ sanitation.name }}</td>
+                <td>
+                    <a href="{{ path('land_sanitation_show', {'id': sanitation.id}) }}">show</a>
+                    <a href="{{ path('land_sanitation_edit', {'id': sanitation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('land_sanitation_new') }}">Create new</a>
+{% endblock %}

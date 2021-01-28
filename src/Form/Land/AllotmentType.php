@@ -100,6 +100,7 @@ class AllotmentType extends AbstractType
             ])
             ->add('state')
             ->add('tags')
+            ->add('sanitation')
 
 
 

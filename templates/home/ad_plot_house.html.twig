@@ -121,11 +121,27 @@
                         <td>{{ ad.house.houseRoofing }}</td>
                     </tr>
                     <tr>
-                        <th>Prix TTC*</th>
-                        <td>{{ ad.sellingPriceAti | number_format(0,'',' ') }} €</td>
+                        <th>Estimation Frais d'Acquisition</th>
+                        {% set totalNotaryFee =  ( (ad.plot.allotment.notaryFees/100)  * ad.plot.sellingPriceAti)  %}
+                        <td>{{ totalNotaryFee | number_format(0,'',' ')}} €</td>
+                    </tr>
+
+                    <tr>
+                        <th> Estimation Raccordements Assainissement* </th>
+                        {% if ad.plot.allotment.sanitation == 'Collectif' %}
+                        {% set sanitationPrice = 2591 %}
+                        {% else %}
+                        {% set sanitationPrice = 12500 %}
+                        {% endif %}
+                        <td> {{ sanitationPrice | number_format(0,'',' ') }} €</td>
+                    </tr>
+
+                    <tr>
+                        <th>Coût Global du Projet TTC*</th>
+                        <th> {{ (ad.sellingPriceAti + totalNotaryFee + sanitationPrice) | number_format(0,'',' ') }} €</th>
                     </tr>
                     <tr>
-                        <th>Construteur</th>
+                        <th><a href="{{ ad.house.houseBrand.url }}" target="_blank">Construteur</a></th>
                         <td><a href="{{ ad.house.houseBrand.url }}" target="_blank">
                                 <img src="{{ asset('uploads/pictures/'~ ad.house.houseBrand.logo) }}" alt="Logo {{ ad.house.houseBrand.name }}" width="170">
                             </a></td>

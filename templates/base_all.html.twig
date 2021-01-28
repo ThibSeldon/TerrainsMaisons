@@ -84,17 +84,19 @@
 
 <!-- NAVBAR -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white seldon-nav-main  p-1">
-    <div class="container-fluid border-bottom  ">
+<nav class="navbar navbar-expand-lg navbar-light bg-white seldon-nav-main  p-1 shadow-sm fixed-top" style="height: 10vh; ">
+    <div class="container-fluid  justify-content-center align-items-center p-0 ">
 
-        <a class="navbar-brand" href="{{ path('home') }}" style="margin-right: 30px; font-weight: bolder ">Terrains
+        <a class="navbar-brand" href="{{ path('home') }}" style="margin-right: 30px; margin-left: 5px; font-weight: bolder ">Terrains
             Maisons.com </a>
+
+        <div class="d-flex justify-content-end">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse bg-white navbar-collapse align-items-center" id="navbarNav">
+        </div>
+        <div class="collapse bg-white navbar-collapse align-items-center m-0 mt-1" id="navbarNav" >
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
                     <a {% if route_name == "home" %} class="nav-link active" {% else %} class="nav-link" {% endif %}
@@ -124,7 +126,7 @@
 
 <!-- END NAVBAR -->
 
-<div class="container-fluid"> {% block body %}{% endblock %}
+<div class="container-fluid" style="margin-top: 14vh"> {% block body %}{% endblock %}
 
     <footer class="text-muted pt-4 pb-4  " style="background-color: #E9ECEF">
         <div class="container d-flex flex-column align-items-center justify-content-center">

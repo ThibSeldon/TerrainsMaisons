@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sanitation{% endblock %}
+
+{% block body %}
+    <h1>Sanitation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sanitation.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sanitation.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('land_sanitation_index') }}">back to list</a>
+
+    <a href="{{ path('land_sanitation_edit', {'id': sanitation.id}) }}">edit</a>
+
+    {{ include('land/sanitation/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,1542 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Drop databases (except postgres and template1)
+--
+
+DROP DATABASE main;
+
+
+
+
+--
+-- Drop roles
+--
+
+DROP ROLE main;
+
+
+--
+-- Roles
+--
+
+CREATE ROLE main;
+ALTER ROLE main WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'md5573d77b6c3d08052695c807a7021c91f';
+
+
+
+
+
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.10
+-- Dumped by pg_dump version 11.10
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+UPDATE pg_catalog.pg_database SET datistemplate = false WHERE datname = 'template1';
+DROP DATABASE template1;
+--
+-- Name: template1; Type: DATABASE; Schema: -; Owner: main
+--
+
+CREATE DATABASE template1 WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
+
+
+ALTER DATABASE template1 OWNER TO main;
+
+\connect template1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: DATABASE template1; Type: COMMENT; Schema: -; Owner: main
+--
+
+COMMENT ON DATABASE template1 IS 'default template for new databases';
+
+
+--
+-- Name: template1; Type: DATABASE PROPERTIES; Schema: -; Owner: main
+--
+
+ALTER DATABASE template1 IS_TEMPLATE = true;
+
+
+\connect template1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: DATABASE template1; Type: ACL; Schema: -; Owner: main
+--
+
+REVOKE CONNECT,TEMPORARY ON DATABASE template1 FROM PUBLIC;
+GRANT CONNECT ON DATABASE template1 TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.10
+-- Dumped by pg_dump version 11.10
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: main; Type: DATABASE; Schema: -; Owner: main
+--
+
+CREATE DATABASE main WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
+
+
+ALTER DATABASE main OWNER TO main;
+
+\connect main
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: allotment; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.allotment (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    postal_code character varying(255) NOT NULL,
+    city character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone NOT NULL,
+    updated_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    property_limit double precision,
+    double_limit boolean NOT NULL,
+    local_urban_plan_file character varying(255) DEFAULT NULL::character varying,
+    regulation_file character varying(255) DEFAULT NULL::character varying,
+    is_valid boolean NOT NULL,
+    allotment_plan_file character varying(255) DEFAULT NULL::character varying,
+    state_id integer,
+    notary_fees double precision,
+    description text,
+    sanitation_id integer
+);
+
+
+ALTER TABLE public.allotment OWNER TO main;
+
+--
+-- Name: allotment_contact; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.allotment_contact (
+    allotment_id integer NOT NULL,
+    contact_id integer NOT NULL
+);
+
+
+ALTER TABLE public.allotment_contact OWNER TO main;
+
+--
+-- Name: allotment_house_roofing; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.allotment_house_roofing (
+    allotment_id integer NOT NULL,
+    house_roofing_id integer NOT NULL
+);
+
+
+ALTER TABLE public.allotment_house_roofing OWNER TO main;
+
+--
+-- Name: allotment_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.allotment_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.allotment_id OWNER TO main;
+
+--
+-- Name: allotment_state; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.allotment_state (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.allotment_state OWNER TO main;
+
+--
+-- Name: allotment_state_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.allotment_state_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.allotment_state_id_seq OWNER TO main;
+
+--
+-- Name: allotment_tag; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.allotment_tag (
+    allotment_id integer NOT NULL,
+    tag_id integer NOT NULL
+);
+
+
+ALTER TABLE public.allotment_tag OWNER TO main;
+
+--
+-- Name: contact; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.contact (
+    id integer NOT NULL,
+    society_id integer,
+    first_name character varying(255) DEFAULT NULL::character varying,
+    last_name character varying(255) DEFAULT NULL::character varying,
+    email character varying(255) DEFAULT NULL::character varying,
+    phone_number character varying(255) DEFAULT NULL::character varying,
+    created_at timestamp(0) without time zone NOT NULL,
+    updtated_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    note text
+);
+
+
+ALTER TABLE public.contact OWNER TO main;
+
+--
+-- Name: contact_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.contact_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.contact_id OWNER TO main;
+
+--
+-- Name: doctrine_migration_versions; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.doctrine_migration_versions (
+    version character varying(191) NOT NULL,
+    executed_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    execution_time integer
+);
+
+
+ALTER TABLE public.doctrine_migration_versions OWNER TO main;
+
+--
+-- Name: house; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.house (
+    id integer NOT NULL,
+    house_roofing_id integer,
+    house_brand_id integer,
+    house_model_id integer,
+    house_style_id integer,
+    name character varying(255) NOT NULL,
+    living_space double precision NOT NULL,
+    annex_surface double precision,
+    room_number integer NOT NULL,
+    bathroom_number integer NOT NULL,
+    selling_price_df double precision NOT NULL,
+    created_at timestamp(0) without time zone NOT NULL,
+    updated_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    length double precision,
+    width double precision,
+    height double precision,
+    selling_price_ati double precision,
+    valid boolean NOT NULL,
+    plan_filename character varying(255) DEFAULT NULL::character varying,
+    slug character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.house OWNER TO main;
+
+--
+-- Name: house_brand; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.house_brand (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    url character varying(255) DEFAULT NULL::character varying,
+    logo character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.house_brand OWNER TO main;
+
+--
+-- Name: house_brand_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.house_brand_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.house_brand_id OWNER TO main;
+
+--
+-- Name: house_model; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.house_model (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.house_model OWNER TO main;
+
+--
+-- Name: house_model_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.house_model_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.house_model_id OWNER TO main;
+
+--
+-- Name: house_roofing; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.house_roofing (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.house_roofing OWNER TO main;
+
+--
+-- Name: house_roofing_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.house_roofing_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.house_roofing_id OWNER TO main;
+
+--
+-- Name: house_style; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.house_style (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.house_style OWNER TO main;
+
+--
+-- Name: house_style_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.house_style_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.house_style_id OWNER TO main;
+
+--
+-- Name: id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.id
+    START WITH 10
+    INCREMENT BY 1
+    MINVALUE 10
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.id OWNER TO main;
+
+--
+-- Name: picture; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.picture (
+    id integer NOT NULL,
+    house_id integer,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.picture OWNER TO main;
+
+--
+-- Name: picture_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.picture_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.picture_id OWNER TO main;
+
+--
+-- Name: plot; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.plot (
+    id integer NOT NULL,
+    allotment_id integer NOT NULL,
+    state_id integer,
+    lot character varying(255) NOT NULL,
+    surface double precision NOT NULL,
+    facade_width double precision,
+    selling_price_ati double precision NOT NULL,
+    created_at timestamp(0) without time zone NOT NULL,
+    updated_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    sales_plan character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.plot OWNER TO main;
+
+--
+-- Name: plot_house_matching; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.plot_house_matching (
+    id integer NOT NULL,
+    house_id integer NOT NULL,
+    plot_id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    selling_price_ati integer NOT NULL,
+    valid boolean NOT NULL,
+    created_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    updated_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    slug character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.plot_house_matching OWNER TO main;
+
+--
+-- Name: plot_house_matching_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.plot_house_matching_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plot_house_matching_id_seq OWNER TO main;
+
+--
+-- Name: plot_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.plot_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plot_id OWNER TO main;
+
+--
+-- Name: sanitation; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.sanitation (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.sanitation OWNER TO main;
+
+--
+-- Name: sanitation_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.sanitation_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sanitation_id_seq OWNER TO main;
+
+--
+-- Name: society; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.society (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    phone_number character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.society OWNER TO main;
+
+--
+-- Name: society_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.society_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.society_id OWNER TO main;
+
+--
+-- Name: state; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.state (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.state OWNER TO main;
+
+--
+-- Name: state_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.state_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.state_id OWNER TO main;
+
+--
+-- Name: tag; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.tag (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.tag OWNER TO main;
+
+--
+-- Name: tag_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.tag_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tag_id_seq OWNER TO main;
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public."user" (
+    id integer NOT NULL,
+    email character varying(180) NOT NULL,
+    roles json NOT NULL,
+    password character varying(255) NOT NULL,
+    first_name character varying(255) DEFAULT NULL::character varying,
+    last_name character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public."user" OWNER TO main;
+
+--
+-- Name: user_id; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.user_id
+    START WITH 1000
+    INCREMENT BY 1
+    MINVALUE 1000
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id OWNER TO main;
+
+--
+-- Data for Name: allotment; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.allotment (id, name, postal_code, city, created_at, updated_at, property_limit, double_limit, local_urban_plan_file, regulation_file, is_valid, allotment_plan_file, state_id, notary_fees, description, sanitation_id) FROM stdin;
+1001	Programme Toiture Terrasse	51100	Reims	2021-01-06 15:10:14	2021-01-12 10:44:39	3	t	Actualite-Juridique-LCA-FFB-2020-45-Etudes-geotechniques-prealables-zones-argiles-5ffd6f07462019.49865959.pdf	Tarifs-Terrains-Berdin-Montepillois-5ffd6ebf3dd4d8.53678618.pdf	t	planVenteLotissement01Test-5ffd6f87626018.45910682.png	\N	\N	\N	\N
+1003	TesteLimite	Bezannes	11110	2021-01-08 15:45:17	2021-01-28 14:28:25	0	f	\N	\N	f	\N	2	2.5	moihdzdmoihdzamoiahzdmoih	1
+1002	Lotissement Sermiers	51500	Sermiers	2021-01-06 17:30:47	2021-01-28 14:28:32	3	t	Actualite-Juridique-LCA-FFB-2020-45-Etudes-geotechniques-prealables-zones-argiles-5ffd6de9a0eea1.43785820.pdf	\N	t	\N	2	6	Test Description	2
+\.
+
+
+--
+-- Data for Name: allotment_contact; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.allotment_contact (allotment_id, contact_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: allotment_house_roofing; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.allotment_house_roofing (allotment_id, house_roofing_id) FROM stdin;
+1002	1
+1001	1000
+1001	1
+1003	1
+\.
+
+
+--
+-- Data for Name: allotment_state; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.allotment_state (id, name) FROM stdin;
+1	test
+2	Travaux en cours
+\.
+
+
+--
+-- Data for Name: allotment_tag; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.allotment_tag (allotment_id, tag_id) FROM stdin;
+1002	1
+1002	2
+\.
+
+
+--
+-- Data for Name: contact; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.contact (id, society_id, first_name, last_name, email, phone_number, created_at, updtated_at, note) FROM stdin;
+\.
+
+
+--
+-- Data for Name: doctrine_migration_versions; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.doctrine_migration_versions (version, executed_at, execution_time) FROM stdin;
+DoctrineMigrations\\Version20201229101004	2020-12-29 11:17:47	1764
+DoctrineMigrations\\Version20201130191406	\N	\N
+DoctrineMigrations\\Version20201201202621	\N	\N
+DoctrineMigrations\\Version20201202124021	\N	\N
+DoctrineMigrations\\Version20201202153707	\N	\N
+DoctrineMigrations\\Version20201204092549	\N	\N
+DoctrineMigrations\\Version20201204134522	\N	\N
+DoctrineMigrations\\Version20201205133300	\N	\N
+DoctrineMigrations\\Version20201205141459	\N	\N
+DoctrineMigrations\\Version20201206161634	\N	\N
+DoctrineMigrations\\Version20201211074945	\N	\N
+DoctrineMigrations\\Version20201213202334	\N	\N
+DoctrineMigrations\\Version20201214140034	\N	\N
+DoctrineMigrations\\Version20201215091637	\N	\N
+DoctrineMigrations\\Version20201215200043	\N	\N
+DoctrineMigrations\\Version20201215203709	\N	\N
+DoctrineMigrations\\Version20201220155858	\N	\N
+DoctrineMigrations\\Version20201229211458	2021-01-04 10:09:45	231
+DoctrineMigrations\\Version20210101193545	2021-01-04 10:09:46	20
+DoctrineMigrations\\Version20210105153241	2021-01-05 16:36:05	254
+DoctrineMigrations\\Version20210106170658	2021-01-06 18:07:12	44
+DoctrineMigrations\\Version20210106201553	2021-01-14 14:48:08	90
+DoctrineMigrations\\Version20210106202804	2021-01-14 14:48:08	3
+DoctrineMigrations\\Version20210114132005	2021-01-14 14:48:08	3
+DoctrineMigrations\\Version20210114210352	2021-01-15 08:40:21	58
+DoctrineMigrations\\Version20210126172441	2021-01-26 18:27:10	351
+DoctrineMigrations\\Version20210128131505	2021-01-28 14:15:22	147
+\.
+
+
+--
+-- Data for Name: house; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.house (id, house_roofing_id, house_brand_id, house_model_id, house_style_id, name, living_space, annex_surface, room_number, bathroom_number, selling_price_df, created_at, updated_at, length, width, height, selling_price_ati, valid, plan_filename, slug) FROM stdin;
+12	1	1	1	1	Boucle	125	15	4	2	150000	2021-01-06 15:44:55	2021-01-14 15:13:22	8	8	3	180000	t	\N	boucle
+10	1	1	1	1	Mirantin	125	0	4	2	135000	2021-01-04 10:13:29	2021-01-19 08:57:29	15	9	5	162000	t	\N	mirantin
+\.
+
+
+--
+-- Data for Name: house_brand; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.house_brand (id, name, url, logo) FROM stdin;
+1	Maisons Berdin	\N	\N
+\.
+
+
+--
+-- Data for Name: house_model; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.house_model (id, name) FROM stdin;
+1	Etage
+\.
+
+
+--
+-- Data for Name: house_roofing; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.house_roofing (id, name) FROM stdin;
+1	Toiture 35°
+1000	Toiture Terrasse
+1001	Toiture BacAcier
+\.
+
+
+--
+-- Data for Name: house_style; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.house_style (id, name) FROM stdin;
+1	Traditionnelle
+\.
+
+
+--
+-- Data for Name: picture; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.picture (id, house_id, name) FROM stdin;
+1000	10	Vue-Jardin-5ff30e9ba578b3.21115451.jpg
+1001	10	Vue-Rue-5ff30e9bb44440.05055742.jpg
+1005	12	testupload-5ffecedb0bce11.38603383.png
+1006	12	luniisav-5ffecedb0e15f1.87545571.jpg
+\.
+
+
+--
+-- Data for Name: plot; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.plot (id, allotment_id, state_id, lot, surface, facade_width, selling_price_ati, created_at, updated_at, sales_plan) FROM stdin;
+1005	1002	1	01	500	25	125000	2021-01-06 17:30:47	\N	\N
+1006	1002	1	02	850	10	50000	2021-01-06 17:30:47	\N	\N
+1007	1002	1	99	850	35	450000	2021-01-06 18:11:08	\N	\N
+1008	1001	1	222	2222	122	122222	2021-01-06 18:15:30	\N	\N
+1004	1001	1	04	850	25	250000	2021-01-06 17:28:55	2021-01-07 14:22:32	\N
+1003	1001	1	35	999	25	150000	2021-01-06 15:10:14	2021-01-07 14:22:32	\N
+1002	1001	1	22	888	25	220000	2021-01-06 15:10:14	2021-01-07 14:22:32	\N
+1009	1003	1	01	155	30	125000	2021-01-08 15:45:17	\N	\N
+\.
+
+
+--
+-- Data for Name: plot_house_matching; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.plot_house_matching (id, house_id, plot_id, name, selling_price_ati, valid, created_at, updated_at, slug) FROM stdin;
+49	12	1003	Maison Boucle 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 35	330000	t	2021-01-07 14:28:40	2021-01-14 15:13:29	maison-boucle-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-3549
+50	12	1002	Maison Boucle 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 22	400000	t	2021-01-07 14:28:40	2021-01-14 15:13:29	maison-boucle-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-2250
+37	10	1005	Maison Mirantin 125 m2 4 Chambres Sermiers Lotissement Sermiers Lot 01	287000	t	2021-01-07 14:13:22	2021-01-14 15:04:26	maison-mirantin-125-m2-4-chambres-sermiers-lotissement-sermiers-lot-01
+38	10	1007	Maison Mirantin 125 m2 4 Chambres Sermiers Lotissement Sermiers Lot 99	612000	t	2021-01-07 14:13:22	2021-01-14 15:04:26	maison-mirantin-125-m2-4-chambres-sermiers-lotissement-sermiers-lot-99
+51	10	1008	Maison Mirantin 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 222	284222	t	2021-01-07 14:28:40	2021-01-14 15:04:26	maison-mirantin-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-222
+52	10	1004	Maison Mirantin 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 04	412000	t	2021-01-07 14:28:40	2021-01-14 15:04:26	maison-mirantin-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-04
+53	10	1003	Maison Mirantin 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 35	312000	t	2021-01-07 14:28:40	2021-01-14 15:04:26	maison-mirantin-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-35
+54	10	1002	Maison Mirantin 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 22	382000	t	2021-01-07 14:28:40	2021-01-14 15:04:26	maison-mirantin-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-22
+35	12	1005	Maison Boucle 125 m2 4 Chambres Sermiers Lotissement Sermiers Lot 01	305000	t	2021-01-07 14:13:22	2021-01-14 15:13:29	maison-boucle-125-m2-4-chambres-sermiers-lotissement-sermiers-lot-0135
+36	12	1007	Maison Boucle 125 m2 4 Chambres Sermiers Lotissement Sermiers Lot 99	630000	t	2021-01-07 14:13:22	2021-01-14 15:13:29	maison-boucle-125-m2-4-chambres-sermiers-lotissement-sermiers-lot-9936
+47	12	1008	Maison Boucle 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 222	302222	t	2021-01-07 14:28:40	2021-01-14 15:13:29	maison-boucle-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-22247
+48	12	1004	Maison Boucle 125 m2 4 Chambres Reims Programme Toiture Terrasse Lot 04	430000	t	2021-01-07 14:28:40	2021-01-14 15:13:29	maison-boucle-125-m2-4-chambres-reims-programme-toiture-terrasse-lot-0448
+\.
+
+
+--
+-- Data for Name: sanitation; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.sanitation (id, name) FROM stdin;
+1	Collectif
+2	Indiviuel
+\.
+
+
+--
+-- Data for Name: society; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.society (id, name, email, phone_number) FROM stdin;
+\.
+
+
+--
+-- Data for Name: state; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.state (id, name) FROM stdin;
+1	Libre
+\.
+
+
+--
+-- Data for Name: tag; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.tag (id, name) FROM stdin;
+1	Verdouillant
+2	Foret
+\.
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public."user" (id, email, roles, password, first_name, last_name) FROM stdin;
+1	t@t.com	["ROLE_ADMIN"]	$argon2id$v=19$m=65536,t=4,p=1$lq1lzRp5yJNPUM5CAsYgfw$LEVzZIW+A/o+0CWn7RBv5fhiyk7OoskxzhcNtmAOis8	thib	\N
+\.
+
+
+--
+-- Name: allotment_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.allotment_id', 1003, true);
+
+
+--
+-- Name: allotment_state_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.allotment_state_id_seq', 2, true);
+
+
+--
+-- Name: contact_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.contact_id', 1000, false);
+
+
+--
+-- Name: house_brand_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.house_brand_id', 1000, false);
+
+
+--
+-- Name: house_model_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.house_model_id', 1000, false);
+
+
+--
+-- Name: house_roofing_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.house_roofing_id', 1001, true);
+
+
+--
+-- Name: house_style_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.house_style_id', 1000, false);
+
+
+--
+-- Name: id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.id', 12, true);
+
+
+--
+-- Name: picture_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.picture_id', 1006, true);
+
+
+--
+-- Name: plot_house_matching_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.plot_house_matching_id_seq', 55, true);
+
+
+--
+-- Name: plot_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.plot_id', 1009, true);
+
+
+--
+-- Name: sanitation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.sanitation_id_seq', 2, true);
+
+
+--
+-- Name: society_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.society_id', 1000, false);
+
+
+--
+-- Name: state_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.state_id', 1000, false);
+
+
+--
+-- Name: tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.tag_id_seq', 2, true);
+
+
+--
+-- Name: user_id; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.user_id', 1000, false);
+
+
+--
+-- Name: allotment_contact allotment_contact_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_contact
+    ADD CONSTRAINT allotment_contact_pkey PRIMARY KEY (allotment_id, contact_id);
+
+
+--
+-- Name: allotment_house_roofing allotment_house_roofing_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_house_roofing
+    ADD CONSTRAINT allotment_house_roofing_pkey PRIMARY KEY (allotment_id, house_roofing_id);
+
+
+--
+-- Name: allotment allotment_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment
+    ADD CONSTRAINT allotment_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: allotment_state allotment_state_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_state
+    ADD CONSTRAINT allotment_state_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: allotment_tag allotment_tag_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_tag
+    ADD CONSTRAINT allotment_tag_pkey PRIMARY KEY (allotment_id, tag_id);
+
+
+--
+-- Name: contact contact_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.contact
+    ADD CONSTRAINT contact_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: doctrine_migration_versions doctrine_migration_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.doctrine_migration_versions
+    ADD CONSTRAINT doctrine_migration_versions_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: house_brand house_brand_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house_brand
+    ADD CONSTRAINT house_brand_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: house_model house_model_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house_model
+    ADD CONSTRAINT house_model_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: house house_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house
+    ADD CONSTRAINT house_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: house_roofing house_roofing_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house_roofing
+    ADD CONSTRAINT house_roofing_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: house_style house_style_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house_style
+    ADD CONSTRAINT house_style_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: picture picture_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.picture
+    ADD CONSTRAINT picture_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: plot_house_matching plot_house_matching_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.plot_house_matching
+    ADD CONSTRAINT plot_house_matching_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: plot plot_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.plot
+    ADD CONSTRAINT plot_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sanitation sanitation_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.sanitation
+    ADD CONSTRAINT sanitation_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: society society_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.society
+    ADD CONSTRAINT society_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: state state_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.state
+    ADD CONSTRAINT state_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tag tag_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.tag
+    ADD CONSTRAINT tag_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: idx_16db4f896bb74515; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_16db4f896bb74515 ON public.picture USING btree (house_id);
+
+
+--
+-- Name: idx_469cf8d31bf0861f; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_469cf8d31bf0861f ON public.allotment_house_roofing USING btree (allotment_id);
+
+
+--
+-- Name: idx_469cf8d324d9b445; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_469cf8d324d9b445 ON public.allotment_house_roofing USING btree (house_roofing_id);
+
+
+--
+-- Name: idx_4c62e638e6389d24; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_4c62e638e6389d24 ON public.contact USING btree (society_id);
+
+
+--
+-- Name: idx_53ec55f8680d0b01; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_53ec55f8680d0b01 ON public.plot_house_matching USING btree (plot_id);
+
+
+--
+-- Name: idx_53ec55f86bb74515; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_53ec55f86bb74515 ON public.plot_house_matching USING btree (house_id);
+
+
+--
+-- Name: idx_67d5399d1ae70cb8; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_67d5399d1ae70cb8 ON public.house USING btree (house_model_id);
+
+
+--
+-- Name: idx_67d5399d24d9b445; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_67d5399d24d9b445 ON public.house USING btree (house_roofing_id);
+
+
+--
+-- Name: idx_67d5399d27676b57; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_67d5399d27676b57 ON public.house USING btree (house_brand_id);
+
+
+--
+-- Name: idx_67d5399dd95fdb2b; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_67d5399dd95fdb2b ON public.house USING btree (house_style_id);
+
+
+--
+-- Name: idx_ac17dbdf1bf0861f; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_ac17dbdf1bf0861f ON public.allotment_contact USING btree (allotment_id);
+
+
+--
+-- Name: idx_ac17dbdfe7a1254a; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_ac17dbdfe7a1254a ON public.allotment_contact USING btree (contact_id);
+
+
+--
+-- Name: idx_b8f53cb54ba400f3; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_b8f53cb54ba400f3 ON public.allotment USING btree (sanitation_id);
+
+
+--
+-- Name: idx_b8f53cb55d83cc1; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_b8f53cb55d83cc1 ON public.allotment USING btree (state_id);
+
+
+--
+-- Name: idx_bebb8f891bf0861f; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_bebb8f891bf0861f ON public.plot USING btree (allotment_id);
+
+
+--
+-- Name: idx_bebb8f895d83cc1; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_bebb8f895d83cc1 ON public.plot USING btree (state_id);
+
+
+--
+-- Name: idx_e54e22631bf0861f; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_e54e22631bf0861f ON public.allotment_tag USING btree (allotment_id);
+
+
+--
+-- Name: idx_e54e2263bad26311; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_e54e2263bad26311 ON public.allotment_tag USING btree (tag_id);
+
+
+--
+-- Name: uniq_67d5399d5e237e06; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE UNIQUE INDEX uniq_67d5399d5e237e06 ON public.house USING btree (name);
+
+
+--
+-- Name: uniq_8d93d649e7927c74; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE UNIQUE INDEX uniq_8d93d649e7927c74 ON public."user" USING btree (email);
+
+
+--
+-- Name: picture fk_16db4f896bb74515; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.picture
+    ADD CONSTRAINT fk_16db4f896bb74515 FOREIGN KEY (house_id) REFERENCES public.house(id);
+
+
+--
+-- Name: allotment_house_roofing fk_469cf8d31bf0861f; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_house_roofing
+    ADD CONSTRAINT fk_469cf8d31bf0861f FOREIGN KEY (allotment_id) REFERENCES public.allotment(id) ON DELETE CASCADE;
+
+
+--
+-- Name: allotment_house_roofing fk_469cf8d324d9b445; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_house_roofing
+    ADD CONSTRAINT fk_469cf8d324d9b445 FOREIGN KEY (house_roofing_id) REFERENCES public.house_roofing(id) ON DELETE CASCADE;
+
+
+--
+-- Name: contact fk_4c62e638e6389d24; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.contact
+    ADD CONSTRAINT fk_4c62e638e6389d24 FOREIGN KEY (society_id) REFERENCES public.society(id);
+
+
+--
+-- Name: plot_house_matching fk_53ec55f8680d0b01; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.plot_house_matching
+    ADD CONSTRAINT fk_53ec55f8680d0b01 FOREIGN KEY (plot_id) REFERENCES public.plot(id);
+
+
+--
+-- Name: plot_house_matching fk_53ec55f86bb74515; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.plot_house_matching
+    ADD CONSTRAINT fk_53ec55f86bb74515 FOREIGN KEY (house_id) REFERENCES public.house(id);
+
+
+--
+-- Name: house fk_67d5399d1ae70cb8; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house
+    ADD CONSTRAINT fk_67d5399d1ae70cb8 FOREIGN KEY (house_model_id) REFERENCES public.house_model(id);
+
+
+--
+-- Name: house fk_67d5399d24d9b445; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house
+    ADD CONSTRAINT fk_67d5399d24d9b445 FOREIGN KEY (house_roofing_id) REFERENCES public.house_roofing(id);
+
+
+--
+-- Name: house fk_67d5399d27676b57; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house
+    ADD CONSTRAINT fk_67d5399d27676b57 FOREIGN KEY (house_brand_id) REFERENCES public.house_brand(id);
+
+
+--
+-- Name: house fk_67d5399dd95fdb2b; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.house
+    ADD CONSTRAINT fk_67d5399dd95fdb2b FOREIGN KEY (house_style_id) REFERENCES public.house_style(id);
+
+
+--
+-- Name: allotment_contact fk_ac17dbdf1bf0861f; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_contact
+    ADD CONSTRAINT fk_ac17dbdf1bf0861f FOREIGN KEY (allotment_id) REFERENCES public.allotment(id) ON DELETE CASCADE;
+
+
+--
+-- Name: allotment_contact fk_ac17dbdfe7a1254a; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_contact
+    ADD CONSTRAINT fk_ac17dbdfe7a1254a FOREIGN KEY (contact_id) REFERENCES public.contact(id) ON DELETE CASCADE;
+
+
+--
+-- Name: allotment fk_b8f53cb54ba400f3; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment
+    ADD CONSTRAINT fk_b8f53cb54ba400f3 FOREIGN KEY (sanitation_id) REFERENCES public.sanitation(id);
+
+
+--
+-- Name: allotment fk_b8f53cb55d83cc1; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment
+    ADD CONSTRAINT fk_b8f53cb55d83cc1 FOREIGN KEY (state_id) REFERENCES public.allotment_state(id);
+
+
+--
+-- Name: plot fk_bebb8f891bf0861f; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.plot
+    ADD CONSTRAINT fk_bebb8f891bf0861f FOREIGN KEY (allotment_id) REFERENCES public.allotment(id);
+
+
+--
+-- Name: plot fk_bebb8f895d83cc1; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.plot
+    ADD CONSTRAINT fk_bebb8f895d83cc1 FOREIGN KEY (state_id) REFERENCES public.state(id);
+
+
+--
+-- Name: allotment_tag fk_e54e22631bf0861f; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_tag
+    ADD CONSTRAINT fk_e54e22631bf0861f FOREIGN KEY (allotment_id) REFERENCES public.allotment(id) ON DELETE CASCADE;
+
+
+--
+-- Name: allotment_tag fk_e54e2263bad26311; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.allotment_tag
+    ADD CONSTRAINT fk_e54e2263bad26311 FOREIGN KEY (tag_id) REFERENCES public.tag(id) ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.10
+-- Dumped by pg_dump version 11.10
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE postgres;
+--
+-- Name: postgres; Type: DATABASE; Schema: -; Owner: main
+--
+
+CREATE DATABASE postgres WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
+
+
+ALTER DATABASE postgres OWNER TO main;
+
+\connect postgres
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: DATABASE postgres; Type: COMMENT; Schema: -; Owner: main
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database cluster dump complete
+--
+

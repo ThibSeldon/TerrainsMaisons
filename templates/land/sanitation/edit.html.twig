@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Sanitation{% endblock %}
+
+{% block body %}
+    <h1>Edit Sanitation</h1>
+
+    {{ include('land/sanitation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('land_sanitation_index') }}">back to list</a>
+
+    {{ include('land/sanitation/_delete_form.html.twig') }}
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block description %}
     <!-- Meta Description -->
     <meta name="description"
-          content="Terrains dipsonibles pour le lotissement {{ allotment.name }} situé à {{ allotment.city }} - Parcourez la liste des Maisons disponibles pour ce programme">
+          content=" Projets de Construction de Maisons à {{ allotment.city }} - {{ allotment.name }} ">
 {% endblock %}
 
 {% block title %}
@@ -19,13 +19,24 @@
         <div class="col-12 col-xl-6 d-flex align-items-stretch">
             <div class="p-xl-5">
                 <div class="container">
-                    <h1 class="display-6">{{ allotment.name }}</h1>
+                    <h1 class="display-5">Projets de Construction de Maisons à {{ allotment.city }} </h1>
+                    <h2 class="display-6"> {{ allotment.name }} </h2>
                     <h4>Commune : {{ allotment.city }}</h4>
+                    <h5> <span class="badge bg-success">{{ allotment.state }}</span></h5>
+
                     <p> Code postal : {{ allotment.postalCode }}</p>
-                    <p class="lead">Pour votre future Maison : Découvrez le programme</p>
                     <hr class="my-4">
+                    <p class="lead">Pour votre future Maison : Découvrez le lieu</p>
+                    <p>{{ allotment.description }}</p>
+                    <h6>Infos</h6>
+                    <p>
+                    {% for tag in allotment.tags %}
+                        <span class="badge bg-info">{{ tag.name }}</span>
+                    {% endfor %}
+                    </p>
                     <p>Retrouvez toutes les informations sur le lotissement et parcourrez les terrains disponibles.</p>
                     <p><strong>Choisissez </strong> terrain, <strong>cliquez </strong> et <strong>découvrez</strong> toutes les <strong> Maisons compatibles</strong> pour un futur projet de construction !</p>
+
                 </div>
             </div>
         </div>
@@ -35,12 +46,13 @@
             <nav>
                 <div class="nav nav-tabs">
 
+
                     <a href="#plan" class="nav-link active text-uppercase font-weight-bold" id="plan-tab"
                        data-bs-toggle="tab" role="tab">Plans</a>
 
 
                     <a href="#doc" class="nav-link text-uppercase font-weight-bold" id="doc-tab" data-bs-toggle="tab"
-                       role="tab">Documents</a>
+                       role="tab">Infos</a>
                 </div>
             </nav>
 
@@ -70,8 +82,18 @@
 
                 <div class="tab-pane fade px-4 py-5" id="doc" role="tabpanel" aria-labelledby="doc-tab">
 
-                    <table class="table">
+                    <table class="table table-bordered">
                         <tbody>
+
+                        <tr>
+                            <th>Assainissement</th>
+                            <td>{{ allotment.sanitation }}</td>
+                        </tr>
+                        <tr>
+                            <th> Etat</th>
+                            <td>{{ allotment.state }}</td>
+                        </tr>
+
                         <tr>
                             {% if allotment.localUrbanPlanFile %}
                             <th> PLU</th>
