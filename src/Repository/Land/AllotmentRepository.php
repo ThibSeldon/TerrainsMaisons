@@ -64,6 +64,19 @@ class AllotmentRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findByMatch($matchs){
+        $qb = $this->createQueryBuilder('a');
+
+        return $qb
+            ->join('a.plots', 'p')
+            ->join('p.plotHouseMatchings', 'm')
+            ->andWhere('m IN (:matchs)')
+            ->setParameter('matchs', $matchs)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Allotment[] Returns an array of Allotment objects
     //  */

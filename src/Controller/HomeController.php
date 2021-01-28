@@ -6,6 +6,7 @@ use App\Entity\House;
 use App\Entity\Land\Allotment;
 use App\Entity\Land\Plot;
 use App\Entity\Matching\PlotHouseMatching;
+use App\Form\Matching\PHMSearchType;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
 use App\Form\TerrainsMaisons\HouseSearchType;
 use App\Repository\Admin\House\HouseBrandRepository;
@@ -216,6 +217,31 @@ class HomeController extends AbstractController
         ]);
         }
        return  $this->redirectToRoute('home');
+    }
+
+    #[Route('/projets', name:'home_ads')]
+    public function findAllAds(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository,
+                               AllotmentRepository $allotmentRepository): Response
+    {
+        $searchForm = $this->createForm(PHMSearchType::class);
+        $searchForm->handleRequest($request);
+
+        if($searchForm->isSubmitted() && $searchForm->isValid()){
+            $budget = $searchForm->get('sellingPriceAti')->getData();
+            $matchs = $plotHouseMatchingRepository->findByBudget($budget);
+            $allotments = $allotmentRepository->findByMatch($matchs);
+            dump($allotments);
+        }
+        else{
+        $matchs = $plotHouseMatchingRepository->findBy([], ['updatedAt'=>'ASC'], 30);
+        $allotments = $allotmentRepository->findByMatch($matchs);
+        }
+
+        return $this->render('home/ads_search.html.twig', [
+            'ads' => $matchs,
+            'allotments' => $allotments,
+            'form' => $searchForm->createView(),
+        ]);
     }
 
     //Je n utilise pas le @PARAMCONVETER pour rediriger les 404 sur la home si l annonce n existe plus

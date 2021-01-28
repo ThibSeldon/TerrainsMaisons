@@ -37,6 +37,20 @@ class PlotHouseMatchingRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findByBudget($budget)
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.sellingPriceAti <= :budget')
+            ->setParameters([
+                'budget'=>$budget
+            ])
+            ->orderBy('m.updatedAt', 'ASC')
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return PlotHouseMatching[] Returns an array of PlotHouseMatching objects
     //  */

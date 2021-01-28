@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-Modèle de Maison {{ house.name }}
+ Maison {{ house.name }}
 {% endblock %}
 
 {% block body %}
@@ -16,7 +16,7 @@ Modèle de Maison {{ house.name }}
 
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
-            <h1>{{ house.name }} - {{ house.roomNumber }} Chambres - {{ house.houseBrand }}</h1>
+            <h1>Maison {{ house.name }} - {{ house.roomNumber }} Chambres - {{ house.houseBrand }}</h1>
             <h3>À Partir de {{ house.sellingPriceAti | number_format(0,'',' ') }} €</h3>
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
 
