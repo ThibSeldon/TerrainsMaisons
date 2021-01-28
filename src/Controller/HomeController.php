@@ -83,8 +83,9 @@ class HomeController extends AbstractController
                 //Formulaire de recherche soumis
                 if ($searchForm->isSubmitted() && $searchForm->isValid()) {
                     $numberRoomData = $searchForm->get('roomNumber')->getData();
+                    $houseBrand = $searchForm->get('houseBrand')->getData();
 
-                    $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData);
+                    $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData, $houseBrand);
                     return $this->render('home/plot_houses.html.twig', [
                         'houses' => $houses,
                         'plot' => $plot,

@@ -2,7 +2,7 @@
 
     {% block description %}
         <!-- Meta Description -->
-        <meta name="description" content="Trouvez votre projet de construction de maisons en Champagne-Ardenne.
+        <meta name="description" content="Trouvez votre projet de construction de maison en Champagne-Ardenne.
         Grace à notre algorithme lotisseurs constructeurs nous proposons de multiples projets.">
     {% endblock %}
 
@@ -38,7 +38,7 @@
 
     <div class="row justify-content-center" style="margin-top: 25px">
         <div class="col-12 col-lg-3 d-flex justify-content-center py-1 py-lg-0 ">
-            <a class="btn btn-lg btn-success w-100 " href="#search-allotment" role="button">Recherche par
+            <a class="btn btn-lg btn-success w-100 " href="#search-form" role="button">Recherche par
                 Terrain</a>
         </div>
         <div class="col-12 col-lg-3 d-flex justify-content-center d-grid">
@@ -103,6 +103,10 @@
                         <li class="list-group-item align-items-center"><span
                                     class="badge bg-success">{{ allotment.plots| length }}</span> Terrains
                         </li>
+                        {% if allotment.state %}
+                        <li class="list-group-item"><span
+                                    class="badge bg-light" style="color: black; font-size: large">{{ allotment.state }}</span> </li>
+                        {% endif %}
                         <li class="list-group-item">À partir de {{ allotment.getMinPriceAtiPlot }}</li>
                     </ul>
                     <div class="card-body">
