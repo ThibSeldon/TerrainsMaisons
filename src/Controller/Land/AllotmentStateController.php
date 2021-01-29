@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/land/allotment/state')]
+#[Route('/cc/land/allotment/state')]
 class AllotmentStateController extends AbstractController
 {
     #[Route('/', name: 'land_allotment_state_index', methods: ['GET'])]

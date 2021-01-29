@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/land/sanitation')]
+#[Route('/cc/land/sanitation')]
 class SanitationController extends AbstractController
 {
     #[Route('/', name: 'land_sanitation_index', methods: ['GET'])]
