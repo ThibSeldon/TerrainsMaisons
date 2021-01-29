@@ -89,19 +89,19 @@ class HouseRepository extends ServiceEntityRepository
         }
         if ($houseBedroom) {
             $qb
-                ->andWhere('h.roomNumber <= :houseBedroom')
+                ->andWhere('h.roomNumber = :houseBedroom')
                 ->setParameter(':houseBedroom', $houseBedroom);
         }
 
         if ($houseModel) {
             $qb
-                ->andWhere('h.houseModel <= :houseModel')
+                ->andWhere('h.houseModel = :houseModel')
                 ->setParameter(':houseModel', $houseModel);
         }
 
         if ($houseBrand) {
             $qb
-                ->andWhere('h.houseBrand <= :houseBrand')
+                ->andWhere('h.houseBrand = :houseBrand')
                 ->setParameter(':houseBrand', $houseBrand);
         }
 

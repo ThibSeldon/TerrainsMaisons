@@ -54,6 +54,7 @@
     </div>
 
     <div class="row justify-content-center pb-2" id="house-list">
+        {% if houses %}
         {% for house in houses %}
             <div class="d-flex align-items-stretch col-12 col-lg-6 col-xl-4">
                 <div class="card m-lg-3">
@@ -119,6 +120,11 @@
                 </div>
             </div>
         {% endfor %}
+        {% else %}
+            <div class="row align-content-center ">
+                <h6 class="text-center display-6"> AUCUN RESULTAT POUR VOTRE RECHERCHE</h6>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
