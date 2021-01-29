@@ -188,10 +188,10 @@ class HomeController extends AbstractController
         $searchForm->handleRequest($request);
 
         if($searchForm->isSubmitted() && $searchForm->isValid()){
-            $maxPrice = $searchForm->get('matchSellingPriceAti')->getData() ?: 10000000;
+            $maxPrice = $searchForm->get('matchSellingPriceAti')->getData();
             $houseBedroom = $searchForm->get('roomNumber')->getData();
-            $houseModel = $searchForm->get('houseModel')->getData() ?: $modelRepository->findAll();
-            $houseBrand = $searchForm->get('houseBrand')->getData() ?: $brandRepository->findAll();
+            $houseModel = $searchForm->get('houseModel')->getData();
+            $houseBrand = $searchForm->get('houseBrand')->getData();
 
 
 
