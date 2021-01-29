@@ -20,7 +20,7 @@ class HouseSearchType extends AbstractType
             ->add('roomNumber', ChoiceType::class, [
                 'label' => 'Chambres',
                 'placeholder' => 'Combien de chambres ?',
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     '1' => 1,
                     '2' => 2,
@@ -41,7 +41,7 @@ class HouseSearchType extends AbstractType
                 'placeholder' => 'Constructeur',
                 'label' => 'Constructeur',
                 'class' => HouseBrand::class,
-                'required' => true,
+                'required' => false,
             ])
 
             ->add('matchSellingPriceAti', NumberType::class, [

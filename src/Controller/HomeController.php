@@ -87,9 +87,7 @@ class HomeController extends AbstractController
                     $numberRoomData = $searchForm->get('roomNumber')->getData();
                     $houseBrand = $searchForm->get('houseBrand')->getData();
                     $budgetMax = $searchForm->get('matchSellingPriceAti')->getData();
-                    if(!$budgetMax){
-                        $budgetMax = 100000000;
-                    }
+
 
                     $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData, $houseBrand, $budgetMax);
                     return $this->render('home/plot_houses.html.twig', [

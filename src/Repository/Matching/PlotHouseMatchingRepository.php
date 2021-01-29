@@ -21,22 +21,37 @@ class PlotHouseMatchingRepository extends ServiceEntityRepository
 
     public function findByHouseBedroom($plot, $bedRoom, $houseBrand, $budgetMax)
     {
-        return $this->createQueryBuilder('m')
-            ->join('m.house', 'h')
-            ->andWhere('h.roomNumber = :bedroom')
-            ->andWhere('h.houseBrand = :brand')
-            ->andWhere('m.plot = :plot')
-            ->andWhere('m.sellingPriceAti <= :budgetMax')
-            ->setParameters([
-                'plot' => $plot,
-                'bedroom' => $bedRoom,
-                'brand' => $houseBrand,
-                'budgetMax' => $budgetMax,
-            ])
-            ->orderBy('m.sellingPriceAti', 'ASC')
-            ->getQuery()
-            ->getResult()
-            ;
+        $qb = $this->createQueryBuilder('m');
+            $qb->join('m.house', 'h');
+
+            $qb
+                ->andWhere('m.plot = :plot')
+                ->setParameter('plot', $plot);
+
+            if($bedRoom){
+            $qb
+                ->andWhere('h.roomNumber = :bedroom')
+                ->setParameter('bedroom', $bedRoom);
+            }
+
+            if($houseBrand){
+                $qb
+                    ->andWhere('h.houseBrand = :brand')
+                    ->setParameter('brand', $houseBrand);
+            }
+
+            if($budgetMax){
+                $qb
+                    ->andWhere('m.sellingPriceAti <= :budgetMax')
+                    ->setParameter('budgetMax', $budgetMax);
+            }
+
+            return $qb
+                ->orderBy('m.sellingPriceAti', 'ASC')
+                ->getQuery()
+                ->execute();
+
+
     }
 
     public function findByBudget($budget)
