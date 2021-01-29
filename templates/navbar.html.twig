@@ -44,11 +44,12 @@
                     <a class="dropdown-item" href="{{ path('land_plot_index' )}}">Terrains</a>
                     <a class="dropdown-item" href="{{ path('contact_index' )}}">Contact</a>
                     <a class="dropdown-item" href="{{ path('contact_society_index' )}}">Societe</a>
+                    <a href="{{ path('matching_plot_house_matching_index') }}" class="dropdown-item">Matching</a>
 
                 </div>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown h-auto">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAdmin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin
                 </a>
@@ -56,12 +57,10 @@
                     <a class="dropdown-item" href="{{ path('house_new' )}}">Ajouter Maison</a>
                     <a class="dropdown-item" href="{{ path('admin_house_house_roofing_index' )}}">Toitures</a>
                     <a class="dropdown-item" href="{{ path('admin_house_house_brand_index' )}}">Marque</a>
-                    <a class="dropdown-item" href="{{ path('upload_picture_index' )}}">Images</a>
                     <a href="{{ path('land_state_index') }}" class="dropdown-item">Etats Lots</a>
                     <a href="{{ path('land_allotment_state_index') }}" class="dropdown-item">Etats Lotissement</a>
                     <a href="{{ path('land_sanitation_index') }}" class="dropdown-item">Assainissement</a>
                     <a href="{{ path('admin_tag_index') }}" class="dropdown-item">Tags</a>
-                    <a href="{{ path('matching_plot_house_matching_index') }}" class="dropdown-item">Matching</a>
                     <a href="{{ path('admin_user_user_index') }}" class="dropdown-item">Utilisateurs</a>
 
                 </div>
@@ -71,7 +70,7 @@
 
         {% if app.user %}
 
-                <li class="nav-item dropdown d-flex align-content-end justify-content-end w-100">
+                <li class= "nav-item dropdown d-flex align-content-end justify-content-end w-100">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLinkProfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ app.user.firstName }} - {{ app.user.email }}
                     </a>

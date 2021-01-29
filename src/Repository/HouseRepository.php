@@ -24,16 +24,14 @@ class HouseRepository extends ServiceEntityRepository
     {
 
 
-
         $houseModel = $dataAll->getHouseModel();
         $houseBrand = $dataAll->gethouseBrand();
         $roomNumber = $dataAll->getRoomNumber();
         $priceMax = $dataAll->getSearchSellingPriceAti();
         $length = $dataAll->getLength();
-        $valid = $dataAll->getValid();       
+        $valid = $dataAll->getValid();
 
         $qb = $this->createQueryBuilder('h');
-
 
 
         if (isset($houseModel)) {
@@ -46,7 +44,7 @@ class HouseRepository extends ServiceEntityRepository
                 ->setParameter(':houseBrand', $houseBrand);
         }
         if (isset($roomNumber)) {
-                      
+
             $qb->andwhere('h.roomNumber = :roomNumber')
                 ->setParameter(':roomNumber', $roomNumber);
         }
@@ -58,11 +56,11 @@ class HouseRepository extends ServiceEntityRepository
             $qb->andwhere('h.length <= :length')
                 ->setParameter(':length', $length);
         }
-        if(isset($valid)) {
+        if (isset($valid)) {
             $qb->andWhere('h.valid = :valid')
                 ->setParameter(':valid', $valid);
         }
-       
+
         return $qb->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
             ->execute();
@@ -75,11 +73,48 @@ class HouseRepository extends ServiceEntityRepository
             ->andWhere('h.houseBrand = :val')
             ->setParameter('val', '1')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
-    public function findByLength(float $length=0)
+    public function findByMaxPrice($maxPrice,$houseBedroom, $houseModel, $houseBrand)
+    {
+        $qb = $this->createQueryBuilder('h')
+            ->andWhere('h.valid = true');
+
+
+        if ($maxPrice) {
+            $qb
+                ->andWhere('h.sellingPriceAti <= :maxPrice')
+                ->setParameter(':maxPrice', $maxPrice);
+        }
+        if ($houseBedroom) {
+            $qb
+                ->andWhere('h.roomNumber <= :houseBedroom')
+                ->setParameter(':houseBedroom', $houseBedroom);
+        }
+
+        if ($houseModel) {
+            $qb
+                ->andWhere('h.houseModel <= :houseModel')
+                ->setParameter(':houseModel', $houseModel);
+        }
+
+        if ($houseBrand) {
+            $qb
+                ->andWhere('h.houseBrand <= :houseBrand')
+                ->setParameter(':houseBrand', $houseBrand);
+        }
+
+
+        return
+            $qb
+                ->orderBy('h.sellingPriceAti', 'ASC')
+                ->getQuery()
+                ->execute();
+    }
+
+
+    public function findByLength(float $length = 0)
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.length <= :val')
@@ -87,19 +122,17 @@ class HouseRepository extends ServiceEntityRepository
             ->setParameter('val', $length)
             ->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
-    public function findExactLength(float $length=0)
+    public function findExactLength(float $length = 0)
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.length = :val')
             ->setParameter('val', $length)
             ->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     //Matching Terrains-Maisons
@@ -111,44 +144,41 @@ class HouseRepository extends ServiceEntityRepository
      * @param array $roofings
      * @return int|mixed|string
      */
-    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit=0, float $length=0,
-                                             array $roofings=[])
+    public function findHousesPlotCompatible(bool $doubleLimit = false, float $limit = 0, float $length = 0,
+                                             array $roofings = [])
     {
         $lengthHouse = $length - $limit;
         $lengthHouseDL = 0;
-        if($doubleLimit) {
+        if ($doubleLimit) {
             $lengthHouseDL = $length;
         }
 
         $qb = $this->createQueryBuilder('h');
 
-            $qb->andWhere('h.length <= :val')
+        $qb->andWhere('h.length <= :val')
             ->orWhere('h.length = :val2')
             ->andWhere('h.valid = true')
             ->andWhere('h.houseRoofing IN (:val3)')
             ->setParameter('val', $lengthHouse)
             ->setParameter('val2', $lengthHouseDL)
-            ->setParameter('val3', $roofings)
-            ;
+            ->setParameter('val3', $roofings);
 
 
-
-           return $qb
-                ->orderBy('h.sellingPriceAti', 'ASC')
-                ->getQuery()
-                ->execute()
-                ;
+        return $qb
+            ->orderBy('h.sellingPriceAti', 'ASC')
+            ->getQuery()
+            ->execute();
     }
 
 
     //Ajoute de la seleciton du nombre de chambre en complément du Matching Terrains-Maisons
 
-    public function searchHouseRoom(bool $doubleLimit = false, float $limit=0, float $length=0,
-                                             array $roofings=[], int $roomNumber=0 )
+    public function searchHouseRoom(bool $doubleLimit = false, float $limit = 0, float $length = 0,
+                                    array $roofings = [], int $roomNumber = 0)
     {
         $lengthHouse = $length - $limit;
         $lengthHouseDL = 0;
-        if($doubleLimit) {
+        if ($doubleLimit) {
             $lengthHouseDL = $length;
         }
 
@@ -162,16 +192,12 @@ class HouseRepository extends ServiceEntityRepository
             ->setParameter('val', $lengthHouse)
             ->setParameter('val2', $lengthHouseDL)
             ->setParameter('val3', $roofings)
-            ->setParameter('room', $roomNumber)
-        ;
-
-
+            ->setParameter('room', $roomNumber);
 
         return $qb
             ->orderBy('h.sellingPriceAti', 'ASC')
             ->getQuery()
-            ->execute()
-            ;
+            ->execute();
     }
 
 

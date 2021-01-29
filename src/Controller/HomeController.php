@@ -188,16 +188,14 @@ class HomeController extends AbstractController
         $searchForm->handleRequest($request);
 
         if($searchForm->isSubmitted() && $searchForm->isValid()){
+            $maxPrice = $searchForm->get('matchSellingPriceAti')->getData() ?: 10000000;
             $houseBedroom = $searchForm->get('roomNumber')->getData();
             $houseModel = $searchForm->get('houseModel')->getData() ?: $modelRepository->findAll();
             $houseBrand = $searchForm->get('houseBrand')->getData() ?: $brandRepository->findAll();
 
-            $houses = $houseRepository->findBy([
-                'valid' => true,
-                'roomNumber' => $houseBedroom,
-                'houseModel' => $houseModel,
-                'houseBrand' => $houseBrand,
-            ], ['sellingPriceAti' => 'ASC']);
+
+
+            $houses = $houseRepository->findByMaxPrice($maxPrice, $houseBedroom, $houseModel, $houseBrand );
         }
         else{
             $houses = $houseRepository->findBy(['valid'=>true, 'roomNumber' => 4], ['sellingPriceAti'=>'ASC']);
