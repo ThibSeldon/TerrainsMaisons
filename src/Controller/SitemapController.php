@@ -16,6 +16,8 @@ class SitemapController extends AbstractController
      * @Route("/sitemap", name="sitemap", defaults={"_format"="xml"})
      * @param Request $request
      * @param AllotmentRepository $allotmentRepository
+     * @param HouseRepository $houseRepository
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
      * @return Response
      */
     public function index(Request $request, AllotmentRepository $allotmentRepository, HouseRepository $houseRepository,
@@ -32,6 +34,7 @@ class SitemapController extends AbstractController
         $urls[] = ['loc' => $this->generateUrl('all_houses_list')];
         $urls[] = ['loc' => $this->generateUrl('home_user_manual')];
         $urls[] = ['loc' => $this->generateUrl('home_selling_plot')];
+        $urls[] = ['loc' => $this->generateUrl('contact')];
 
         //URLs des pages dynamiques
         foreach ($allotmentRepository->findBy(['isValid' => 'true']) as $allotment) {

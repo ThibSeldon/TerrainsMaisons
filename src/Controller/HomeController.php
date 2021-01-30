@@ -278,4 +278,10 @@ class HomeController extends AbstractController
         return $this->render('home/selling_plot.html.twig');
     }
 
+    #[Route('/contact', name:'contact')]
+    public function contact()
+    {
+        return $this->render('home/contact.html.twig');
+    }
+
 }
