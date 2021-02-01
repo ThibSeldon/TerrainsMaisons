@@ -21,7 +21,7 @@ class PlotHouseMatchingController extends AbstractController
     public function index(PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
         return $this->render('matching/plot_house_matching/index.html.twig', [
-            'plot_house_matchings' => $plotHouseMatchingRepository->findBy([], ['updatedAt'=>'ASC'], 50),
+            'plot_house_matchings' => $plotHouseMatchingRepository->findBy([], ['updatedAt' => 'ASC'], 50),
         ]);
     }
 
@@ -105,17 +105,18 @@ class PlotHouseMatchingController extends AbstractController
                         $findMatch->setPlot($plot);
                         $findMatch->setName(
                             'Maison '
-                            . $house->getName()
-                            .' '
-                            . $house->getLivingSpace()
-                            . ' m2 '
-                            . $house->getRoomNumber()
-                            . ' Chambres '
-                            . $allotment->getCity()
-                            . ' '
-                            . $allotment->getName()
-                            . ' Lot '
-                            . $plot->getLot()
+                        . $house->getRoomNumber()
+                        . ' Chambres '
+                        . $allotment->getCity()
+                        . ' '
+                        . $allotment->getName()
+                        . ' Lot '
+                        . $plot->getLot()
+                        . ' Modèle '
+                        . $house->getName()
+                        . ' '
+                        . $house->getLivingSpace()
+                        . ' m2'
                         );
                         $findMatch->setValid(true);
                         $findMatch->setSellingPriceAti(
@@ -123,17 +124,13 @@ class PlotHouseMatchingController extends AbstractController
                         );
 
                         $em->persist($findMatch);
-                      $tempData[] = $findMatch;
+                        $tempData[] = $findMatch;
                     } else {
                         $plotHouseMatching = new PlotHouseMatching();
                         $plotHouseMatching->setHouse($house);
                         $plotHouseMatching->setPlot($plot);
                         $plotHouseMatching->setName(
                             'Maison '
-                            . $house->getName()
-                            .' '
-                            . $house->getLivingSpace()
-                            . ' m2 '
                             . $house->getRoomNumber()
                             . ' Chambres '
                             . $allotment->getCity()
@@ -141,6 +138,11 @@ class PlotHouseMatchingController extends AbstractController
                             . $allotment->getName()
                             . ' Lot '
                             . $plot->getLot()
+                            . ' Modèle '
+                            . $house->getName()
+                            . ' '
+                            . $house->getLivingSpace()
+                            . ' m2'
                         );
                         $plotHouseMatching->setValid(true);
                         $plotHouseMatching->setSellingPriceAti(
@@ -168,14 +170,13 @@ class PlotHouseMatchingController extends AbstractController
         }
         $diffs = array_diff($hData, $tData);
 
-        foreach($diffs as $diff){
+        foreach ($diffs as $diff) {
             $houseMatchingDiff = $plotHouseMatchingRepository->findOneBy(['id' => $diff]);
 
             $em->remove($houseMatchingDiff);
         }
 
         $em->flush();
-
 
 
         return $this->render('matching/plot_house_matching/index.html.twig', [
