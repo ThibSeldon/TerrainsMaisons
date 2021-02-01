@@ -2,8 +2,8 @@
 
     {% block description %}
         <!-- Meta Description -->
-        <meta name="description" content="Trouvez votre projet de construction de maison en Champagne-Ardenne.
-        Grace à notre algorithme lotisseurs constructeurs nous proposons de multiples projets.">
+        <meta name="description" content="La plateforme pour Construire votre maison en Champagne-Ardenne.
+                Sélectionnez un Lotissement , un Terrain à bâtir et parcourez les maisons proposées par nos constructeurs.">
     {% endblock %}
 
 {% block title %}Terrains Maisons .com{% endblock %}
@@ -21,14 +21,15 @@
 
     <div class="row" style="margin-top: 25px">
         <div class="col-12 d-flex justify-content-center my-5-top">
-            <h1 class="display-5 text-center">TROUVEZ VOTRE PROJET DE CONSTRUCTION EN CHAMPAGNE-ARDENNE</h1>
+            <h1 class="display-5 text-center">CONSTRUIRE VOTRE MAISON EN CHAMPAGNE-ARDENNE</h1>
         </div>
     </div>
 
     <div class="row ">
 
         <div class="col-12 d-flex justify-content-center" style="margin-top: 25px">
-            <p class="text-center" style="font-weight: bold; font-size: large">Grâce à notre Algorithme, aujourd'hui,
+            <p class="text-center" style="font-weight: bold; font-size: large">
+                Grâce à notre Algorithme Constructeur Losstisseur, aujourd'hui,
                 nous proposons
                 <span class="badge bg-success">{{ countMatchs }} </span>
                 combinaisons de projets de construction.</p>
@@ -110,7 +111,7 @@
                         <li class="list-group-item">À partir de {{ allotment.getMinPriceAtiPlot }}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="{{ path('all_allotment_show', {'id': allotment.id}) }}" class="btn btn-secondary">Voir
+                        <a href="{{ path('home_allotment_slug', {'slug': allotment.slug}) }}" class="btn btn-secondary">Voir
                             Les Terrains</a>
                     </div>
                 </div>

@@ -156,7 +156,8 @@
             {'url': url('home'), 'text': 'TerrainsMaisons.com'},
             {'text': allotment.name },
         ]) }}
-            <!-- BREADCRUMPS  START-->
+
+            <!-- BREADCRUMPS  END-->
         </div>
     </div>
 
@@ -185,7 +186,7 @@
 
                         </ul>
                         <div class="card-body">
-                            <a href="{{ path('all_plot_show', {'id': plot.id}) }}" class="btn btn-secondary">Maisons
+                            <a href="{{ path('all_plot_show', {'slug':allotment.slug,'id': plot.id}) }}" class="btn btn-secondary">Maisons
                                 Compatibles</a>
                         </div>
                     </div>

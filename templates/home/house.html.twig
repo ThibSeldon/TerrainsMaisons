@@ -159,7 +159,7 @@
                                     {% for match in matchs %}
                                 {% if plot == match.plot %}
                                 <tr>
-                                <th> <a href="{{ path('all_ad_show_by_slug', {'slug': match.slug}) }}">{{ plot.lot }}</a></th>
+                                <th> <a  class="btn btn-success  " style="min-width: 55px;" href="{{ path('all_ad_show_by_slug', {'slug': match.slug}) }}">{{ plot.lot }}</a></th>
                                 <td>{{ plot.surface }} m2</td>
                                 <td>{{ plot.sellingPriceAti | number_format(0,'',' ') }} €</td>
                                 <td>{{ match.sellingPriceAti | number_format(0,'', ' ')}} €</td>

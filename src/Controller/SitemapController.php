@@ -45,8 +45,8 @@ class SitemapController extends AbstractController
             else{
                 $updatedAt = $allotment->getCreatedAt()->format('Y-m-d');
             }
-            $urls[] = ['loc' => $this->generateUrl('all_allotment_show', [
-                'id' => $allotment->getId()
+            $urls[] = ['loc' => $this->generateUrl('home_allotment_slug', [
+                'slug' => $allotment->getSlug()
             ]),
                 'lastmod' => $updatedAt,
             ];

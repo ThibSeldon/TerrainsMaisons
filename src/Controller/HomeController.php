@@ -3,10 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\House;
-use App\Entity\Land\Allotment;
-use App\Entity\Land\Plot;
-use App\Entity\Matching\PlotHouseMatching;
-use App\Form\Matching\PHMSearchType;
 use App\Form\TerrainsMaisons\AllotmentSearchType;
 use App\Form\TerrainsMaisons\HouseSearchType;
 use App\Repository\Admin\House\HouseBrandRepository;
@@ -41,7 +37,7 @@ class HomeController extends AbstractController
         $searchForm->handleRequest($request);
         $countMatchs = $plotHouseMatchingRepository->count([]);
 
-        if($searchForm->isSubmitted() && $searchForm->isValid()){
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             //Pourquoi je recupere l objet allotment et non le champ city ? (ca fonctionne commme ca)
             $data = $searchForm->get('city')->getData();
             $allotments = $allotmentRepository->findBySearchForm($data);
@@ -52,7 +48,7 @@ class HomeController extends AbstractController
                 'countMatchs' => $countMatchs,
 
             ]);
-    }
+        }
 
         $allotments = $allotmentRepository->findBy(['isValid' => true], ['city' => 'ASC']);
         return $this->render('home/index.html.twig', [
@@ -71,45 +67,61 @@ class HomeController extends AbstractController
      * @param PlotRepository $plotRepository
      * @return Response
      */
-    #[Route('/lotissement/terrain/{id}', name:'all_plot_show', requirements: ['id'=>'\d+'])]
+    #[Route('/lotissement/{slug}/terrain/{id}', name: 'all_plot_show', requirements: ['id' => '\d+'])]
     public function plot(Request $request, HouseRepository $houseRepository, PlotHouseMatchingRepository $plotHouseMatchingRepository, PlotRepository $plotRepository): Response
     {
         $plotId = $request->get('id');
-        $plot = $plotRepository->findOneBy(['id'=>$plotId]);
+        $plot = $plotRepository->findOneBy(['id' => $plotId]);
 
-        if($plot)
-            {
-                $searchForm = $this->createForm(HouseSearchType::class);
-                $searchForm->handleRequest($request);
+        if ($plot) {
+            $searchForm = $this->createForm(HouseSearchType::class);
+            $searchForm->handleRequest($request);
 
-                //Formulaire de recherche soumis
-                if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-                    $numberRoomData = $searchForm->get('roomNumber')->getData();
-                    $houseBrand = $searchForm->get('houseBrand')->getData();
-                    $budgetMax = $searchForm->get('matchSellingPriceAti')->getData();
+            //Formulaire de recherche soumis
+            if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+                $numberRoomData = $searchForm->get('roomNumber')->getData();
+                $houseBrand = $searchForm->get('houseBrand')->getData();
+                $budgetMax = $searchForm->get('matchSellingPriceAti')->getData();
 
 
-                    $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData, $houseBrand, $budgetMax);
-                    return $this->render('home/plot_houses.html.twig', [
-                        'houses' => $houses,
-                        'plot' => $plot,
-                        'form' => $searchForm->createView(),
-                        '_fragment' => '#house-list',
-
-                    ]);
-                }
-
-                $houses = $plotHouseMatchingRepository->findBy(['plot' => $request->get('id')], ['sellingPriceAti' => 'ASC']);
+                $houses = $plotHouseMatchingRepository->findByHouseBedroom($plot, $numberRoomData, $houseBrand, $budgetMax);
                 return $this->render('home/plot_houses.html.twig', [
                     'houses' => $houses,
                     'plot' => $plot,
                     'form' => $searchForm->createView(),
+                    '_fragment' => '#house-list',
 
                 ]);
             }
+
+            $houses = $plotHouseMatchingRepository->findBy(['plot' => $request->get('id')], ['sellingPriceAti' => 'ASC']);
+            return $this->render('home/plot_houses.html.twig', [
+                'houses' => $houses,
+                'plot' => $plot,
+                'form' => $searchForm->createView(),
+
+            ]);
+        }
         return $this->redirectToRoute('home');
     }
 
+
+    /** --OLD-- Redirect to Url with SLUG
+     * @param Request $request
+     * @param PlotRepository $plotRepository
+     * @param AllotmentRepository $allotmentRepository
+     * @return Response
+     */
+    #[Route('/lotissement/{id}', name: 'all_allotment_show', requirements: ['id' => '\d+'], priority: 2)]
+    public function allotment(Request $request, PlotRepository $plotRepository, AllotmentRepository $allotmentRepository): Response
+    {
+        $id = $request->get('id');
+        $allotment = $allotmentRepository->findOneBy(['id' => $id]);
+        if ($allotment) {
+            return $this->redirectToRoute('home_allotment_slug', ['slug' => $allotment->getSlug()]);
+        }
+        return $this->redirectToRoute('home');
+    }
 
     /**
      * @param Request $request
@@ -117,21 +129,22 @@ class HomeController extends AbstractController
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    #[Route('/lotissement/{id}', name: 'all_allotment_show', requirements: ['id'=>'\d+'])]
-    public function allotment(Request $request, PlotRepository $plotRepository, AllotmentRepository $allotmentRepository): Response
+    #[Route('/lotissement/{slug}', name: 'home_allotment_slug', priority: 1)]
+    public function getAllotmentWithSlug(Request $request, PlotRepository $plotRepository, AllotmentRepository $allotmentRepository): Response
     {
-        $id = $request->get('id');
-        $allotment = $allotmentRepository->findOneBy(['id'=>$id]);
-     if($allotment){
-        $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
-        return $this->render('home/allotments.html.twig', [
-            'allotment' => $allotment,
-            'plots' => $plots,
-        ]);
+        $slug = $request->get('slug');
+        $allotment = $allotmentRepository->findOneBy(['slug' => $slug]);
+        if ($allotment) {
+            $plots = $plotRepository->findBy(['allotment' => $allotment->getId()], ['sellingPriceAti' => 'ASC']);
+            return $this->render('home/allotments.html.twig', [
+                'allotment' => $allotment,
+                'plots' => $plots,
+            ]);
 
-     }
-     return $this->redirectToRoute('home');
+        }
+        return $this->redirectToRoute('home');
     }
+
 
     /**
      * OLD-----------------
@@ -140,17 +153,10 @@ class HomeController extends AbstractController
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
-    #[Route('/maisons/{id}', name: 'all_house_show', requirements: ['id'=>'\d+'])]
+    #[Route('/maisons/{id}', name: 'all_house_show', requirements: ['id' => '\d+'], priority: 3)]
     public function house(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
-        $allotments = $allotmentRepository->findByHouse($house);
-        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house]);
-        //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
-        return $this->render('home/house.html.twig', [
-            'matchs' => $matchs,
-            'house' => $house,
-            'allotments' => $allotments,
-        ]);
+        return $this->redirectToRoute('all_house_show_by_slug', ['slug' => $house->getSlug()]);
     }
 
 
@@ -164,7 +170,7 @@ class HomeController extends AbstractController
     public function houseBySlug(House $house, PlotHouseMatchingRepository $plotHouseMatchingRepository, AllotmentRepository $allotmentRepository): Response
     {
         $allotments = $allotmentRepository->findByHouse($house);
-        $matchs = $plotHouseMatchingRepository->findBy(['house'=>$house], ['name'=>'ASC']);
+        $matchs = $plotHouseMatchingRepository->findBy(['house' => $house], ['name' => 'ASC']);
         //$allotmentsMatch = $allotmentRepository->findBy(['id' => $matchs->getPlot])
         return $this->render('home/house.html.twig', [
             'matchs' => $matchs,
@@ -187,18 +193,16 @@ class HomeController extends AbstractController
         $searchForm = $this->createForm(HouseSearchType::class);
         $searchForm->handleRequest($request);
 
-        if($searchForm->isSubmitted() && $searchForm->isValid()){
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $maxPrice = $searchForm->get('matchSellingPriceAti')->getData();
             $houseBedroom = $searchForm->get('roomNumber')->getData();
             $houseModel = $searchForm->get('houseModel')->getData();
             $houseBrand = $searchForm->get('houseBrand')->getData();
 
 
-
-            $houses = $houseRepository->findByMaxPrice($maxPrice, $houseBedroom, $houseModel, $houseBrand );
-        }
-        else{
-            $houses = $houseRepository->findBy(['valid'=>true, 'roomNumber' => 4], ['sellingPriceAti'=>'ASC']);
+            $houses = $houseRepository->findByMaxPrice($maxPrice, $houseBedroom, $houseModel, $houseBrand);
+        } else {
+            $houses = $houseRepository->findBy(['valid' => true, 'roomNumber' => 4], ['sellingPriceAti' => 'ASC']);
         }
 
         return $this->render('home/houses.html.twig', [
@@ -208,77 +212,57 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/projet/{id}', name:'all_ad_show', requirements: ['id'=>'\d+'])]
+
+    /**
+     * ---OLD--- Redirect to new URL with SLUG
+     * @param Request $request
+     * @param PlotHouseMatchingRepository $plotHouseMatchingRepository
+     * @return Response
+     */
+    #[Route('/projet/{id}', name: 'all_ad_show', requirements: ['id' => '\d+'])]
     public function adPlotHouse(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
-        $id = $request->get('id');
-        $match = $plotHouseMatchingRepository->findOneBy(['id'=>$id]);
-        if($match){
-        return $this->render('home/ad_plot_house.html.twig', [
-            'ad' => $match
-        ]);
+        $projet = $plotHouseMatchingRepository->findOneBy(['id' => $request->get('id')]);
+        if ($projet) {
+            return $this->redirectToRoute('all_ad_show_by_slug', ['slug' => $projet->getSlug()]);
         }
-       return  $this->redirectToRoute('home');
+        return $this->redirectToRoute('home');
     }
-/*
-    #[Route('/projets', name:'home_ads')]
-    public function findAllAds(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository,
-                               AllotmentRepository $allotmentRepository): Response
-    {
-        $searchForm = $this->createForm(PHMSearchType::class);
-        $searchForm->handleRequest($request);
 
-        if($searchForm->isSubmitted() && $searchForm->isValid()){
-            $budget = $searchForm->get('sellingPriceAti')->getData();
-            $matchs = $plotHouseMatchingRepository->findByBudget($budget);
-            $allotments = $allotmentRepository->findByMatch($matchs);
-
-        }
-        else{
-        $matchs = $plotHouseMatchingRepository->findBy([], ['updatedAt'=>'ASC'], 30);
-        $allotments = $allotmentRepository->findByMatch($matchs);
-        }
-
-        return $this->render('home/ads_search.html.twig', [
-            'ads' => $matchs,
-            'allotments' => $allotments,
-            'form' => $searchForm->createView(),
-        ]);
-    }*/
 
     //Je n utilise pas le @PARAMCONVETER pour rediriger les 404 sur la home si l annonce n existe plus
-    #[Route('/projet/{slug}', name:'all_ad_show_by_slug')]
+    #[Route('/projet/{slug}', name: 'all_ad_show_by_slug')]
     public function viewAdPlotHouse(Request $request, PlotHouseMatchingRepository $plotHouseMatchingRepository): Response
     {
         $slug = $request->get('slug');
-        $match = $plotHouseMatchingRepository->findOneBy(['slug'=>$slug]);
-        if(!$match) {
-        return $this->redirectToRoute('home');
+        $match = $plotHouseMatchingRepository->findOneBy(['slug' => $slug]);
+        if (!$match) {
+            return $this->redirectToRoute('home');
         }
         return $this->render('home/ad_plot_house.html.twig', [
             'ad' => $match
         ]);
     }
 
-    #[Route('/mentions-legales', name:'legal_notice')]
+    #[Route('/mentions-legales', name: 'legal_notice')]
     public function legaleNotice()
     {
         return $this->render('home/legale_notice.html.twig');
     }
 
-    #[Route('/guide-utilisateur', name:'home_user_manual')]
+    #[Route('/guide-utilisateur', name: 'home_user_manual')]
     public function userManual()
     {
         return $this->render('home/user_manual.html.twig');
     }
 
-    #[Route('/terrain-vendre', name:'home_selling_plot')]
+    #[Route('/terrain-vendre', name: 'home_selling_plot')]
     public function homeSellingPlot()
     {
         return $this->render('home/selling_plot.html.twig');
     }
 
-    #[Route('/contact', name:'contact')]
+    #[Route('/contact', name: 'contact')]
     public function contact()
     {
         return $this->render('home/contact.html.twig');

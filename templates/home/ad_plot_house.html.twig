@@ -25,7 +25,7 @@
             {{ breadcrumbs.render([
                 {'url': url('home'), 'text': 'TerrainsMaisons.com'},
                 {'url': path('all_allotment_show', {'id': ad.plot.allotment.id}), 'text': ad.plot.allotment.name },
-                {'url': path('all_plot_show', {'id': ad.plot.id}), 'text': 'Maisons'},
+                {'url': path('all_plot_show', {'slug':ad.plot.allotment.slug, 'id': ad.plot.id}), 'text': 'Maisons'},
                 {'text': 'Projet'},
             ]) }}
             <!-- BREADCRUMPS  END -->

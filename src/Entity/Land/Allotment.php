@@ -11,11 +11,17 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @ORM\Entity(repositoryClass=AllotmentRepository::class)
  * @ORM\HasLifecycleCallbacks()
  */
+#[UniqueEntity(
+    fields: ['name', 'city', 'postalCode'],
+    message: 'Il existe deja une combinaison nom + ville + code postal'
+)]
 class Allotment
 {
     /**
@@ -120,6 +126,11 @@ class Allotment
      * @ORM\ManyToOne(targetEntity=Sanitation::class, inversedBy="allotments")
      */
     private $sanitation;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -451,6 +462,28 @@ class Allotment
         $this->sanitation = $sanitation;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    //Mise a jour du Slug
+    public function computeSlug(SluggerInterface $slugger): void
+    {
+        if (!$this->slug || '-' === $this->slug){
+            $this->slug = (string) $slugger->slug
+            ((string) $this->getCity() .'-'. $this->getName() .'-'.
+                $this->getPostalCode())->lower();
+        }
     }
 
 
