@@ -476,6 +476,21 @@ class Allotment
         return $this;
     }
 
+    //Compter les terrains libres pour affichage sur page accueil
+    public function getPlotFree(){
+        $plots = $this->getPlots();
+        $plotsFree = [];
+
+        foreach ($plots as $plot) {
+
+            if($plot->getState()->getName() === "Libre"){
+                $plotsFree[] = $plot;
+            }
+        }
+        return count($plotsFree);
+    }
+
+
     //Mise a jour du Slug
     public function computeSlug(SluggerInterface $slugger): void
     {
@@ -485,6 +500,8 @@ class Allotment
                 $this->getPostalCode())->lower();
         }
     }
+
+
 
 
     }

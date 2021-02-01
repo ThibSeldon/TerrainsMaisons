@@ -102,7 +102,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Code Postal : {{ allotment.postalCode }} </li>
                         <li class="list-group-item align-items-center"><span
-                                    class="badge bg-success">{{ allotment.plots| length }}</span> Terrains
+                                    class="badge bg-success">{{ allotment.getPlotFree }}</span> Terrains
                         </li>
                         {% if allotment.state %}
                         <li class="list-group-item"><span
