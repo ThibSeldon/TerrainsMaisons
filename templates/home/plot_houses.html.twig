@@ -70,7 +70,7 @@
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
             {{ breadcrumbs.render([
                 {'url': url('home'), 'text': 'TerrainsMaisons.com'},
-                {'url': path('home_allotment_slug', {'slug': plot.allotment.slug}), 'text': plot.allotment.name},
+                {'url': url('home_allotment_slug', {'slug': plot.allotment.slug}), 'text': plot.allotment.name},
                 {'text': plot.lot },
             ]) }}
             <!-- BREADCRUMPS  END-->
