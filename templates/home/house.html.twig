@@ -108,7 +108,7 @@
                 <td>{{ house.sellingPriceAti | number_format(0,'',' ') }} €</td>
             </tr>
             <tr>
-                <th>Construteur</th>
+                <th>Constructeur</th>
                 <td><a href="{{ house.houseBrand.url }}" target="_blank">
                         <img src="{{ asset('uploads/pictures/'~ house.houseBrand.logo) }}" alt="Logo {{ house.houseBrand.name }}" width="170">
                     </a></td>
@@ -137,7 +137,7 @@
                         <h2 class="mb-0">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ allotment.id }}"
                                     aria-expanded="{% if loop.first %} true {% endif %}" aria-controls="collapse-{{ allotment.id }}">
-                                {{ allotment.name }} - {{ allotment.city }} - {{ allotment.postalCode }}
+                                {{ allotment.city }} - {{ allotment.name }} - {{ allotment.postalCode }}
                             </button>
                         </h2>
                     </div>
