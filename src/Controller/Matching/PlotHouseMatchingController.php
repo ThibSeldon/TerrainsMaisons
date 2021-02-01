@@ -105,8 +105,6 @@ class PlotHouseMatchingController extends AbstractController
                         $findMatch->setPlot($plot);
                         $findMatch->setName(
                             'Maison '
-                            . $house->getName()
-                            .' '
                             . $house->getLivingSpace()
                             . ' m2 '
                             . $house->getRoomNumber()
@@ -116,6 +114,8 @@ class PlotHouseMatchingController extends AbstractController
                             . $allotment->getName()
                             . ' Lot '
                             . $plot->getLot()
+                            .' modèle '
+                            .$house->getName()
                         );
                         $findMatch->setValid(true);
                         $findMatch->setSellingPriceAti(
@@ -130,8 +130,6 @@ class PlotHouseMatchingController extends AbstractController
                         $plotHouseMatching->setPlot($plot);
                         $plotHouseMatching->setName(
                             'Maison '
-                            . $house->getName()
-                            .' '
                             . $house->getLivingSpace()
                             . ' m2 '
                             . $house->getRoomNumber()
@@ -141,6 +139,8 @@ class PlotHouseMatchingController extends AbstractController
                             . $allotment->getName()
                             . ' Lot '
                             . $plot->getLot()
+                            .' modèle '
+                            .$house->getName()
                         );
                         $plotHouseMatching->setValid(true);
                         $plotHouseMatching->setSellingPriceAti(
