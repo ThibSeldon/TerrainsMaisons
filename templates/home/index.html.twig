@@ -38,13 +38,19 @@
 
 
     <div class="row justify-content-center" style="margin-top: 25px">
-        <div class="col-12 col-lg-3 d-flex justify-content-center py-1 py-lg-0 ">
-            <a class="btn btn-lg btn-success w-100 " href="#search-form" role="button">Recherche par
+        <div class="col-12 col-lg-3 d-flex flex-column justify-content-center py-1 py-lg-0 ">
+            <a class="btn btn-lg btn-success w-100 " href="#search-form" role="button">Recherche un
                 Terrain</a>
+            <div>
+            <p class="text-center">Sélectionne ton terrain sur un lotissement et découvre les maisons que tu peux construire. </p>
+            </div>
         </div>
-        <div class="col-12 col-lg-3 d-flex justify-content-center d-grid">
+        <div class="col-12 col-lg-3 d-flex flex-column justify-content-center d-grid">
             <a class="btn btn-lg btn-success w-100" href="{{ path('all_houses_list') }}" role="button">Recherche
-                par Maison</a>
+                une Maison</a>
+            <div class="">
+            <p class="text-center">Sélectionne une Maison dans le catalogue et découvre sur quels Terrains tu peux la constuire. </p>
+            </div>
         </div>
     </div>
 
@@ -58,7 +64,7 @@
 
     <div class="flex-row justify-content-center align-items-center">
         <div class="col d-flex justify-content-center" id="search-allotment">
-            <h4> Recherche par Terrain</h4>
+            <h4> Recherche un Lotissement - Terrain </h4>
         </div>
     </div>
 
