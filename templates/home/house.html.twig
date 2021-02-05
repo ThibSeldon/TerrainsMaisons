@@ -2,8 +2,18 @@
 
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Tous les terrains compatbiles pour le modèle de maison
+    <meta name="description" content="Tous les terrains compatibles pour le modèle de maison
         {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
+
+    <meta property="og:title" content="Tous les terrains compatibles pour le modèle de maison
+        {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}" >
+
+    {% if house.pictures[0] is defined %}
+    {% for picture in house.pictures %}
+    <meta property="og:image" content="{{ asset('uploads/pictures/'~picture.name) | imagine_filter('big')}}">
+    {% endfor %}
+    {% endif %}
+
 {% endblock %}
 
 {% block title %}
