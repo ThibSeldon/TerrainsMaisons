@@ -59,6 +59,7 @@ class AllotmentRepository extends ServiceEntityRepository
             ->join('p.plotHouseMatchings', 'm')
             ->andWhere('m.house = :house')
             ->setParameter('house', $house)
+            ->orderBy('a.city', 'ASC')
             ->getQuery()
             ->getResult()
             ;
