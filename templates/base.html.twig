@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-
+		{% if app.environment != 'dev' %}
 		<!-- Microsoft Clarity Tag -->
 		<script type="text/javascript">
 			(function(c,l,a,r,i,t,y){
@@ -10,6 +10,7 @@
 				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 			})(window, document, "clarity", "script", "4zjwsq6afz");
 		</script>
+		{% endif %}
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
