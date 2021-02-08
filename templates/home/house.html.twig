@@ -1,23 +1,36 @@
 {% extends 'base_all.html.twig' %}
 
+{% block title %}
+    Maison {{ house.name }} de {{ house.livingSpace }} m2 -
+    {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}
+{% endblock %}
+
 {% block description %}
+
     <!-- Meta Description -->
+    <meta name="title" content="Maison {{ house.name }} de {{ house.livingSpace }} m2 -
+    {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
+    <meta name="description"
+          content="Tous les terrains à bâtir et lotissements dans la Marne et les Ardennes  pour construire le modèle de maison
+{{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
+
+    <!-- OG  -->
+    <meta property="og:title" content="Maison {{ house.name }} de {{ house.livingSpace }} m2 -
+{{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}" >
     <meta name="og:description" content="Tous les terrains à bâtir et lotissements dans la Marne et les Ardennes  pour construire le modèle de maison
 {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
 
-    <meta property="og:title" content="Maison {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}" >
-
+    <!-- OG  IMAGE-->
     {% if house.pictures[0] is defined %}
-    {% for picture in house.pictures %}
-    <meta property="og:image" content="{{ asset('uploads/pictures/'~picture.name) | imagine_filter('big')}}">
-    {% endfor %}
+        {% for picture in house.pictures %}
+            <meta property="og:image" content="{{ asset('uploads/pictures/'~picture.name) | imagine_filter('my_thumb')}}">
+            <meta property="og:image:url" content="{{ asset('uploads/pictures/'~picture.name) | imagine_filter('my_thumb')}}">
+        {% endfor %}
     {% endif %}
 
 {% endblock %}
 
-{% block title %}
- Maison {{ house.name }}
-{% endblock %}
+
 
 {% block body %}
 

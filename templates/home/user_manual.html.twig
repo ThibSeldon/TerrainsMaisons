@@ -1,11 +1,18 @@
 {% extends 'base_all.html.twig' %}
 {% block title %}
-    Guide Utilisateur - TerrainsMaisons.com
+    Guide Utilisateur - Terrains Maisons.com
 {% endblock %}
 
 {% block description %}
+
     <!-- Meta Description -->
+    <meta name="title" content="Guide Utilisateur - Terrains Maisons.com">
     <meta name="description" content="Guide Utilisateur TerainsMaisons.com">
+    <!-- OG -->
+    <meta property="og:title" content="Guide Utilisateur - Terrains Maisons.com">
+    <meta property="og:description" content="Guide Utilisateur TerainsMaisons.com">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
 {% endblock %}
 
 

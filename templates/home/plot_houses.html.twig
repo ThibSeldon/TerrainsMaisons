@@ -7,7 +7,18 @@
 
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Retrouvez tous les projets de maisons individuelles à {{ plot.allotment.city }} dans le lotissement {{ plot.allotment.name }} sur le terrain n° {{ plot.lot }}">
+    <meta name="description" content="Retrouvez tous les projets de maisons individuelles à
+{{ plot.allotment.city }} dans le lotissement {{ plot.allotment.name }} sur le terrain n° {{ plot.lot }}">
+
+    <meta name="title" content="Projets Maisons {{ plot.allotment.city }} - {{ plot.allotment.name }} - Terrain n° {{ plot.lot }}">
+
+    <!-- OG  -->
+    <meta property="og:title" content="Projets Maisons {{ plot.allotment.city }} - {{ plot.allotment.name }} - Terrain n° {{ plot.lot }}">
+    <meta property="og:description" content="Retrouvez tous les projets de maisons individuelles à
+{{ plot.allotment.city }} dans le lotissement {{ plot.allotment.name }} sur le terrain n° {{ plot.lot }}">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+
 {% endblock %}
 
 
@@ -75,7 +86,7 @@
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
             {{ breadcrumbs.render([
                 {'url': url('home'), 'text': 'TerrainsMaisons.com'},
-                {'url': url('home_allotment_slug', {'slug': plot.allotment.slug}), 'text': plot.allotment.name},
+                {'url': url('home_allotment_slug', {'slug': plot.allotment.slug}), 'text': "#{plot.allotment.city} #{plot.allotment.name}"},
                 {'text': "Terrain à bâtir n°#{plot.lot}"},
             ]) }}
             <!-- BREADCRUMPS  END-->

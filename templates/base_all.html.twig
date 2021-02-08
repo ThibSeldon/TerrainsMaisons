@@ -61,17 +61,24 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://terrainsmaisons.com"/>
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Terrains Maisons.com">
 
 
 
 
     {% block description %}
         <!-- Meta Description -->
+        <meta name="title" content="Terrains Maisons.com la référence pour trouver un terrain à bâtir
+         en lotissment et un constructeur de maisons en Champagne-Ardenne">
+
+        <meta name="description" content="La plateforme pour Construire votre maison en Champagne-Ardenne.
+         Sélectionnez un Lotissement , un Terrain à bâtir et parcourez les maisons proposées par nos constructeurs.">
+
         <meta property="og:title" content="Terrains Maisons.com est la référence pour trouver un terrain à bâtir en lotissment et un constructeur de maisons en Champagne-Ardenne">
         <meta property="og:description" content="La plateforme pour Construire votre maison en Champagne-Ardenne.
-         Sélectionnez un Lotissement , un Terrain à bâtir et parcourez les maisons proposées par nos constructeurs."/>
-        <meta property="og:image" content="https://terrainsmaisons.com/images/logo_terrains_maisons_v2.png">
-        <meta property="og:image:url" content="https://terrainsmaisons.com/images/logo_terrains_maisons_v2.png">
+         Sélectionnez un Lotissement , un Terrain à bâtir et parcourez les maisons proposées par nos constructeurs.">
+        <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+        <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
     {% endblock %}
 
     <title>

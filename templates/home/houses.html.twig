@@ -1,12 +1,22 @@
 {% extends 'base_all.html.twig' %}
 
+{% block title %}Catalogue de Maisons des Constructeurs pour Terrains Maisons . com{% endblock %}
+
+
 {% block description %}
     <!-- Meta Description -->
     <meta name="description"
           content="Catalogue de Maisons Individuelles par les constructeurs de Maisons dans la Marne et les Ardennes">
-{% endblock %}
 
-{% block title %}Catalogue de Maisons des Constructeurs pour Terrains Maisons . com{% endblock %}
+    <meta name="title" content="Catalogue de Maisons des Constructeurs pour Terrains Maisons . com">
+
+    <!-- OG  -->
+    <meta property="og:title" content="Catalogue de Maisons des Constructeurs pour Terrains Maisons . com">
+    <meta property="og:description" content="Catalogue de Maisons Individuelles par les constructeurs de Maisons dans la Marne et les Ardennes">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+
+{% endblock %}
 
 {% block body %}
 

@@ -3,15 +3,25 @@
 {% block schema %}
 
 {% endblock %}
+
+{% block title %}
+    {{ ad.name }}
+{% endblock %}
+
 {% block description %}
     <!-- Meta Description -->
     <meta name="description" content="Découvrez la maison {{ ad.house.name}} de {{ ad.house.roomNumber}} chambres sur le lotissement {{ ad.plot.allotment.name}} à {{ ad.plot.allotment.city}}
     terrain n°{{ ad.plot.lot}} à partir de {{ ad.sellingPriceAti }} €">
+    <meta name="title" content="{{ ad.name }}">
+
+    <!-- OG  -->
+    <meta property="og:title" content="{{ ad.name }}">
+    <meta property="og:description" content="Découvrez la maison {{ ad.house.name}} de {{ ad.house.roomNumber}} chambres sur le lotissement {{ ad.plot.allotment.name}} à {{ ad.plot.allotment.city}}
+    terrain n°{{ ad.plot.lot}} à partir de {{ ad.sellingPriceAti }} €">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
 {% endblock %}
 
-{% block title %}
-{{ ad.name }}
-{% endblock %}
 
 {% block body %}
     <div class="container-fluid">

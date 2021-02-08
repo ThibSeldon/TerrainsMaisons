@@ -6,10 +6,18 @@
 {% endblock %}
 
 {% block description %}
-    <!-- Meta Description -->
+    <!-- Meta  -->
+    <meta name="title" content="Terrains à bâtir {{ allotment.city }}  - {{ allotment.name }}">
     <meta name="description"
-          content=" Le lotissement {{ allotment.name }} à {{ allotment.city }} vous propose plusieurs terrains à batir.
+          content="Le lotissement {{ allotment.name }} à {{ allotment.city }} vous propose plusieurs terrains à batir.
                 Choisissez votre futur projet de construction grâce à notre sélection de maisons individuelles." >
+    <!-- OG  -->
+    <meta property="og:title" content="Terrains à bâtir {{ allotment.city }}  - {{ allotment.name }}">
+    <meta property="og:description" content="Le lotissement {{ allotment.name }} à {{ allotment.city }} vous propose plusieurs terrains à batir.
+                Choisissez votre futur projet de construction grâce à notre sélection de maisons individuelles.">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+
 {% endblock %}
 
 

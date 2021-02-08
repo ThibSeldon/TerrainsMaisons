@@ -2,12 +2,20 @@
 
 
 {% block title %}
-Mentions Légales - TerrainsMaisons.com
+Mentions Légales - Terrains Maisons.com
 {% endblock %}
 
 {% block description %}
+
     <!-- Meta Description -->
+    <meta name="title" content="Mentions Légales - Terrains Maisons.com">
+
     <meta name="description" content="Mentions Légales TerainsMaisons.com">
+    <!-- OG -->
+    <meta property="og:title" content="Mentions Légales - Terrains Maisons.com">
+    <meta property="og:description" content="Mentions Légales TerainsMaisons.com">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
 {% endblock %}
 
 {% block body %}

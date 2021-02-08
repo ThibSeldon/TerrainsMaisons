@@ -1,11 +1,19 @@
 {% extends 'base_all.html.twig' %}
 {% block title %}
-    Vendre Mon Terrain ? - TerrainsMaisons.com
+    Mettre en Avant Mon Terrain à bâtir en Champagne-Ardenne - Terrains Maisons.com
 {% endblock %}
 
 {% block description %}
+
     <!-- Meta Description -->
-    <meta name="description" content="Vendre mon Terrain sur TerainsMaisons.com">
+    <meta name="title" content="Mettre en Avant Mon Terrain à bâtir en Champagne-Ardenne - Terrains Maisons.com">
+
+    <meta name="description" content="Mettre en avant mon lotissement et vendre mes terrains à bâtir sur TerainsMaisons.com">
+
+    <meta property="og:title" content="Mettre en Avant Mon Terrain à bâtir en Champagne-Ardenne - Terrains Maisons.com">
+    <meta property="og:description" content="Mettre en avant mon lotissement et vendre mes terrains à bâtir sur TerainsMaisons.com">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
 {% endblock %}
 
 
