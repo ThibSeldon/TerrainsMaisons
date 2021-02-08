@@ -1,14 +1,17 @@
 {% extends 'base_all.html.twig' %}
 
+
+{% block title %}
+    Terrains à bâtir {{ allotment.city }}  - {{ allotment.name }}
+{% endblock %}
+
 {% block description %}
     <!-- Meta Description -->
     <meta name="description"
-          content=" Projets de Construction de Maisons à {{ allotment.city }} - {{ allotment.name }} ">
+          content=" Le lotissement {{ allotment.name }} à {{ allotment.city }} vous propose plusieurs terrains à batir.
+                Choisissez votre futur projet de construction grâce à notre sélection de maisons individuelles." >
 {% endblock %}
 
-{% block title %}
-    Terrain {{ allotment.name }}  - {{ allotment.city }}
-{% endblock %}
 
 {% block body %}
 
@@ -19,24 +22,24 @@
         <div class="col-12 col-xl-6 d-flex align-items-stretch">
             <div class="p-xl-5">
                 <div class="container">
-                    <h1 class="display-5">Projets de Construction de Maisons à {{ allotment.city }} </h1>
-                    <h2 class="display-6"> {{ allotment.name }} </h2>
-                    <h4>Commune : {{ allotment.city }}</h4>
-                    <h5> <span class="badge bg-success">{{ allotment.state }}</span></h5>
+                    <h1 class="display-5 text-center">Terrains à bâtir {{ allotment.city }} </h1>
+                    <h2 class="display-6 text-center"> Lotissement {{ allotment.name }} </h2>
+                    <h5 class="text-center"> <span class="badge bg-success ">{{ allotment.state }}</span></h5>
 
-                    <p> Code postal : {{ allotment.postalCode }}</p>
                     <hr class="my-4">
+
                     <p class="lead">Pour votre future Maison : Découvrez le lieu</p>
+                    <p> Code postal : {{ allotment.postalCode }}</p>
                     <p>{{ allotment.description }}</p>
 
                     <p>
                     {% for tag in allotment.tags %}
-                        <span class="badge bg-info">{{ tag.name }}</span>
+                        <span class="badge rounded-pill bg-info">{{ tag.name }}</span>
                     {% endfor %}
                     </p>
                     <hr class="my-4">
-                    <p>Retrouvez toutes les informations sur le lotissement et parcourez les terrains disponibles.</p>
-                    <p><strong>Choisissez </strong> terrain, <strong>cliquez </strong> et <strong>découvrez</strong> toutes les <strong> Maisons compatibles</strong> pour un futur projet de construction !</p>
+
+                    <p><strong>Choisissez </strong> un terrain, <strong>cliquez </strong> et <strong>découvrez</strong> toutes les <strong> Maisons compatibles</strong> pour un futur projet de construction !</p>
 
                 </div>
             </div>

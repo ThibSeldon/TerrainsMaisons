@@ -5,19 +5,20 @@
 {% endblock %}
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Projet construction {{ ad.name }} - {{ ad.plot.allotment.name }} - {{ ad.sellingPriceAti}} ">
+    <meta name="description" content="Découvrez la maison {{ ad.house.name}} de {{ ad.house.roomNumber}} chambres sur le lotissement {{ ad.plot.allotment.name}} à {{ ad.plot.allotment.city}}
+    terrain n°{{ ad.plot.lot}} à partir de {{ ad.sellingPriceAti }} €">
 {% endblock %}
 
 {% block title %}
-{{ ad.name }} - {{ ad.plot.allotment.name }}
+{{ ad.name }}
 {% endblock %}
 
 {% block body %}
     <div class="container-fluid">
     <div class="row">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
-            <h1 class="display-6">{{ ad.name }}</h1>
-            <h3>À Partir de {{ ad.sellingPriceAti |number_format(0, '', ' ')  }} €</h3>
+            <h1 class="display-6 text-center" style="margin-bottom: 15px">{{ ad.name }}</h1>
+            <h3 style="margin-bottom: 15px">À Partir de {{ ad.sellingPriceAti |number_format(0, '', ' ')  }} €</h3>
 
             <!-- BREADCRUMPS  START-->
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
@@ -80,7 +81,7 @@
                         <td>{{ ad.plot.surface }} m2</td>
                     </tr>
                     <tr>
-                        <th>Largeur Facade</th>
+                        <th>Largeur Façade</th>
                         <td>{{ ad.plot.facadeWidth }} m</td>
                     </tr>
                     <tr>

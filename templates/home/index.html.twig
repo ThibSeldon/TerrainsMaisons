@@ -39,31 +39,29 @@
 
     <div class="row justify-content-center" style="margin-top: 25px">
         <div class="col-12 col-lg-3 d-flex flex-column justify-content-center py-1 py-lg-0 ">
-            <a class="btn btn-lg btn-success w-100 " href="#search-form" role="button">Recherche un
-                Terrain</a>
+            <a class="btn btn-lg btn-success w-100 " href="#search-allotment" role="button">Recherche par Terrain</a>
             <div>
-            <p class="text-center">Sélectionne ton terrain sur un lotissement et découvre les maisons que tu peux construire. </p>
+            <p class="text-center">Sélectionnez votre terrain sur un lotissement et découvrez les maisons constructibles. </p>
             </div>
         </div>
         <div class="col-12 col-lg-3 d-flex flex-column justify-content-center d-grid">
-            <a class="btn btn-lg btn-success w-100" href="{{ path('all_houses_list') }}" role="button">Recherche
-                une Maison</a>
+            <a class="btn btn-lg btn-success w-100" href="{{ path('all_houses_list') }}" role="button">Recherche par Maison</a>
             <div class="">
-            <p class="text-center">Sélectionne une Maison dans le catalogue et découvre sur quels Terrains tu peux la constuire. </p>
+            <p class="text-center">Sélectionnez une maison dans la catalogue et découvrez sur quels terrains la construire. </p>
             </div>
         </div>
     </div>
 
 <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8" id="search-allotment">
             <img class="img-fluid" src="{{ asset('images/cover_home.jpg' | imagine_filter('big')) }}" alt="Recherche Terrains Maisons . com">
         </div>
 </div>
 
-    <hr class="my-4">
+    <hr class="my-4" >
 
     <div class="flex-row justify-content-center align-items-center">
-        <div class="col d-flex justify-content-center" id="search-allotment">
+        <div class="col d-flex justify-content-center" >
             <h4> Recherche un Lotissement - Terrain </h4>
         </div>
     </div>

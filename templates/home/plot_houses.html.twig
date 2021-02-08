@@ -1,28 +1,33 @@
 {% extends 'base_all.html.twig' %}
 
-{% block description %}
-    <!-- Meta Description -->
-    <meta name="description" content="Maisons Compatibles pour le Lotissement {{ plot.allotment.name }} situé à {{ plot.allotment.city }} sur le terrain {{ plot.lot }}">
-{% endblock %}
 
 {% block title %}
-    Terrain {{ plot.allotment.name }} - {{ plot.allotment.city }} - Lot n° {{ plot.lot }}
+    Projets Maisons {{ plot.allotment.city }} - {{ plot.allotment.name }} - Terrain n° {{ plot.lot }}
 {% endblock %}
+
+{% block description %}
+    <!-- Meta Description -->
+    <meta name="description" content="Retrouvez tous les projets de maisons individuelles à {{ plot.allotment.city }} dans le lotissement {{ plot.allotment.name }} sur le terrain n° {{ plot.lot }}">
+{% endblock %}
+
+
 
 {% block body %}
 <div class="row justify-content-center">
     <div class="col-lg-6 col-12">
 
     <div class="p-xl-5">
-        <h1 class="display-6">{{ plot.allotment.city }} - {{ plot.allotment.name }}</h1>
-        <h2>Terrain: Lot n° {{ plot.lot }} </h2>
-        <h3>Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h3>
-        <h3>Surface : {{ plot.surface }} m2 </h3>
+        <h1 class="display-5 text-center"> Projets Maisons {{ plot.allotment.city }} </h1>
+        <h2 class="display-6 text-center">Lotissement {{ plot.allotment.name }}</h2>
+        <h3 class="display-6 text-center">Terrain n° {{ plot.lot }}</h3>
+        <hr class="my-4">
+        <p class="lead">Caractéristiques du Terrain </p>
+        <h4>Prix Terrain: {{ plot.sellingPriceAti | number_format(0, '', ' ') }} €</h4>
+        <h4>Surface : {{ plot.surface }} m2 </h4>
         <p class="lead">Découvrez les Maisons Neuves pour ce terrain</p>
         <hr class="my-4">
-        <p>Vous trouverez ici toutes les maisons compatibles. Sous réserves de validation par nos partenaires
-            fonciers. </p>
-        <p>Outils et Algorithmes en BETA, merci de nous signaler toutes incohérences</p>
+        <p>Vous trouverez ici tous les projets de construction de maisons compatibles sur ce terrain   </p>
+
     </div>
     </div>
         <div class="col-lg-6 col-12 d-flex align-items-start justify-content-center">
@@ -34,7 +39,7 @@
 
     <div class="flex-row justify-content-center align-items-center" style="margin-top: 25px">
         <div class="col d-flex justify-content-center" id="search-allotment">
-            <h4> Rechercher une Maison</h4>
+            <h4 class="text-center"> Rechercher une Maison pour ce Terrain</h4>
         </div>
     </div>
 
