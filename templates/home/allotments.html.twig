@@ -157,7 +157,7 @@
             {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
         {{ breadcrumbs.render([
             {'url': url('home'), 'text': 'TerrainsMaisons.com'},
-            {'text': allotment.name },
+            {'text': "#{allotment.city} #{allotment.name}" },
         ]) }}
 
             <!-- BREADCRUMPS  END-->

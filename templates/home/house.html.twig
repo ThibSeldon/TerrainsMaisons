@@ -2,11 +2,10 @@
 
 {% block description %}
     <!-- Meta Description -->
-    <meta name="description" content="Tous les terrains compatibles pour le modèle de maison
-        {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
+    <meta name="og:description" content="Tous les terrains à bâtir et lotissements dans la Marne et les Ardennes  pour construire le modèle de maison
+{{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}">
 
-    <meta property="og:title" content="Tous les terrains compatibles pour le modèle de maison
-        {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}" >
+    <meta property="og:title" content="Maison {{ house.name }} de {{ house.livingSpace }} m2 - {{ house.houseStyle }} {{ house.houseModel }} - Constructeur {{ house.houseBrand }}" >
 
     {% if house.pictures[0] is defined %}
     {% for picture in house.pictures %}

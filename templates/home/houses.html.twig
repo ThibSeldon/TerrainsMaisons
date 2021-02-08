@@ -17,6 +17,16 @@
         <div class="col-12 d-flex justify-content-center my-5-top">
             <h1 class="display-5 text-center"> TROUVEZ VOTRE MAISON VOTRE CONSTRUCTEUR ET VOTRE TERRAIN EN CHAMPAGNE-ARDENNE</h1>
         </div>
+        <div class="col d-flex justify-content-center">
+            <!-- BREADCRUMPS  START-->
+            {% import 'macros/breadcrumps.html.twig' as breadcrumbs %}
+            {{ breadcrumbs.render([
+                {'url': url('home'), 'text': 'TerrainsMaisons.com'},
+                {'text': 'Maisons' },
+            ]) }}
+
+            <!-- BREADCRUMPS  END-->
+        </div>
     </div>
 
 

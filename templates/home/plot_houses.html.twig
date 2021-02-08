@@ -76,7 +76,7 @@
             {{ breadcrumbs.render([
                 {'url': url('home'), 'text': 'TerrainsMaisons.com'},
                 {'url': url('home_allotment_slug', {'slug': plot.allotment.slug}), 'text': plot.allotment.name},
-                {'text': plot.lot },
+                {'text': "Terrain à bâtir n°#{plot.lot}"},
             ]) }}
             <!-- BREADCRUMPS  END-->
         </div>
