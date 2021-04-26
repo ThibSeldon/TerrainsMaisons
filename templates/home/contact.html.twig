@@ -4,8 +4,15 @@
 {% endblock %}
 
 {% block description %}
-    <!-- Meta Description -->
-    <meta name="description" content="Une Maisonà construire , un Terrain à vendre , un Lotissement à lancer ? TerainsMaisons.com">
+
+    <meta name="title" content="Contacter | Terrains Maisons.com">
+
+    <meta name="description" content="Une Maison à construire , un Terrain à vendre , un Lotissement à lancer ?">
+    <!-- OG  -->
+    <meta property="og:title" content="Contacter | Terrains Maisons.com">
+    <meta property="og:description" content="Une Maison à construire , un Terrain à vendre , un Lotissement à lancer ?">
+    <meta property="og:image" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
+    <meta property="og:image:url" content="{{ asset('images/logo_terrains_maisons_v2.png' | imagine_filter('my_thumb')) }}">
 {% endblock %}
 
 
@@ -15,7 +22,7 @@
 
         <div class="col-12 d-flex flex-column justify-content-center">
             <img src="images/selling_land_couv.jpg" alt="Vendre mon Terrain sur Terrains Maisons . com" class="img-fluid">
-            <h1 class="display-5 text-center">Contacter Terrains Maisons .com </h1>
+            <h1 class="display-5 text-center">Contacter Terrains Maisons.com </h1>
 
             <p>
                 Une <strong>Maison</strong> à construire , un <strong>Terrain</strong> à vendre , un <strong>Lotissement</strong> à lancer ?
