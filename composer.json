@@ -84,7 +84,6 @@
             "allow-contrib": false,
             "require": "5.2.*"
         }
-    },
-    "name": "TerrainsMaisons",
-    "description": "Annonces et matchs de terrains et maisons"
+    }
+
 }
