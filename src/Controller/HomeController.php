@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomeController
  * @package App\Controller
+ * FRONT SITE
  */
 #[Route('/')]
 class HomeController extends AbstractController
