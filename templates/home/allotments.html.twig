@@ -194,11 +194,11 @@
                                 <li class="list-group-item"><span
                                             class="badge badge-pill bg-warning">{{ plot.state.name }}</span></li>
                             {% endif %}
+                            <li class="list-group-item"> Découvrez tous les projets pour ce terrain</li>
 
                         </ul>
                         <div class="card-body">
-                            <a href="{{ path('all_plot_show', {'slug':allotment.slug,'id': plot.id}) }}" class="btn btn-secondary">Maisons
-                                Compatibles</a>
+                            <a href="{{ path('all_plot_show', {'slug':allotment.slug,'id': plot.id}) }}" class="btn btn-ifo">Voir les Projets de Maisons</a>
                         </div>
                     </div>
                 </div>
