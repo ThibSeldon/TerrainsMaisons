@@ -1,0 +1,62 @@
+name: app
+
+type: php:8.0
+
+runtime:
+    extensions:
+        - apcu
+        - mbstring
+        - sodium
+        - ctype
+        - iconv
+        - json
+        - pdo_pgsql
+
+
+variables:
+    php:
+        # uncomment on PHP 7.4+
+        opcache.preload: /app/config/preload.php
+
+build:
+    flavor: none
+
+disk: 512
+
+web:
+    locations:
+        "/":
+            root: "public"
+            expires: 1h
+            passthru: "/index.php"
+
+
+
+mounts:
+    "/var": { source: local, source_path: var }
+    '/public/uploads': { source: local, source_path: uploads }
+    'public/media': { source: local, source_path: media }
+
+hooks:
+    build: |
+        set -x -e
+
+        curl -fs https://get.symfony.com/cloud/configurator | (>&2 bash)
+
+        (>&2 symfony-build)
+
+    deploy: |
+        set -x -e
+
+        (>&2 symfony-deploy)
+
+timezone: Europe/Paris
+
+crons:
+    snapshot:
+        spec: 00 03 * * *
+        cmd: |
+            # only run for the master branch, aka production
+            if [ "$SYMFONY_BRANCH" = "master" ]; then
+                croncape symfony env:snapshot:create  --no-wait
+            fi
