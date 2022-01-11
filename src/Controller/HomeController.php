@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomeController
  * @package App\Controller
+ * FRONT SITE
  */
 #[Route('/')]
 class HomeController extends AbstractController
@@ -38,9 +39,10 @@ class HomeController extends AbstractController
         $countMatchs = $plotHouseMatchingRepository->count([]);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            //Pourquoi je recupere l objet allotment et non le champ city ? (ca fonctionne commme ca)
+            //Pourquoi je recupere l objet allotment et non le champ city ? (ca fonctionne commme ca) (car on lui passe un tableau de choix avec la requete du formulaire)
             $data = $searchForm->get('city')->getData();
-            $allotments = $allotmentRepository->findBySearchForm($data);
+            dump(count($data));
+            $allotments = (count($data) > 0) ? $allotmentRepository->findBySearchForm($data) : $allotmentRepository->findBy(['isValid'=>true]);
             return $this->render('home/index.html.twig', [
                 '_fragment' => 'allotment-list',
                 'allotments' => $allotments,
@@ -266,6 +268,11 @@ class HomeController extends AbstractController
     public function contact()
     {
         return $this->render('home/contact.html.twig');
+    }
+
+    public function getLatLongAllotment()
+    {
+
     }
 
 }

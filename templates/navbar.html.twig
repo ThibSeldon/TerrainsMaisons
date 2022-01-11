@@ -1,15 +1,15 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
     <a class="navbar-brand"  href="{{ path('home') }}">
         <img src="{{ asset('images/logo_terrains_maisons.png') }}" width="80" alt="">
 
     </a>
 
 
-    <a class="navbar-brand" href="{{ path('home') }}"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-diamond" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <a class="navbar-brand" href="{{ path('house_index') }}"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-diamond" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
             <path fill-rule="evenodd" d="M8.361 1.17a.51.51 0 0 0-.722 0L4.766 4.044 8 7.278l3.234-3.234L8.361 1.17zm3.595 3.596L8.722 8l3.234 3.234 2.873-2.873c.2-.2.2-.523 0-.722l-2.873-2.873zm-.722 7.19L8 8.722l-3.234 3.234 2.873 2.873c.2.2.523.2.722 0l2.873-2.873zm-7.19-.722L7.278 8 4.044 4.766 1.17 7.639a.511.511 0 0 0 0 .722l2.874 2.873zM6.917.45a1.531 1.531 0 0 1 2.166 0l6.469 6.468a1.532 1.532 0 0 1 0 2.166l-6.47 6.469a1.532 1.532 0 0 1-2.165 0L.45 9.082a1.531 1.531 0 0 1 0-2.165L6.917.45z"/>
         </svg>   Batilab - BETA v0.3
@@ -19,7 +19,7 @@
         </svg>
     </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsive" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#responsive" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -27,7 +27,7 @@
 
         <ul class="navbar-nav mr-auto d-flex w-100">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('home') }}">Accueil Front </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('house_index' )}}">Maisons</a>
@@ -36,52 +36,53 @@
 
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkFoncier" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkFoncier" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Gestion Foncier
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkFoncier">
-                    <a class="dropdown-item" href="{{ path('land_allotment_index' )}}">Programmes</a>
-                    <a class="dropdown-item" href="{{ path('land_plot_index' )}}">Terrains</a>
-                    <a class="dropdown-item" href="{{ path('contact_index' )}}">Contact</a>
-                    <a class="dropdown-item" href="{{ path('contact_society_index' )}}">Societe</a>
-                    <a href="{{ path('matching_plot_house_matching_index') }}" class="dropdown-item">Matching</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkFoncier">
+                    <li><a class="dropdown-item" href="{{ path('land_allotment_index' )}}">Programmes</a></li>
+                    <li><a class="dropdown-item" href="{{ path('land_plot_index' )}}">Terrains</a></li>
+                    <li><a class="dropdown-item" href="{{ path('contact_index' )}}">Contact</a></li>
+                    <li><a class="dropdown-item" href="{{ path('contact_society_index' )}}">Societe</a></li>
+                    <li><a href="{{ path('matching_plot_house_matching_index') }}" class="dropdown-item">Matching</a></li>
 
-                </div>
+                </ul>
             </li>
 
             <li class="nav-item dropdown h-auto">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAdmin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAdmin" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAdmin">
-                    <a class="dropdown-item" href="{{ path('house_new' )}}">Ajouter Maison</a>
-                    <a class="dropdown-item" href="{{ path('admin_house_house_roofing_index' )}}">Toitures</a>
-                    <a class="dropdown-item" href="{{ path('admin_house_house_brand_index' )}}">Marque</a>
-                    <a href="{{ path('land_state_index') }}" class="dropdown-item">Etats Lots</a>
-                    <a href="{{ path('land_allotment_state_index') }}" class="dropdown-item">Etats Lotissement</a>
-                    <a href="{{ path('land_sanitation_index') }}" class="dropdown-item">Assainissement</a>
-                    <a href="{{ path('admin_tag_index') }}" class="dropdown-item">Tags</a>
-                    <a href="{{ path('admin_user_user_index') }}" class="dropdown-item">Utilisateurs</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAdmin">
+                    <li><a class="dropdown-item" href="{{ path('house_new' )}}">Ajouter Maison</a></li>
+                    <li><a class="dropdown-item" href="{{ path('admin_house_house_roofing_index' )}}">Toitures</a></li>
+                    <li><a class="dropdown-item" href="{{ path('admin_house_house_brand_index' )}}">Marque</a></li>
+                    <li><a href="{{ path('land_state_index') }}" class="dropdown-item">Etats Lots</a></li>
+                    <li><a href="{{ path('land_allotment_state_index') }}" class="dropdown-item">Etats Lotissement</a></li>
+                    <li><a href="{{ path('land_sanitation_index') }}" class="dropdown-item">Assainissement</a></li>
+                    <li><a href="{{ path('admin_tag_index') }}" class="dropdown-item">Tags</a></li>
+                    <li><a href="{{ path('admin_user_user_index') }}" class="dropdown-item">Utilisateurs</a></li>
 
-                </div>
+                </ul>
             </li>
 
 
 
         {% if app.user %}
-
-                <li class= "nav-item dropdown d-flex align-content-end justify-content-end w-100">
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLinkProfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="d-flex align-content-end justify-content-end">
+                <li class= "nav-item dropdown w-100">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLinkProfil" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ app.user.firstName }} - {{ app.user.email }}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkProfil">
-                        <a href="{{ path('admin_user_user_show', {'id': app.user.id}) }}" class="dropdown-item">Profil</a>
-                        <a class="dropdown-item" href="{{ path('app_logout')}}">Logout</a>
-                    </div>
+                    <ul class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLinkProfil">
+                        <li><a href="{{ path('admin_user_user_show', {'id': app.user.id}) }}" class="dropdown-item">Profil</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_logout')}}">Logout</a></li>
+                    </ul>
                 </li>
+                </div>
         {% endif %}
 
         </ul>
-
+    </div>
     </div>
 </nav>

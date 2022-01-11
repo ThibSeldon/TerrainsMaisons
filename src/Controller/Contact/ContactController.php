@@ -10,16 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/cc/contact/contact")
- */
+
+#[Route("/cc/contact/contact")]
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/", name="contact_index", methods={"GET"})
      * @param ContactRepository $contactRepository
      * @return Response
      */
+    #[Route("/", name: "contact_index", methods: ["GET"])]
     public function index(ContactRepository $contactRepository): Response
     {
         return $this->render('contact/index.html.twig', [
@@ -95,7 +94,7 @@ class ContactController extends AbstractController
      */
     public function delete(Request $request, Contact $contact): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$contact->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $contact->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($contact);
             $entityManager->flush();

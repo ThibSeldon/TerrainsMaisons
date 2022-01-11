@@ -4,7 +4,7 @@
 <head>
 
     <!-- Analytics TAGS -->
-    {% if app.environment != 'dev' %}
+    {% if app.environment == 'master' %}
 
 
         <!-- Google Tag Manager -->
@@ -200,7 +200,7 @@
 
 
 <!-- Start cookieyes banner -->
-{% if app.environment != 'dev' %}
+{% if app.environment == 'master' %}
     <script id="cookieyes" type="text/javascript"
             src="https://cdn-cookieyes.com/client_data/897ca9823a3e35de5c2fc77a.js"></script>
 {% endif %}

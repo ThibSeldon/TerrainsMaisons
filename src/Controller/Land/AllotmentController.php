@@ -11,13 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/cc/land/allotment")
- */
+
+#[Route("/cc/land/allotment")]
 class AllotmentController extends AbstractController
 {
+    #[Route("/", name: "land_allotment_index", methods: ["GET"])]
     /**
-     * @Route("/", name="land_allotment_index", methods={"GET"})
      * @param AllotmentRepository $allotmentRepository
      * @return Response
      */
