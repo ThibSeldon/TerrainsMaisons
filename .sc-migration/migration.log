@@ -1,0 +1,2 @@
+[90m2022-01-11T13:30:18+01:00[0m [33mDBG[0m Get data about the SymfonyCloud project
+[90m2022-01-11T13:30:18+01:00[0m [1m[31mERR[0m[0m Error while migrating [31merror=[0m[31m"unable to get the current project: could not determine the current project: project root not found, current directory not linked to a SymfonyCloud project.\n\nYou need to link the directory to an existing project: symfony link [project-id] (get project IDs via symfony projects)"[0m
