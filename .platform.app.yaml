@@ -23,6 +23,11 @@ build:
 
 disk: 512
 
+
+relationships:
+    database: "db:postgresql"
+
+
 web:
     locations:
         "/":
@@ -52,11 +57,3 @@ hooks:
 
 timezone: Europe/Paris
 
-crons:
-    snapshot:
-        spec: 00 03 * * *
-        cmd: |
-            # only run for the master branch, aka production
-            if [ "$SYMFONY_BRANCH" = "master" ]; then
-                croncape symfony env:snapshot:create  --no-wait
-            fi
