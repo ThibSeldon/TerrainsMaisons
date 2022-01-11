@@ -1,2 +1,9 @@
 [90m2022-01-11T13:30:18+01:00[0m [33mDBG[0m Get data about the SymfonyCloud project
 [90m2022-01-11T13:30:18+01:00[0m [1m[31mERR[0m[0m Error while migrating [31merror=[0m[31m"unable to get the current project: could not determine the current project: project root not found, current directory not linked to a SymfonyCloud project.\n\nYou need to link the directory to an existing project: symfony link [project-id] (get project IDs via symfony projects)"[0m
+[90m2022-01-11T13:44:59+01:00[0m [33mDBG[0m Get data about the SymfonyCloud project
+[90m2022-01-11T13:45:01+01:00[0m [32mINF[0m Found current SymfonyCloud project ID [36mcurrent_project_id=[0mcnfbm66hxnaiy
+[90m2022-01-11T13:45:01+01:00[0m [32mINF[0m Found default branch for SymfonyCloud project [36mdefault_project_branch=[0mmaster
+[90m2022-01-11T13:45:01+01:00[0m [32mINF[0m Found remote branch for SymfonyCloud env [36mcurrent_project_env=[0mmaster
+[90m2022-01-11T13:45:01+01:00[0m [32mINF[0m Got data about the <comment>cnfbm66hxnaiy</> SymfonyCloud project
+[90m2022-01-11T13:45:01+01:00[0m [33mDBG[0m Check project directory [36mproject_dir=[0m/Users/thibaud/Dev/TerrainsMaisons
+[90m2022-01-11T13:45:01+01:00[0m [1m[31mERR[0m[0m Error while migrating [31merror=[0m[31m"Aborting the migration as the Git repository under \"/Users/thibaud/Dev/TerrainsMaisons\" has local changes."[0m
