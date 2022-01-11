@@ -9,7 +9,6 @@ runtime:
         - sodium
         - ctype
         - iconv
-        - json
         - pdo_pgsql
 
 
